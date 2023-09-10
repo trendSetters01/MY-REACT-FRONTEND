@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const peraWallet = new PeraWalletConnect();
 
-export default function PeraWalletButton() {
+export default function PeraWalletButton({ onConnect }) {
   const [accountAddress, setAccountAddress] = useState(null);
   const isConnectedToPeraWallet = !!accountAddress;
 
@@ -14,14 +14,16 @@ export default function PeraWalletButton() {
         peraWallet.connector.on("disconnect", handleDisconnectWalletClick);
 
         if (accounts.length) {
-          setAccountAddress(accounts[0]);
+          const address = accounts[0];
+          setAccountAddress(address);
+          onConnect(address);
         }
       })
       .catch((e) => console.log(e));
   }, []);
 
   return (
-    <button
+    <button className='Wallet-connect'
       onClick={
         isConnectedToPeraWallet
           ? handleDisconnectWalletClick
@@ -38,7 +40,9 @@ export default function PeraWalletButton() {
       .then((newAccounts) => {
         peraWallet.connector.on("disconnect", handleDisconnectWalletClick);
 
-        setAccountAddress(newAccounts[0]);
+        const address = newAccounts[0];
+        setAccountAddress(address);
+        onConnect(address);
       })
       .catch((error) => {
         if (error?.data?.type !== "CONNECT_MODAL_CLOSED") {
@@ -49,7 +53,7 @@ export default function PeraWalletButton() {
 
   function handleDisconnectWalletClick() {
     peraWallet.disconnect();
-
     setAccountAddress(null);
+    onConnect(null);
   }
 }
