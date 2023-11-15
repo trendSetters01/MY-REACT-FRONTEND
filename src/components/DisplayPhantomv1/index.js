@@ -43,7 +43,7 @@ function DisplayPhantomv1({ accountAddress }) {
   }
 
   return (
-    <div>
+    <div className="fade-in">
       {loading && <p>Loading account data...</p>}
       {error && <p>Error: {error}</p>}
       {accountData && (
