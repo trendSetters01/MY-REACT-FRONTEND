@@ -15,9 +15,7 @@ function DisplayPhantomv1({ accountAddress }) {
   const fetchAccountData = async () => {
     setLoading(true);
     try {
-      const response = await getUserTokenHolding(
-        accountAddress
-      );
+      const response = await getUserTokenHolding(accountAddress);
       console.log(response);
       const data = response;
       if (data.account) {
@@ -50,14 +48,17 @@ function DisplayPhantomv1({ accountAddress }) {
         <div>
           <h1>Phantom V1</h1>
           <h3>Account Information</h3>
-          <p>Address: <a
+          <p>
+            Address:{" "}
+            <a
               style={{ color: "green" }}
-                href={`https://algoexplorer.io/address/${accountData.address}`}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {accountData.address}
-              </a></p>
+              href={`https://algoexplorer.io/address/${accountData.address}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {accountData.address}
+            </a>
+          </p>
         </div>
       )}
       <div
@@ -71,27 +72,33 @@ function DisplayPhantomv1({ accountAddress }) {
           accountData["created-assets"].map((asset, index) => (
             <div style={{ margin: "1px" }}>
               <div>
-                <img
-                  key={index}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "2px solid white",
-                    borderRadius: "10px",
-                  }}
-                  src={`https://ipfs.io/ipfs/${extractIPFSHash(
-                    asset.params.url
-                  )}`}
-                  alt={`Asset ${index}`}
-                />
+                <a
+                  style={{ color: "white" }}
+                  href={`https://algoexplorer.io/asset/${asset.index}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img
+                    key={index}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={`https://ipfs.io/ipfs/${extractIPFSHash(
+                      asset.params.url
+                    )}`}
+                    alt={`Asset ${index}`}
+                  />
+                </a>
               </div>
               <a
-              style={{ color: "white" }}
+                style={{ color: "white" }}
                 href={`https://algoexplorer.io/asset/${asset.index}`}
                 target="_blank"
                 rel="noreferrer"
               >
-                {" "}
                 {accountData && asset.params.name}
               </a>
             </div>
