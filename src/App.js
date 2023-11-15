@@ -33,7 +33,7 @@ function App() {
         <header className="App-header">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/account-info" element={connectedAccountAddress ? <DisplayAccountInformation accountAddress={connectedAccountAddress} /> : <PeraWalletButton onConnect={setConnectedAccountAddress} />} />
+            <Route path="/account-info" element={ <DisplayAccountInformation setConnectedAccountAddress={setConnectedAccountAddress} accountAddress={connectedAccountAddress} connectedAccountAddress={connectedAccountAddress} />} />
             <Route path="/phantomv1" element={<DisplayPhantomv1 accountAddress={phantomAddress} />} />
           </Routes>
         </header>

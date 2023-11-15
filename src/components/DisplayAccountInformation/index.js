@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
 
-function DisplayAccountInformation({ accountAddress }) {
+import PeraWalletButton from "../PeraWalletButton";
+function DisplayAccountInformation({
+  setConnectedAccountAddress,
+  connectedAccountAddress,
+  accountAddress,
+}) {
   const [accountData, setAccountData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -13,11 +18,10 @@ function DisplayAccountInformation({ accountAddress }) {
   }, [accountAddress]);
 
   const fetchAccountData = async () => {
+    console.log(setConnectedAccountAddress);
     setLoading(true);
     try {
-      const response = await getUserTokenHolding(
-        accountAddress
-      );
+      const response = await getUserTokenHolding(accountAddress);
       console.log(response);
       const data = response;
       if (data.account) {
@@ -46,11 +50,14 @@ function DisplayAccountInformation({ accountAddress }) {
     <div>
       {loading && <p>Loading account data...</p>}
       {error && <p>Error: {error}</p>}
-      {accountData && (
+      <PeraWalletButton onConnect={setConnectedAccountAddress} />
+      {accountData && connectedAccountAddress && (
         <div>
           <h2>Account Information</h2>
           <p>Address: {accountData.address}</p>
           <p>Amount: {accountData.amount}</p>
+          <p>Assets Data: <br/>{JSON.stringify(accountData.assets, null, 2)}<br/></p>
+          <p>Created Assets Data: <br/>{JSON.stringify(accountData["created-assets"], null, 2)}<br/></p>
         </div>
       )}
     </div>
