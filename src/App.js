@@ -26,14 +26,14 @@ function App() {
       <div className="App">
         <nav style={{fontSize: '32px'}}>
           <Link to="/">Home |</Link>
-          {/* <Link to="/account-info"> Account Information |</Link> */}
+          <Link to="/account-info"> Account Information |</Link>
           <Link to="/phantomv1"> Phantom V1</Link>
         </nav>
 
         <header className="App-header">
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/account-info" element={connectedAccountAddress ? <DisplayAccountInformation accountAddress={connectedAccountAddress} /> : <PeraWalletButton onConnect={setConnectedAccountAddress} />} /> */}
+            <Route path="/account-info" element={connectedAccountAddress ? <DisplayAccountInformation accountAddress={connectedAccountAddress} /> : <PeraWalletButton onConnect={setConnectedAccountAddress} />} />
             <Route path="/phantomv1" element={<DisplayPhantomv1 accountAddress={phantomAddress} />} />
           </Routes>
         </header>
