@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
 
-function DisplayAccountInformation({ accountAddress }) {
+function DisplayPhantomv1({ accountAddress }) {
   const [accountData, setAccountData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -53,8 +53,46 @@ function DisplayAccountInformation({ accountAddress }) {
           <p>Amount: {accountData.amount}</p>
         </div>
       )}
+      <h2>Phantom V1</h2>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "10px",
+        }}
+      >
+        {accountData &&
+          accountData["created-assets"].map((asset, index) => (
+            <div style={{ margin: "1px" }}>
+              <div>
+                <img
+                  key={index}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    border: "2px solid white",
+                    borderRadius: "10px",
+                  }}
+                  src={`https://ipfs.io/ipfs/${extractIPFSHash(
+                    asset.params.url
+                  )}`}
+                  alt={`Asset ${index}`}
+                />
+              </div>
+              <a
+              style={{ color: "white" }}
+                href={`https://algoexplorer.io/asset/${asset.index}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {" "}
+                {accountData && asset.params.name}
+              </a>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
 
-export default DisplayAccountInformation;
+export default DisplayPhantomv1;
