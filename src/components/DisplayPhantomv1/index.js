@@ -74,7 +74,7 @@ function DisplayPhantomv1({ accountAddress }) {
               <div>
                 <a
                   style={{ color: "white" }}
-                  href={`https://algoexplorer.io/asset/${asset.index}`}
+                  href={`https://www.randgallery.com/algo-collection/?address=${asset.index}`}
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -95,7 +95,7 @@ function DisplayPhantomv1({ accountAddress }) {
               </div>
               <a
                 style={{ color: "white" }}
-                href={`https://algoexplorer.io/asset/${asset.index}`}
+                href={`https://www.randgallery.com/algo-collection/?address=${asset.index}`}
                 target="_blank"
                 rel="noreferrer"
               >
