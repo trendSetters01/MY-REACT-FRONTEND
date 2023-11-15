@@ -47,7 +47,7 @@ function DisplayAccountInformation({
   }
 
   return (
-    <div>
+    <div className="fade-in">
       {loading && <p>Loading account data...</p>}
       {error && <p>Error: {error}</p>}
       <PeraWalletButton onConnect={setConnectedAccountAddress} />
