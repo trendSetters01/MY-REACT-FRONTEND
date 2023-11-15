@@ -48,12 +48,18 @@ function DisplayPhantomv1({ accountAddress }) {
       {error && <p>Error: {error}</p>}
       {accountData && (
         <div>
-          <h2>Account Information</h2>
-          <p>Address: {accountData.address}</p>
-          <p>Amount: {accountData.amount}</p>
+          <h1>Phantom V1</h1>
+          <h3>Account Information</h3>
+          <p>Address: <a
+              style={{ color: "green" }}
+                href={`https://algoexplorer.io/address/${accountData.address}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {accountData.address}
+              </a></p>
         </div>
       )}
-      <h2>Phantom V1</h2>
       <div
         style={{
           display: "grid",
