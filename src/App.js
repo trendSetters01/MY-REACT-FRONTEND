@@ -10,7 +10,10 @@ function App() {
   const phantomAddress =
     "IWY24Q6GUUIMJITMTR3FDO4Q54UCBPPPIWJUQ57CWLASPRHFHXTXIQUQYA";
   return (
-    <div className="dark:bg-gray-700">
+    <div
+      className="App bg-cover bg-center"
+      style={{ backgroundImage: "url('./codioful-formerly-gradienta-G084bO4wGDA-unsplash.jpg')" }}
+    >
       <Router>
         <Menu />
         <Routes>
@@ -26,9 +29,9 @@ function App() {
             }
           />
           <Route
-                path="/phantom-v1"
-                element={<DisplayPhantomv1 accountAddress={phantomAddress} />}
-              />
+            path="/phantom-v1"
+            element={<DisplayPhantomv1 accountAddress={phantomAddress} />}
+          />
         </Routes>
       </Router>
     </div>

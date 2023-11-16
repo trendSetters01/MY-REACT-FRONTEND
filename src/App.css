@@ -32,10 +32,19 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
+.App {
+  min-height: 100vh;
+  /* Full viewport height */
+  background-attachment: fixed;
+  /* Fixed background */
+}
+
 @tailwind base;
 
 @tailwind components;
