@@ -15,7 +15,7 @@ export default function DisplayAccountInformation({
     if (accountAddress) {
       fetchAccountData();
     }
-  }, [accountAddress]);
+  }, [accountAddress, connectedAccountAddress]);
 
   const fetchAccountData = async () => {
     setLoading(true);
