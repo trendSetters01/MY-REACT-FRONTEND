@@ -48,13 +48,7 @@ export default function DisplayAccountInformation({
             <p><strong>Address:</strong> {accountData.address}</p>
             <p><strong>Amount:</strong> {accountData.amount}</p>
             <div className="text-gray-800 overflow-auto">
-              <strong className="text-white">Assets Data:</strong>
-              <pre className="bg-gray-100 p-2 rounded mt-2 text-sm overflow-auto max-h-64">
-                {JSON.stringify(accountData.assets, null, 2)}
-              </pre>
-            </div>
-            <div className="mt-4 ">
-              <strong className="text-white">Created Assets Data:</strong>
+              <strong className="text-white">Account Data:</strong>
               <pre className="text-gray-800 bg-gray-100 p-2 rounded mt-2 text-sm overflow-auto max-h-64">
                 {JSON.stringify(accountData, null, 2)}
               </pre>
