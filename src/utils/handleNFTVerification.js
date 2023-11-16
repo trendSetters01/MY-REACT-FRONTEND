@@ -9,8 +9,8 @@ import {
 import fs from "fs/promises";
 import path from "path";
 
-async function handleNFTVerification(interaction, userChoice) {
-  const userAddress = getUserAddress(interaction.user.id);
+async function handleNFTVerification({ userId, userChoice }) {
+  const userAddress = getUserAddress(userId);
 
   if (userAddress) {
     try {

@@ -1,19 +1,15 @@
 import { User, AddressSet, StakingSet } from "../../db/models/index.js";
 import { DB } from "../../db/config/index.js";
-// import {
-//   createStakeRegistrationSuccessEmbed,
-//   createStakeRegistrationFailureEmbed,
-// } from "../../embeds/index.js";
 
 import { verifySpecificPhntmNFT } from "../../algorand/verifyNFT.js";
 import { userAddressRegistration } from "../../utils/index.js";
 
-async function handleRegisterStake(interaction) {
-  const address = interaction.options.getString("address");
-  const assetId = interaction.options.getString("assetid");
-  const durationType = interaction.options.getString("durationtype");
-  const duration = interaction.options.getInteger("duration");
-  const userId = interaction.user.id;
+async function handleRegisterStake({ address="", assetId="", durationType="", duration=10000, userId=0 }) {
+  // const address = "";
+  // const assetId = "";
+  // const durationType = "";
+  // const duration = 10000;
+  // const userId = 0;
 
   // Start a transaction
   const t = await DB.transaction();
@@ -63,32 +59,16 @@ async function handleRegisterStake(interaction) {
       );
     }
 
-  //   // Commit the transaction
+    //   // Commit the transaction
     await t.commit();
 
     // Log the address
     await userAddressRegistration(userId, address);
-
-    // Reply with success message
-    // const stakeRegistrationEmbed = createStakeRegistrationSuccessEmbed(
-    //   address,
-    //   assetId,
-    //   duration,
-    //   durationType
-    // );
-    // await interaction.reply({ embeds: [stakeRegistrationEmbed] });
   } catch (error) {
     console.error("Error in staking registration:", error);
 
     // Roll back the transaction
     await t.rollback();
-
-    // Reply with failure message
-    // const failureEmbed = createStakeRegistrationFailureEmbed(
-    //   (error.message && "Staking registration failed") ||
-    //     "An unexpected error occurred."
-    // );
-    // await interaction.reply({ embeds: [failureEmbed], ephemeral: true });
   }
 }
 
