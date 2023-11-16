@@ -59,12 +59,13 @@ function DisplayPhantomv1({ accountAddress }) {
               {accountData.address}
             </a>
           </p>
+          <br />
         </div>
       )}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
+          gridTemplateColumns: "repeat(5, 1fr)",
           gap: "10px",
         }}
       >
@@ -94,7 +95,7 @@ function DisplayPhantomv1({ accountAddress }) {
                 </a>
               </div>
               <a
-               className="text-black dark:text-white"
+                className="text-black dark:text-white"
                 href={`https://www.randgallery.com/algo-collection/?address=${asset.index}`}
                 target="_blank"
                 rel="noreferrer"

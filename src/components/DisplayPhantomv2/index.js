@@ -59,6 +59,7 @@ function DisplayPhantomv2({ accountAddress }) {
               {accountData.address}
             </a>
           </p>
+          <br />
         </div>
       )}
       <div
