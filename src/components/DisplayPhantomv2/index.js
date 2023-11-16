@@ -33,6 +33,10 @@ function DisplayPhantomv2({ accountAddress }) {
 
   function extractIPFSHash(ipfsUrl) {
     const prefix = "ipfs://";
+    const postfix = "#arc3";
+    if (ipfsUrl.endsWith(postfix)) {
+      return "bafkreiazcvz3rahtfng6ycph7o7vwy2u4c2hvjxxdkxabaqycereesexfm";
+    }
     if (ipfsUrl.startsWith(prefix)) {
       return ipfsUrl.slice(prefix.length);
     } else {
@@ -41,7 +45,7 @@ function DisplayPhantomv2({ accountAddress }) {
   }
 
   return (
-    <div className="fade-in text-black dark:text-white">
+    <div className="fade-in text-center text-black dark:text-white">
       {loading && <p>Loading account data...</p>}
       {error && <p>Error: {error}</p>}
       {accountData && (
@@ -51,7 +55,7 @@ function DisplayPhantomv2({ accountAddress }) {
           <p>
             Address:{" "}
             <a
-              className="text-black dark:text-white"
+              className="text-black underline dark:text-white"
               href={`https://algoexplorer.io/address/${accountData.address}`}
               target="_blank"
               rel="noreferrer"

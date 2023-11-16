@@ -43,10 +43,17 @@ export default function DisplayAccountInformation({
         <PeraWalletButton onConnect={setConnectedAccountAddress} />
 
         {accountData && connectedAccountAddress && (
-          <div style={{overflowWrap:"break-word"}} className="mt-4 p-4 border border-gray-200 overflow-auto rounded shadow-md max-w-lg w-full">
+          <div
+            style={{ overflowWrap: "break-word" }}
+            className="mt-4 p-4 border border-gray-200 overflow-auto rounded shadow-md max-w-lg w-full"
+          >
             <h2 className="text-2xl font-bold mb-4">Account Information</h2>
-            <p><strong>Address:</strong> {accountData.address}</p>
-            <p><strong>Amount:</strong> {accountData.amount}</p>
+            <p>
+              <strong>Address:</strong> {accountData.address}
+            </p>
+            <p>
+              <strong>Amount:</strong> {accountData.amount}
+            </p>
             <div className="text-gray-800 overflow-auto">
               <strong className="text-white">Account Data:</strong>
               <pre className="text-gray-800 bg-gray-100 p-2 rounded mt-2 text-sm overflow-auto max-h-64">
