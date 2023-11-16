@@ -52,6 +52,11 @@ export default function Menu({ fixed }) {
                   Phantom Pals
                 </Link>
               </li>
+              <li>
+                <Link to="/phantom-v2" className="dropdown-item">
+                  Phantom V2
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
