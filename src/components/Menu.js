@@ -67,7 +67,7 @@ export default function Menu({ fixed }) {
         </div>
         {/* Twitter */}
         <div className="navbar-end">
-          <a
+          {/* <a
             href="https://twitter.com/PhantomV201"
             className="text-blue-500 hover:underline dark:text-blue-400"
           >
@@ -79,7 +79,7 @@ export default function Menu({ fixed }) {
             >
               Phantom V2
             </button>
-          </a>
+          </a> */}
           <button className="btn btn-ghost btn-circle">
             <a
               href="https://twitter.com/PhantomPaals"
