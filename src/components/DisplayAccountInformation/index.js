@@ -35,7 +35,7 @@ export default function DisplayAccountInformation({
   };
 
   return (
-    <div className="container mx-auto p-4 fade-in text-black dark:text-white">
+    <div className="container mx-auto p-4 fade-in text-white dark:text-white">
       {loading && <p className="text-center">Loading account data...</p>}
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
 

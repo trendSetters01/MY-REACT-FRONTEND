@@ -45,17 +45,17 @@ function DisplayPhantomv2({ accountAddress }) {
   }
 
   return (
-    <div className="fade-in text-center text-black dark:text-white">
+    <div className="fade-in text-center text-white dark:text-white">
       {loading && <p>Loading account data...</p>}
       {error && <p>Error: {error}</p>}
       {accountData && (
-        <div className="text-black dark:text-white">
+        <div className="text-white dark:text-white">
           <h1>Phantom V2</h1>
           <h3>Account Information</h3>
           <p>
             Address:{" "}
             <a
-              className="text-black underline dark:text-white"
+              className="text-white underline dark:text-white"
               href={`https://algoexplorer.io/address/${accountData.address}`}
               target="_blank"
               rel="noreferrer"
@@ -78,7 +78,7 @@ function DisplayPhantomv2({ accountAddress }) {
             <div style={{ margin: "1px" }}>
               <div>
                 <a
-                  className="text-black dark:text-white"
+                  className="text-white dark:text-white"
                   href={`https://www.randgallery.com/algo-collection/?address=${asset.index}`}
                   target="_blank"
                   rel="noreferrer"
@@ -99,7 +99,7 @@ function DisplayPhantomv2({ accountAddress }) {
                 </a>
               </div>
               <a
-               className="text-black dark:text-white"
+               className="text-white dark:text-white"
                 href={`https://www.randgallery.com/algo-collection/?address=${asset.index}`}
                 target="_blank"
                 rel="noreferrer"

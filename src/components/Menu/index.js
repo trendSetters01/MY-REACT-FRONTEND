@@ -1,5 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import registerImg from "../../images/icons8-register-50.png";
+import phantom from "../../images/icons8-ghost-64.png";
+import userAccount from "../../images/icons8-customer-50.png";
+import home from "../../images/icons8-exterior-64.png";
 
 export default function Menu({ fixed }) {
   const [theme, setTheme] = React.useState("light");
@@ -39,26 +43,75 @@ export default function Menu({ fixed }) {
             >
               <li>
                 <Link to="/" className="dropdown-item">
-                  Homepage
+                <img
+                    style={{
+                      width: "25%",
+                      height: "25%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={home}
+                    alt={`Pahntom V2`}
+                  /> Homepage
                 </Link>
               </li>
               <li>
                 <Link to="/account-info" className="dropdown-item">
+                  <img
+                    style={{
+                      width: "25%",
+                      height: "25%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={userAccount}
+                    alt={`Pahntom V2`}
+                  />
                   Account Information
                 </Link>
               </li>
               <li>
                 <Link to="/register-your-address" className="dropdown-item">
+                  <img
+                    style={{
+                      width: "25%",
+                      height: "25%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={registerImg}
+                    alt={`Pahntom V2`}
+                  />
                   Register Your Address
                 </Link>
               </li>
               <li>
                 <Link to="/phantom-v1" className="dropdown-item">
+                  <img
+                    style={{
+                      width: "25%",
+                      height: "25%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={`https://ipfs.io/ipfs/bafkreiasgoxgnd33c2emwo6sqd4n6fxbaa2g7vio23e4ot3nvgq4hethia#i`}
+                    alt={`Pahntom V1`}
+                  />
                   Phantom Pals
                 </Link>
               </li>
               <li>
                 <Link to="/phantom-v2" className="dropdown-item">
+                  <img
+                    style={{
+                      width: "25%",
+                      height: "25%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={`https://ipfs.io/ipfs/bafkreif7xwh37wbwpyzv5id7ijchvs56hdmah25v32hhtu3igyhp257b4e`}
+                    alt={`Pahntom V2`}
+                  />
                   Phantom V2
                 </Link>
               </li>
@@ -66,25 +119,37 @@ export default function Menu({ fixed }) {
           </div>
         </div>
         <div className="navbar-center">
-          <div className="btn btn-ghost text-xl">
-            <Link to="/">Phantoms</Link>
-          </div>
+          <Link to="/">
+            <img
+              style={{
+                width: "100%",
+                height: "100%",
+                justifyContent: "center",
+                border: "2px solid white",
+                borderRadius: "10px",
+              }}
+              src={phantom}
+              alt={`Pahntom`}
+            />
+          </Link>
         </div>
         {/* Twitter */}
         <div className="navbar-end">
-          {/* <a
-            href="https://twitter.com/PhantomV201"
-            className="text-blue-500 hover:underline dark:text-blue-400"
-          >
-            <button
-              type="button"
-              data-te-ripple-init
-              data-te-ripple-color="light"
-              class="rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-neutral-100 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:hover:bg-neutral-700"
+          {/* <button className="btn btn-ghost btn-circle">
+            <a
+              href="https://twitter.com/PhantomV201"
+              className="text-blue-500 hover:underline dark:text-blue-400"
             >
-              Phantom V2
-            </button>
-          </a> */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fillRule="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
+              </svg>
+            </a>
+          </button> */}
           <button className="btn btn-ghost btn-circle">
             <a
               href="https://twitter.com/PhantomPaals"

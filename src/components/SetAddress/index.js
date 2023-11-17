@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
-// import { handleSetaddress } from "../../handlers/commandHandlers/setaddress.js";
-// import PeraWalletButton from "../PeraWalletButton";
+
 function SetAddress({ accountAddress, connectedAccountAddress }) {
   const [accountData, setAccountData] = useState(null);
   const [address, setaddress] = useState(null);

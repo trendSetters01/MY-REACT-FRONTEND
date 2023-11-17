@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
 
+import Roadmap from "./../RoadMap/index.js";
+
 function Home({ accountAddress }) {
   const [accountData, setAccountData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -30,18 +32,18 @@ function Home({ accountAddress }) {
       setLoading(false);
     }
   };
-  
+
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 text-white">
       <header className="mb-8 text-center dark:text-white">
         {/* Logo and Title */}
         <h1 className="text-4xl font-bold mb-2">Phantoms</h1>
         <p className="text-lg">Join us on an exciting journey!</p>
       </header>
       <main>
-        <div className="tab-container space-y-8">
+        <div className="tab-container text-black space-y-8">
           {/* Introduction Section */}
-          <section className="introduction bg-white p-4 shadow rounded-lg dark:bg-gray-700">
+          <section className="introduction bg-gray-400 p-4 shadow rounded-lg dark:bg-gray-700">
             <h2 className="text-2xl font-semibold mb-4 dark:text-white">
               Welcome to Phantoms!
             </h2>
@@ -52,8 +54,11 @@ function Home({ accountAddress }) {
             </p>
           </section>
 
+          {/* Roadmap Section */}
+          <Roadmap />
+
           {/* NFT Benefits Section */}
-          <section className="nft-benefits bg-white p-4 shadow rounded-lg dark:bg-gray-700 dark:text-white">
+          <section className="nft-benefits text-black bg-gray-400 p-4 shadow rounded-lg dark:bg-gray-700 dark:text-white">
             <h2 className="text-2xl font-semibold mb-4">
               Exclusive Benefits with Phantom NFTs
             </h2>
@@ -90,7 +95,7 @@ function Home({ accountAddress }) {
           </section>
 
           {/* Explore Token Section */}
-          <section className="explore-token bg-white p-4 shadow rounded-lg dark:bg-gray-700 dark:text-white">
+          <section className="explore-token text-black bg-gray-400 p-4 shadow rounded-lg dark:bg-gray-700 dark:text-white">
             <h2 className="text-2xl font-semibold mb-4">
               Explore Phantoms Token
             </h2>
@@ -112,7 +117,7 @@ function Home({ accountAddress }) {
           </section>
 
           {/* Tokenomics Section */}
-          <section className="tokenomics bg-white p-4 shadow rounded-lg dark:bg-gray-700 dark:text-white">
+          <section className="tokenomics text-black bg-gray-400 p-4 shadow rounded-lg dark:bg-gray-700 dark:text-white">
             <h2 className="text-2xl font-semibold mb-4">
               Initial Tokenomics Overview
             </h2>
@@ -186,7 +191,7 @@ function Home({ accountAddress }) {
           </section>
         </div>
       </main>
-      <footer className="mt-8 text-center dark:text-white">
+      <footer className="mt-8 text-white text-center dark:text-white">
         <p className="mb-2">
           Got questions? Reach out at{" "}
           <a
