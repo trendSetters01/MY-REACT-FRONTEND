@@ -22,38 +22,38 @@ const Roadmap = () => {
     },
     {
       title: "View Account Information",
-      date: "Q4 2023",
+      date: "Q4 2023 - Q1 2024",
       description: "Introduction to Web3 Wallets and Account Information.",
       status: "in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "NFT Catalogue",
-      date: "Q4 2023",
+      date: "Q4 2023 - Q1 2024",
       description: "Catalogue of Phantom NFT's for sale.",
       status: "in-progress",
     },
     {
       title: "Register Your Address",
-      date: "Q4 2023",
+      date: "Q4 2023 - Q1 2024",
       description:
         "Register your address to participate in Phantom activities.",
       status: "in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "NFT Staking",
-      date: "Q4 2023",
+      date: "Q4 2023 - Q1 2024",
       description: "NFT Staking to be introduced.",
       status: "in-future",
     },
     {
       title: "Introduction of Phantom Council System",
-      date: "Q1 2024",
+      date: "Q1 2024 - Q2 2024",
       description: "Phantom Council System to be introduced.",
       status: "in-future",
     },
     {
       title: "Introduction of Phantom Economy",
-      date: "Q1 2024",
+      date: "Q1 2024 - Q2 2024",
       description: "First Phantom token utility to be introduced.",
       status: "in-future",
     },
@@ -68,7 +68,7 @@ const Roadmap = () => {
         {milestones.map((milestone, index) => (
           <div
             key={index}
-            className="bg-gray-300 dark:bg-gray-700 p-4 rounded-lg shadow-md"
+            className="bg-blue-200 dark:bg-blue-700 p-4 rounded-lg shadow-md"
           >
             <h3 className="font-semibold text-lg">{milestone.title}</h3>
             <p className="text-sm text-black">{milestone.date}</p>
