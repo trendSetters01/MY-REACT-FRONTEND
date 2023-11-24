@@ -17,20 +17,20 @@ const Roadmap = () => {
     {
       title: "Phantom V2 Nft Introduction",
       date: "Q4 2023",
-      description: "Introduction to first  few Phantom V2 NFT's.",
-      status: "in-progress", // other statuses could be "in-progress", "upcoming"
+      description: "Release part 1 - Phantom V2 NFT's.",
+      status: "completed", // other statuses could be "in-progress", "upcoming"
+    },
+    {
+      title: "NFT Catalogue",
+      date: "Q4 2023 - Q1 2024",
+      description: "Catalogue of Phantom NFT's for sale.",
+      status: "Aplha - in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "View Account Information",
       date: "Q4 2023 - Q1 2024",
       description: "Introduction to Web3 Wallets and Account Information.",
       status: "in-progress", // other statuses could be "in-progress", "upcoming"
-    },
-    {
-      title: "NFT Catalogue",
-      date: "Q4 2023 - Q1 2024",
-      description: "Catalogue of Phantom NFT's for sale.",
-      status: "in-progress",
     },
     {
       title: "Register Your Address",
@@ -43,7 +43,7 @@ const Roadmap = () => {
       title: "NFT Staking",
       date: "Q4 2023 - Q1 2024",
       description: "NFT Staking to be introduced.",
-      status: "in-future",
+      status: "in-progress",
     },
     {
       title: "Introduction of Phantom Council System",
@@ -57,6 +57,18 @@ const Roadmap = () => {
       description: "First Phantom token utility to be introduced.",
       status: "in-future",
     },
+    {
+      title: "Introduction of Phantom Role System",
+      date: "Q1 2024 - Q2 2024",
+      description: "Phantom role tokens utility to be introduced.",
+      status: "in-future",
+    },
+    {
+      title: "Phantom V2 Nft Introduction",
+      date: "Q1 2024 - Q2 2024",
+      description: "Release part 2 - Phantom V2 NFT's.",
+      status: "in-future", // other statuses could be "in-progress", "upcoming"
+    },
     // Add more milestones as needed
   ];
   return (
@@ -68,7 +80,7 @@ const Roadmap = () => {
         {milestones.map((milestone, index) => (
           <div
             key={index}
-            className="bg-blue-200 dark:bg-blue-700 p-4 rounded-lg shadow-md"
+            className="bg-gray-200 dark:bg-gray-400 p-4 rounded-lg shadow-md"
           >
             <h3 className="font-semibold text-lg">{milestone.title}</h3>
             <p className="text-sm text-black">{milestone.date}</p>
