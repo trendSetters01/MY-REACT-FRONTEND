@@ -6,6 +6,7 @@ import DisplayAccountInformation from "../DisplayAccountInformation";
 import DisplayPhantomv1 from "../DisplayPhantomv1";
 import DisplayPhantomv2 from "../DisplayPhantomv2";
 import SetAddress from "../SetAddress";
+import OptInComponent from "../OptIn";
 
 export default function Navbar() {
   const [connectedAccountAddress, setConnectedAccountAddress] = useState(null);
@@ -27,6 +28,7 @@ export default function Navbar() {
         <Menu />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/opt-in/:assetId" element={<OptInComponent />} />
           <Route
             path="/account-info"
             element={
