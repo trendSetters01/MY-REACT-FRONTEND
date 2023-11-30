@@ -12,7 +12,7 @@ export default function CustomDropdown({ label, assets, onSelect }) {
       {isOpen && (
         <ul
           onClick={toggleDropdown}
-          style={{position:"absolute"}}
+          style={{ position: "absolute" }}
           className="p-2 shadow bg-base-100 w-52 overflow-y-scroll max-h-80"
         >
           {assets.map((asset) => (
@@ -21,7 +21,10 @@ export default function CustomDropdown({ label, assets, onSelect }) {
               className="flex flex-wrap gap-2 items-center p-2 hover:bg-gray-300 cursor-pointer"
               onClick={() => onSelect(asset.id)}
             >
-              <img src={asset.icon} alt={asset.name} className="h-6 w-6 mr-2" />
+              <img
+                src={`https://asa-list.tinyman.org/assets/${asset.id}/icon.png`}
+                className="h-6 w-6 mr-2"
+              />
               <span>{asset.name}</span>
               <a
                 href={`https://algoexplorer.io/asset/${asset.id}`}
@@ -34,9 +37,7 @@ export default function CustomDropdown({ label, assets, onSelect }) {
             </li>
           ))}
         </ul>
-
       )}
-
     </div>
   );
 }
