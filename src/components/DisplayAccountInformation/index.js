@@ -68,7 +68,18 @@ export default function DisplayAccountInformation({
             <ul className="list-disc pl-8 text-gray-400 overflow-auto max-h-64">
               {accountData.assets.map((asset, index) => (
                 <li key={index}>
-                  Asset ID: {asset["asset-id"]}, Amount: {asset.amount}
+                  <img
+                    src={`https://asa-list.tinyman.org/assets/${asset["asset-id"]}/icon.png`}
+                    className="h-6 w-6 mr-2"
+                  />
+                  <a
+                    href={`https://algoexplorer.io/asset/${asset["asset-id"]}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 hover:underline"
+                  >
+                    Asset ID: {asset["asset-id"]}, Amount: {asset.amount}
+                  </a>
                 </li>
               ))}
             </ul>
