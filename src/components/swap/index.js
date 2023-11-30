@@ -74,7 +74,7 @@ function Swap() {
         {/* First Column for First Asset */}
         <div>
           <CustomDropdown
-            label="Select First Asset"
+            label="Swap From"
             assets={assetsList}
             onSelect={setFirstAssetId}
           />
@@ -83,7 +83,7 @@ function Swap() {
         {/* Second Column for Second Asset */}
         <div>
           <CustomDropdown
-            label="Select Second Asset"
+            label="Swap To Asset"
             assets={assetsList1}
             onSelect={setSecondAssetId}
           />
@@ -94,7 +94,7 @@ function Swap() {
           <iframe
             title="Phantoms swap widget"
             src={`${widgetIframeUrl}}`}
-            style={{ width: 415, height: 440, border: "none" }}
+            style={{ width: 360, height: 440, border: "none" }}
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
           />
         </div>

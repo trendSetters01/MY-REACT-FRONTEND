@@ -6,7 +6,7 @@ export default function CustomDropdown({ label, assets, onSelect }) {
 
   return (
     <div>
-      <button onClick={toggleDropdown} className="m-1 btn m-2">
+      <button onClick={toggleDropdown} className="btn m-4">
         {label}
       </button>
       {isOpen && (
