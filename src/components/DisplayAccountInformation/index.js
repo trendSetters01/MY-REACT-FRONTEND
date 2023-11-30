@@ -3,6 +3,7 @@ import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
 import PeraWalletButton from "../PeraWalletButton";
 
 export default function DisplayAccountInformation({
+  wallet,
   setConnectedAccountAddress,
   connectedAccountAddress,
   accountAddress,
@@ -40,7 +41,7 @@ export default function DisplayAccountInformation({
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
 
       <div className="flex flex-col items-center">
-        <PeraWalletButton onConnect={setConnectedAccountAddress} />
+        <PeraWalletButton peraWallet={wallet} onConnect={setConnectedAccountAddress} />
 
         {accountData && connectedAccountAddress && (
           <div

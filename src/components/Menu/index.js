@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import registerImg from "../../images/icons8-register-50.png";
+import registerImg from "../../images/icons8-register-64.png";
 import phantom from "../../images/icons8-ghost-64.png";
-import userAccount from "../../images/icons8-customer-50.png";
+import userAccount from "../../images/icons8-connect-64.png";
 import home from "../../images/icons8-exterior-64.png";
+import swapImg from "../../images/icons8-swap-64.png";
 
 export default function Menu({ fixed }) {
   const [theme, setTheme] = React.useState("light");
@@ -41,7 +42,7 @@ export default function Menu({ fixed }) {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
+              {/* <li>
                 <Link to="/" className="dropdown-item">
                 <img
                     style={{
@@ -54,7 +55,7 @@ export default function Menu({ fixed }) {
                     alt={`Pahntom V2`}
                   /> Homepage
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/account-info" className="dropdown-item">
                   <img
@@ -83,6 +84,21 @@ export default function Menu({ fixed }) {
                     alt={`Pahntom V2`}
                   />
                   Register Your Address
+                </Link>
+              </li>
+              <li>
+                <Link to="/swap" className="dropdown-item">
+                  <img
+                    style={{
+                      width: "25%",
+                      height: "25%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={swapImg}
+                    alt={`Swap`}
+                  />
+                  Swap
                 </Link>
               </li>
               <li>

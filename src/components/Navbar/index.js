@@ -7,6 +7,11 @@ import DisplayPhantomv1 from "../DisplayPhantomv1";
 import DisplayPhantomv2 from "../DisplayPhantomv2";
 import SetAddress from "../SetAddress";
 import OptInComponent from "../OptIn";
+import Swap from "../swap";
+
+import { PeraWalletConnect } from "@perawallet/connect";
+
+const peraWallet = new PeraWalletConnect();
 
 export default function Navbar() {
   const [connectedAccountAddress, setConnectedAccountAddress] = useState(null);
@@ -15,7 +20,6 @@ export default function Navbar() {
     "IWY24Q6GUUIMJITMTR3FDO4Q54UCBPPPIWJUQ57CWLASPRHFHXTXIQUQYA";
   const phantomV2Address =
     "YI7APPJQ6P2CLKW5E7YZ5NFMC4KBGES2EXN72ADUNX2BNQPKOOMIBVHWJU";
-
   return (
     <div
       className="App bg-cover bg-center"
@@ -28,11 +32,13 @@ export default function Navbar() {
         <Menu />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/swap" element={<Swap wallet={peraWallet} accountAddress={connectedAccountAddress} />} />
           <Route path="/opt-in/:assetId" element={<OptInComponent />} />
           <Route
             path="/account-info"
             element={
               <DisplayAccountInformation
+                wallet={peraWallet}
                 setConnectedAccountAddress={setConnectedAccountAddress}
                 accountAddress={connectedAccountAddress}
                 connectedAccountAddress={connectedAccountAddress}
