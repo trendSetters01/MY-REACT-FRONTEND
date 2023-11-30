@@ -36,31 +36,42 @@ export default function DisplayAccountInformation({
   };
 
   return (
-    <div className="container mx-auto p-4 fade-in text-white dark:text-white">
+    <div className="container mx-auto p-4 fade-in text-white">
       {loading && <p className="text-center">Loading account data...</p>}
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
 
       <div className="flex flex-col items-center">
-        <PeraWalletButton peraWallet={wallet} onConnect={setConnectedAccountAddress} />
+        <PeraWalletButton
+          peraWallet={wallet}
+          onConnect={setConnectedAccountAddress}
+        />
 
         {accountData && connectedAccountAddress && (
           <div
-            style={{ overflowWrap: "break-word" }}
-            className="mt-4 p-4 border border-gray-200 overflow-auto rounded shadow-md max-w-lg w-full"
+            style={{ wordWrap: "break-word" }}
+            className="mt-4 p-4 bg-gray-800 border border-gray-600 rounded shadow-lg max-w-lg w-full"
           >
             <h2 className="text-2xl font-bold mb-4">Account Information</h2>
             <p>
-              <strong>Address:</strong> {accountData.address}
+              <strong className="text-gray-300">Address:</strong>{" "}
+              <span className="text-gray-400">{accountData.address}</span>
             </p>
             <p>
-              <strong>Amount:</strong> {accountData.amount}
+              <strong className="text-gray-300">Balance:</strong>{" "}
+              <span className="text-gray-400">
+                {(accountData.amount / 1e6).toFixed(6)} ALGO
+              </span>
             </p>
-            <div className="text-gray-800 overflow-auto">
-              <strong className="text-white">Account Data:</strong>
-              <pre className="text-gray-800 bg-gray-100 p-2 rounded mt-2 text-sm overflow-auto max-h-64">
-                {JSON.stringify(accountData, null, 2)}
-              </pre>
-            </div>
+            <h3 className="text-lg font-semibold text-gray-300 mt-4">
+              Assets:
+            </h3>
+            <ul className="list-disc pl-8 text-gray-400 overflow-auto max-h-64">
+              {accountData.assets.map((asset, index) => (
+                <li key={index}>
+                  Asset ID: {asset["asset-id"]}, Amount: {asset.amount}
+                </li>
+              ))}
+            </ul>
           </div>
         )}
       </div>

@@ -41,7 +41,6 @@ function Swap() {
     { id: 1065092715, name: "Cosmic Gold" },
     { id: 230946361, name: "AlgoGems" },
     { id: 400593267, name: "DeFi-nite" },
-    { id: 1163259470, name: "Maple Token" },
   ];
   const assetsList = [
     { id: 0, name: "ALGO" },
