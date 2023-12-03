@@ -13,7 +13,7 @@ export default function CustomDropdown({ label, assets, onSelect }) {
         <ul
           onClick={toggleDropdown}
           style={{ position: "absolute" }}
-          className="p-2 shadow bg-base-100 w-52 overflow-y-scroll max-h-80"
+          className="p-2 shadow bg-base-100 w-44 overflow-y-scroll max-h-80"
         >
           {assets.map((asset) => (
             <li

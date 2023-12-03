@@ -1,19 +1,18 @@
 import algosdk from "algosdk";
-import { algodClient } from './config.js';
+import { algodClient } from "./config.js";
 
-import { getUserTokenHolding } from './getUserTokenHolding.js';
-import { calculateMultiplier } from '../utils/index.js';
-import 'dotenv/config'
+import { getUserTokenHolding } from "./getUserTokenHolding.js";
+import { calculateMultiplier } from "../utils/index.js";
+import "dotenv/config";
 
 const mnemonic = process.env["MNEMONIC"];
 const rewardProviderAccount = algosdk.mnemonicToSecretKey(mnemonic);
-const assetId = parseInt("6670024", 10);
 
-export async function sendAsset(address, baseAmount) {
+export async function sendAsset(address, assetId, baseAmount) {
   try {
     // Input validation
     if (!algosdk.isValidAddress(address)) {
-      throw new Error('Invalid Algorand address provided.');
+      throw new Error("Invalid Algorand address provided.");
     }
 
     const userHolding = await getUserTokenHolding(address);
@@ -31,12 +30,14 @@ export async function sendAsset(address, baseAmount) {
       undefined,
       finalRewardAmount,
       algosdk.encodeObj("Sending ASA PHTM"),
-      assetId,
+      parseInt(assetId, 10),
       suggestedParams
     );
 
     const signedTxn = algosdk.signTransaction(txn, rewardProviderAccount.sk);
-    const txConfirmation = await algodClient.sendRawTransaction(signedTxn.blob).do();
+    const txConfirmation = await algodClient
+      .sendRawTransaction(signedTxn.blob)
+      .do();
 
     console.log("Transaction ID:", txConfirmation.txId);
     return txConfirmation.txId;
@@ -45,4 +46,3 @@ export async function sendAsset(address, baseAmount) {
     throw error;
   }
 }
-

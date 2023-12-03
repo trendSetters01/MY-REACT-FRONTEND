@@ -26,12 +26,12 @@ export async function verifyNFT(address) {
   }
 }
 
-export async function verifySpecificPhntmNFT(address, assetid) {
+export async function verifySpecificPhntmNFT(address, assetids) {
   try {
-    // Check if the assetid matches any of the NFTs from the phantomAssets list
-    const ownsNFT = await checkPhantomNFT(assetid);
+    // Check if the assetids matches any of the NFTs from the phantomAssets list
+    const ownsNFT = await checkPhantomNFT(assetids);
     if (!ownsNFT) {
-      return false; // The user does not own any of the NFTs
+      return false; // The assedids does not match any phantom NFTs
     }
 
     // Fetch user account information
@@ -40,12 +40,12 @@ export async function verifySpecificPhntmNFT(address, assetid) {
     // Extract the list of asset IDs the user owns
     const userAssetIds = accountAssets.map((asset) => asset["asset-id"]);
 
-    // Check if the user owns the specified NFT
-    if (userAssetIds.includes(parseInt(assetid, 10))) {
-      return true; // The user owns the specified NFT
-    }
+    // Check if the user owns all the specified NFTs
+    const ownsAllNFTs = assetids.every((assetId) =>
+      userAssetIds.includes(parseInt(assetId, 10))
+    );
 
-    return false; // The user does not own the specified NFT
+    return ownsAllNFTs; // Returns true if the user owns all specified NFTs, false otherwise
   } catch (error) {
     console.error("AlgoSDK error: ", error);
     return false; // Handle the error appropriately
@@ -77,15 +77,15 @@ async function getAllAssetsForAccount(address) {
   return assets;
 }
 
-async function checkPhantomNFT(assetid) {
+async function checkPhantomNFT(assetids) {
   // Fetch user account information
   const phantomAssets = await getAllAssetsForAccount(phantomV1Address);
 
-  // Extract the list of asset IDs the user owns
-  for (let nft of phantomAssets) {
-    if (parseInt(assetid, 10) === nft["asset-id"]) {
-      return true; // The user owns one of the NFTs
-    }
-  }
-  return false; // The user does not own any of the NFTs
+  // Create a set of asset IDs from phantomAssets for efficient lookup
+  const phantomAssetIDs = new Set(phantomAssets.map((nft) => nft["asset-id"]));
+
+  // Check if every asset ID in assetids is part of phantomAssets
+  return assetids.every((assetid) =>
+    phantomAssetIDs.has(parseInt(assetid, 10))
+  );
 }

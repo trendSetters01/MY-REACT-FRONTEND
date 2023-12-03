@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
 import PeraWalletButton from "../PeraWalletButton";
+import PeraWalletOptInButton from "../PeraWalletOptInTxButton";
 
 export default function DisplayAccountInformation({
-  wallet,
   setConnectedAccountAddress,
   connectedAccountAddress,
   accountAddress,
@@ -41,10 +41,7 @@ export default function DisplayAccountInformation({
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
 
       <div className="flex flex-col items-center">
-        <PeraWalletButton
-          peraWallet={wallet}
-          onConnect={setConnectedAccountAddress}
-        />
+        <PeraWalletButton onConnect={setConnectedAccountAddress} />
 
         {accountData && connectedAccountAddress && (
           <div
@@ -56,6 +53,9 @@ export default function DisplayAccountInformation({
               <strong className="text-gray-300">Address:</strong>{" "}
               <span className="text-gray-400">{accountData.address}</span>
             </p>
+            {/* <button className="btn m-4">
+              <PeraWalletOptInButton accountAddress={accountData.address}/>
+            </button> */}
             <p>
               <strong className="text-gray-300">Balance:</strong>{" "}
               <span className="text-gray-400">
@@ -67,7 +67,7 @@ export default function DisplayAccountInformation({
             </h3>
             <ul className="list-disc pl-8 text-gray-400 overflow-auto max-h-64">
               {accountData.assets.map((asset, index) => (
-                <li key={index}> 
+                <li key={index}>
                   <a
                     href={`https://algoexplorer.io/asset/${asset["asset-id"]}`}
                     target="_blank"
@@ -75,9 +75,9 @@ export default function DisplayAccountInformation({
                     className="text-blue-500 hover:underline"
                   >
                     <img
-                    src={`https://asa-list.tinyman.org/assets/${asset["asset-id"]}/icon.png`}
-                    className="h-6 w-6 mr-2"
-                  />
+                      src={`https://asa-list.tinyman.org/assets/${asset["asset-id"]}/icon.png`}
+                      className="h-6 w-6 mr-2"
+                    />
                     Asset ID: {asset["asset-id"]}, Amount: {asset.amount}
                   </a>
                 </li>
