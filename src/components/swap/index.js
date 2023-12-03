@@ -86,7 +86,7 @@ function Swap() {
           <iframe
             title="Phantoms swap widget"
             src={`${widgetIframeUrl}}`}
-            style={{ width: 360, height: 440, border: "none" }}
+            style={{ width: 370, height: 440, border: "none", }}
             sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
           />
         </div>

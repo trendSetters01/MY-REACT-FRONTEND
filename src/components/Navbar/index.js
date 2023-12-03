@@ -18,11 +18,6 @@ export default function Navbar() {
     "YI7APPJQ6P2CLKW5E7YZ5NFMC4KBGES2EXN72ADUNX2BNQPKOOMIBVHWJU";
   return (
     <div
-      className="App bg-cover bg-center"
-      style={{
-        backgroundImage:
-          "url('./codioful-formerly-gradienta-G084bO4wGDA-unsplash.jpg')",
-      }}
     >
       <Router>
         <Menu />
