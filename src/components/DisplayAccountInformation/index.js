@@ -37,7 +37,7 @@ export default function DisplayAccountInformation({
       {loading && <p className="text-center">Loading account data...</p>}
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
       {!connectedAccountAddress && (
-        <h1 className="animate-pulse">
+        <h1 className=" flex justify-center animate-pulse">
           Connect your wallet to see your account information.
         </h1>
       )}
