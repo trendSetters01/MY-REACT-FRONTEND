@@ -33,7 +33,7 @@ export default function DisplayAccountInformation({
   };
 
   return (
-    <div className="flex justify-center items-center fade-in text-white h-screen">
+    <div className="pt-16 container mx-auto fade-in text-white h-screen">
       {loading && <p className="text-center">Loading account data...</p>}
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
       {!connectedAccountAddress && (
