@@ -47,14 +47,14 @@ export default function PeraWalletButton({ onConnect }) {
 
   return (
     <button
-      className="Wallet-connect"
+      className={`cursor-pointer bg-gradient-to-r from-pink-500 to-blue-500 hover:from-green-400 hover:to-yellow-500 px-4 py-1 rounded-full text-md text-white`}
       onClick={
         isConnectedToPeraWallet
           ? handleDisconnectWalletClick
           : handleConnectWalletClick
       }
     >
-      {isConnectedToPeraWallet ? "Disconnect" : "Connect to Pera Wallet"}
+      <h2>{isConnectedToPeraWallet ? "Disconnect" : "Connect Wallet"}</h2>
     </button>
   );
 }

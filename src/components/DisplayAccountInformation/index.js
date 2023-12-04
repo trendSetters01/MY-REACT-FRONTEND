@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
-import PeraWalletButton from "../PeraWalletButton";
-import PeraWalletOptInButton from "../PeraWalletOptInTxButton";
 
 export default function DisplayAccountInformation({
-  setConnectedAccountAddress,
   connectedAccountAddress,
   accountAddress,
 }) {
@@ -36,13 +33,15 @@ export default function DisplayAccountInformation({
   };
 
   return (
-    <div className="container mx-auto p-4 fade-in text-white">
+    <div className="flex justify-center items-center fade-in text-white h-screen">
       {loading && <p className="text-center">Loading account data...</p>}
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
-
+      {!connectedAccountAddress && (
+        <h1 className="animate-pulse">
+          Connect your wallet to see your account information.
+        </h1>
+      )}
       <div className="flex flex-col items-center">
-        <PeraWalletButton onConnect={setConnectedAccountAddress} />
-
         {accountData && connectedAccountAddress && (
           <div
             style={{ wordWrap: "break-word" }}
@@ -53,9 +52,6 @@ export default function DisplayAccountInformation({
               <strong className="text-gray-300">Address:</strong>{" "}
               <span className="text-gray-400">{accountData.address}</span>
             </p>
-            {/* <button className="btn m-4">
-              <PeraWalletOptInButton accountAddress={accountData.address}/>
-            </button> */}
             <p>
               <strong className="text-gray-300">Balance:</strong>{" "}
               <span className="text-gray-400">

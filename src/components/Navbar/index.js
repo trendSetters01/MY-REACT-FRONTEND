@@ -20,7 +20,7 @@ export default function Navbar() {
     <div
     >
       <Router>
-        <Menu />
+        <Menu setConnectedAccountAddress={setConnectedAccountAddress} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/swap" element={<Swap />} />
