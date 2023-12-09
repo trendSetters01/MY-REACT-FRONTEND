@@ -3,9 +3,9 @@ import algosdk from "algosdk";
 const ALGOD_API_ADDR = "https://mainnet-algorand.api.purestake.io/ps2";
 // const ALGOD_API_ADDR = "https://testnet-algorand.api.purestake.io/ps2";
 const ALGOD_PORT = "";
-const PURESTAKE_API_KEY = process.env["PURESTAKE_API_KEY"];
+// const PURESTAKE_API_KEY = process.env["PURESTAKE_API_KEY"];
 const ALGOD_API_TOKEN = {
-  "X-API-Key": PURESTAKE_API_KEY,
+  "X-API-Key": "GmPRgAPXK92qOfFuKaSaV3J2tyNxdjrQ7cscZoAW",
 };
 const algodClient = new algosdk.Algodv2(
   ALGOD_API_TOKEN,
