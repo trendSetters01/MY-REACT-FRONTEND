@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import registerImg from "../../images/icons8-register-64.png";
+import sendAssetImg from "../../images/icons8-send-64.png";
 import phantom from "../../images/icons8-ghost-64.png";
 import userAccount from "../../images/icons8-connect-64.png";
 import home from "../../images/icons8-exterior-64.png";
@@ -72,6 +73,21 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                 </Link>
               </li>
               <li>
+                <Link to="/send-asset" className="dropdown-item">
+                  <img
+                    style={{
+                      width: "25%",
+                      height: "25%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={sendAssetImg}
+                    alt={`Send Asset`}
+                  />
+                  Send Asset
+                </Link>
+              </li>
+              {/* <li>
                 <Link to="/register-your-address" className="dropdown-item">
                   <img
                     style={{
@@ -85,7 +101,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                   />
                   Register Your Address
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link to="/swap" className="dropdown-item">
                   <img

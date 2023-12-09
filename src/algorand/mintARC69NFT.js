@@ -1,7 +1,7 @@
 import algosdk from "algosdk";
 import { algodClient } from "./config.js";
 
-export async function arc69Mint(address, note, unitName, assetName,ipfshash) {
+export async function arc69Mint(address, note, unitName, assetName, ipfshash) {
   try {
     // Input validation
     if (!algosdk.isValidAddress(address)) {
