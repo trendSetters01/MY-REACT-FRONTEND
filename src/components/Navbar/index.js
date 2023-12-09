@@ -9,6 +9,7 @@ import SetAddress from "../SetAddress";
 import OptInComponent from "../OptIn";
 import Swap from "../swap";
 import SendTransaction from "../sendTransaction";
+import PeraWalletOptInOut from "../PeraWalletOptInOut";
 
 export default function Navbar() {
   const [connectedAccountAddress, setConnectedAccountAddress] = useState(null);
@@ -25,6 +26,7 @@ export default function Navbar() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/swap" element={<Swap />} />
+          <Route path="/opt-in-out" element={<PeraWalletOptInOut accountAddress={connectedAccountAddress} />} />
           <Route path="/send-asset" element={<SendTransaction accountAddress={connectedAccountAddress} />} />
           <Route path="/opt-in/:assetId" element={<OptInComponent />} />
           <Route
