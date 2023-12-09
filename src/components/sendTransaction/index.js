@@ -53,73 +53,77 @@ export default function SendTransaction({ accountAddress }) {
   return (
     <div className="flex justify-center items-center h-screen">
       <form onSubmit={handleSubmit}>
-      {!accountAddress && (
-        <h1 className="animate-pulse text-white mt-4">
-          Connect your wallet to send assets.
-        </h1>
-      )}
-        <h1 className="text-2xl font-bold text-white mt-4">
-          {transactionStatus && <p>{transactionStatus}</p>}
-        </h1>
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            {/* <span className="label-text text-white">Recipient Address</span> */}
-          </div>
-          <input
-            type="text"
-            value={recipient}
-            onChange={(e) => setRecipient(e.target.value)}
-            placeholder="Enter recipient address"
-            className="input input-bordered w-full max-w-xs input-lg"
-            required
-          />
-        </label>
+        {!accountAddress && (
+          <h1 className="animate-pulse text-white mt-4">
+            Connect your wallet to send assets.
+          </h1>
+        )}
+        {accountAddress && (
+          <div>
+            <h1 className="text-2xl font-bold text-white mt-4">
+              {transactionStatus && <p>{transactionStatus}</p>}
+            </h1>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                {/* <span className="label-text text-white">Recipient Address</span> */}
+              </div>
+              <input
+                type="text"
+                value={recipient}
+                onChange={(e) => setRecipient(e.target.value)}
+                placeholder="Enter recipient address"
+                className="input input-bordered w-full max-w-xs"
+                required
+              />
+            </label>
 
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            {/* <span className="label-text text-white">Amount</span> */}
-          </div>
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            placeholder="Enter amount"
-            className="input input-bordered w-full max-w-xs input-lg"
-            required
-          />
-        </label>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                {/* <span className="label-text text-white">Amount</span> */}
+              </div>
+              <input
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                placeholder="Enter amount"
+                className="input input-bordered w-full max-w-xs"
+                required
+              />
+            </label>
 
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            {/* <span className="label-text text-white">Asset ID</span> */}
-          </div>
-          <input
-            type="text"
-            value={assetId}
-            onChange={(e) => setAssetId(e.target.value)}
-            placeholder="Asset ID (Ignore for ALGO)"
-            className="input input-bordered w-full max-w-xs input-lg"
-          />
-        </label>
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                {/* <span className="label-text text-white">Asset ID</span> */}
+              </div>
+              <input
+                type="text"
+                value={assetId}
+                onChange={(e) => setAssetId(e.target.value)}
+                placeholder="Asset ID (Ignore for ALGO)"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
 
-        <label className="form-control w-full max-w-xs">
-          <div className="label">
-            {/* <span className="label-text">Note</span> */}
+            <label className="form-control w-full max-w-xs">
+              <div className="label">
+                {/* <span className="label-text">Note</span> */}
+              </div>
+              <input
+                type="text"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                placeholder="Add a note (optional)"
+                className="input input-bordered w-full max-w-xs"
+              />
+            </label>
+            <button
+              type="submit"
+              class="bg-gradient-to-r from-gray-500 to-blue-500 hover:from-gray-200 hover:to-blue-700 rounded-md mt-4 mb-4 w-full max-w-xs"
+            >
+              <h1 className="text-2xl font-bold text-white">Send</h1>
+            </button>
           </div>
-          <input
-            type="text"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            placeholder="Add a note (optional)"
-            className="input input-bordered w-full max-w-xs input-lg"
-          />
-        </label>
-        <button
-          type="submit"
-          class="input-lg bg-gradient-to-r from-gray-500 to-blue-500 hover:from-gray-200 hover:to-blue-700 rounded-md mt-4 mb-4 w-full max-w-xs"
-        >
-          <h1 className="text-2xl font-bold text-white">Send</h1>
-        </button>
+        )}
       </form>
     </div>
   );
