@@ -119,6 +119,21 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                   Mint ARC3 NFT
                 </Link>
               </li>
+              <li>
+                <Link to="/mint-nft-arc69" className="dropdown-item">
+                  <img
+                    style={{
+                      width: "25%",
+                      height: "25%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={mintNFTARC3Img}
+                    alt={`mint nft arc3`}
+                  />
+                  Mint ARC69 NFT
+                </Link>
+              </li>
               {/* <li>
                 <Link to="/register-your-address" className="dropdown-item">
                   <img

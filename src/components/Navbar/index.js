@@ -11,6 +11,7 @@ import Swap from "../swap";
 import SendTransaction from "../sendTransaction";
 import PeraWalletOptInOut from "../PeraWalletOptInOut";
 import MintNFTARC3 from "../MintNFTARC3";
+import MintNFTARC69 from "../MintNFTARC69";
 
 export default function Navbar() {
   const [connectedAccountAddress, setConnectedAccountAddress] = useState(null);
@@ -28,6 +29,7 @@ export default function Navbar() {
           <Route path="/" element={<Home />} />
           <Route path="/swap" element={<Swap />} />
           <Route path="/mint-nft-arc3" element={<MintNFTARC3 accountAddress={connectedAccountAddress} />} />
+          <Route path="/mint-nft-arc69" element={<MintNFTARC69 accountAddress={connectedAccountAddress} />} />
           <Route path="/opt-in-out" element={<PeraWalletOptInOut accountAddress={connectedAccountAddress} />} />
           <Route path="/send-asset" element={<SendTransaction accountAddress={connectedAccountAddress} />} />
           <Route path="/opt-in/:assetId" element={<OptInComponent />} />
