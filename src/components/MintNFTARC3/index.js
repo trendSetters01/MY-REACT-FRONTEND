@@ -175,7 +175,7 @@ export default function MintNFTARC3({ accountAddress }) {
     <div className="h-screen flex flex-col items-center justify-center">
       {!accountAddress && (
         <h1 className="animate-pulse text-white">
-          Connect your wallet to send assets.
+          Connect your wallet to sMint NFTs.
         </h1>
       )}
 
