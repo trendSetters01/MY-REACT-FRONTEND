@@ -180,7 +180,7 @@ export default function MintNFTARC3({ accountAddress }) {
       )}
 
       {accountAddress && (
-        <div>
+        <div className="w-full max-w-4xl bg-light rounded-lg p-4">
           <input
             type="file"
             onChange={handleFileChange}
@@ -224,7 +224,7 @@ export default function MintNFTARC3({ accountAddress }) {
           </div>
 
           {/* Required Fields */}
-          <div className="w-full max-w-4xl px-4 mb-4">
+          <div className="mb-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
               {metadataFields.map((field, index) =>
                 field.required ? (
@@ -259,8 +259,8 @@ export default function MintNFTARC3({ accountAddress }) {
             <span className="text-white text-2xl">&#x2193;</span>
           </div>
           {/* Dynamic Metadata Fields */}
-          <div className="w-full max-w-4xl px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="mb-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {metadataFields.map((field, index) =>
                 !field.required ? (
                   <div key={index} className="flex flex-col">
@@ -305,22 +305,22 @@ export default function MintNFTARC3({ accountAddress }) {
           </div>
 
           {/* Action Buttons */}
-          <div className="flex justify-center mt-4">
+          <div className="flex flex-col md:flex-row justify-center gap-4 mt-4">
             <button
               onClick={addMetadataField}
-              className="p-2 input-md bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 rounded-md mr-4"
+              className="input-md bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 rounded-md mr-4"
             >
               Add More Properties
             </button>
             <button
               onClick={resetForm}
-              className="p-2 input-md bg-gradient-to-r from-yellow-500 to-red-400 hover:from-red-400 hover:to-yellow-500 rounded-md mr-4"
+              className="input-md bg-gradient-to-r from-yellow-500 to-red-400 hover:from-red-400 hover:to-yellow-500 rounded-md mr-4"
             >
               Reset Form
             </button>
             <button
-              className="p-2 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
               onClick={handleMintArc3}
+              className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mr-4"
             >
               Mint ARC-3 NFT
             </button>

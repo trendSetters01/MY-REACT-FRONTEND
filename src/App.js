@@ -11,6 +11,7 @@ function App() {
         style={{
           backgroundImage:
             "url('./codioful-formerly-gradienta-G084bO4wGDA-unsplash.jpg')",
+          overflow: "auto",
         }}
       >
         <Navbar />
