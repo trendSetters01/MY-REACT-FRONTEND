@@ -35,8 +35,21 @@ export default function DisplayAccountInformation({
   const copyLink = async () => {
     const copyText = `${connectedAccountAddress}`;
     await navigator.clipboard.writeText(copyText);
-    alert("Copied: " + copyText);
   };
+
+  function extractIPFSHash(ipfsUrl) {
+    const prefix = "ipfs://";
+    const postfix = "#arc3";
+    if (ipfsUrl.endsWith(postfix)) {
+      return "bafkreiazcvz3rahtfng6ycph7o7vwy2u4c2hvjxxdkxabaqycereesexfm";
+    }
+    if (ipfsUrl.startsWith(prefix)) {
+      return ipfsUrl.slice(prefix.length);
+    } else {
+      throw new Error("Invalid IPFS URL");
+    }
+  }
+
 
   return (
     <div className="pt-16 container mx-auto fade-in text-white h-screen">

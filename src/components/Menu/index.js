@@ -7,6 +7,7 @@ import phantom from "../../images/icons8-ghost-64.png";
 import userAccount from "../../images/icons8-connect-64.png";
 import home from "../../images/icons8-exterior-64.png";
 import swapImg from "../../images/icons8-swap-64.png";
+import mintNFTARC3Img from "../../images/icons8-nft-64.png";
 import PeraWalletButton from "../PeraWalletButton";
 export default function Menu({ setConnectedAccountAddress, fixed }) {
   const [theme, setTheme] = useState("light");
@@ -101,6 +102,21 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     alt={`Opt-In/Out`}
                   />
                   Opt-In/Out
+                </Link>
+              </li>
+              <li>
+                <Link to="/mint-nft-arc3" className="dropdown-item">
+                  <img
+                    style={{
+                      width: "25%",
+                      height: "25%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                    }}
+                    src={mintNFTARC3Img}
+                    alt={`mint nft arc3`}
+                  />
+                  Mint ARC3 NFT
                 </Link>
               </li>
               {/* <li>
