@@ -22,7 +22,10 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
 
   return (
     <>
-      <div className="navbar bg-base-100" style={{position:"relative", zIndex:"10000"}}>
+      <div
+        className="navbar bg-base-100"
+        style={{ position: "relative", zIndex: "10000" }}
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -60,79 +63,91 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                 </Link>
               </li> */}
               <li>
-                <Link to="/account-info" className="dropdown-item">
-                  <img
-                    style={{
-                      width: "25%",
-                      height: "25%",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                    src={userAccount}
-                    alt={`Pahntom V2`}
-                  />
-                  Account Information
-                </Link>
+                <details>
+                  <summary>Account Details</summary>
+                  <ul>
+                    <li>
+                      <Link to="/account-info" className="dropdown-item">
+                        <img
+                          style={{
+                            width: "25%",
+                            height: "25%",
+                            border: "2px solid white",
+                            borderRadius: "10px",
+                          }}
+                          src={userAccount}
+                          alt={`Pahntom V2`}
+                        />
+                        Account Information
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/send-asset" className="dropdown-item">
+                        <img
+                          style={{
+                            width: "25%",
+                            height: "25%",
+                            border: "2px solid white",
+                            borderRadius: "10px",
+                          }}
+                          src={sendAssetImg}
+                          alt={`Send Asset`}
+                        />
+                        Send Asset
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/opt-in-out" className="dropdown-item">
+                        <img
+                          style={{
+                            width: "25%",
+                            height: "25%",
+                            border: "2px solid white",
+                            borderRadius: "10px",
+                          }}
+                          src={optInOutImg}
+                          alt={`Opt-In/Out`}
+                        />
+                        Opt-In/Out
+                      </Link>
+                    </li>
+                  </ul>
+                </details>
               </li>
               <li>
-                <Link to="/send-asset" className="dropdown-item">
-                  <img
-                    style={{
-                      width: "25%",
-                      height: "25%",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                    src={sendAssetImg}
-                    alt={`Send Asset`}
-                  />
-                  Send Asset
-                </Link>
-              </li>
-              <li>
-                <Link to="/opt-in-out" className="dropdown-item">
-                  <img
-                    style={{
-                      width: "25%",
-                      height: "25%",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                    src={optInOutImg}
-                    alt={`Opt-In/Out`}
-                  />
-                  Opt-In/Out
-                </Link>
-              </li>
-              <li>
-                <Link to="/mint-nft-arc3" className="dropdown-item">
-                  <img
-                    style={{
-                      width: "25%",
-                      height: "25%",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                    src={mintNFTARC3Img}
-                    alt={`mint nft arc3`}
-                  />
-                  Mint ARC3 NFT
-                </Link>
-              </li>
-              <li>
-                <Link to="/mint-nft-arc69" className="dropdown-item">
-                  <img
-                    style={{
-                      width: "25%",
-                      height: "25%",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                    src={mintNFTARC3Img}
-                    alt={`mint nft arc3`}
-                  />
-                  Mint ARC69 NFT
-                </Link>
+                <details>
+                  <summary>Mint Nfts</summary>
+                  <li>
+                    <Link to="/mint-nft-arc3" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={mintNFTARC3Img}
+                        alt={`mint nft arc3`}
+                      />
+                      Mint ARC3 NFT
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/mint-nft-arc69" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={mintNFTARC3Img}
+                        alt={`mint nft arc3`}
+                      />
+                      Mint ARC69 NFT
+                    </Link>
+                  </li>
+                </details>
               </li>
               {/* <li>
                 <Link to="/register-your-address" className="dropdown-item">
@@ -150,49 +165,61 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                 </Link>
               </li> */}
               <li>
-                <Link to="/swap" className="dropdown-item">
-                  <img
-                    style={{
-                      width: "25%",
-                      height: "25%",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                    src={swapImg}
-                    alt={`Swap`}
-                  />
-                  Swap
-                </Link>
+                <details>
+                  <summary>Other Services swaps etc..</summary>
+                  <li>
+                    <Link to="/swap" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={swapImg}
+                        alt={`Swap`}
+                      />
+                      Swap
+                    </Link>
+                  </li>
+                </details>
               </li>
               <li>
-                <Link to="/phantom-v1" className="dropdown-item">
-                  <img
-                    style={{
-                      width: "25%",
-                      height: "25%",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                    src={`https://ipfs.io/ipfs/bafkreiasgoxgnd33c2emwo6sqd4n6fxbaa2g7vio23e4ot3nvgq4hethia#i`}
-                    alt={`Pahntom V1`}
-                  />
-                  Phantom Pals
-                </Link>
-              </li>
-              <li>
-                <Link to="/phantom-v2" className="dropdown-item">
-                  <img
-                    style={{
-                      width: "25%",
-                      height: "25%",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                    src={`https://ipfs.io/ipfs/bafkreif7xwh37wbwpyzv5id7ijchvs56hdmah25v32hhtu3igyhp257b4e`}
-                    alt={`Pahntom V2`}
-                  />
-                  Phantom V2
-                </Link>
+                <details>
+                  <summary>Collections</summary>
+                  <ul>
+                    <li>
+                      <Link to="/phantom-v1" className="dropdown-item">
+                        <img
+                          style={{
+                            width: "25%",
+                            height: "25%",
+                            border: "2px solid white",
+                            borderRadius: "10px",
+                          }}
+                          src={`https://ipfs.io/ipfs/bafkreiasgoxgnd33c2emwo6sqd4n6fxbaa2g7vio23e4ot3nvgq4hethia#i`}
+                          alt={`Pahntom V1`}
+                        />
+                        Phantom Pals
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/phantom-v2" className="dropdown-item">
+                        <img
+                          style={{
+                            width: "25%",
+                            height: "25%",
+                            border: "2px solid white",
+                            borderRadius: "10px",
+                          }}
+                          src={`https://ipfs.io/ipfs/bafkreif7xwh37wbwpyzv5id7ijchvs56hdmah25v32hhtu3igyhp257b4e`}
+                          alt={`Pahntom V2`}
+                        />
+                        Phantom V2
+                      </Link>
+                    </li>
+                  </ul>
+                </details>
               </li>
             </ul>
           </div>
