@@ -3,6 +3,7 @@ import { PeraWalletContext } from "../PeraWalletContext";
 import { algodClient } from "../../algorand/config";
 import { arc69Mint } from "../../algorand/nftMintingHelpers/mintARC69NFT";
 import axios from "axios";
+import Confetti from "react-confetti";
 
 export default function MintNFTARC69({ accountAddress }) {
   const [file, setFile] = useState(null);
@@ -13,6 +14,8 @@ export default function MintNFTARC69({ accountAddress }) {
     { key: "unitName", value: "", required: true },
     { key: "description", value: "", required: true },
   ]);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [mintedNFT, setMintedNFT] = useState("");
 
   const peraWallet = useContext(PeraWalletContext);
   const inputFile = useRef(null);
@@ -114,17 +117,21 @@ export default function MintNFTARC69({ accountAddress }) {
         .sendRawTransaction(signedTx)
         .do();
       console.log("Transaction ID:", txConfirmation.txId);
-      setStatus(
-        `ARC-69 NFT minted successfully! Transaction ID: ${txConfirmation.txId}`
-      );
-      resetForm();
+      setStatus(`${txConfirmation.txId}`);
+
+      // On successful minting
+      setShowConfetti(true);
+      setMintedNFT(`https://ipfs.io/ipfs/${ipfsHash}`);
+      // Turn off confetti after some time
+      setTimeout(() => {
+        setShowConfetti(false);
+        setMintedNFT(null);
+        setStatus("");
+        resetForm();
+      }, 15000);
     } catch (error) {
       console.error("Error minting ARC-69 NFT:", error);
       setStatus("Failed to mint ARC-69 NFT.");
-    } finally {
-      setTimeout(() => {
-        setStatus("");
-      }, 5000);
     }
   };
 
@@ -154,13 +161,14 @@ export default function MintNFTARC69({ accountAddress }) {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center">
+      {showConfetti && <Confetti width={window.width} height={window.height} />}
       {!accountAddress && (
         <h1 className="animate-pulse text-white">
           Connect your wallet to mint NFTs.
         </h1>
       )}
 
-      {accountAddress && (
+      {accountAddress && !showConfetti && (
         <div className="w-full max-w-4xl bg-light rounded-lg p-4">
           <input
             type="file"
@@ -169,9 +177,6 @@ export default function MintNFTARC69({ accountAddress }) {
             accept="image/*"
             style={{ display: "none" }}
           />
-          <div className="flex items-center justify-center mt-4">
-            {status && <p className="text-white">{status}</p>}
-          </div>
           <div className="mb-4 mt-4 flex flex-col items-center justify-center rounded-lg bg-light p-2 text-center text-secondary">
             <button
               disabled={uploading}
@@ -305,6 +310,26 @@ export default function MintNFTARC69({ accountAddress }) {
             >
               Mint ARC-69 NFT
             </button>
+          </div>
+        </div>
+      )}
+      {showConfetti && (
+        <div className="mt-4">
+          <h3 className="text-lg font-semibold text-gray-300">
+            Congratulations! Here is your newly Minted NFT:
+          </h3>
+          <img src={mintedNFT} alt="Minted NFT" className="max-w-xs mt-2" />
+          <div className="flex items-center justify-center mt-4">
+            {status && (
+              <a
+                href={`https://algoexplorer.io/tx/${status}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline"
+              >
+                Transaction ID: {status}
+              </a>
+            )}
           </div>
         </div>
       )}
