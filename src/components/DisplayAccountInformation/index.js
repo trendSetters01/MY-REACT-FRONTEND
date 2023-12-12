@@ -127,7 +127,8 @@ export default function DisplayAccountInformation({
                     {accountData.assets.map((asset, index) => (
                       <li key={index}>
                         <a
-                          href={`https://algoexplorer.io/asset/${asset["asset-id"]}`}
+                          href={`https://www.randgallery.com/algo-collection/?address=${asset["asset-id"]}`
+                          }
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 hover:underline"
