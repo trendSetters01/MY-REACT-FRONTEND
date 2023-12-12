@@ -118,7 +118,7 @@ export default function SendTransaction({ accountAddress }) {
             </label>
             <button
               type="submit"
-              class="bg-gradient-to-r from-gray-500 to-blue-500 hover:from-gray-200 hover:to-blue-700 rounded-md mt-4 mb-4 w-full max-w-xs"
+              className="bg-gradient-to-r from-gray-500 to-blue-500 hover:from-gray-200 hover:to-blue-700 rounded-md mt-4 mb-4 w-full max-w-xs"
             >
               <h1 className="text-2xl font-bold text-white">Send</h1>
             </button>
