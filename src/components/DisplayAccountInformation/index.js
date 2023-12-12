@@ -51,7 +51,6 @@ export default function DisplayAccountInformation({
     }
   }
 
-
   return (
     <div className="pt-16 container mx-auto fade-in text-white h-screen">
       {loading && <p className="text-center">Loading account data...</p>}
@@ -63,7 +62,10 @@ export default function DisplayAccountInformation({
       )}
       <div className="flex flex-col items-center">
         {accountData && connectedAccountAddress && (
-          <div className="w-full max-w-2xl bg-gray-800 border border-gray-600 rounded shadow-lg p-4">
+          <div
+            style={{ wordWrap: "break-word" }}
+            className="w-full max-w-2xl bg-gray-800 border border-gray-600 rounded shadow-lg p-4"
+          >
             <h2 className="text-2xl font-bold mb-4">Account Information</h2>
             <p>
               <strong className="text-gray-300">Address:</strong>{" "}
