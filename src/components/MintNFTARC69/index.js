@@ -4,6 +4,7 @@ import { algodClient } from "../../algorand/config";
 import { arc69Mint } from "../../algorand/nftMintingHelpers/mintARC69NFT";
 import axios from "axios";
 import Confetti from "react-confetti";
+import congratsImg from "../../images/360_F_106656883_2WufqiyAQOHji3hbQ3oSNvnffa9eECQ6.jpg";
 
 export default function MintNFTARC69({ accountAddress }) {
   const [file, setFile] = useState(null);
@@ -15,7 +16,6 @@ export default function MintNFTARC69({ accountAddress }) {
     { key: "description", value: "", required: true },
   ]);
   const [showConfetti, setShowConfetti] = useState(false);
-  const [mintedNFT, setMintedNFT] = useState("");
 
   const peraWallet = useContext(PeraWalletContext);
   const inputFile = useRef(null);
@@ -121,14 +121,12 @@ export default function MintNFTARC69({ accountAddress }) {
 
       // On successful minting
       setShowConfetti(true);
-      setMintedNFT(`https://ipfs.io/ipfs/${ipfsHash}`);
       // Turn off confetti after some time
       setTimeout(() => {
         setShowConfetti(false);
-        setMintedNFT(null);
         setStatus("");
         resetForm();
-      }, 15000);
+      }, 10000);
     } catch (error) {
       console.error("Error minting ARC-69 NFT:", error);
       setStatus("Failed to mint ARC-69 NFT.");
@@ -152,6 +150,7 @@ export default function MintNFTARC69({ accountAddress }) {
           },
         });
         console.log("IPFS Hash:", imageUpload.data.IpfsHash);
+
         return imageUpload.data.IpfsHash;
       } catch (error) {
         console.error("Error sending File to IPFS:", error);
@@ -315,10 +314,10 @@ export default function MintNFTARC69({ accountAddress }) {
       )}
       {showConfetti && (
         <div className="mt-4">
+          <img src={congratsImg} alt="Minted NFT" className="max-w-xs mt-2" />
           <h3 className="text-lg font-semibold text-gray-300">
-            Congratulations! Here is your newly Minted NFT:
-          </h3>
-          <img src={mintedNFT} alt="Minted NFT" className="max-w-xs mt-2" />
+              successfully minted ARC-69 NFT
+            </h3>
           <div className="flex items-center justify-center mt-4">
             {status && (
               <a
