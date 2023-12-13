@@ -16,12 +16,14 @@ export default function MintNFTARC3({ accountAddress }) {
     { key: "description", value: "", required: true },
   ]);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
 
   const peraWallet = useContext(PeraWalletContext);
   const inputFile = useRef(null);
 
   const resetForm = () => {
     setFile(null);
+    setImageUrl(null);
     setUploading(false);
     setMetadataFields([
       { key: "assetName", value: "", required: true },
@@ -68,8 +70,12 @@ export default function MintNFTARC3({ accountAddress }) {
   };
 
   const handleFileChange = (event) => {
-    console.log(event.target.files[0]);
-    setFile(event.target.files[0]);
+    const file = event.target.files[0];
+    if (file) {
+      setFile(file);
+      const url = URL.createObjectURL(file);
+      setImageUrl(url); // Set image URL for preview
+    }
   };
 
   const handleMintArc3 = async () => {
@@ -187,169 +193,150 @@ export default function MintNFTARC3({ accountAddress }) {
 
       {accountAddress && !showConfetti && (
         <div className="w-full max-w-4xl bg-light rounded-lg p-4">
-          <input
-            type="file"
-            onChange={handleFileChange}
-            ref={inputFile}
-            accept="image/*"
-            style={{ display: "none" }}
+          <FileUploadButton
+            inputFile={inputFile}
+            handleFileChange={handleFileChange}
+            uploading={uploading}
+            imageUrl={imageUrl}
           />
-          <div className="mb-4 mt-4 flex flex-col items-center justify-center rounded-lg bg-light p-2 text-center text-secondary">
-            <button
-              disabled={uploading}
-              onClick={() => inputFile.current.click()}
-              className="align-center flex flex-row items-center justify-center rounded-3xl bg-secondary px-4 py-2 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
-            >
-              {uploading ? (
-                "Uploading..."
-              ) : (
-                <div>
-                  <p className="text-lg font-light">
-                    Select a file to upload to the IPFS network
-                  </p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="m-auto mt-4 h-12 w-12 text-white"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-                    />
-                  </svg>
-                </div>
-              )}
-            </button>
-          </div>
-
-          {/* Required Fields */}
-          <div className="mb-4">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {metadataFields.map((field, index) =>
-                field.required ? (
-                  <input
-                    key={index}
-                    type="text"
-                    value={field.value}
-                    onChange={(e) =>
-                      handleMetadataChange(
-                        index,
-                        field.key,
-                        e.target.value,
-                        false
-                      )
-                    }
-                    placeholder={
-                      field.key.charAt(0).toUpperCase() +
-                      field.key
-                        .slice(1)
-                        .replace(/([A-Z])/g, " $1")
-                        .trim()
-                    } // More descriptive placeholder
-                    className="input-md"
-                    required
-                  />
-                ) : null
-              )}
-            </div>
-          </div>
-          <div className="text-center mb-4 animate-pulse">
-            <p className="text-white">Add more properties to your NFT</p>
-            <span className="text-white text-2xl">&#x2193;</span>
-          </div>
-          {/* Dynamic Metadata Fields */}
-          <div className="mb-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {metadataFields.map((field, index) =>
-                !field.required ? (
-                  <div key={index} className="flex flex-col">
-                    <input
-                      type="text"
-                      value={field.key}
-                      onChange={(e) =>
-                        handleMetadataChange(
-                          index,
-                          e.target.value,
-                          field.value,
-                          true
-                        )
-                      }
-                      placeholder="Enter key (e.g., color, size)"
-                      className="mb-2 input-md"
-                    />
-                    <input
-                      type="text"
-                      value={field.value}
-                      onChange={(e) =>
-                        handleMetadataChange(
-                          index,
-                          field.key,
-                          e.target.value,
-                          false
-                        )
-                      }
-                      placeholder="Enter value (e.g., red, large)"
-                      className="mb-2 input-md"
-                    />
-                    <button
-                      onClick={() => removeMetadataField(index)}
-                      className="input-md bg-red-500 hover:bg-red-700 text-white rounded-md"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                ) : null
-              )}
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col md:flex-row justify-center gap-4 mt-4">
-            <button
-              onClick={addMetadataField}
-              className="input-md bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 rounded-md mr-4"
-            >
-              Add More Properties
-            </button>
-            <button
-              onClick={resetForm}
-              className="input-md bg-gradient-to-r from-yellow-500 to-red-400 hover:from-red-400 hover:to-yellow-500 rounded-md mr-4"
-            >
-              Reset Form
-            </button>
-            <button
-              onClick={handleMintArc3}
-              className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mr-4"
-            >
-              Mint ARC-3 NFT
-            </button>
-          </div>
+          <MetadataFields
+            metadataFields={metadataFields}
+            handleMetadataChange={handleMetadataChange}
+            addMetadataField={addMetadataField}
+            removeMetadataField={removeMetadataField}
+          />
+          <ActionButtons handleMintArc3={handleMintArc3} resetForm={resetForm} />
         </div>
       )}
       {showConfetti && (
-        <div className="w-80">
-          <img src={congratsImg} alt="Minted NFT" className="max-w-xs mt-2" />
-          <h3 className="mt-4 text-lg font-semibold text-gray-300">
-            successfully minted ARC-3 NFT
-          </h3>
-          <div className="flex items-center justify-center">
-            {status && (
-              <a
-                href={`https://algoexplorer.io/tx/${status}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 text-blue-500 hover:underline"
-                style={{ wordBreak: "break-word" }}
+        <MintingSuccessMessage status={status} congratsImg={congratsImg} />
+      )}
+    </div>
+  );
+}
+
+function FileUploadButton({
+  inputFile,
+  handleFileChange,
+  uploading,
+  imageUrl,
+}) {
+  return (
+    <div className="mb-4 mt-4 flex flex-col items-center justify-center rounded-lg bg-light p-2 text-center text-secondary">
+      <button
+        disabled={uploading}
+        onClick={() => inputFile.current.click()}
+        className="align-center flex flex-row items-center justify-center rounded-3xl bg-secondary px-4 py-2 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
+      >
+        {uploading ? "Uploading..." : "Select File"}
+      </button>
+      <input
+        type="file"
+        onChange={handleFileChange}
+        ref={inputFile}
+        accept="image/*"
+        style={{ display: "none" }}
+      />
+      {imageUrl && (
+        <div className="mt-4">
+          <img
+            src={imageUrl}
+            alt="Selected file"
+            className="max-w-xs rounded-lg h-16 sm:h-16 md:h-40 lg:h-80"
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MetadataFields({
+  metadataFields,
+  handleMetadataChange,
+  addMetadataField,
+  removeMetadataField,
+}) {
+  return (
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {metadataFields.map((field, index) => (
+          <div key={index} className="flex flex-col">
+            <input
+              type="text"
+              value={field.key}
+              onChange={(e) =>
+                handleMetadataChange(index, e.target.value, field.value, true)
+              }
+              placeholder="Key"
+              className="mb-2 input-md"
+              disabled={field.required}
+            />
+            <input
+              type="text"
+              value={field.value}
+              onChange={(e) =>
+                handleMetadataChange(index, field.key, e.target.value, false)
+              }
+              placeholder="Value"
+              className="mb-2 input-md"
+            />
+            {!field.required && (
+              <button
+                onClick={() => removeMetadataField(index)}
+                className="input-md bg-red-500 hover:bg-red-700 text-white rounded-md"
               >
-                Transaction ID: {status}
-              </a>
+                Remove
+              </button>
             )}
           </div>
-        </div>
+        ))}
+      </div>
+      <button
+        onClick={addMetadataField}
+        className="mt-4 input-md bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 rounded-md"
+      >
+        Add Metadata Field
+      </button>
+    </div>
+  );
+}
+
+function ActionButtons({ handleMintArc3, resetForm }) {
+  return (
+    <div className="flex flex-col md:flex-row justify-center gap-4 mt-4">
+      <button
+        onClick={resetForm}
+        className="input-md bg-gradient-to-r from-yellow-500 to-red-400 hover:from-red-400 hover:to-yellow-500 rounded-md"
+      >
+        Reset Form
+      </button>
+      <button
+        onClick={handleMintArc3}
+        className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
+      >
+        Mint ARC-3 NFT
+      </button>
+    </div>
+  );
+}
+
+function MintingSuccessMessage({ status, congratsImg }) {
+  return (
+    <div className="w-80">
+      <img src={congratsImg} alt="Minted NFT" className="max-w-xs mt-2" />
+      <h3 className="mt-4 text-lg font-semibold text-gray-300">
+        Successfully minted ARC-3 NFT
+      </h3>
+      {status && (
+        <a
+          href={`https://algoexplorer.io/tx/${status}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 text-blue-500 hover:underline"
+          style={{ wordBreak: "break-word" }}
+        >
+          Transaction ID: {status}
+        </a>
       )}
     </div>
   );

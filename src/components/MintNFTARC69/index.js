@@ -6,6 +6,34 @@ import axios from "axios";
 import Confetti from "react-confetti";
 import congratsImg from "../../images/360_F_106656883_2WufqiyAQOHji3hbQ3oSNvnffa9eECQ6.jpg";
 
+const toCamelCase = (str) => {
+  return str
+    .toLowerCase()
+    .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
+};
+
+const sendFileToIPFS = async (file) => {
+  try {
+    const formData = new FormData();
+    formData.append("file", file, { filename: file.name });
+
+    const imageUpload = await axios({
+      method: "post",
+      url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
+      data: formData,
+      headers: {
+        pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
+        pinata_secret_api_key: process.env.REACT_APP_PINATA_API_SECRET,
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return imageUpload.data.IpfsHash;
+  } catch (error) {
+    console.error("Error sending File to IPFS:", error);
+    throw error;
+  }
+};
+
 export default function MintNFTARC69({ accountAddress }) {
   const [file, setFile] = useState(null);
   const [uploading, setUploading] = useState(false);
@@ -16,12 +44,14 @@ export default function MintNFTARC69({ accountAddress }) {
     { key: "description", value: "", required: true },
   ]);
   const [showConfetti, setShowConfetti] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
 
   const peraWallet = useContext(PeraWalletContext);
   const inputFile = useRef(null);
 
   const resetForm = () => {
     setFile(null);
+    setImageUrl(null);
     setUploading(false);
     setMetadataFields([
       { key: "assetName", value: "", required: true },
@@ -30,20 +60,11 @@ export default function MintNFTARC69({ accountAddress }) {
     ]);
   };
 
-  // Camel Case Utility Function
-  const toCamelCase = (str) => {
-    return str
-      .toLowerCase()
-      .replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase());
-  };
-
   const handleMetadataChange = (index, key, value, isKeyChange) => {
     const newFields = [...metadataFields];
     if (newFields[index].required) {
-      // Update value for required fields
       newFields[index] = { ...newFields[index], value };
     } else {
-      // Update key and value for non-required fields
       newFields[index] = {
         ...newFields[index],
         key: isKeyChange ? toCamelCase(key) : newFields[index].key,
@@ -68,60 +89,49 @@ export default function MintNFTARC69({ accountAddress }) {
   };
 
   const handleFileChange = (event) => {
-    console.log(event.target.files[0]);
-    setFile(event.target.files[0]);
+    const file = event.target.files[0];
+    if (file) {
+      setFile(file);
+      const url = URL.createObjectURL(file);
+      setImageUrl(url); // Set image URL for preview
+    }
   };
-
   const handleMintArc69 = async () => {
-    console.log(metadataFields);
     setStatus("Minting ARC-69 NFT...");
+    setUploading(true);
     try {
-      setUploading(true);
-      const ipfsHash = await sendFileToIPFS();
-      setUploading(false);
-      // Extracting assetName and unitName from metadataFields
-      const assetName = metadataFields.find(
-        (field) => field.key === "assetName"
-      ).value;
-      const unitName = metadataFields.find(
-        (field) => field.key === "unitName"
-      ).value;
-      const description = metadataFields.find(
-        (field) => field.key === "description"
-      ).value;
-
-      // Constructing properties object from metadataFields
-      const properties = metadataFields.reduce((acc, field) => {
-        if (!field.required) {
-          acc[field.key] = field.value;
-        }
+      const ipfsHash = await sendFileToIPFS(file);
+      const assetDetails = metadataFields.reduce((acc, field) => {
+        acc[field.key] = field.value;
         return acc;
       }, {});
 
-      console.log("unitName", "name", unitName, assetName);
       const txn = await arc69Mint(
         accountAddress,
         {
           standard: "arc69",
-          description: description,
+          description: assetDetails.description,
           external_url: "https://phantoms-ashy.vercel.app",
           mime_type: file.type,
-          properties,
+          properties: {
+            ...assetDetails,
+            assetName: undefined,
+            unitName: undefined,
+            description: undefined,
+          },
         },
-        unitName,
-        assetName,
+        assetDetails.unitName,
+        assetDetails.assetName,
         ipfsHash
       );
+
       const signedTx = await peraWallet.signTransaction([txn]);
       const txConfirmation = await algodClient
         .sendRawTransaction(signedTx)
         .do();
-      console.log("Transaction ID:", txConfirmation.txId);
-      setStatus(`${txConfirmation.txId}`);
+      setStatus(txConfirmation.txId);
 
-      // On successful minting
       setShowConfetti(true);
-      // Turn off confetti after some time
       setTimeout(() => {
         setShowConfetti(false);
         setStatus("");
@@ -130,31 +140,7 @@ export default function MintNFTARC69({ accountAddress }) {
     } catch (error) {
       console.error("Error minting ARC-69 NFT:", error);
       setStatus("Failed to mint ARC-69 NFT.");
-    }
-  };
-
-  const sendFileToIPFS = async () => {
-    if (file) {
-      try {
-        const formData = new FormData();
-        formData.append("file", file, { filename: file.name });
-
-        const imageUpload = await axios({
-          method: "post",
-          url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
-          data: formData,
-          headers: {
-            pinata_api_key: `${process.env.REACT_APP_PINATA_API_KEY}`,
-            pinata_secret_api_key: `${process.env.REACT_APP_PINATA_API_SECRET}`,
-            "Content-Type": "multipart/form-data",
-          },
-        });
-        console.log("IPFS Hash:", imageUpload.data.IpfsHash);
-
-        return imageUpload.data.IpfsHash;
-      } catch (error) {
-        console.error("Error sending File to IPFS:", error);
-      }
+      setUploading(false);
     }
   };
 
@@ -169,169 +155,153 @@ export default function MintNFTARC69({ accountAddress }) {
 
       {accountAddress && !showConfetti && (
         <div className="w-full max-w-4xl bg-light rounded-lg p-4">
-          <input
-            type="file"
-            onChange={handleFileChange}
-            ref={inputFile}
-            accept="image/*"
-            style={{ display: "none" }}
+          <FileUploadButton
+            inputFile={inputFile}
+            handleFileChange={handleFileChange}
+            uploading={uploading}
+            imageUrl={imageUrl} // Pass the image URL to the FileUploadButton
           />
-          <div className="mb-4 mt-4 flex flex-col items-center justify-center rounded-lg bg-light p-2 text-center text-secondary">
-            <button
-              disabled={uploading}
-              onClick={() => inputFile.current.click()}
-              className="align-center flex flex-row items-center justify-center rounded-3xl bg-secondary px-4 py-2 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
-            >
-              {uploading ? (
-                "Uploading..."
-              ) : (
-                <div>
-                  <p className="text-lg font-light">
-                    Select a file to upload to the IPFS network
-                  </p>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="m-auto mt-4 h-12 w-12 text-white"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
-                    />
-                  </svg>
-                </div>
-              )}
-            </button>
-          </div>
-
-          {/* Required Fields */}
-          <div className="mb-4">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {metadataFields.map((field, index) =>
-                field.required ? (
-                  <input
-                    key={index}
-                    type="text"
-                    value={field.value}
-                    onChange={(e) =>
-                      handleMetadataChange(
-                        index,
-                        field.key,
-                        e.target.value,
-                        false
-                      )
-                    }
-                    placeholder={
-                      field.key.charAt(0).toUpperCase() +
-                      field.key
-                        .slice(1)
-                        .replace(/([A-Z])/g, " $1")
-                        .trim()
-                    } // More descriptive placeholder
-                    className="input-md"
-                    required
-                  />
-                ) : null
-              )}
-            </div>
-          </div>
-          <div className="text-center mb-4 animate-pulse">
-            <p className="text-white">Add more properties to your NFT</p>
-            <span className="text-white text-2xl">&#x2193;</span>
-          </div>
-          {/* Dynamic Metadata Fields */}
-          <div className="mb-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {metadataFields.map((field, index) =>
-                !field.required ? (
-                  <div key={index} className="flex flex-col">
-                    <input
-                      type="text"
-                      value={field.key}
-                      onChange={(e) =>
-                        handleMetadataChange(
-                          index,
-                          e.target.value,
-                          field.value,
-                          true
-                        )
-                      }
-                      placeholder="Enter key (e.g., color, size)"
-                      className="mb-2 input-md"
-                    />
-                    <input
-                      type="text"
-                      value={field.value}
-                      onChange={(e) =>
-                        handleMetadataChange(
-                          index,
-                          field.key,
-                          e.target.value,
-                          false
-                        )
-                      }
-                      placeholder="Enter value (e.g., red, large)"
-                      className="mb-2 input-md"
-                    />
-                    <button
-                      onClick={() => removeMetadataField(index)}
-                      className="input-md bg-red-500 hover:bg-red-700 text-white rounded-md"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                ) : null
-              )}
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div className="flex flex-col md:flex-row justify-center gap-4 mt-4">
-            <button
-              onClick={addMetadataField}
-              className="input-md bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 rounded-md mr-4"
-            >
-              Add More Properties
-            </button>
-            <button
-              onClick={resetForm}
-              className="input-md bg-gradient-to-r from-yellow-500 to-red-400 hover:from-red-400 hover:to-yellow-500 rounded-md mr-4"
-            >
-              Reset Form
-            </button>
-            <button
-              onClick={handleMintArc69}
-              className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mr-4"
-            >
-              Mint ARC-69 NFT
-            </button>
-          </div>
+          <MetadataFields
+            metadataFields={metadataFields}
+            handleMetadataChange={handleMetadataChange}
+            addMetadataField={addMetadataField}
+            removeMetadataField={removeMetadataField}
+          />
+          <ActionButtons
+            handleMintArc69={handleMintArc69}
+            resetForm={resetForm}
+          />
         </div>
       )}
       {showConfetti && (
-        <div className="w-80">
-          <img src={congratsImg} alt="Minted NFT" className="max-w-xs mt-2" />
-          <h3 className="mt-4 text-lg font-semibold text-gray-300">
-            successfully minted ARC-69 NFT
-          </h3>
-          <div className="flex items-center justify-center mt-4">
-            {status && (
-              <a
-                href={`https://algoexplorer.io/tx/${status}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 text-blue-500 hover:underline"
-                style={{ wordBreak: "break-word" }}
+        <MintingSuccessMessage status={status} congratsImg={congratsImg} />
+      )}
+    </div>
+  );
+}
+
+function FileUploadButton({
+  inputFile,
+  handleFileChange,
+  uploading,
+  imageUrl,
+}) {
+  return (
+    <div className="mb-4 mt-4 flex flex-col items-center justify-center rounded-lg bg-light p-2 text-center text-secondary">
+      <button
+        disabled={uploading}
+        onClick={() => inputFile.current.click()}
+        className="align-center flex flex-row items-center justify-center rounded-3xl bg-secondary px-4 py-2 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
+      >
+        {uploading ? "Uploading..." : "Select File"}
+      </button>
+      <input
+        type="file"
+        onChange={handleFileChange}
+        ref={inputFile}
+        accept="image/*"
+        style={{ display: "none" }}
+      />
+      {imageUrl && (
+        <div className="mt-4">
+          <img
+            src={imageUrl}
+            alt="Selected file"
+            className="max-w-xs rounded-lg h-16 sm:h-16 md:h-40 lg:h-80"
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MetadataFields({
+  metadataFields,
+  handleMetadataChange,
+  addMetadataField,
+  removeMetadataField,
+}) {
+  return (
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {metadataFields.map((field, index) => (
+          <div key={index} className="flex flex-col">
+            <input
+              type="text"
+              value={field.key}
+              onChange={(e) =>
+                handleMetadataChange(index, e.target.value, field.value, true)
+              }
+              placeholder="Key"
+              className="mb-2 input-md"
+              disabled={field.required}
+            />
+            <input
+              type="text"
+              value={field.value}
+              onChange={(e) =>
+                handleMetadataChange(index, field.key, e.target.value, false)
+              }
+              placeholder="Value"
+              className="mb-2 input-md"
+            />
+            {!field.required && (
+              <button
+                onClick={() => removeMetadataField(index)}
+                className="input-md bg-red-500 hover:bg-red-700 text-white rounded-md"
               >
-                Transaction ID: {status}
-              </a>
+                Remove
+              </button>
             )}
           </div>
-        </div>
+        ))}
+      </div>
+      <button
+        onClick={addMetadataField}
+        className="mt-4 input-md bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 rounded-md"
+      >
+        Add Metadata Field
+      </button>
+    </div>
+  );
+}
+
+function ActionButtons({ handleMintArc69, resetForm }) {
+  return (
+    <div className="flex flex-col md:flex-row justify-center gap-4 mt-4">
+      <button
+        onClick={resetForm}
+        className="input-md bg-gradient-to-r from-yellow-500 to-red-400 hover:from-red-400 hover:to-yellow-500 rounded-md"
+      >
+        Reset Form
+      </button>
+      <button
+        onClick={handleMintArc69}
+        className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
+      >
+        Mint ARC-69 NFT
+      </button>
+    </div>
+  );
+}
+
+function MintingSuccessMessage({ status, congratsImg }) {
+  return (
+    <div className="w-80">
+      <img src={congratsImg} alt="Minted NFT" className="max-w-xs mt-2" />
+      <h3 className="mt-4 text-lg font-semibold text-gray-300">
+        Successfully minted ARC-69 NFT
+      </h3>
+      {status && (
+        <a
+          href={`https://algoexplorer.io/tx/${status}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 text-blue-500 hover:underline"
+          style={{ wordBreak: "break-word" }}
+        >
+          Transaction ID: {status}
+        </a>
       )}
     </div>
   );
