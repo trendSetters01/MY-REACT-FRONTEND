@@ -313,18 +313,19 @@ export default function MintNFTARC69({ accountAddress }) {
         </div>
       )}
       {showConfetti && (
-        <div className="mt-4">
+        <div className="w-80">
           <img src={congratsImg} alt="Minted NFT" className="max-w-xs mt-2" />
-          <h3 className="text-lg font-semibold text-gray-300">
-              successfully minted ARC-69 NFT
-            </h3>
+          <h3 className="mt-4 text-lg font-semibold text-gray-300">
+            successfully minted ARC-69 NFT
+          </h3>
           <div className="flex items-center justify-center mt-4">
             {status && (
               <a
                 href={`https://algoexplorer.io/tx/${status}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
+                className="mt-4 text-blue-500 hover:underline"
+                style={{ wordBreak: "break-word" }}
               >
                 Transaction ID: {status}
               </a>
