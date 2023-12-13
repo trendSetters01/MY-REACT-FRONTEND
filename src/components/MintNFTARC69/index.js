@@ -191,7 +191,7 @@ function FileUploadButton({
       <button
         disabled={uploading}
         onClick={() => inputFile.current.click()}
-        className="align-center flex flex-row items-center justify-center rounded-3xl bg-secondary px-4 py-2 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
+        className="mt-2 sm: mt-8 md: mt-8 align-center flex flex-row items-center justify-center rounded-3xl bg-secondary px-4 py-2 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
       >
         {uploading ? "Uploading..." : "Select File"}
       </button>
@@ -207,7 +207,7 @@ function FileUploadButton({
           <img
             src={imageUrl}
             alt="Selected file"
-            className="max-w-xs rounded-lg h-20 sm:h-20 md:h-40 lg:h-80"
+            className="max-w-xs rounded-lg h-20 sm:h-20 md:h-36 lg:h-40"
           />
         </div>
       )}
