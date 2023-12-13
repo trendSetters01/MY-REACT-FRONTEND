@@ -242,7 +242,7 @@ function FileUploadButton({
           <img
             src={imageUrl}
             alt="Selected file"
-            className="max-w-xs rounded-lg h-16 sm:h-16 md:h-40 lg:h-80"
+            className="max-w-xs rounded-lg h-20 sm:h-20 md:h-40 lg:h-80"
           />
         </div>
       )}
