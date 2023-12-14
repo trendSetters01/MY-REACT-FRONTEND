@@ -48,17 +48,15 @@ function DisplayPhantomv1({ accountAddress }) {
         <div className="text-white dark:text-white">
           <h1>Phantom V1</h1>
           <h3>Account Information</h3>
-          <p>
-            Address:{" "}
-            <a
-              className="text-white underline dark:text-white"
-              href={`https://algoexplorer.io/address/${accountData.address}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {accountData.address}
-            </a>
-          </p>
+          Address:
+          <a
+            className="text-white underline dark:text-white"
+            href={`https://algoexplorer.io/address/${accountData.address}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <p style={{ wordBreak: "break-word" }}>{accountData.address}</p>
+          </a>
           <br />
         </div>
       )}
