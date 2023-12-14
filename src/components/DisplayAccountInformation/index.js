@@ -41,9 +41,6 @@ export default function DisplayAccountInformation({
   function extractIPFSHash(ipfsUrl) {
     const prefix = "ipfs://";
     const postfix = "#arc3";
-    if (ipfsUrl.endsWith(postfix)) {
-      return "bafkreiazcvz3rahtfng6ycph7o7vwy2u4c2hvjxxdkxabaqycereesexfm";
-    }
     if (ipfsUrl.startsWith(prefix)) {
       return ipfsUrl.slice(prefix.length);
     } else {
@@ -108,7 +105,7 @@ export default function DisplayAccountInformation({
               >
                 Assets
               </button>
-              {/* <button
+              <button
                 className={`py-2 px-4 ${
                   activeTab === "nfts"
                     ? "text-white border-b-2 border-white"
@@ -117,7 +114,7 @@ export default function DisplayAccountInformation({
                 onClick={() => setActiveTab("nfts")}
               >
                 Your Created Assets
-              </button> */}
+              </button>
             </div>
             {/* Tab content */}
             <div className="mt-4">
@@ -127,8 +124,7 @@ export default function DisplayAccountInformation({
                     {accountData.assets.map((asset, index) => (
                       <li key={index}>
                         <a
-                          href={`https://www.randgallery.com/algo-collection/?address=${asset["asset-id"]}`
-                          }
+                          href={`https://www.randgallery.com/algo-collection/?address=${asset["asset-id"]}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 hover:underline"
@@ -137,14 +133,17 @@ export default function DisplayAccountInformation({
                             src={`https://asa-list.tinyman.org/assets/${asset["asset-id"]}/icon.png`}
                             className="h-6 w-6 mr-2"
                           />
-                          Asset ID: {asset["asset-id"]}, Amount: {asset.amount}
+                          Asset ID: {asset["asset-id"]}
+                          <br />
+                          Amount: {asset.amount}
+                          <br />
                         </a>
                       </li>
                     ))}
                   </ul>
                 </div>
               )}
-              {/* {activeTab === "nfts" && (
+              {activeTab === "nfts" && (
                 <div>
                   <ul className="list-disc pl-8 text-gray-400 overflow-auto  max-h-80">
                     {accountData["created-assets"].map((asset, index) => (
@@ -155,9 +154,7 @@ export default function DisplayAccountInformation({
                           rel="noopener noreferrer"
                           className="text-blue-500 hover:underline"
                         >
-                          Asset ID: {asset?.index} Name: {asset?.params?.name}
-                          <br />
-                          <img
+                          {/* <img
                             key={index}
                             style={{
                               width: "35%",
@@ -165,18 +162,20 @@ export default function DisplayAccountInformation({
                               border: "2px solid white",
                               borderRadius: "10px",
                             }}
-                            src={`https://ipfs.io/ipfs/${extractIPFSHash(
-                              asset?.params?.url
-                            )}`}
+                            src={`https://asa-list.tinyman.org/assets/${asset?.index}/icon.png`}
                             alt={`Asset ${index}`}
-                          />
+                          /> */}
+                          Asset ID: {asset?.index}
+                          <br />
+                          Name: {asset?.params?.name}
+                          <br />
                         </a>
                         <br />
                       </li>
                     ))}
                   </ul>
                 </div>
-              )} */}
+              )}
             </div>
           </div>
         )}
