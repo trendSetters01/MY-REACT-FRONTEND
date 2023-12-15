@@ -169,11 +169,12 @@ export default function GameComponent({ onDepositSuccess, accountAddress }) {
     console.log("result", result);
     if (result === "You win!") {
       setGameWon(true);
-    } else {
-      setTimeout(() => {
-        onDepositSuccess();
-      }, 5000);
-    }
+    } 
+    // else {
+    //   setTimeout(() => {
+    //     onDepositSuccess();
+    //   }, 5000);
+    // }
     setGameButton("Thanks for playing the Game");
     setIsGameActive(false);
   };
