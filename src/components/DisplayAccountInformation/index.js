@@ -68,7 +68,7 @@ export default function DisplayAccountInformation({
               <strong className="text-gray-300">Address:</strong>{" "}
               <span className="text-gray-400">
                 <div onClick={copyLink} className="cursor-pointer mt-4 mb-4">
-                  <p>{accountData.address}</p>
+                  <p>{accountData?.address}</p>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -89,7 +89,7 @@ export default function DisplayAccountInformation({
             <p>
               <strong className="text-gray-300">Balance:</strong>{" "}
               <span className="text-gray-400">
-                {(accountData.amount / 1e6).toFixed(6)} ALGO
+                {(accountData?.amount / 1e6).toFixed(6)} ALGO
               </span>
             </p>
             <br />
@@ -121,7 +121,7 @@ export default function DisplayAccountInformation({
               {activeTab === "assets" && (
                 <div>
                   <ul className="list-disc pl-8 text-gray-400 overflow-auto max-h-80">
-                    {accountData.assets.map((asset, index) => (
+                    {accountData?.assets.map((asset, index) => (
                       <li key={index}>
                         <a
                           href={`https://www.randgallery.com/algo-collection/?address=${asset["asset-id"]}`}
