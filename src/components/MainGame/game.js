@@ -218,7 +218,7 @@ export default function GameComponent({ onDepositSuccess, accountAddress }) {
         )}
       </div>
 
-      <div>
+      <div className="mb-12">
         <button
           onClick={startGame}
           className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"

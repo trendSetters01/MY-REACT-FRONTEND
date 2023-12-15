@@ -8,8 +8,9 @@ export default function MainGame({ accountAddress }) {
   return (
     <div
       style={{ height: "80vh" }}
-      className="flex items-center justify-center text-white"
+      className="flex flex-col items-center justify-center text-white"
     >
+      <h1 className="text-4xl text-center font-bold text-white mb-20">Welcome To Cards Adventure!</h1>
       {!accountAddress && (
         <h1 className="animate-pulse text-white">
           Connect your wallet to participate.

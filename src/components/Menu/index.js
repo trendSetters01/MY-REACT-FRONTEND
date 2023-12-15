@@ -132,7 +132,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                   </ul>
                 </details>
               </li>
-              <li>
+              {/* <li>
                 <details>
                   <summary>Mint Nfts</summary>
                   <li>
@@ -166,7 +166,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     </Link>
                   </li>
                 </details>
-              </li>
+              </li> */}
               {/* <li>
                 <Link to="/register-your-address" className="dropdown-item">
                   <img
@@ -184,9 +184,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li> */}
               <li>
                 <details>
-                  <summary>Other Services swaps etc..</summary>
+                  <summary>Phantom Services</summary>
                   <li>
-                    <Link to="/main-game" className="dropdown-item">
+                    <Link to="/mint-nft" className="dropdown-item">
                       <img
                         style={{
                           width: "25%",
@@ -194,10 +194,10 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                           border: "2px solid white",
                           borderRadius: "10px",
                         }}
-                        src={mainGameImg}
-                        alt={`main game`}
+                        src={mintNFTARC3Img}
+                        alt={`mint nft`}
                       />
-                      Test Game
+                      Mint NFT
                     </Link>
                   </li>
                   <li>
@@ -213,6 +213,21 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         alt={`Swap`}
                       />
                       Swap
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/cards-adventure" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={mainGameImg}
+                        alt={`main game`}
+                      />
+                      Test Game
                     </Link>
                   </li>
                 </details>

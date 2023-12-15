@@ -5,6 +5,7 @@ import Home from "../Home";
 import DisplayAccountInformation from "../DisplayAccountInformation";
 import DisplayPhantomv1 from "../DisplayPhantomv1";
 import DisplayPhantomv2 from "../DisplayPhantomv2";
+import Tabs from "../Tabs";
 import SetAddress from "../SetAddress";
 import OptInComponent from "../OptIn";
 import Swap from "../swap";
@@ -16,6 +17,7 @@ import MintNFTARC69 from "../MintNFTARC69";
 import MainGame from "../MainGame";
 
 export default function Navbar() {
+  const [activeTab, setActiveTab] = useState("arc3");
   const [connectedAccountAddress, setConnectedAccountAddress] = useState(null);
 
   const phantomV1Address =
@@ -30,7 +32,7 @@ export default function Navbar() {
           <Route path="/" element={<Home />} />
           <Route path="/swap" element={<Swap />} />
           <Route
-            path="/main-game"
+            path="/cards-adventure"
             element={<MainGame accountAddress={connectedAccountAddress} />}
           />
           <Route
@@ -40,6 +42,20 @@ export default function Navbar() {
           <Route
             path="/mint-nft-arc69"
             element={<MintNFTARC69 accountAddress={connectedAccountAddress} />}
+          />
+          <Route
+            path="/mint-nft"
+            element={
+              <div>
+                <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+                {activeTab === "arc3" && (
+                  <MintNFTARC3 accountAddress={connectedAccountAddress} />
+                )}
+                {activeTab === "arc69" && (
+                  <MintNFTARC69 accountAddress={connectedAccountAddress} />
+                )}
+              </div>
+            }
           />
           <Route
             path="/opt-in-out"

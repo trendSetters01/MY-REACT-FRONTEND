@@ -183,21 +183,24 @@ export default function MintNFTARC3({ accountAddress }) {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
+    <div
+      style={{ height: "80vh" }}
+      className="flex flex-col items-center justify-center"
+    >
       {showConfetti && <Confetti width={window.width} height={window.height} />}
-      {accountAddress && (
+      {!accountAddress && (
         <h1 className="animate-pulse text-white">
           Connect your wallet to mint NFTs.
         </h1>
       )}
 
-      {!accountAddress && !showConfetti && (
+      {accountAddress && !showConfetti && (
         <div className="w-full max-w-4xl bg-light rounded-lg p-4">
           <FileUploadButton
             inputFile={inputFile}
             handleFileChange={handleFileChange}
             uploading={uploading}
-            imageUrl={imageUrl}
+            imageUrl={imageUrl} // Pass the image URL to the FileUploadButton
           />
           <MetadataFields
             metadataFields={metadataFields}
