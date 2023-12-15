@@ -13,6 +13,7 @@ import DestroyAsset from "../DestroyAsset";
 import PeraWalletOptInOut from "../PeraWalletOptInOut";
 import MintNFTARC3 from "../MintNFTARC3";
 import MintNFTARC69 from "../MintNFTARC69";
+import MainGame from "../MainGame";
 
 export default function Navbar() {
   const [connectedAccountAddress, setConnectedAccountAddress] = useState(null);
@@ -28,6 +29,10 @@ export default function Navbar() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/swap" element={<Swap />} />
+          <Route
+            path="/main-game"
+            element={<MainGame accountAddress={connectedAccountAddress} />}
+          />
           <Route
             path="/mint-nft-arc3"
             element={<MintNFTARC3 accountAddress={connectedAccountAddress} />}

@@ -13,6 +13,7 @@ export default function RewardComponent({ accountAddress }) {
   const [transactionId, setTransactionId] = useState(null);
   const [showMsg, setShowMsg] = useState(false);
   const [rewardAmount, setRewardAmount] = useState(0);
+  const [showRewardButton, setshowRewardButton] = useState(true);
   const [nftCount, setNftCount] = useState(0);
   const [boostMultiplier, setBoostMultiplier] = useState(1);
   const BASE_PHNTM_REWARD = 0;
@@ -35,16 +36,13 @@ export default function RewardComponent({ accountAddress }) {
   async function handleOptIn() {
     setStatus("Opt-in Processing...");
     try {
-      const txn = await optIn(
-        "XGJS5VTFTVB3MJDQGXH4Y4M6NYDYEK4OZFF6NIVUTIBS52OTLW2N5CYM2Y",
-        "1247018740"
-      );
+      const txn = await optIn(accountAddress, "1247018740");
       const signedTx = await peraWallet.signTransaction([txn]);
       const txConfirmation = await algodClient
         .sendRawTransaction(signedTx)
         .do();
       console.log("Transaction ID:", txConfirmation.txId);
-      setStatus("Opt-in successful");
+      setStatus("Opt-in successful, please wait for the rewards txn to be prompted.");
     } catch (error) {
       console.log("Couldn't sign Opt-in txn", error);
       setStatus("Opt-in failed");
@@ -52,6 +50,7 @@ export default function RewardComponent({ accountAddress }) {
   }
 
   async function handleGameWin() {
+    setshowRewardButton(false);
     try {
       const nftCount = await countPhntmNfts(accountAddress);
       const rewardAmount = calculateRewards(BASE_PHNTM_REWARD, nftCount);
@@ -66,17 +65,13 @@ export default function RewardComponent({ accountAddress }) {
       setStatus("Initiating reward distribution...");
       await handleOptIn();
 
-      let optInStatus = false;
       setTimeout(async () => {
-        optInStatus = await checkOptIn(
-          "XGJS5VTFTVB3MJDQGXH4Y4M6NYDYEK4OZFF6NIVUTIBS52OTLW2N5CYM2Y",
-          "1247018740"
-        );
+        const optInStatus = await checkOptIn(accountAddress, "1247018740");
         console.log("Opt-in status:", optInStatus);
         if (optInStatus) {
           const txn = await send(
             phntmTokenAddress,
-            "XGJS5VTFTVB3MJDQGXH4Y4M6NYDYEK4OZFF6NIVUTIBS52OTLW2N5CYM2Y",
+            accountAddress,
             totalPhantomTokenConversion,
             "1247018740", // for phntm token
             "PHNTM reward"
@@ -96,7 +91,7 @@ export default function RewardComponent({ accountAddress }) {
         } else {
           setStatus("Opt-in failed");
         }
-        
+
         setTimeout(() => {
           setNftCount(0);
           setRewardAmount(0);
@@ -112,10 +107,11 @@ export default function RewardComponent({ accountAddress }) {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center mb-4">
       <button
         onClick={handleGameWin}
         className="mt-4 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
+        disabled={!showRewardButton}
       >
         Claim Reward
       </button>
