@@ -164,8 +164,7 @@ export default function GameComponent({ onDepositSuccess, accountAddress }) {
       }
     }
 
-    // const result = player.shields > ai.shields ? "You win!" : "You lose!";
-    const result = "You win!"; // : "You lose!";
+    const result = player.shields > ai.shields ? "You win!" : "You lose!";
     setFinalResult(result);
     console.log("result", result);
     if (result === "You win!") {
