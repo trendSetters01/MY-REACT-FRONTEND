@@ -67,7 +67,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li> */}
               <li>
                 <details>
-                  <summary>Account Details</summary>
+                  <summary>Manage Account</summary>
                   <ul>
                     <li>
                       <Link to="/account-info" className="dropdown-item">
