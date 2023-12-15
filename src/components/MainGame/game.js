@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RewardComponent from "./reward.js";
+import Confetti from "react-confetti";
 
 class Card {
   constructor(name, attack, defense, ability = null) {
@@ -120,6 +121,7 @@ export default function GameComponent({ onDepositSuccess, accountAddress }) {
   const [isGameActive, setIsGameActive] = useState(true);
   const [finalResult, setFinalResult] = useState("");
   const [gameWon, setGameWon] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const addGameLog = (message) => {
     setGameLog((prevLog) => [...prevLog, message]);
@@ -169,7 +171,12 @@ export default function GameComponent({ onDepositSuccess, accountAddress }) {
     console.log("result", result);
     if (result === "You win!") {
       setGameWon(true);
-    } 
+      setShowConfetti(true);
+    }
+    
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 5000);
     // else {
     //   setTimeout(() => {
     //     onDepositSuccess();
@@ -184,6 +191,12 @@ export default function GameComponent({ onDepositSuccess, accountAddress }) {
       style={{ height: "80vh" }}
       className="flex flex-col items-center justify-center container mx-auto p-4"
     >
+      {showConfetti && <Confetti width={window.width} height={window.height} />}
+      {accountAddress && (
+        <h1 className="text-4xl text-center font-bold text-white mb-8">
+          Welcome To Cards Adventure!
+        </h1>
+      )}
       <div>
         {aiLog.length > 0 && userLog.length > 0 && (
           <div className="flex flex-row mb-4">
