@@ -191,18 +191,6 @@ function Home({ accountAddress }) {
           </section>
         </div>
       </main>
-      <footer className="mt-8 text-white text-center dark:text-white">
-        <p className="mb-2">
-          Got questions? Reach out at{" "}
-          <a
-            href="https://t.co/aiJqcXi2Ae"
-            className="text-blue-500 hover:underline dark:text-blue-400"
-          >
-            Phantoms Discord
-          </a>
-        </p>
-        <p>Stay tuned — there's much more to come!</p>
-      </footer>
     </div>
   );
 }
