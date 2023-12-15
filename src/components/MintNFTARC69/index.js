@@ -147,13 +147,13 @@ export default function MintNFTARC69({ accountAddress }) {
   return (
     <div className="h-screen flex flex-col items-center justify-center">
       {showConfetti && <Confetti width={window.width} height={window.height} />}
-      {!accountAddress && (
+      {accountAddress && (
         <h1 className="animate-pulse text-white">
           Connect your wallet to mint NFTs.
         </h1>
       )}
 
-      {accountAddress && !showConfetti && (
+      {!accountAddress && !showConfetti && (
         <div className="w-full max-w-4xl bg-light rounded-lg p-4">
           <FileUploadButton
             inputFile={inputFile}
@@ -191,9 +191,27 @@ function FileUploadButton({
       <button
         disabled={uploading}
         onClick={() => inputFile.current.click()}
-        className="mt-2 sm: mt-8 md: mt-8 align-center flex flex-row items-center justify-center rounded-3xl bg-secondary px-4 py-2 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
+        className="mt-2 sm: mt-8 md: mt-8 align-center flex flex-row items-center justify-center rounded-3xl bg-secondary px-8 py-1 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
       >
-        {uploading ? "Uploading..." : "Select File"}
+        <div>
+          <p className="text-lg font-light">
+            {uploading ? "Uploading..." : "Select File"}
+          </p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="m-auto mt-4 h-6 w-6 text-white"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+            />
+          </svg>
+        </div>
       </button>
       <input
         type="file"
