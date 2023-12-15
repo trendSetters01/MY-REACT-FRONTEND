@@ -10,7 +10,7 @@ export default function MainGame({ accountAddress }) {
       style={{ height: "80vh" }}
       className="flex flex-col items-center justify-center text-white"
     >
-      {accountAddress && (
+      {!accountAddress && (
         <h1 className="animate-pulse text-white">
           Connect your wallet to participate.
         </h1>
