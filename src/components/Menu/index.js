@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import registerImg from "../../images/icons8-register-64.png";
 import sendAssetImg from "../../images/icons8-send-64.png";
+import mainGameImg from "../../images/icons8-game-64.png";
 import optInOutImg from "../../images/icons8-option-64.png";
 import destroyAssetImg from "../../images/icons8-delete-64.png";
 import phantom from "../../images/icons8-ghost-64.png";
@@ -184,6 +185,21 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               <li>
                 <details>
                   <summary>Other Services swaps etc..</summary>
+                  <li>
+                    <Link to="/main-game" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={mainGameImg}
+                        alt={`main game`}
+                      />
+                      Test Game
+                    </Link>
+                  </li>
                   <li>
                     <Link to="/swap" className="dropdown-item">
                       <img
