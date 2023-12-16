@@ -36,13 +36,15 @@ export default function RewardComponent({ accountAddress }) {
   async function handleOptIn() {
     setStatus("Opt-in Processing...");
     try {
-      const txn = await optIn(accountAddress, "1247018740");
+      const txn = await optIn(accountAddress, "1276228104");
       const signedTx = await peraWallet.signTransaction([txn]);
       const txConfirmation = await algodClient
         .sendRawTransaction(signedTx)
         .do();
       console.log("Transaction ID:", txConfirmation.txId);
-      setStatus("Opt-in successful, please wait for the rewards txn to be prompted.");
+      setStatus(
+        "Opt-in successful, please wait for the rewards txn to be prompted."
+      );
     } catch (error) {
       console.log("Couldn't sign Opt-in txn", error);
       setStatus("Opt-in failed");
@@ -66,15 +68,15 @@ export default function RewardComponent({ accountAddress }) {
       await handleOptIn();
 
       setTimeout(async () => {
-        const optInStatus = await checkOptIn(accountAddress, "1247018740");
+        const optInStatus = await checkOptIn(accountAddress, "1276228104");
         console.log("Opt-in status:", optInStatus);
         if (optInStatus) {
           const txn = await send(
             phntmTokenAddress,
             accountAddress,
             totalPhantomTokenConversion,
-            "1247018740", // for phntm token
-            "PHNTM reward"
+            "1276228104", // for phntm thnx token
+            "Thank you for testing the game!"
           );
 
           const signedTx = await peraWallet.signTransaction([txn]);
