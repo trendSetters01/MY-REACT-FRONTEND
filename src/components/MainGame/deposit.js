@@ -71,8 +71,15 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
   };
 
   return (
-    <div>
-      <h2>Deposit Algo to Play</h2>
+    <div className="flex flex-col items-center justify-center">
+      <h1 className="text-4xl mb-4">Deposit Algo to Play</h1>
+      <p className="mb-4 w-80">
+        Get ready to join the fun! Deposit Algo to start
+        playing and have a chance to win exciting prizes. Our platform
+        accepts Algo currency, allowing you to participate in various games and
+        activities. Make sure you have enough Algo to join the games of your
+        choice.
+      </p>
       <label className="form-control w-full max-w-xs">
         <input
           type="text"
