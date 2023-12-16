@@ -194,14 +194,18 @@ export default function GameComponent({ onDepositSuccess, accountAddress }) {
       {showConfetti && <Confetti width={window.width} height={window.height} />}
       {accountAddress && (
         <div className="w-full max-w-4xl bg-light rounded-lg p-4 text-white">
-          <h1 className="text-4xl text-center font-bold text-white mb-8 w-80">
-            Welcome To Cards RPG!
-          </h1>
-          <p className="mb-4 w-80">
-            An evolving auto play rpg. You will play against an AI. If you win,
-            you will be rewarded with 1 Reedemable NFT for future prizes when
-            the game comes out of test phase.....
-          </p>
+          {!(aiLog.length > 0) && !(userLog.length > 0) && (
+            <div>
+              <h1 className="text-4xl text-center font-bold text-white mb-8 w-80">
+                Welcome To Cards RPG!
+              </h1>
+              <p className="mb-4 w-80">
+                An evolving auto play rpg. You will play against an AI. If you
+                win, you will be rewarded with 1 Reedemable NFT, for future
+                prizes, When the game comes out of test phase.....
+              </p>
+            </div>
+          )}
         </div>
       )}
       <div>
