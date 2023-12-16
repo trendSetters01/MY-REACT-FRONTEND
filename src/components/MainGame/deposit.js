@@ -37,7 +37,7 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
         phantomsHoldingAddress,
         parseFloat(depositAmount) * 1000000,
         "0", // '0' for ALGO
-        note
+        `Deposit to Phantoms Holding: ${note}`
       );
 
       const signedTx = await peraWallet.signTransaction([txn]);
