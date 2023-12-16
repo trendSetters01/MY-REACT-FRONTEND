@@ -6,7 +6,7 @@ export default function TestGame({ accountAddress }) {
   // Example deck initialization
   const initialDeck = [
     // { name: "Guardian", attack: 2, defense: 1, ability: "protect" },
-    { name: "Harbinger", attack: 1, defense: 5, ability: "drawTwo" },
+    // { name: "Harbinger", attack: 1, defense: 5, ability: "drawTwo" },
     // { name: "Enchanter", attack: 3, defense: 3, ability: "boost" },
     { name: "Berserker", attack: 1, defense: 1, ability: "unblockable" },
     { name: "Sage", attack: 3, defense: 2, ability: "negate" },
