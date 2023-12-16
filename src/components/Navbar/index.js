@@ -36,14 +36,6 @@ export default function Navbar() {
             element={<MainGame accountAddress={connectedAccountAddress} />}
           />
           <Route
-            path="/mint-nft-arc3"
-            element={<MintNFTARC3 accountAddress={connectedAccountAddress} />}
-          />
-          <Route
-            path="/mint-nft-arc69"
-            element={<MintNFTARC69 accountAddress={connectedAccountAddress} />}
-          />
-          <Route
             path="/mint-nft"
             element={
               <div>
