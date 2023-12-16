@@ -32,7 +32,7 @@ export default function Navbar() {
           <Route path="/" element={<Home />} />
           <Route path="/swap" element={<Swap />} />
           <Route
-            path="/cards-adventure"
+            path="/cards-rpg"
             element={<MainGame accountAddress={connectedAccountAddress} />}
           />
           <Route

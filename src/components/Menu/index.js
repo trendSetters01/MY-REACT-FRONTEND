@@ -216,7 +216,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/cards-adventure" className="dropdown-item">
+                    <Link to="/cards-rpg" className="dropdown-item">
                       <img
                         style={{
                           width: "25%",
