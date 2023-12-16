@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Tabs({ activeTab, setActiveTab }) {
   return (
-    <div className="mt-2" style={{zIndex: "10000"}}>
+    <div className="mt-2" style={{zIndex: "10000", position: "relative"}}>
       <div role="tablist" className="tabs">
         <a
           role="tab"
