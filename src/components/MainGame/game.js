@@ -135,15 +135,21 @@ export default function GameComponent({ onDepositSuccess, accountAddress }) {
 
   const playTurn = (player, opponent, turn) => {
     const cardPlayed = player.drawCard();
-    let logMessage = `Turn ${turn}: ${player.name} plays ${cardPlayed.name}`;
+    let logMessage = `Turn ${turn}: ${player.name} plays ${cardPlayed.name} (Attack: ${cardPlayed.attack}, Defense: ${cardPlayed.defense})`;
+
     player.playCard(
       opponent,
       cardPlayed,
       (message) => (logMessage += ` - ${message}`)
     );
+
     logMessage += `. Shields left: ${player.shields}`;
 
-    player.name === "User" ? addUserLog(logMessage) : addAILog(logMessage);
+    if (player.name === "User") {
+      addUserLog(logMessage);
+    } else {
+      addAILog(logMessage);
+    }
   };
 
   const startGame = () => {
