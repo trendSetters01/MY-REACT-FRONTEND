@@ -210,7 +210,7 @@ export default function TestGame({ accountAddress }) {
         {turnCount < 24 && (
           <div className="flex flex-col items-center text-white">
             {/* <div>Current Turn: {players[currentTurn].name}</div> */}
-            <div className="mb-2">Turn Count: {turnCount}</div>
+            <div className="mb-2">Round Count: {turnCount}</div>
           </div>
         )}
         {gameOver && (
