@@ -3,35 +3,67 @@ import RewardComponent from "./reward.js";
 import Confetti from "react-confetti";
 
 export default function TestGame({ accountAddress }) {
-  // Example deck initialization
-  const playerDeck = [
+  // Example full deck
+  const fullDeck = [
     { name: "Guardian", attack: 2, defense: 1, ability: "protect" },
-    // { name: "Harbinger", attack: 1, defense: 5, ability: "drawTwo" },
-    // { name: "Enchanter", attack: 3, defense: 3, ability: "boost" },
-    // { name: "Berserker", attack: 1, defense: 1, ability: "unblockable" },
-    // { name: "Sage", attack: 3, defense: 2, ability: "negate" },
-    { name: "Paladin", attack: 2, defense: 1, ability: "destroy" },
-    // Add more cards as needed
-  ];
-  const AIDeck = [
-    // { name: "Guardian", attack: 2, defense: 1, ability: "protect" },
-    // { name: "Harbinger", attack: 1, defense: 5, ability: "drawTwo" },
-    // { name: "Enchanter", attack: 3, defense: 3, ability: "boost" },
+    { name: "Harbinger", attack: 1, defense: 5, ability: "drawTwo" },
+    { name: "Enchanter", attack: 3, defense: 3, ability: "boost" },
     { name: "Berserker", attack: 1, defense: 1, ability: "unblockable" },
     { name: "Sage", attack: 3, defense: 2, ability: "negate" },
-    // { name: "Paladin", attack: 2, defense: 1, ability: "restoreTwo" },
-    // Add more cards as needed
+    { name: "Paladin", attack: 2, defense: 1, ability: "destroy" },
+    { name: "Mystic", attack: 2, defense: 4, ability: "heal" },
+    { name: "Warrior", attack: 4, defense: 2, ability: "rage" },
+    { name: "Assassin", attack: 5, defense: 1, ability: "stealth" },
+    { name: "Elementalist", attack: 3, defense: 3, ability: "elementalShift" },
+    { name: "Archer", attack: 3, defense: 2, ability: "pierce" },
+    { name: "Sorcerer", attack: 2, defense: 3, ability: "spellbind" },
+    { name: "Necromancer", attack: 2, defense: 4, ability: "revive" },
+    { name: "Druid", attack: 1, defense: 5, ability: "nature'sGift" },
+    { name: "Knight", attack: 4, defense: 3, ability: "fortify" },
+    { name: "Rogue", attack: 4, defense: 1, ability: "backstab" },
+    { name: "Cleric", attack: 1, defense: 4, ability: "bless" },
+    { name: "Summoner", attack: 3, defense: 2, ability: "summon" },
+    { name: "Alchemist", attack: 2, defense: 2, ability: "transmute" },
+    { name: "Valkyrie", attack: 3, defense: 3, ability: "skyStrike" },
+    { name: "Monk", attack: 2, defense: 3, ability: "innerPeace" },
+    { name: "Barbarian", attack: 5, defense: 2, ability: "frenzy" },
+    { name: "Vampire", attack: 3, defense: 1, ability: "lifeDrain" },
+    { name: "Wizard", attack: 2, defense: 2, ability: "arcaneBlast" },
+    { name: "Templar", attack: 3, defense: 3, ability: "holyLight" },
+    { name: "Shaman", attack: 2, defense: 4, ability: "spiritTalk" },
+    { name: "Pirate", attack: 3, defense: 2, ability: "plunder" },
   ];
+
+  // Shuffle Deck Function
+  const shuffleDeck = (deck) => {
+    let shuffledDeck = [...deck];
+    for (let i = shuffledDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledDeck[i], shuffledDeck[j]] = [shuffledDeck[j], shuffledDeck[i]];
+    }
+    return shuffledDeck;
+  };
+
+  // Shuffle the deck and distribute the cards
+  const shuffledDeck = shuffleDeck(fullDeck);
+  const playerCards = shuffledDeck.slice(0, 13);
+  const AICards = shuffledDeck.slice(13, 26);
+
+  // Example deck initialization
+  const playerDeck = [...playerCards];
+  const AIDeck = [...AICards];
 
   const [players, setPlayers] = useState([
     {
       name: "You",
-      hand: [...playerDeck],
-      shields: 5,
+      hand: [...playerDeck.slice(0, 2)],
+      shields: 15,
       drawCard: function () {
-        const randomIndex = Math.floor(Math.random() * playerDeck.length);
-        const drawnCard = playerDeck[randomIndex];
-        return drawnCard;
+        while (this.hand.length < 2) {
+          const randomIndex = Math.floor(Math.random() * playerDeck.length);
+          const drawnCard = playerDeck[randomIndex];
+          this.hand.push(drawnCard);
+        }
       },
       attack: (playerIndex, attackPower, defensePower) => {
         players[playerIndex].shields -= attackPower;
@@ -44,12 +76,14 @@ export default function TestGame({ accountAddress }) {
     },
     {
       name: "AI",
-      hand: [...AIDeck],
-      shields: 5,
+      hand: [...AIDeck.slice(0, 2)],
+      shields: 25,
       drawCard: function () {
-        const randomIndex = Math.floor(Math.random() * AIDeck.length);
-        const drawnCard = AIDeck[randomIndex];
-        return drawnCard;
+        while (this.hand.length < 2) {
+          const randomIndex = Math.floor(Math.random() * AIDeck.length);
+          const drawnCard = AIDeck[randomIndex];
+          this.hand.push(drawnCard);
+        }
       },
       attack: (playerIndex, attackPower, defensePower) => {
         players[playerIndex].shields -= attackPower;
@@ -122,21 +156,11 @@ export default function TestGame({ accountAddress }) {
         );
       }
       player.hand.splice(cardIndex, 1);
-      console.log("Before Drawing card", player.hand);
-      if (player.hand.length < 2) {
-        player.hand.push(player.drawCard(cardIndex));
-      }
-      if (player.hand[cardIndex].ability === "drawTwo") {
-        player.hand.push(player.drawCard(cardIndex));
-      }
-      console.log("Drawing card", player.hand);
-
-      // Replenish the hand of the player who just played
-      // players[playerIndex].replenishHand();
+      // Replenish the hand
+      player.drawCard();
 
       // Switch turns and replenish the hand of the next player
       const nextPlayerIndex = (playerIndex + 1) % players.length;
-      console.log("Next Player Index", currentTurn, nextPlayerIndex);
       setCurrentTurn(nextPlayerIndex);
       setTurnCount((prevCount) => prevCount + 1); // Increment turn count
       // players[nextPlayerIndex].replenishHand();
@@ -168,11 +192,6 @@ export default function TestGame({ accountAddress }) {
             <h1 className="text-4xl text-center font-bold text-white mb-2">
               Welcome To Cards RPG!
             </h1>
-            {/* <p className="mb-2 w-96">
-              An evolving auto play rpg. You will play against an AI. If you
-              win, you will be rewarded with 1 Reedemable NFT, for future
-              prizes.
-            </p> */}
           </div>
         </div>
       )}
@@ -218,12 +237,11 @@ export default function TestGame({ accountAddress }) {
         </div>
         {turnCount < 24 && (
           <div className="flex flex-col items-center text-white">
-            {/* <div>Current Turn: {players[currentTurn].name}</div> */}
             <div className="mb-2">Round Count: {turnCount}</div>
           </div>
         )}
         {gameOver && (
-          <div class="flex flex-col items-center text-white">
+          <div className="flex flex-col items-center text-white">
             <div className="mb-2">Game Over !</div>
             <div className="mb-2">Winner: {winner}</div>
             {winner === "You" && (
