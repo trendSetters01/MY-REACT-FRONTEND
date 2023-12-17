@@ -209,6 +209,71 @@ export default function TestGame({ accountAddress }) {
         <h1 className="text-xl mb-4">Defend the shield of the Phantoms!</h1>
         <h1 className="mb-2">( Best of 24 rounds )</h1>
         <div>
+          {gameOver &&
+            players.map((player, playerIndex) => (
+              <div>
+                {playerIndex === 0 && winner === "You" && (
+                  <div
+                    className={`transition duration-500 ease-in-out ${
+                      currentTurn === playerIndex
+                        ? "transform scale-110 mb-2 mt-2"
+                        : ""
+                    } ${
+                      playerIndex === 0
+                        ? "bg-yellow-500 rounded-sm px-2 py-1 shadow-lg"
+                        : "bg-purple-500 rounded-sm px-2 py-1 shadow-lg"
+                    }`}
+                  >
+                    <div className="mt-2 items-center">
+                      <img
+                        src={`${playerIndex === 0 ? PlayerUrl : AIUrl}`}
+                        alt="Player Image"
+                        className={`max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24`}
+                      />
+                    </div>
+                    <h2 className="text-md font-bold">{`${
+                      playerIndex === 0 ? "You" : "Annihilus"
+                    }`}</h2>
+                    <p className="text-2xl">
+                      Shields:{" "}
+                      {playerIndex === 0
+                        ? players[0].shields
+                        : players[1].shields}
+                    </p>
+                  </div>
+                )}
+                {playerIndex === 1 && winner === "Annihilus" && (
+                  <div
+                    className={`transition duration-500 ease-in-out ${
+                      currentTurn === playerIndex
+                        ? "transform scale-110 mb-2 mt-2"
+                        : ""
+                    } ${
+                      playerIndex === 0
+                        ? "bg-yellow-500 rounded-sm px-2 py-1 shadow-lg"
+                        : "bg-purple-500 rounded-sm px-2 py-1 shadow-lg"
+                    }`}
+                  >
+                    <div className="mt-2 items-center">
+                      <img
+                        src={`${playerIndex === 0 ? PlayerUrl : AIUrl}`}
+                        alt="Player Image"
+                        className={`max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24`}
+                      />
+                    </div>
+                    <h2 className="text-md font-bold">{`${
+                      playerIndex === 0 ? "You" : "Annihilus"
+                    }`}</h2>
+                    <p className="text-2xl">
+                      Shields:{" "}
+                      {playerIndex === 0
+                        ? players[0].shields
+                        : players[1].shields}
+                    </p>
+                  </div>
+                )}
+              </div>
+            ))}
           {!gameOver &&
             players.map((player, playerIndex) => (
               <div>
@@ -273,8 +338,16 @@ export default function TestGame({ accountAddress }) {
         )}
         {gameOver && (
           <div className="flex flex-col items-center text-white">
-            <div className="mb-2">Game Over !</div>
-            <div className="mb-2">Winner: {winner}</div>
+            {winner !== "You" && <div className="mb-2">Game Over !</div>}
+            {winner === "You" ? (
+              <div className={winner === "You" ? "mt-4" : "mb-2"}>
+                Congratulations You Won!
+              </div>
+            ) : (
+              <div className={winner === "You" ? "mt-4" : "mb-2"}>
+                Try Again Next Time!, Annihilus Won!
+              </div>
+            )}
             {winner === "You" && (
               <RewardComponent
                 accountAddress={accountAddress}
