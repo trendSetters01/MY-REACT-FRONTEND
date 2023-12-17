@@ -228,7 +228,7 @@ export default function TestGame({ accountAddress }) {
                       <img
                         src={`${playerIndex === 0 ? PlayerUrl : AIUrl}`}
                         alt="Player Image"
-                        className={`max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24`}
+                        className={`max-w-xs rounded-lg h-28 sm:h-28 md:h-24 lg:h-24`}
                       />
                     </div>
                     <h2 className="text-md font-bold">{`${
@@ -258,7 +258,7 @@ export default function TestGame({ accountAddress }) {
                       <img
                         src={`${playerIndex === 0 ? PlayerUrl : AIUrl}`}
                         alt="Player Image"
-                        className={`max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24`}
+                        className={`max-w-xs rounded-lg h-28 sm:h-28 md:h-24 lg:h-24`}
                       />
                     </div>
                     <h2 className="text-md font-bold">{`${
@@ -345,7 +345,7 @@ export default function TestGame({ accountAddress }) {
               </div>
             ) : (
               <div className={winner === "You" ? "mt-4" : "mb-2"}>
-                Try Again Next Time!, Annihilus Won!
+                Try Again Next Time! Annihilus Won!
               </div>
             )}
             {winner === "You" && (
