@@ -177,9 +177,13 @@ export default function TestGame({ accountAddress }) {
   useEffect(() => {
     if (currentTurn === 1 && !gameOver) {
       const cardIndex = aiSelectCard(players[1].hand);
+
+      // Generate a random delay between 1 to 5 seconds
+      const delay = Math.random() * (5000 - 500) + 1000;
+
       setTimeout(() => {
         handleCardClick(1, cardIndex);
-      }, 3000);
+      }, delay);
     }
   }, [currentTurn, players, gameOver, turnCount]);
 
