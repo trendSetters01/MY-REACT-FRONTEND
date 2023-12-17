@@ -213,7 +213,9 @@ export default function TestGame({ accountAddress }) {
                   key={playerIndex}
                 >
                   <div
-                    className={`${
+                    className={`transition duration-500 ease-in-out ${
+                      currentTurn === playerIndex ? "transform scale-110" : ""
+                    } ${
                       playerIndex === 0
                         ? "bg-yellow-500 rounded-sm px-2 py-1 shadow-lg"
                         : "bg-purple-500 rounded-sm px-2 py-1 shadow-lg"
@@ -223,11 +225,7 @@ export default function TestGame({ accountAddress }) {
                       <img
                         src={`${playerIndex === 0 ? PlayerUrl : AIUrl}`}
                         alt="Player Image"
-                        className={`max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24 transition duration-500 ease-in-out ${
-                          currentTurn === playerIndex
-                            ? "transform scale-110"
-                            : ""
-                        }`}
+                        className={`max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24`}
                       />
                     </div>
                     <h2 className="text-md font-bold">{`${
