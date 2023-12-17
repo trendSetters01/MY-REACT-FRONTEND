@@ -4,24 +4,33 @@ import Confetti from "react-confetti";
 
 export default function TestGame({ accountAddress }) {
   // Example deck initialization
-  const initialDeck = [
+  const playerDeck = [
+    { name: "Guardian", attack: 2, defense: 1, ability: "protect" },
+    // { name: "Harbinger", attack: 1, defense: 5, ability: "drawTwo" },
+    // { name: "Enchanter", attack: 3, defense: 3, ability: "boost" },
+    // { name: "Berserker", attack: 1, defense: 1, ability: "unblockable" },
+    // { name: "Sage", attack: 3, defense: 2, ability: "negate" },
+    { name: "Paladin", attack: 2, defense: 1, ability: "destroy" },
+    // Add more cards as needed
+  ];
+  const AIDeck = [
     // { name: "Guardian", attack: 2, defense: 1, ability: "protect" },
     // { name: "Harbinger", attack: 1, defense: 5, ability: "drawTwo" },
     // { name: "Enchanter", attack: 3, defense: 3, ability: "boost" },
     { name: "Berserker", attack: 1, defense: 1, ability: "unblockable" },
     { name: "Sage", attack: 3, defense: 2, ability: "negate" },
-    { name: "Paladin", attack: 2, defense: 1, ability: "restoreTwo" },
+    // { name: "Paladin", attack: 2, defense: 1, ability: "restoreTwo" },
     // Add more cards as needed
   ];
 
   const [players, setPlayers] = useState([
     {
       name: "You",
-      hand: [...initialDeck],
+      hand: [...playerDeck],
       shields: 5,
       drawCard: function () {
-        const randomIndex = Math.floor(Math.random() * initialDeck.length);
-        const drawnCard = initialDeck[randomIndex];
+        const randomIndex = Math.floor(Math.random() * playerDeck.length);
+        const drawnCard = playerDeck[randomIndex];
         return drawnCard;
       },
       attack: (playerIndex, attackPower, defensePower) => {
@@ -35,11 +44,11 @@ export default function TestGame({ accountAddress }) {
     },
     {
       name: "AI",
-      hand: [...initialDeck],
+      hand: [...AIDeck],
       shields: 5,
       drawCard: function () {
-        const randomIndex = Math.floor(Math.random() * initialDeck.length);
-        const drawnCard = initialDeck[randomIndex];
+        const randomIndex = Math.floor(Math.random() * AIDeck.length);
+        const drawnCard = AIDeck[randomIndex];
         return drawnCard;
       },
       attack: (playerIndex, attackPower, defensePower) => {
