@@ -218,7 +218,7 @@ export default function TestGame({ accountAddress }) {
                 >
                   <div
                     className={`transition duration-500 ease-in-out ${
-                      currentTurn === playerIndex ? "transform scale-110" : ""
+                      currentTurn === playerIndex ? "transform scale-110 mb-2 mt-2" : ""
                     } ${
                       playerIndex === 0
                         ? "bg-yellow-500 rounded-sm px-2 py-1 shadow-lg"
