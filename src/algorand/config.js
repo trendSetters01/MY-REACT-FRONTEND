@@ -5,7 +5,7 @@ const ALGOD_INDEXER_ADDR = "https://mainnet-algorand.api.purestake.io/idx2";
 const ALGOD_PORT = "";
 const PURESTAKE_API_KEY = process.env["PURESTAKE_API_KEY"];
 const ALGOD_API_TOKEN = {
-  "X-API-Key": "GmPRgAPXK92qOfFuKaSaV3J2tyNxdjrQ7cscZoAW"//PURESTAKE_API_KEY,
+  "X-API-Key": PURESTAKE_API_KEY,
 };
 
 
