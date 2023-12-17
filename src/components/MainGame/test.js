@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import RewardComponent from "./reward.js";
 import Confetti from "react-confetti";
+import AIUrl from "../../images/c7d87778-7d09-4f27-98df-683065f9d9ef.webp";
+import PlayerUrl from "../../images/405c177eb8e44ce2c32cf891b78f7125.webp";
 
 export default function TestGame({ accountAddress }) {
   // Example full deck
@@ -75,7 +77,7 @@ export default function TestGame({ accountAddress }) {
       },
     },
     {
-      name: "AI",
+      name: "Annihilus",
       hand: [...AIDeck.slice(0, 2)],
       shields: 25,
       drawCard: function () {
@@ -104,7 +106,7 @@ export default function TestGame({ accountAddress }) {
 
   const aiSelectCard = (hand) => {
     const randomIndex = Math.floor(Math.random() * hand.length);
-    return randomIndex; // AI selects a card at random
+    return randomIndex; // Annihilus selects a card at random
   };
 
   const checkEndGame = () => {
@@ -190,7 +192,7 @@ export default function TestGame({ accountAddress }) {
       {!accountAddress && (
         <div className="flex flex-col items-center justify-center w-full max-w-4xl bg-light rounded-lg p-4 text-white">
           <div>
-            <h1 className="text-4xl text-center font-bold text-white mb-2">
+            <h1 className="text-xl text-center font-bold text-white">
               Welcome To Cards RPG!
             </h1>
           </div>
@@ -200,7 +202,7 @@ export default function TestGame({ accountAddress }) {
         {showConfetti && winner === "You" && (
           <Confetti width={window.width} height={window.height} />
         )}
-        <h1 className="mb-2">Test Card Game</h1>
+        <h1 className="text-xl mb-4">Defend the shield of the Phantoms!</h1>
         <h1 className="mb-2">( Best of 24 rounds )</h1>
         <div>
           {!gameOver &&
@@ -213,12 +215,19 @@ export default function TestGame({ accountAddress }) {
                   <div
                     className={`${
                       playerIndex === 0
-                        ? "bg-yellow-500 rounded-md px-4 py-1 shadow-lg"
-                        : "bg-purple-500 rounded-md px-4 py-1 shadow-lg"
+                        ? "bg-yellow-500 rounded-sm px-2 py-1 shadow-lg"
+                        : "bg-purple-500 rounded-sm px-2 py-1 shadow-lg"
                     }`}
                   >
-                    <h2 className="text-lg font-bold">{`${
-                      playerIndex === 0 ? "You" : "AI"
+                    <div className="mt-2 items-center">
+                      <img
+                        src={`${playerIndex === 0 ? PlayerUrl : AIUrl}`}
+                        alt="Selected file"
+                        className="max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24"
+                      />
+                    </div>
+                    <h2 className="text-md font-bold">{`${
+                      playerIndex === 0 ? "You" : "Annihilus"
                     }`}</h2>
                     <p className="text-2xl">
                       Shields:{" "}
@@ -237,7 +246,7 @@ export default function TestGame({ accountAddress }) {
                             ? "bg-green-500"
                             : "bg-red-500"
                         }`}
-                        disabled={player.name === "AI" || gameOver}
+                        disabled={player.name === "Annihilus" || gameOver}
                       >
                         {card?.name} (Attack: {card?.attack}, Defense:
                         {card?.defense})
