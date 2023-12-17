@@ -218,7 +218,9 @@ export default function TestGame({ accountAddress }) {
                 >
                   <div
                     className={`transition duration-500 ease-in-out ${
-                      currentTurn === playerIndex ? "transform scale-110 mb-2 mt-2" : ""
+                      currentTurn === playerIndex
+                        ? "transform scale-110 mb-2 mt-2"
+                        : ""
                     } ${
                       playerIndex === 0
                         ? "bg-yellow-500 rounded-sm px-2 py-1 shadow-lg"
@@ -245,16 +247,15 @@ export default function TestGame({ accountAddress }) {
                   <div className="flex flex-row items-center justify-center">
                     {player.hand.map((card, cardIndex) => (
                       <button
-                        key={cardIndex}
                         onClick={() => handleCardClick(playerIndex, cardIndex)}
-                        className={`border m-2 p-2 ${
+                        className={`transform transition-all duration-300 border m-2 p-2 ${
                           currentTurn === playerIndex
                             ? "bg-green-500"
                             : "bg-red-500"
-                        }`}
+                        } active:scale-90`}
                         disabled={player.name === "Annihilus" || gameOver}
                       >
-                        {card?.name} (Attack: {card?.attack}, Defense:
+                        {card?.name} (Attack: {card?.attack}, Defense:{" "}
                         {card?.defense})
                       </button>
                     ))}
