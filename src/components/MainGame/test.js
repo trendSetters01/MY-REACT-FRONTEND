@@ -222,8 +222,12 @@ export default function TestGame({ accountAddress }) {
                     <div className="mt-2 items-center">
                       <img
                         src={`${playerIndex === 0 ? PlayerUrl : AIUrl}`}
-                        alt="Selected file"
-                        className="max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24"
+                        alt="Player Image"
+                        className={`max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24 transition duration-500 ease-in-out ${
+                          currentTurn === playerIndex
+                            ? "transform scale-110"
+                            : ""
+                        }`}
                       />
                     </div>
                     <h2 className="text-md font-bold">{`${
