@@ -96,7 +96,6 @@ export default function TestGame({ accountAddress }) {
     },
   ]);
   const [currentTurn, setCurrentTurn] = useState(0); // Index of the current player
-  const [selectedCard, setSelectedCard] = useState(null); // State for selected card
   const [gameOver, setGameOver] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const [winner, setWinner] = useState(null);
@@ -206,34 +205,48 @@ export default function TestGame({ accountAddress }) {
         <div>
           {!gameOver &&
             players.map((player, playerIndex) => (
-              <div
-                className="flex flex-col items-center justify-center"
-                key={playerIndex}
-              >
-                <h2>
-                  {player.name} - Shields: {player.shields}
-                </h2>
-                <div className="flex flex-row items-center justify-center">
-                  {player.hand.map((card, cardIndex) => (
-                    <button
-                      key={cardIndex}
-                      onClick={() => handleCardClick(playerIndex, cardIndex)}
-                      className={`border m-2 p-2 ${
-                        // player.name === "AI"
-                        //   ? "bg-red-500"
-                        //   :
-                        currentTurn === playerIndex
-                          ? "bg-green-500"
-                          : "bg-red-500"
-                      }`}
-                      // disabled={gameOver}
-                      disabled={player.name === "AI" || gameOver}
-                    >
-                      {card?.name} (Attack: {card?.attack}, Defense:
-                      {card?.defense})
-                    </button>
-                  ))}
+              <div>
+                <div
+                  className="flex flex-col items-center justify-center"
+                  key={playerIndex}
+                >
+                  <div
+                    className={`${
+                      playerIndex === 0
+                        ? "bg-yellow-500 rounded-md px-4 py-1 shadow-lg"
+                        : "bg-purple-500 rounded-md px-4 py-1 shadow-lg"
+                    }`}
+                  >
+                    <h2 className="text-lg font-bold">{`${
+                      playerIndex === 0 ? "You" : "AI"
+                    }`}</h2>
+                    <p className="text-2xl">
+                      Shields:{" "}
+                      {playerIndex === 0
+                        ? players[0].shields
+                        : players[1].shields}
+                    </p>
+                  </div>
+                  <div className="flex flex-row items-center justify-center">
+                    {player.hand.map((card, cardIndex) => (
+                      <button
+                        key={cardIndex}
+                        onClick={() => handleCardClick(playerIndex, cardIndex)}
+                        className={`border m-2 p-2 ${
+                          currentTurn === playerIndex
+                            ? "bg-green-500"
+                            : "bg-red-500"
+                        }`}
+                        disabled={player.name === "AI" || gameOver}
+                      >
+                        {card?.name} (Attack: {card?.attack}, Defense:
+                        {card?.defense})
+                      </button>
+                    ))}
+                  </div>
                 </div>
+
+                {playerIndex === 0 && <hr className="m-2" />}
               </div>
             ))}
         </div>
