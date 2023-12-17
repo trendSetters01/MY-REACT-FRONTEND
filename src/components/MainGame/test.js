@@ -176,7 +176,9 @@ export default function TestGame({ accountAddress }) {
   useEffect(() => {
     if (currentTurn === 1 && !gameOver) {
       const cardIndex = aiSelectCard(players[1].hand);
-      handleCardClick(1, cardIndex);
+      setTimeout(() => {
+        handleCardClick(1, cardIndex);
+      }, 3000);
     }
   }, [currentTurn, players, gameOver, turnCount]);
 
@@ -224,8 +226,8 @@ export default function TestGame({ accountAddress }) {
                           ? "bg-green-500"
                           : "bg-red-500"
                       }`}
-                      disabled={gameOver}
-                      // disabled={player.name === "AI" || gameOver}
+                      // disabled={gameOver}
+                      disabled={player.name === "AI" || gameOver}
                     >
                       {card?.name} (Attack: {card?.attack}, Defense:
                       {card?.defense})
@@ -235,7 +237,7 @@ export default function TestGame({ accountAddress }) {
               </div>
             ))}
         </div>
-        {turnCount < 24 && (
+        {turnCount <= 24 && (
           <div className="flex flex-col items-center text-white">
             <div className="mb-2">Round Count: {turnCount}</div>
           </div>
