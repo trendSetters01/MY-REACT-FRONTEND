@@ -1,6 +1,6 @@
 // Component to handle reward distribution
 import React, { useState, useContext, useRef } from "react";
-import { algodClient } from "../../algorand/config.js";
+import { algodClient, algoIndexerClient } from "../../algorand/config.js";
 import countPhntmNfts from "../../algorand/countPHNTMNFTs.js";
 import { send } from "../../algorand/transactionHelpers/send.js";
 import { optIn } from "../../algorand/opt-in.js";
@@ -21,7 +21,7 @@ export default function RewardComponent({ accountAddress }) {
 
   const peraWallet = useContext(PeraWalletContext);
   const phantomsHoldingAddress =
-    "XGJS5VTFTVB3MJDQGXH4Y4M6NYDYEK4OZFF6NIVUTIBS52OTLW2N5CYM2Y"
+    "XGJS5VTFTVB3MJDQGXH4Y4M6NYDYEK4OZFF6NIVUTIBS52OTLW2N5CYM2Y";
 
   function calculateRewards(baseReward, nftCount) {
     let multiplier = 1;
@@ -39,9 +39,7 @@ export default function RewardComponent({ accountAddress }) {
   async function handleOptIn() {
     setStatus("Opt-in Processing...");
     try {
-      const assetID = await getRandomNFTAssetId(
-        phantomsHoldingAddress
-      );
+      const assetID = await getRandomNFTAssetId(phantomsHoldingAddress);
 
       const txn = await optIn(
         accountAddress, //"1276228104"

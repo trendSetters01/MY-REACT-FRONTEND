@@ -3,11 +3,13 @@ import { algodClient } from "../../algorand/config.js";
 import checkTransactionStatus from "../../algorand/checkTransactionStatus.js";
 import { PeraWalletContext } from "../PeraWalletContext";
 import { send } from "../../algorand/transactionHelpers/send.js";
+import AssetScrolling from "../AssetScrolling/index.js";
 
 export default function DepositComponent({ onDepositSuccess, accountAddress }) {
   const [depositAmount, setDepositAmount] = useState(""); // Default deposit amount
   const [note, setNote] = useState("");
   const [status, setStatus] = useState("");
+  const [showComponent, setShowComponent] = useState(false);
 
   const peraWallet = useContext(PeraWalletContext);
   const phantomsHoldingAddress =
@@ -31,7 +33,7 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
     }
 
     try {
-      setStatus("Initiating deposit...");
+      setStatus("Processing your deposit. Please wait...");
       const txn = await send(
         accountAddress,
         phantomsHoldingAddress,
@@ -72,35 +74,38 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <h1 className="text-4xl mb-4">Deposit Algo to Play</h1>
-      <p className="mb-4 w-80">
-        Get ready to join the fun and have a chance to win exciting prizes.
-      </p>
-      <label className="form-control w-full max-w-xs">
-        <input
-          type="text"
-          value={depositAmount}
-          onChange={(e) => setDepositAmount(e.target.value)}
-          placeholder="1 ALGO Required to Play"
-          className="mt-4 input input-bordered w-full max-w-xs text-black"
-        />
-      </label>
-      <label className="form-control w-full max-w-xs">
-        <input
-          type="text"
-          value={note}
-          onChange={(e) => setNote(e.target.value)}
-          placeholder="Add a note (optional)"
-          className="mt-4 input input-bordered w-full max-w-xs text-black"
-        />
-      </label>
-      <button
-        onClick={handleDeposit}
-        className="mt-4 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
-      >
-        Deposit
-      </button>
-      <p>{status}</p>
+      <AssetScrolling accountAddress={accountAddress} onImagesLoaded={() => setShowComponent(true)}/>
+      {showComponent && (<div>
+        <h1 className="text-4xl mt-2 mb-4">Deposit Algo to Play</h1>
+        <p className="mb-4 w-80">
+          Get ready to join the fun and have a chance to win any of the above NFts.
+        </p>
+        <label className="form-control w-full max-w-xs">
+          <input
+            type="text"
+            value={depositAmount}
+            onChange={(e) => setDepositAmount(e.target.value)}
+            placeholder="1 ALGO Required to Play"
+            className="mt-4 input input-bordered w-full max-w-xs text-black"
+          />
+        </label>
+        <label className="form-control w-full max-w-xs">
+          <input
+            type="text"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            placeholder="Add a note (optional)"
+            className="mt-4 input input-bordered w-full max-w-xs text-black"
+          />
+        </label>
+        <button
+          onClick={handleDeposit}
+          className="mt-4 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
+        >
+          Deposit
+        </button>
+        <p>{status}</p>
+      </div>)}
     </div>
   );
 }
