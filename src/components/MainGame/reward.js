@@ -11,10 +11,12 @@ import { PeraWalletContext } from "../PeraWalletContext";
 
 export default function RewardComponent({ accountAddress }) {
   const [status, setStatus] = useState("");
+  const [assetID, setAssetID] = useState("");
   const [transactionId, setTransactionId] = useState(null);
   const [showMsg, setShowMsg] = useState(false);
   const [rewardAmount, setRewardAmount] = useState(0);
   const [showRewardButton, setshowRewardButton] = useState(true);
+  const [showOptInButton, setshowOptInButton] = useState(true);
   const [nftCount, setNftCount] = useState(0);
   const [boostMultiplier, setBoostMultiplier] = useState(1);
   const BASE_PHNTM_REWARD = 0;
@@ -51,13 +53,14 @@ export default function RewardComponent({ accountAddress }) {
         .do();
       console.log("Transaction ID:", txConfirmation.txId);
       setStatus(
-        "Opt-in successful, please wait for the rewards txn to be prompted."
+        "Opt-in successful, please click the claim reward button to initiate the transfer process."
       );
-      return assetID;
+      setshowOptInButton(false);
+      setAssetID(assetID);
     } catch (error) {
       console.log("Couldn't sign Opt-in txn", error);
       setStatus("Opt-in failed");
-      return null;
+      setAssetID(null);
     }
   }
 
@@ -73,12 +76,10 @@ export default function RewardComponent({ accountAddress }) {
 
       // reward distribution logic
       setStatus("Initiating reward distribution...");
-      const rewardAssetId = await handleOptIn();
-
       setTimeout(async () => {
         const optInStatus = await checkOptIn(
           accountAddress, //"1276228104"
-          rewardAssetId
+          assetID
         );
         console.log("Opt-in status:", optInStatus);
         if (optInStatus) {
@@ -86,7 +87,7 @@ export default function RewardComponent({ accountAddress }) {
             phantomsHoldingAddress,
             accountAddress,
             totalPhantomTokenConversion,
-            rewardAssetId, //"1276228104", // for phntm thnx token
+            assetID, //"1276228104", // for phntm thnx token
             "Thank you for testing the game!"
           );
 
@@ -121,14 +122,25 @@ export default function RewardComponent({ accountAddress }) {
 
   return (
     <div className="flex flex-col items-center justify-center mb-4">
-      <button
-        onClick={handleGameWin}
-        className="mt-4 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
-        disabled={!showRewardButton}
-      >
-        Claim Reward
-      </button>
-      <p>{status}</p>
+      <div class="flex flex-col items-center">
+        <button
+          style={{ paddingBottom: "4em" }}
+          onClick={handleOptIn}
+          className="mt-4 input-md bg-gradient-to-r from-yellow-500 to-orange-400 hover:from-orange-400 hover:to-yellow-500 rounded-md"
+          disabled={!showOptInButton}
+        >
+          <p>Opt In </p>
+          <p>To Receive Reward</p>
+        </button>
+        <button
+          onClick={handleGameWin}
+          className="mt-4 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
+          disabled={!showRewardButton}
+        >
+          Claim Reward
+        </button>
+        <p className="p-4 mt-4">{status}</p>
+      </div>
       {transactionId && (
         <a
           href={`https://algoexplorer.io/tx/${transactionId}`}
