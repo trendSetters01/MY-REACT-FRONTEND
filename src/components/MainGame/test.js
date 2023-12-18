@@ -179,7 +179,7 @@ export default function TestGame({ accountAddress }) {
       const cardIndex = aiSelectCard(players[1].hand);
 
       // Generate a random delay between 1 to 5 seconds
-      const delay = Math.random() * (5000 - 500) + 1000;
+      const delay = Math.random() * (3000 - 500) + 1000;
 
       setTimeout(() => {
         handleCardClick(1, cardIndex);
