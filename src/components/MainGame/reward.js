@@ -5,6 +5,7 @@ import countPhntmNfts from "../../algorand/countPHNTMNFTs.js";
 import { send } from "../../algorand/transactionHelpers/send.js";
 import { optIn } from "../../algorand/opt-in.js";
 import { checkOptIn } from "../../algorand/transactionHelpers/checkOptInStatus.js";
+import { getRandomNFTAssetId } from "../../algorand/transactionHelpers/getRandomNFTAssetId.js";
 
 import { PeraWalletContext } from "../PeraWalletContext";
 
@@ -19,6 +20,8 @@ export default function RewardComponent({ accountAddress }) {
   const BASE_PHNTM_REWARD = 0;
 
   const peraWallet = useContext(PeraWalletContext);
+  const phantomsHoldingAddress =
+    "XGJS5VTFTVB3MJDQGXH4Y4M6NYDYEK4OZFF6NIVUTIBS52OTLW2N5CYM2Y"
 
   function calculateRewards(baseReward, nftCount) {
     let multiplier = 1;
@@ -36,7 +39,14 @@ export default function RewardComponent({ accountAddress }) {
   async function handleOptIn() {
     setStatus("Opt-in Processing...");
     try {
-      const txn = await optIn(accountAddress, "1276228104");
+      const assetID = await getRandomNFTAssetId(
+        phantomsHoldingAddress
+      );
+
+      const txn = await optIn(
+        accountAddress, //"1276228104"
+        assetID
+      );
       const signedTx = await peraWallet.signTransaction([txn]);
       const txConfirmation = await algodClient
         .sendRawTransaction(signedTx)
@@ -45,9 +55,11 @@ export default function RewardComponent({ accountAddress }) {
       setStatus(
         "Opt-in successful, please wait for the rewards txn to be prompted."
       );
+      return assetID;
     } catch (error) {
       console.log("Couldn't sign Opt-in txn", error);
       setStatus("Opt-in failed");
+      return null;
     }
   }
 
@@ -57,25 +69,26 @@ export default function RewardComponent({ accountAddress }) {
       const nftCount = await countPhntmNfts(accountAddress);
       const rewardAmount = calculateRewards(BASE_PHNTM_REWARD, nftCount);
       const totalPhantomTokenConversion = 1; //parseFloat(rewardAmount) * 100000000;
-      const phntmTokenAddress =
-        "JUXKRQVHDITUMMZHIOH2JVNEOGZJXKPS2DHS5OSH6MAE36RIV2FXKRKV2Q"; // PHNTM token address
 
       setNftCount(nftCount);
       setRewardAmount(rewardAmount);
 
       // reward distribution logic
       setStatus("Initiating reward distribution...");
-      await handleOptIn();
+      const rewardAssetId = await handleOptIn();
 
       setTimeout(async () => {
-        const optInStatus = await checkOptIn(accountAddress, "1276228104");
+        const optInStatus = await checkOptIn(
+          accountAddress, //"1276228104"
+          rewardAssetId
+        );
         console.log("Opt-in status:", optInStatus);
         if (optInStatus) {
           const txn = await send(
-            phntmTokenAddress,
+            phantomsHoldingAddress,
             accountAddress,
             totalPhantomTokenConversion,
-            "1276228104", // for phntm thnx token
+            rewardAssetId, //"1276228104", // for phntm thnx token
             "Thank you for testing the game!"
           );
 

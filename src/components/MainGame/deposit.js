@@ -20,8 +20,8 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
   };
 
   const handleDeposit = async () => {
-    if (depositAmount !== "0") {
-      setStatus("Please enter a valid deposit amount. (0 ALGO Required)");
+    if (depositAmount !== "1") {
+      setStatus("Please enter a valid deposit amount. (1 ALGO Required)");
       setTimeout(() => {
         setDepositAmount("");
         setNote("");
@@ -81,7 +81,7 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
           type="text"
           value={depositAmount}
           onChange={(e) => setDepositAmount(e.target.value)}
-          placeholder="0 ALGO Required (For testing purposes)"
+          placeholder="1 ALGO Required (For testing purposes)"
           className="mt-4 input input-bordered w-full max-w-xs text-black"
         />
       </label>
