@@ -81,7 +81,7 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
           type="text"
           value={depositAmount}
           onChange={(e) => setDepositAmount(e.target.value)}
-          placeholder="1 ALGO Required (For testing purposes)"
+          placeholder="1 ALGO Required to Play"
           className="mt-4 input input-bordered w-full max-w-xs text-black"
         />
       </label>
