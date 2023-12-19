@@ -82,10 +82,11 @@ export default function RewardComponent({ accountAddress }) {
       setTimeout(async () => {
         // opt out of the rewarded asset if amount of that asset held is zero
         await autoOptOutRewardedAsset(assetID);
-        setShowLoader(false);
-        // setTransactionId(txConfirmation.txId);
-        setStatus(`Reward distribution completed`);
       }, 10000);
+
+      setShowLoader(false);
+      // setTransactionId(txConfirmation.txId);
+      setStatus(`Reward distribution completed`);
 
       if (rewardAmount > 0) {
         setShowMsg(true);
