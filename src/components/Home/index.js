@@ -106,7 +106,7 @@ function Home({ accountAddress }) {
             </p>
             <p>
               <a
-                href="https://algoexplorer.io/asset/1224920582"
+                href="https://algoexplorer.io/asset/1279721720"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:underline dark:text-blue-400"
@@ -124,7 +124,7 @@ function Home({ accountAddress }) {
             <div className="dark:text-gray-300">
               <p>
                 <strong>
-                  Tokenomics Evaluation for 1 Million Token Supply
+                  Tokenomics Evaluation for 7 Million Token Supply
                 </strong>
               </p>
               <p>
@@ -177,15 +177,15 @@ function Home({ accountAddress }) {
               </p>
               <br />
               <p>
-                <strong>Distribution for 1 Million Token Supply:</strong>
+                <strong>Distribution for 7 Million Token Supply:</strong>
               </p>
               <ul>
-                <li>Community Fund: 400,000 tokens (40%)</li>
-                <li>Staking Rewards: 200,000 tokens (20%)</li>
-                <li>Team & Advisors: 150,000 tokens (15%)</li>
-                <li>Initial Distribution: 100,000 tokens (10%)</li>
-                <li>Reserve: 100,000 tokens (10%)</li>
-                <li>Partnerships: 50,000 tokens (5%)</li>
+                <li>Community Fund: 2,800,000 tokens (40%)</li>
+                <li>Staking Rewards: 1,400,000 tokens (20%)</li>
+                <li>Team & Advisors: 1,050,000 tokens (15%)</li>
+                <li>Initial Distribution: 700,000 tokens (10%)</li>
+                <li>Reserve: 700,000 tokens (10%)</li>
+                <li>Partnerships: 350,000 tokens (5%)</li>
               </ul>
             </div>
           </section>
