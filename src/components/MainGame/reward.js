@@ -1,10 +1,9 @@
 // Component to handle reward distribution
-import React, { useState, useContext, useRef } from "react";
-import { algodClient, algoIndexerClient } from "../../algorand/config.js";
+import React, { useState, useContext } from "react";
+import { algodClient } from "../../algorand/config.js";
 import countPhntmNfts from "../../algorand/countPHNTMNFTs.js";
 import { send } from "../../algorand/transactionHelpers/send.js";
 import { optIn } from "../../algorand/opt-in.js";
-import { checkOptIn } from "../../algorand/transactionHelpers/checkOptInStatus.js";
 import { getRandomNFTAssetId } from "../../algorand/transactionHelpers/getRandomNFTAssetId.js";
 
 import { PeraWalletContext } from "../PeraWalletContext";
@@ -76,45 +75,34 @@ export default function RewardComponent({ accountAddress }) {
 
       // reward distribution logic
       setStatus("Initiating reward distribution...");
-      setTimeout(async () => {
-        const optInStatus = await checkOptIn(
-          accountAddress, //"1276228104"
-          assetID
-        );
-        console.log("Opt-in status:", optInStatus);
-        if (optInStatus) {
-          const txn = await send(
-            phantomsHoldingAddress,
-            accountAddress,
-            totalPhantomTokenConversion,
-            assetID, //"1276228104", // for phntm thnx token
-            "Thank you for testing the game!"
-          );
+      const txn = await send(
+        phantomsHoldingAddress,
+        accountAddress,
+        totalPhantomTokenConversion,
+        assetID, //"1276228104", // for phntm thnx token
+        "Thank you for testing the game!"
+      );
 
-          const signedTx = await peraWallet.signTransaction([txn]);
-          const txConfirmation = await algodClient
-            .sendRawTransaction(signedTx)
-            .do();
+      const signedTx = await peraWallet.signTransaction([txn]);
+      const txConfirmation = await algodClient
+        .sendRawTransaction(signedTx)
+        .do();
 
-          console.log("Transaction ID:", txConfirmation.txId);
-          setTransactionId(txConfirmation.txId);
-          setStatus(`Reward distribution completed`);
-          if (rewardAmount > 0) {
-            setShowMsg(true);
-          }
-        } else {
-          setStatus("Opt-in failed");
-        }
+      console.log("Transaction ID:", txConfirmation.txId);
+      setTransactionId(txConfirmation.txId);
+      setStatus(`Reward distribution completed`);
+      if (rewardAmount > 0) {
+        setShowMsg(true);
+      }
 
-        setTimeout(() => {
-          setNftCount(0);
-          setRewardAmount(0);
-          setShowMsg(false);
-          setStatus("");
-          setTransactionId(null);
-          setBoostMultiplier(1);
-        }, 5000);
-      }, 10000);
+      setTimeout(() => {
+        setNftCount(0);
+        setRewardAmount(0);
+        setShowMsg(false);
+        setStatus("");
+        setTransactionId(null);
+        setBoostMultiplier(1);
+      }, 5000);
     } catch (error) {
       console.error("Error handling game win:", error);
     }
