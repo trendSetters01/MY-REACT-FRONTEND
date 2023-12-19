@@ -92,27 +92,27 @@ export default function RewardComponent({ accountAddress }) {
         .do();
 
       console.log("Transaction ID:", txConfirmation.txId);
-
       setTimeout(async () => {
         // opt out of the rewarded asset if amount of that asset held is zero
         await autoOptOutRewardedAsset(assetID);
-        setShowLoader(false);
-        setTransactionId(txConfirmation.txId);
-        setStatus(`Reward distribution completed`);
-
-        if (rewardAmount > 0) {
-          setShowMsg(true);
-        }
-
-        setTimeout(() => {
-          setNftCount(0);
-          setRewardAmount(0);
-          setShowMsg(false);
-          setStatus("");
-          setTransactionId(null);
-          setBoostMultiplier(1);
-        }, 5000);
       }, 10000);
+
+      setShowLoader(false);
+      setTransactionId(txConfirmation.txId);
+      setStatus(`Reward distribution completed`);
+
+      if (rewardAmount > 0) {
+        setShowMsg(true);
+      }
+
+      setTimeout(() => {
+        setNftCount(0);
+        setRewardAmount(0);
+        setShowMsg(false);
+        // setStatus("");
+        // setTransactionId(null);
+        // setBoostMultiplier(1);
+      }, 5000);
     } catch (error) {
       console.error("Error handling game win:", error);
     }
