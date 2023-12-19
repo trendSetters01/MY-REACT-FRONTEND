@@ -4,7 +4,7 @@ import Confetti from "react-confetti";
 import AIUrl from "../../images/c7d87778-7d09-4f27-98df-683065f9d9ef.webp";
 import PlayerUrl from "../../images/405c177eb8e44ce2c32cf891b78f7125.webp";
 
-export default function TestGame({ accountAddress }) {
+export default function Cardsrpg({ accountAddress }) {
   // Example full deck
   const fullDeck = [
     { name: "Guardian", attack: 2, defense: 1, ability: "protect" },

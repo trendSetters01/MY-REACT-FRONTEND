@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import DepositComponent from "./deposit.js";
-import TestGame from "./test.js";
+import Cardsrpg from "./cardsrpg.js";
 
 export default function MainGame({ accountAddress }) {
   const [isDepositConfirmed, setIsDepositConfirmed] = useState(false);
@@ -24,7 +24,7 @@ export default function MainGame({ accountAddress }) {
               onDepositSuccess={() => setIsDepositConfirmed(true)}
             />
           ) : (
-            <TestGame accountAddress={accountAddress} />
+            <Cardsrpg accountAddress={accountAddress} />
           )}
         </div>
       )}
