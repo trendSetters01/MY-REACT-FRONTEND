@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import DepositComponent from "./deposit.js";
-import GameComponent from "./game.js";
 import TestGame from "./test.js";
 
 export default function MainGame({ accountAddress }) {

@@ -7,9 +7,11 @@ import { optIn } from "../../algorand/opt-in.js";
 import { getRandomNFTAssetId } from "../../algorand/transactionHelpers/getRandomNFTAssetId.js";
 
 import { PeraWalletContext } from "../PeraWalletContext";
+import { autoOptOutRewardedAsset } from "../../algorand/opt-out.js";
 
 export default function RewardComponent({ accountAddress }) {
   const [status, setStatus] = useState("");
+  const [showLoader, setShowLoader] = useState(false);
   const [assetID, setAssetID] = useState("");
   const [transactionId, setTransactionId] = useState(null);
   const [showMsg, setShowMsg] = useState(false);
@@ -65,6 +67,7 @@ export default function RewardComponent({ accountAddress }) {
 
   async function handleGameWin() {
     setshowRewardButton(false);
+    setShowLoader(true);
     try {
       const nftCount = await countPhntmNfts(accountAddress);
       const rewardAmount = calculateRewards(BASE_PHNTM_REWARD, nftCount);
@@ -89,20 +92,27 @@ export default function RewardComponent({ accountAddress }) {
         .do();
 
       console.log("Transaction ID:", txConfirmation.txId);
-      setTransactionId(txConfirmation.txId);
-      setStatus(`Reward distribution completed`);
-      if (rewardAmount > 0) {
-        setShowMsg(true);
-      }
 
-      setTimeout(() => {
-        setNftCount(0);
-        setRewardAmount(0);
-        setShowMsg(false);
-        setStatus("");
-        setTransactionId(null);
-        setBoostMultiplier(1);
-      }, 5000);
+      setTimeout(async () => {
+        // opt out of the rewarded asset if amount of that asset held is zero
+        await autoOptOutRewardedAsset(assetID);
+        setShowLoader(false);
+        setTransactionId(txConfirmation.txId);
+        setStatus(`Reward distribution completed`);
+
+        if (rewardAmount > 0) {
+          setShowMsg(true);
+        }
+
+        setTimeout(() => {
+          setNftCount(0);
+          setRewardAmount(0);
+          setShowMsg(false);
+          setStatus("");
+          setTransactionId(null);
+          setBoostMultiplier(1);
+        }, 5000);
+      }, 10000);
     } catch (error) {
       console.error("Error handling game win:", error);
     }
@@ -120,13 +130,29 @@ export default function RewardComponent({ accountAddress }) {
           <p>Opt In </p>
           <p>To Receive Reward</p>
         </button>
-        <button
-          onClick={handleGameWin}
-          className="mt-4 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
-          disabled={!showRewardButton}
-        >
-          Claim Reward
-        </button>
+        
+        {`${assetID}`.length > 0 && (
+          <button
+            onClick={handleGameWin}
+            className="mt-4 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
+            disabled={!showRewardButton}
+          >
+            Claim Reward
+          </button>
+        )}
+        {showLoader && (
+          <span className="mt-4 loading loading-spinner loading-lg text-white">
+            <div class="flex justify-center">
+              <svg
+                class="animate-spin h-5 w-5 mr-3 ..."
+                style={{ border: "5px solid white" }}
+                viewBox="0 0 24 24"
+              ></svg>
+              Processing ...
+            </div>
+          </span>
+        )}
+
         <p className="p-4 mt-4">{status}</p>
       </div>
       {transactionId && (
