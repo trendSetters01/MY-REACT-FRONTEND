@@ -296,7 +296,7 @@ export default function TestGame({ accountAddress }) {
                       <img
                         src={`${playerIndex === 0 ? PlayerUrl : AIUrl}`}
                         alt="Player Image"
-                        className={`max-w-xs rounded-lg h-12 sm:h-12 md:h-24 lg:h-24`}
+                        className={`max-w-xs rounded-lg h-12 sm:h-12 md:h-12 lg:h-12`}
                       />
                     </div>
                     <h2 className="text-md font-bold">{`${
