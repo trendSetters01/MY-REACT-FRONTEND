@@ -56,7 +56,7 @@ export default function RewardComponent({ accountAddress }) {
         assetID
       );
       // reward distribution logic
-      setStatus("Initiating reward distribution...");
+      setStatus("Initiating opt-in request..., please watch for wallet popup.");
       const signedTx = await peraWallet.signTransaction([optInTxn]);
 
       for (const signedTxnGroup of signedTx) {
@@ -65,11 +65,13 @@ export default function RewardComponent({ accountAddress }) {
           .do();
 
         console.log(`txns signed successfully! - txID: ${txId}`);
+        setStatus("IOpt in transaction sent successfully!");
         setTransactionId(txId);
       }
 
 
       setTimeout(async () => {
+        setStatus("Initiating reward distribution..., please watch for wallet popup.");
        const txConfirmation = await send(
           phantomsHoldingAddress,
           accountAddress,
