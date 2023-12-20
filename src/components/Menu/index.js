@@ -227,7 +227,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         src={mainGameImg}
                         alt={`main game`}
                       />
-                      Test Game
+                      Cards RPG
                     </Link>
                   </li>
                 </details>
