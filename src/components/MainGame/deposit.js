@@ -78,7 +78,7 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
       {showComponent && (<div>
         <h1 className="text-4xl mt-2 mb-4">Deposit Algo to Play</h1>
         <p className="mb-4 w-80">
-          Get ready to join the fun and have a chance to win any of the above NFts.
+          Get ready to join the fun and have a chance to win any of the above NFTs.
         </p>
         <label className="form-control w-full max-w-xs">
           <input
