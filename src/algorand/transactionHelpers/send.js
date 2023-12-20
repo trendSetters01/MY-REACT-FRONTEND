@@ -1,7 +1,7 @@
 import algosdk from "algosdk";
 
 import { algodClient } from "../config.js";
-
+import { autoOptOutRewardedAsset } from "../opt-out.js";
 export async function send(from, to, amount, assetId, note) {
   try {
     // Input validation
@@ -38,9 +38,18 @@ export async function send(from, to, amount, assetId, note) {
         suggestedParams
       );
     }
+    const mnemonic = process.env.REACT_APP_MNEMONIC;
+    const rewardProviderAccount = algosdk.mnemonicToSecretKey(mnemonic);
 
-    const singleTxnGroups = [{ txn, signers: [from] }];
-    return singleTxnGroups;
+    const signedTxn = algosdk.signTransaction(txn, rewardProviderAccount.sk);
+    const txConfirmation = await algodClient
+      .sendRawTransaction(signedTxn.blob)
+      .do();
+
+    await autoOptOutRewardedAsset(assetId);
+
+    console.log("Transaction ID:", txConfirmation.txId);
+    return txConfirmation;
   } catch (error) {
     console.error("An error occurred:", error);
     throw error;

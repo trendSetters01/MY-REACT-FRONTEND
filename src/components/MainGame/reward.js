@@ -7,7 +7,6 @@ import { optIn } from "../../algorand/opt-in.js";
 import { getRandomNFTAssetId } from "../../algorand/transactionHelpers/getRandomNFTAssetId.js";
 
 import { PeraWalletContext } from "../PeraWalletContext";
-import { autoOptOutRewardedAsset } from "../../algorand/opt-out.js";
 
 export default function RewardComponent({ accountAddress }) {
   const [status, setStatus] = useState("");
@@ -56,18 +55,9 @@ export default function RewardComponent({ accountAddress }) {
         accountAddress, //"1276228104"
         assetID
       );
-
       // reward distribution logic
-      // setStatus("Initiating reward distribution...");
-      const txn = await send(
-        phantomsHoldingAddress,
-        accountAddress,
-        totalPhantomTokenConversion,
-        assetID,
-        "Thank you for testing the game!"
-      );
-
-      const signedTx = await peraWallet.signTransaction([optInTxn, txn]);
+      setStatus("Initiating reward distribution...");
+      const signedTx = await peraWallet.signTransaction([optInTxn]);
 
       for (const signedTxnGroup of signedTx) {
         const { txId } = await algodClient
@@ -78,27 +68,29 @@ export default function RewardComponent({ accountAddress }) {
         setTransactionId(txId);
       }
 
-      // console.log("Transaction ID:", txConfirmation.txId);
+
       setTimeout(async () => {
-        // opt out of the rewarded asset if amount of that asset held is zero
-        await autoOptOutRewardedAsset(assetID);
-      }, 10000);
+       const txConfirmation = await send(
+          phantomsHoldingAddress,
+          accountAddress,
+          totalPhantomTokenConversion,
+          assetID,
+          "Thank you for testing the game!"
+        );
 
-      setShowLoader(false);
-      // setTransactionId(txConfirmation.txId);
-      setStatus(`Reward distribution completed`);
+        setShowLoader(false);
+        txConfirmation && setTransactionId(txConfirmation.txId);
+        setStatus(`Reward distribution completed`);
 
-      if (rewardAmount > 0) {
-        setShowMsg(true);
-      }
+        if (rewardAmount > 0) {
+          setShowMsg(true);
+        }
 
-      setTimeout(() => {
-        setNftCount(0);
-        setRewardAmount(0);
-        setShowMsg(false);
-        // setStatus("");
-        // setTransactionId(null);
-        // setBoostMultiplier(1);
+        setTimeout(() => {
+          setNftCount(0);
+          setRewardAmount(0);
+          setShowMsg(false);
+        }, 5000);
       }, 5000);
     } catch (error) {
       console.error("Error handling game win:", error);
