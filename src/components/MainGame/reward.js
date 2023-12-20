@@ -99,7 +99,7 @@ export default function RewardComponent({ accountAddress }) {
 
   return (
     <div className="flex flex-col items-center justify-center mb-4">
-      <div class="flex flex-col items-center">
+      <div className="flex flex-col items-center">
         <button
           onClick={handleGameWin}
           className="mt-8 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
@@ -109,9 +109,9 @@ export default function RewardComponent({ accountAddress }) {
         </button>
         {showLoader && (
           <span className="mt-4 loading loading-spinner loading-lg text-white">
-            <div class="flex justify-center">
+            <div className="flex justify-center">
               <svg
-                class="animate-spin h-5 w-5 mr-3 ..."
+                className="animate-spin h-5 w-5 mr-3 ..."
                 style={{ border: "5px solid white" }}
                 viewBox="0 0 24 24"
               ></svg>
