@@ -2,7 +2,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { algodClient } from "../../algorand/config.js";
 import countPhntmNfts from "../../algorand/countPHNTMNFTs.js";
-import { send } from "../../algorand/transactionHelpers/send.js";
+import { send } from "../../algorand/transactionHelpers/sendReward.js";
 import { optIn } from "../../algorand/opt-in.js";
 import { getRandomNFTAssetId } from "../../algorand/transactionHelpers/getRandomNFTAssetId.js";
 
