@@ -7,6 +7,7 @@ function Home({ accountAddress }) {
   const [accountData, setAccountData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState("introduction");
 
   useEffect(() => {
     if (accountAddress) {
@@ -18,32 +19,51 @@ function Home({ accountAddress }) {
     setLoading(true);
     try {
       const response = await getUserTokenHolding(accountAddress);
-      console.log(response);
-      const data = response;
-      if (data.account) {
-        setAccountData(data.account);
-      } else {
-        setError(data.message);
-      }
+      setAccountData(response.account ? response.account : null);
+      setError(response.message ? response.message : null);
       setLoading(false);
     } catch (err) {
-      console.error("Failed to fetch account data:", err);
       setError("Error fetching account data. Please try again.");
       setLoading(false);
     }
   };
 
   return (
-    <div className="container mx-auto p-4 text-white">
-      <header className="mb-8 text-center dark:text-white">
-        {/* Logo and Title */}
-        <h1 className="text-4xl font-bold mb-2">Phantoms</h1>
-        <p className="text-lg">Join us on an exciting journey!</p>
+    <div className="container mx-auto px-4 py-8 text-white bg-gradient-to-r from-blue-500 to-purple-600">
+      <header className="mb-12 text-center">
+        <h1 className="text-6xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-blue-500">
+          Phantoms
+        </h1>
+        <p className="text-xl font-light text-gray-100">
+          Join us on an exciting journey!
+        </p>
       </header>
       <main>
-        <div className="tab-container text-black space-y-8">
-          {/* Introduction Section */}
-          <section className="introduction bg-gray-400 p-4 shadow rounded-lg dark:bg-gray-700">
+        <div className="tabs flex justify-center mb-4">
+          {["introduction", "roadmap", "nftBenefits", "tokenomics"].map(
+            (tab) => (
+              <button
+                style={{ marginBottom: "2em" }}
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-2 mx-2 text-sm font-semibold rounded-lg ${
+                  activeTab === tab
+                    ? "bg-gradient-to-r from-black to-gray-500 hover:from-blue-400 hover:to-pink-500 text-white"
+                    : "text-gray-300"
+                }`}
+              >
+                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              </button>
+            )
+          )}
+        </div>
+
+        {activeTab === "introduction" && (
+          <section
+            style={{ height: "40vh" }}
+            className="bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg"
+          >
+            {/* Introduction content */}
             <h2 className="text-2xl font-semibold mb-4 dark:text-white">
               Welcome to Phantoms!
             </h2>
@@ -53,12 +73,13 @@ function Home({ accountAddress }) {
               project evolves!
             </p>
           </section>
+        )}
 
-          {/* Roadmap Section */}
-          <Roadmap />
+        {activeTab === "roadmap" && <Roadmap />}
 
-          {/* NFT Benefits Section */}
-          <section className="nft-benefits text-black bg-gray-400 p-4 shadow rounded-lg dark:bg-gray-700 dark:text-white">
+        {activeTab === "nftBenefits" && (
+          <section className="nft-benefits bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
+            {/* NFT Benefits content */}
             <h2 className="text-2xl font-semibold mb-4">
               Exclusive Benefits with Phantom NFTs
             </h2>
@@ -93,9 +114,11 @@ function Home({ accountAddress }) {
               grow along with us. Stay tuned for more exciting benefits!
             </p>
           </section>
+        )}
 
-          {/* Explore Token Section */}
-          <section className="explore-token text-black bg-gray-400 p-4 shadow rounded-lg dark:bg-gray-700 dark:text-white">
+        {activeTab === "tokenomics" && (
+          <section className="tokenomics bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
+            {/* Tokenomics content */}
             <h2 className="text-2xl font-semibold mb-4">
               Explore Phantoms Token
             </h2>
@@ -104,7 +127,7 @@ function Home({ accountAddress }) {
               live statistics and transactions of Phantom tokens on
               AlgoExplorer.
             </p>
-            <p>
+            <p className="mt-2 mb-4">
               <a
                 href="https://algoexplorer.io/asset/1279721720"
                 target="_blank"
@@ -114,10 +137,7 @@ function Home({ accountAddress }) {
                 View Phantoms Token on AlgoExplorer
               </a>
             </p>
-          </section>
 
-          {/* Tokenomics Section */}
-          <section className="tokenomics text-black bg-gray-400 p-4 shadow rounded-lg dark:bg-gray-700 dark:text-white">
             <h2 className="text-2xl font-semibold mb-4">
               Initial Tokenomics Overview
             </h2>
@@ -127,72 +147,121 @@ function Home({ accountAddress }) {
                   Tokenomics Evaluation for 7 Million Token Supply
                 </strong>
               </p>
-              <p>
+              <p className="mt-2 mb-4">
                 Our approach to tokenomics is rooted in principles of scarcity,
                 precision, and community engagement. The initial supply of 1
                 million tokens introduces a sense of exclusivity while requiring
                 careful distribution and sensitivity to market dynamics.
               </p>
-              <p>
+              <p className="mt-2 mb-4">
                 <strong>1. Scarcity and Exclusivity:</strong> The limited supply
                 is designed to drive demand and value, leveraging psychological
                 principles of scarcity.
               </p>
-              <p>
+              <p className="mt-2 mb-4">
                 <strong>2. Precision in Distribution:</strong> Every token is
                 valuable, and distribution must be handled with fairness and
                 transparency to avoid centralization or undue influence.
               </p>
-              <p>
+              <p className="mt-2 mb-4">
                 <strong>3. Price Sensitivity:</strong> A smaller supply may lead
                 to higher price volatility, attracting attention from traders
                 but also necessitating safeguards against market manipulation.
               </p>
-              <p>
+              <p className="mt-2 mb-4">
                 <strong>4. Liquidity Concerns:</strong> Strategies to ensure
                 ample liquidity will be crucial for market stability, especially
                 in the early stages after launch.
               </p>
-              <p>
+              <p className="mt-2 mb-4">
                 <strong>5. Engagement & Governance:</strong> Allocating a
                 significant portion for community initiatives underscores our
                 commitment to decentralized governance and active community
                 involvement.
               </p>
-              <p>
+              <p className="mt-2 mb-4">
                 <strong>6. Staking Dynamics:</strong> Balanced staking
                 incentives are intended to encourage holding, contributing to
                 price stability.
               </p>
-              <p>
+              <p className="mt-2 mb-4">
                 <strong>7. Long-Term Vision & Adjustability:</strong> We
                 anticipate the need for adaptability in our tokenomics to
                 respond to evolving market conditions and community feedback.
               </p>
-              <p>
+              <p className="mt-2 mb-4">
                 <strong>Conclusion:</strong> Our token supply cap is a
                 foundational aspect of our project's identity. The outlined
                 tokenomics are initial and subject to refinement in
                 collaboration with our community.
               </p>
               <br />
-              <p>
+              <p className="text-xl font-semibold mb-4">
                 <strong>Distribution for 7 Million Token Supply:</strong>
               </p>
-              <ul>
-                <li>Community Fund: 2,800,000 tokens (40%)</li>
-                <li>Staking Rewards: 1,400,000 tokens (20%)</li>
-                <li>Team & Advisors: 1,050,000 tokens (15%)</li>
-                <li>Initial Distribution: 700,000 tokens (10%)</li>
-                <li>Reserve: 700,000 tokens (10%)</li>
-                <li>Partnerships: 350,000 tokens (5%)</li>
+              <ul className="grid grid-cols-3 gap-4">
+                <div>
+                  <li className="mt-2 mb-4">
+                    <StarIcon />
+                    Community Fund: 2,800,000 tokens (40%)
+                  </li>
+                </div>
+                <div>
+                  <li className="mt-2 mb-4">
+                    <StarIcon />
+                    Staking Rewards: 1,400,000 tokens (20%)
+                  </li>
+                </div>
+                <div>
+                  <li className="mt-2 mb-4">
+                    <StarIcon />
+                    Team & Advisors: 1,050,000 tokens (15%)
+                  </li>
+                </div>
+                <div>
+                  <li className="mt-2 mb-4">
+                    <StarIcon />
+                    Initial Distribution: 700,000 tokens (10%)
+                  </li>
+                </div>
+                <div>
+                  <li className="mt-2 mb-4">
+                    <StarIcon />
+                    Reserve: 700,000 tokens (10%)
+                  </li>
+                </div>
+                <div>
+                  <li className="mt-2 mb-4">
+                    <StarIcon />
+                    Partnerships: 350,000 tokens (5%)
+                  </li>
+                </div>
               </ul>
             </div>
           </section>
-        </div>
+        )}
       </main>
     </div>
   );
 }
+
+const StarIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="feather feather-star"
+    >
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21 12 17.77 5.82 21 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+    </svg>
+  );
+};
 
 export default Home;

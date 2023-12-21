@@ -71,31 +71,33 @@ const Roadmap = () => {
     },
     // Add more milestones as needed
   ];
+  const statusColors = {
+    completed: "from-green-500 to-green-800",
+    "in-progress": "from-yellow-500 to-yellow-800",
+    "in-future": "from-red-500 to-red-800",
+  };
+
   return (
-    <div className="my-10 p-4 text-black">
-      <h2 className="text-white text-2xl font-bold text-center mb-6">
-        Roadmap
-      </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="my-10 px-4 py-8 text-white bg-gradient-to-r from-black to-gray-500">
+      <h2 className="text-3xl font-bold text-center mb-8">Roadmap</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {milestones.map((milestone, index) => (
           <div
             key={index}
-            className="bg-gray-200 dark:bg-gray-400 p-4 rounded-lg shadow-md"
+            className={`rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 bg-gradient-to-br ${
+              statusColors[milestone.status]
+            }`}
           >
-            <h3 className="font-semibold text-lg">{milestone.title}</h3>
-            <p className="text-sm text-black">{milestone.date}</p>
-            <p>{milestone.description}</p>
-            <span
-              className={`text-xs font-bold py-1 px-2 rounded ${
-                milestone.status === "completed"
-                  ? "bg-green-200 text-green-800"
-                  : milestone.status === "in-progress"
-                  ? "bg-yellow-200 text-yellow-800"
-                  : "bg-blue-200 text-blue-800"
-              }`}
-            >
-              {milestone.status}
-            </span>
+            <div className="p-6">
+              <h3 className="font-semibold text-xl mb-2">{milestone.title}</h3>
+              <p className="text-sm mb-4">{milestone.date}</p>
+              <p className="mb-4">{milestone.description}</p>
+            </div>
+            <div className="px-6 py-2 bg-red bg-opacity-25">
+              <span className="text-xs font-bold py-1 px-2 rounded bg-white bg-opacity-50">
+                {milestone.status.toUpperCase()}
+              </span>
+            </div>
           </div>
         ))}
       </div>
