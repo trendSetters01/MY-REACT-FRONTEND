@@ -172,8 +172,8 @@ function Swap({ accountAddress }) {
 
   return (
     <div
-      style={{ height: "80vh" }}
-      className="flex flex-col items-center justify-center"
+      style={{ height: "100vh" }}
+      className="m-2 flex flex-col items-center justify-center"
     >
       {!accountAddress && (
         <h1 className="animate-pulse text-white">
