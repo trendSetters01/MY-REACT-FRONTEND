@@ -30,7 +30,10 @@ export default function Navbar() {
         <Menu setConnectedAccountAddress={setConnectedAccountAddress} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/swap" element={<Swap />} />
+          <Route
+            path="/swap"
+            element={<Swap accountAddress={connectedAccountAddress} />}
+          />
           <Route
             path="/cards-rpg"
             element={<MainGame accountAddress={connectedAccountAddress} />}

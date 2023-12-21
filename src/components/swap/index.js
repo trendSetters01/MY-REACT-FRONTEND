@@ -1,8 +1,19 @@
-import React, { useState, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useContext,
+} from "react";
 import CustomDropdown from "../customDropDown";
-function Swap() {
+import { WidgetController } from "@tinymanorg/tinyman-swap-widget-sdk";
+import { PeraWalletContext } from "../PeraWalletContext";
+
+function Swap({ accountAddress }) {
   const [firstAssetId, setFirstAssetId] = useState(0); // State for the first asset
   const [secondAssetId, setSecondAssetId] = useState(31566704); // State for the second asset
+  const [iframeUrl, setIframeUrl] = useState("");
+
   // Example list of assets (Replace this with your actual assets list)
   const baseAssetList = [
     { id: 312769, name: "Tether USDt" },
@@ -56,41 +67,141 @@ function Swap() {
     ...baseAssetList,
     // ... more assets ...
   ];
-  const widgetIframeUrl = useMemo(() => {
-    return `https://hipo.github.io/ui098gh4350u9h435y-swap-widget/?platformName=Phantoms&network=mainnet&themeVariables=eyJ0aGVtZSI6ImRhcmsiLCJjb250YWluZXJCdXR0b25CZyI6IiIsIndpZGdldEJnIjoiI2EwNTZmZiIsImhlYWRlckJ1dHRvbkJnIjoiIzgzNDZkMSIsImhlYWRlckJ1dHRvblRleHQiOiIjZmZmZmZmIiwiaGVhZGVyVGl0bGUiOiIjZmZmZmZmIiwiY29udGFpbmVyQnV0dG9uVGV4dCI6IiNmZmZmZmYiLCJpZnJhbWVCZyI6IiNGOEY4RjgiLCJib3JkZXJSYWRpdXNTaXplIjoibm9uZSIsInRpdGxlIjoiU3dhcCIsInNob3VsZERpc3BsYXlUaW55bWFuTG9nbyI6ZmFsc2V9&assetIn=${firstAssetId}&assetOut=${secondAssetId}&platformFeeAccount=JUXKRQVHDITUMMZHIOH2JVNEOGZJXKPS2DHS5OSH6MAE36RIV2FXKRKV2Q&platformFeePercentage=2.5`;
-  }, [firstAssetId, secondAssetId]); // Recompute the URL when asset IDs change
+
+  const peraWallet = useContext(PeraWalletContext);
+
+  // Keep a reference to the widget iframe, so we can get its contentWindow for messaging
+  const iframeRef = useRef(null);
+
+  /**
+   * If the callbacks have dependencies to state variables (in this case `account`),
+   * make sure to wrap them in useCallback to prevent infinite loops.
+   */
+  const onTxnSignRequest = useCallback(
+    async ({ txGroups }) => {
+      try {
+        // Sign the txns with the project's wallet integration
+        const txn = [...txGroups];
+        const signedTxns = await peraWallet.signTransaction(txn);
+
+        // Send the signed txns to the widget, so it can send them to the blockchain
+        WidgetController.sendMessageToWidget({
+          data: { message: { type: "TXN_SIGN_RESPONSE", signedTxns } },
+          targetWindow: iframeRef.current?.contentWindow,
+        });
+      } catch (error) {
+        // Let widget know that the txn signing failed
+        WidgetController.sendMessageToWidget({
+          data: { message: { type: "FAILED_TXN_SIGN", error } },
+          targetWindow: iframeRef.current?.contentWindow,
+        });
+      }
+    },
+    [accountAddress]
+  );
+  const onTxnSignRequestTimeout = useCallback(() => {
+    console.error("txn sign request timed out");
+  }, []);
+
+  const onSwapSuccess = useCallback(async (response) => {
+    console.log({ response });
+  }, []);
+
+  useEffect(() => {
+    // Update iframeUrl when asset IDs change
+    const newIframeUrl = WidgetController.generateWidgetIframeUrl({
+      platformName: "Phantom swap",
+      useParentSigner: true,
+      assetIds: [firstAssetId, secondAssetId],
+      network: "mainnet",
+      themeVariables: {
+        theme: "dark",
+        containerButtonBg: "#2cbca2",
+        widgetBg: "#a056ff",
+        headerButtonBg: "#8346d1",
+        headerButtonText: "#ffffff",
+        headerTitle: "#ffffff",
+        containerButtonText: "#ffffff",
+        iframeBg: "#F8F8F8",
+        borderRadiusSize: "none",
+        title: "Phantoms Swap",
+        shouldDisplayTinymanLogo: false,
+      },
+      accountAddress,
+      platformFeePercentage: 1,
+      platformFeeAccount:
+        "JUXKRQVHDITUMMZHIOH2JVNEOGZJXKPS2DHS5OSH6MAE36RIV2FXKRKV2Q",
+    });
+    setIframeUrl(newIframeUrl);
+  }, [
+    firstAssetId,
+    secondAssetId,
+    onSwapSuccess,
+    onTxnSignRequest,
+    onTxnSignRequestTimeout,
+  ]);
+
+  useEffect(() => {
+    // Setup widget controller and event listeners
+    const swapController = new WidgetController({
+      onTxnSignRequest,
+      onTxnSignRequestTimeout,
+      onSwapSuccess,
+    });
+
+    swapController.addWidgetEventListeners();
+
+    return () => {
+      swapController.removeWidgetEventListeners();
+    };
+  }, [onSwapSuccess, onTxnSignRequest, onTxnSignRequestTimeout]);
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <div className="grid grid-cols-2 gap-4">
-        {/* First Column for First Asset */}
-        <div>
-          <CustomDropdown
-            label="Swap From"
-            assets={assetsList}
-            onSelect={setFirstAssetId}
-          />
-        </div>
+    <div
+      style={{ height: "80vh" }}
+      className="flex flex-col items-center justify-center text-white"
+    >
+      {!accountAddress && (
+        <h1 className="animate-pulse text-white">
+          Connect your wallet to swap assets.
+        </h1>
+      )}
 
-        {/* Second Column for Second Asset */}
-        <div>
-          <CustomDropdown
-            label="Swap To Asset"
-            assets={assetsList1}
-            onSelect={setSecondAssetId}
-          />
-        </div>
+      {accountAddress && (
+        <div className="grid grid-cols-2 gap-4">
+          {/* First Column for First Asset */}
+          <div>
+            <CustomDropdown
+              label="Swap From"
+              assets={assetsList}
+              onSelect={setFirstAssetId}
+            />
+          </div>
 
-        {/* Third Column for Tinyman Widget */}
-        <div className="col-span-2">
-          <iframe
-            title="Phantoms swap widget"
-            src={`${widgetIframeUrl}}`}
-            style={{ width: 370, height: 440, border: "none", }}
-            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-          />
+          {/* Second Column for Second Asset */}
+          <div>
+            <CustomDropdown
+              label="Swap To Asset"
+              assets={assetsList1}
+              onSelect={setSecondAssetId}
+            />
+          </div>
+
+          {/* Third Column for Tinyman Widget */}
+          <div className="col-span-2">
+            <iframe
+              ref={iframeRef}
+              title={"tinyman swap widget"}
+              className={"swap-widget-test-page__content__iframe"}
+              style={{ width: 370, height: 440, border: "none" }}
+              src={iframeUrl}
+              sandbox={
+                "allow-same-origin allow-scripts allow-popups allow-forms"
+              }
+            />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
