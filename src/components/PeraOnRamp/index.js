@@ -36,7 +36,7 @@ export default function PeraOnRampComponent({ accountAddress }) {
           fill="currentColor"
         ></path>
       </svg>
-      Add funds via Pera Onramp
+      Add funds via Pera Onramp (Minimum 50 USD)
     </button>
   ) : (
     <></>
