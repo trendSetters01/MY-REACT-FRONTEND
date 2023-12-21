@@ -147,7 +147,7 @@ function Swap({ accountAddress }) {
         "JUXKRQVHDITUMMZHIOH2JVNEOGZJXKPS2DHS5OSH6MAE36RIV2FXKRKV2Q",
     });
     setIframeUrl(newIframeUrl);
-  }, [firstAssetId, secondAssetId]);
+  }, [firstAssetId, secondAssetId, accountAddress]);
 
   useEffect(() => {
     // Setup widget controller and event listeners
@@ -162,7 +162,7 @@ function Swap({ accountAddress }) {
     return () => {
       swapController.removeWidgetEventListeners();
     };
-  }, [onSwapSuccess, onTxnSignRequest, onTxnSignRequestTimeout]);
+  }, [onSwapSuccess, onTxnSignRequest, onTxnSignRequestTimeout, accountAddress]);
 
   return (
     <div
