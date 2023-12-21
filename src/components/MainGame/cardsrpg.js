@@ -16,23 +16,23 @@ export default function Cardsrpg({ accountAddress }) {
     { name: "Mystic", attack: 2, defense: 4, ability: "heal" },
     { name: "Warrior", attack: 4, defense: 2, ability: "rage" },
     { name: "Assassin", attack: 5, defense: 1, ability: "stealth" },
-    { name: "Elementalist", attack: 3, defense: 3, ability: "elementalShift" },
+    { name: "Elementalist", attack: 3, defense: 3, ability: "elemental shift" },
     { name: "Archer", attack: 3, defense: 2, ability: "pierce" },
-    { name: "Sorcerer", attack: 2, defense: 3, ability: "spellbind" },
+    { name: "Sorcerer", attack: 2, defense: 3, ability: "spell bind" },
     { name: "Necromancer", attack: 2, defense: 4, ability: "revive" },
-    { name: "Druid", attack: 1, defense: 5, ability: "nature'sGift" },
+    { name: "Druid", attack: 1, defense: 5, ability: "nature's gift" },
     { name: "Knight", attack: 4, defense: 3, ability: "fortify" },
     { name: "Rogue", attack: 4, defense: 1, ability: "backstab" },
     { name: "Cleric", attack: 1, defense: 4, ability: "bless" },
     { name: "Summoner", attack: 3, defense: 2, ability: "summon" },
     { name: "Alchemist", attack: 2, defense: 2, ability: "transmute" },
     { name: "Valkyrie", attack: 3, defense: 3, ability: "skyStrike" },
-    { name: "Monk", attack: 2, defense: 3, ability: "innerPeace" },
+    { name: "Monk", attack: 2, defense: 3, ability: "inner peace" },
     { name: "Barbarian", attack: 5, defense: 2, ability: "frenzy" },
-    { name: "Vampire", attack: 3, defense: 1, ability: "lifeDrain" },
-    { name: "Wizard", attack: 2, defense: 2, ability: "arcaneBlast" },
-    { name: "Templar", attack: 3, defense: 3, ability: "holyLight" },
-    { name: "Shaman", attack: 2, defense: 4, ability: "spiritTalk" },
+    { name: "Vampire", attack: 3, defense: 1, ability: "life drain" },
+    { name: "Wizard", attack: 2, defense: 2, ability: "arcane blast" },
+    { name: "Templar", attack: 3, defense: 3, ability: "holy light" },
+    { name: "Shaman", attack: 2, defense: 4, ability: "spirit talk" },
     { name: "Pirate", attack: 3, defense: 2, ability: "plunder" },
   ];
 
@@ -312,6 +312,7 @@ export default function Cardsrpg({ accountAddress }) {
                   <div className="flex flex-row items-center justify-center">
                     {player.hand.map((card, cardIndex) => (
                       <button
+                      style={{maxWidth: "40vw"}}
                         onClick={() => handleCardClick(playerIndex, cardIndex)}
                         className={`transform transition-all duration-300 border m-2 p-2 ${
                           currentTurn === playerIndex
@@ -320,8 +321,8 @@ export default function Cardsrpg({ accountAddress }) {
                         } active:scale-90`}
                         disabled={player.name === "Annihilus" || gameOver}
                       >
-                        {card?.name} (Attack: {card?.attack}, Defense:{" "}
-                        {card?.defense})
+                        {card?.name} (Attack: {card?.attack}, Defense:
+                        {card?.defense}), (ability: {card?.ability})
                       </button>
                     ))}
                   </div>
