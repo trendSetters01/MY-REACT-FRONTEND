@@ -77,7 +77,7 @@ export default function RewardComponent({ accountAddress }) {
           accountAddress,
           totalPhantomTokenConversion,
           assetID,
-          "Thank you for testing the game!"
+          "Thank you for playing the game! check us out https://phantoms-ashy.vercel.app/"
         );
 
         setShowLoader(false);
