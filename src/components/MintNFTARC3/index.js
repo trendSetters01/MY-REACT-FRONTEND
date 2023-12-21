@@ -194,8 +194,8 @@ export default function MintNFTARC3({ accountAddress }) {
         </h1>
       )}
 
-      {accountAddress && !showConfetti && (
-        <div className="w-full max-w-4xl bg-light rounded-lg p-4 text-white">
+      {!accountAddress && !showConfetti && (
+        <div className="w-full max-w-4xl bg-light rounded-lg p-4 text-gray">
           <FileUploadButton
             inputFile={inputFile}
             handleFileChange={handleFileChange}
@@ -219,6 +219,10 @@ export default function MintNFTARC3({ accountAddress }) {
       )}
     </div>
   );
+}
+
+function splitCamelCase(input) {
+  return input.replace(/([A-Z])/g, " $1").trim();
 }
 
 function FileUploadButton({
