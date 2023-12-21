@@ -322,7 +322,7 @@ export default function Cardsrpg({ accountAddress }) {
                         disabled={player.name === "Annihilus" || gameOver}
                       >
                         {card?.name} (Attack: {card?.attack}, Defense:
-                        {card?.defense}), (ability: {card?.ability})
+                        {card?.defense}, ability: {card?.ability})
                       </button>
                     ))}
                   </div>
