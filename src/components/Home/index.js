@@ -78,7 +78,10 @@ function Home({ accountAddress }) {
         {activeTab === "roadmap" && <Roadmap />}
 
         {activeTab === "nftBenefits" && (
-          <section className="nft-benefits bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
+          <section
+            style={{ height: "50vh" }}
+            className="nft-benefits bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg"
+          >
             {/* NFT Benefits content */}
             <h2 className="text-2xl font-semibold mb-4">
               Exclusive Benefits with Phantom NFTs
