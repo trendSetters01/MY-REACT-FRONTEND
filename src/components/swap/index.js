@@ -67,7 +67,9 @@ function Swap({ accountAddress }) {
     ...baseAssetList,
     // ... more assets ...
   ];
-
+  // State for asset lists
+  const [filteredAssetsList1, setFilteredAssetsList1] = useState(assetsList);
+  const [filteredAssetsList2, setFilteredAssetsList2] = useState(assetsList1);
   const peraWallet = useContext(PeraWalletContext);
 
   // Keep a reference to the widget iframe, so we can get its contentWindow for messaging
@@ -108,6 +110,18 @@ function Swap({ accountAddress }) {
   }, []);
 
   useEffect(() => {
+    // Filter the second asset list to exclude the first selected asset
+    const newFilteredAssetsList2 = assetsList1.filter(
+      (asset) => asset.id !== firstAssetId
+    );
+    setFilteredAssetsList2(newFilteredAssetsList2);
+
+    // Filter the first asset list to exclude the second selected asset
+    const newFilteredAssetsList1 = assetsList.filter(
+      (asset) => asset.id !== secondAssetId
+    );
+    setFilteredAssetsList1(newFilteredAssetsList1);
+
     // Update iframeUrl when asset IDs change
     const newIframeUrl = WidgetController.generateWidgetIframeUrl({
       platformName: "Phantom swap",
@@ -133,13 +147,7 @@ function Swap({ accountAddress }) {
         "JUXKRQVHDITUMMZHIOH2JVNEOGZJXKPS2DHS5OSH6MAE36RIV2FXKRKV2Q",
     });
     setIframeUrl(newIframeUrl);
-  }, [
-    firstAssetId,
-    secondAssetId,
-    onSwapSuccess,
-    onTxnSignRequest,
-    onTxnSignRequestTimeout,
-  ]);
+  }, [firstAssetId, secondAssetId]);
 
   useEffect(() => {
     // Setup widget controller and event listeners
@@ -159,7 +167,7 @@ function Swap({ accountAddress }) {
   return (
     <div
       style={{ height: "80vh" }}
-      className="flex flex-col items-center justify-center text-white"
+      className="flex flex-col items-center justify-center"
     >
       {!accountAddress && (
         <h1 className="animate-pulse text-white">
@@ -173,7 +181,7 @@ function Swap({ accountAddress }) {
           <div>
             <CustomDropdown
               label="Swap From"
-              assets={assetsList}
+              assets={filteredAssetsList1}
               onSelect={setFirstAssetId}
             />
           </div>
@@ -182,7 +190,7 @@ function Swap({ accountAddress }) {
           <div>
             <CustomDropdown
               label="Swap To Asset"
-              assets={assetsList1}
+              assets={filteredAssetsList2}
               onSelect={setSecondAssetId}
             />
           </div>
