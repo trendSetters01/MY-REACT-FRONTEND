@@ -201,7 +201,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/swap" className="dropdown-item">
+                    <Link to="/onramp-swap" className="dropdown-item">
                       <img
                         style={{
                           width: "25%",
@@ -212,7 +212,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         src={swapImg}
                         alt={`Swap`}
                       />
-                      Swap
+                     Onramp / Swap
                     </Link>
                   </li>
                   <li>

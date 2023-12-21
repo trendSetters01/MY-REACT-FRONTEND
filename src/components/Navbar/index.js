@@ -31,7 +31,7 @@ export default function Navbar() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route
-            path="/swap"
+            path="/onramp-swap"
             element={<Swap accountAddress={connectedAccountAddress} />}
           />
           <Route
