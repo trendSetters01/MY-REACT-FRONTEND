@@ -79,7 +79,7 @@ function Home({ accountAddress }) {
 
         {activeTab === "nftBenefits" && (
           <section
-            style={{ height: "50vh" }}
+            style={{ minHeight: "50vh" }}
             className="nft-benefits bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg"
           >
             {/* NFT Benefits content */}
