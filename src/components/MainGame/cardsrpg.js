@@ -8,7 +8,7 @@ export default function Cardsrpg({ accountAddress }) {
   // Example full deck
   const fullDeck = [
     { name: "Guardian", attack: 2, defense: 1, ability: "protect" },
-    { name: "Harbinger", attack: 1, defense: 5, ability: "draw two" },
+    { name: "Harbinger", attack: 1, defense: 5, ability: "shield booster" },
     { name: "Enchanter", attack: 3, defense: 3, ability: "boost" },
     { name: "Berserker", attack: 1, defense: 1, ability: "unblockable" },
     { name: "Sage", attack: 3, defense: 2, ability: "negate" },
