@@ -184,7 +184,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li> */}
               <li>
                 <details>
-                  <summary>Phantom Services</summary>
+                  <summary>Phantoms Services</summary>
                   <li>
                     <Link to="/mint-nft" className="dropdown-item">
                       <img
