@@ -8,6 +8,7 @@ import React, {
 import CustomDropdown from "../customDropDown";
 import { WidgetController } from "@tinymanorg/tinyman-swap-widget-sdk";
 import { PeraWalletContext } from "../PeraWalletContext";
+import PeraOnRampComponent from "../PeraOnRamp";
 
 function Swap({ accountAddress }) {
   const [firstAssetId, setFirstAssetId] = useState(0); // State for the first asset
@@ -162,7 +163,12 @@ function Swap({ accountAddress }) {
     return () => {
       swapController.removeWidgetEventListeners();
     };
-  }, [onSwapSuccess, onTxnSignRequest, onTxnSignRequestTimeout, accountAddress]);
+  }, [
+    onSwapSuccess,
+    onTxnSignRequest,
+    onTxnSignRequestTimeout,
+    accountAddress,
+  ]);
 
   return (
     <div
@@ -176,37 +182,42 @@ function Swap({ accountAddress }) {
       )}
 
       {accountAddress && (
-        <div className="grid grid-cols-2 gap-4">
-          {/* First Column for First Asset */}
-          <div>
-            <CustomDropdown
-              label="Swap From"
-              assets={filteredAssetsList1}
-              onSelect={setFirstAssetId}
-            />
+        <div>
+          <h1 className="mb-4 text-white text-2xl flex flex-col items-center justify-center">Swap Assets</h1>
+          <div className="flex flex-col items-center justify-center mb-4 text-white">
+            No Crypto ? get some using the on ramp button below.
+            <PeraOnRampComponent accountAddress={accountAddress} />
           </div>
-
-          {/* Second Column for Second Asset */}
-          <div>
-            <CustomDropdown
-              label="Swap To Asset"
-              assets={filteredAssetsList2}
-              onSelect={setSecondAssetId}
-            />
-          </div>
-
-          {/* Third Column for Tinyman Widget */}
-          <div className="col-span-2">
-            <iframe
-              ref={iframeRef}
-              title={"tinyman swap widget"}
-              className={"swap-widget-test-page__content__iframe"}
-              style={{ width: 370, height: 440, border: "none" }}
-              src={iframeUrl}
-              sandbox={
-                "allow-same-origin allow-scripts allow-popups allow-forms"
-              }
-            />
+          <div className="grid grid-cols-2 gap-4">
+            {/* First Column for First Asset */}
+            <div>
+              <CustomDropdown
+                label="Swap From"
+                assets={filteredAssetsList1}
+                onSelect={setFirstAssetId}
+              />
+            </div>
+            {/* Second Column for Second Asset */}
+            <div>
+              <CustomDropdown
+                label="Swap To Asset"
+                assets={filteredAssetsList2}
+                onSelect={setSecondAssetId}
+              />
+            </div>
+            {/* Third Column for Tinyman Widget */}
+            <div className="col-span-2">
+              <iframe
+                ref={iframeRef}
+                title={"tinyman swap widget"}
+                className={"swap-widget-test-page__content__iframe"}
+                style={{ width: 370, height: 440, border: "none" }}
+                src={iframeUrl}
+                sandbox={
+                  "allow-same-origin allow-scripts allow-popups allow-forms"
+                }
+              />
+            </div>
           </div>
         </div>
       )}
