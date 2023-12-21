@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import algosdk from "algosdk";
 import { algodClient } from "../../algorand/config.js";
 import noImg from "../../images/e23cb9ab-f01a-43af-a148-14bc98bd5ed2.webp";
+import beaverImg from "../../images/2NNzKEh4_400x400.jpg";
 
 // Function to fetch asset details including metadata
 const getAssetDetails = async (assetId) => {
@@ -15,10 +16,9 @@ const getAssetImageURL = async (assetId) => {
     const assetDetails = await getAssetDetails(assetId);
     // Assume that the IPFS URL is stored in the url field of the asset's params
 
-    console.log("Asset images:", assetDetails.params.url);
     const ipfsUrl = assetDetails.params.url;
     const ipfsHash = extractIPFSHash(ipfsUrl);
-    const imageURL = `https://ipfs.io/ipfs/${ipfsHash}`;
+    const imageURL = `${ipfsHash}`;
     return imageURL;
   } catch (error) {
     console.error("Error fetching asset image URL:", error);
@@ -29,20 +29,48 @@ const getAssetImageURL = async (assetId) => {
 // Extracts the IPFS hash from a given IPFS URL
 function extractIPFSHash(url) {
   // Check if the URL is an HTTP(s) IPFS gateway URL
+  
+  if (url.includes("beaver.algo")) {
+    return beaverImg;
+  }
+  if (url.includes("template-ipfs")) {
+    return noImg;
+  }
+
+  if (url.includes("QmdS1VN4KHam5qFdZco1xoC2yJ8QGX3DEpgRTV9NYNWAjP#arc3")) {
+    return "https://ipfs.algonft.tools/ipfs/QmNymJwwuv7dC4LJ7mPVBni4bYKgDpPvdXMrjEV4uEtCFj";
+  }
+  
+  if (url.includes("bafybeif6uo5bcvdv6mat64kjahkeevrhoeknceydwgnaktn5cthafw2tn4")) {
+    return "https://ipfs.algonft.tools/ipfs/QmNymJwwuv7dC4LJ7mPVBni4bYKgDpPvdXMrjEV4uEtCFj#i";
+  }
+  
+  if (url.includes("template-ipfs://{ipfscid:1:raw:reserve:sha2-256}")) {
+    return "https://ipfs.algonft.tools/ipfs/bafkreieah2q2dwmddpshgu6scqmnxcsq7pvdqycvix2hepdnwos44qswjy#arc3";
+  }
+
+  if (url.includes("ipfs.nftstorage.link")) {
+    return url;
+  }
+
+  if (url.includes("https://cdn.algoseas.io")) {
+    return url;
+  }
+
   if (url.startsWith("https://")) {
     const urlObj = new URL(url);
     const paths = urlObj.pathname.split("/");
     const hash = paths[paths.length - 1];
-    return hash;
+    return `https://ipfs.algonft.tools/ipfs/${hash}/`;
   }
   // Check if the URL is a direct IPFS protocol link
   else if (url.startsWith("ipfs://")) {
     const prefix = "ipfs://";
-    return url.slice(prefix.length);
+    return `https://ipfs.algonft.tools/ipfs/${url.slice(prefix.length)}/`;
   } else {
     // If the URL format is unknown, you may log it and return a default image or handle as needed
     console.error("Unknown URL format:", url);
-    return "default_image_hash"; // replace with actual default image hash or logic
+    return `https://ipfs.io/ipfs/default_image_hash/`; // replace with actual default image hash or logic
   }
 }
 
@@ -77,7 +105,7 @@ export default function AssetScrolling({ accountAddress, onImagesLoaded }) {
     };
 
     if (accountAddress) {
-    fetchAssets();
+      fetchAssets();
     }
   }, [accountAddress]);
 
@@ -119,9 +147,9 @@ export default function AssetScrolling({ accountAddress, onImagesLoaded }) {
     </div>
   ) : (
     <span className="loading loading-spinner loading-lg text-white">
-      <div class="flex justify-center">
+      <div className="flex justify-center">
         <svg
-          class="animate-spin h-5 w-5 mr-3 ..."
+          className="animate-spin h-5 w-5 mr-3 ..."
           style={{ border: "5px solid white" }}
           viewBox="0 0 24 24"
         ></svg>
