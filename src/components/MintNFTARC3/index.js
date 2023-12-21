@@ -194,7 +194,7 @@ export default function MintNFTARC3({ accountAddress }) {
         </h1>
       )}
 
-      {!accountAddress && !showConfetti && (
+      {accountAddress && !showConfetti && (
         <div className="w-full max-w-4xl bg-light rounded-lg p-4 text-gray">
           <FileUploadButton
             inputFile={inputFile}
