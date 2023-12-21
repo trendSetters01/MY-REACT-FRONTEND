@@ -22,7 +22,11 @@ export default function CustomDropdown({ label, assets, onSelect }) {
               onClick={() => onSelect(asset.id)}
             >
               <img
-                src={`https://asa-list.tinyman.org/assets/${asset.id}/icon.png`}
+                src={`${
+                  asset.id !== 1279721720
+                    ? `https://asa-list.tinyman.org/assets/${asset.id}/icon.png`
+                    : "https://ipfs.algonft.tools/ipfs/bafkreifx6d4xnb57sid73ujcfu22tzgvwem2yrujn3shizfwayho5gfuuy#i"
+                }`}
                 className="h-6 w-6 mr-2"
               />
               <span>{asset.name}</span>
