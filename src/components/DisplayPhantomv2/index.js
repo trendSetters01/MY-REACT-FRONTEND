@@ -40,7 +40,7 @@ function DisplayPhantomv2({ accountAddress }) {
     if (ipfsUrl.startsWith(prefix)) {
       return ipfsUrl.slice(prefix.length);
     } else {
-      throw new Error("Invalid IPFS URL");
+      // throw new Error("Invalid IPFS URL");
     }
   }
 
