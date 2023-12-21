@@ -57,14 +57,14 @@ function Swap({ accountAddress }) {
   const assetsList = [
     { id: 0, name: "ALGO" },
     { id: 31566704, name: "USDC" },
-    { id: 1224920582, name: "PHNTM" },
+    { id: 1279721720, name: "PHNTM" },
     ...baseAssetList,
     // ... more assets ...
   ];
   const assetsList1 = [
     { id: 31566704, name: "USDC" },
     { id: 0, name: "ALGO" },
-    { id: 1224920582, name: "PHNTM" },
+    { id: 1279721720, name: "PHNTM" },
     ...baseAssetList,
     // ... more assets ...
   ];
