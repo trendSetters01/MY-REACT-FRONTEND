@@ -186,36 +186,6 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                 <details>
                   <summary>Phantoms Services</summary>
                   <li>
-                    <Link to="/mint-nft" className="dropdown-item">
-                      <img
-                        style={{
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={mintNFTARC3Img}
-                        alt={`mint nft`}
-                      />
-                      Mint NFT
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/onramp-swap" className="dropdown-item">
-                      <img
-                        style={{
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={swapImg}
-                        alt={`Swap`}
-                      />
-                      Onramp / Swap
-                    </Link>
-                  </li>
-                  <li>
                     <details>
                       <summary>Play to Win</summary>
                       <li>
@@ -249,6 +219,36 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         </Link>
                       </li>
                     </details>
+                  </li>
+                  <li>
+                    <Link to="/mint-nft" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={mintNFTARC3Img}
+                        alt={`mint nft`}
+                      />
+                      Mint NFT
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/onramp-swap" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={swapImg}
+                        alt={`Swap`}
+                      />
+                      Onramp / Swap
+                    </Link>
                   </li>
                 </details>
               </li>
