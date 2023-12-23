@@ -15,6 +15,7 @@ import PeraWalletOptInOut from "../PeraWalletOptInOut";
 import MintNFTARC3 from "../MintNFTARC3";
 import MintNFTARC69 from "../MintNFTARC69";
 import MainGame from "../MainGame";
+import Blackjack from "../Blackjack";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("arc3");
@@ -33,6 +34,10 @@ export default function Navbar() {
           <Route
             path="/onramp-swap"
             element={<Swap accountAddress={connectedAccountAddress} />}
+          />
+          <Route
+            path="/blackjack"
+            element={<Blackjack accountAddress={connectedAccountAddress} />}
           />
           <Route
             path="/cards-rpg"

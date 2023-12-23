@@ -212,26 +212,47 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         src={swapImg}
                         alt={`Swap`}
                       />
-                     Onramp / Swap
+                      Onramp / Swap
                     </Link>
                   </li>
                   <li>
-                    <Link to="/cards-rpg" className="dropdown-item">
-                      <img
-                        style={{
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={mainGameImg}
-                        alt={`main game`}
-                      />
-                      Cards RPG
-                    </Link>
+                    <details>
+                      <summary>Play to Win</summary>
+                      <li>
+                        <Link to="/cards-rpg" className="dropdown-item">
+                          <img
+                            style={{
+                              width: "25%",
+                              height: "25%",
+                              border: "2px solid white",
+                              borderRadius: "10px",
+                            }}
+                            src={mainGameImg}
+                            alt={`main game`}
+                          />
+                          Cards RPG
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to="/blackjack" className="dropdown-item">
+                          <img
+                            style={{
+                              width: "25%",
+                              height: "25%",
+                              border: "2px solid white",
+                              borderRadius: "10px",
+                            }}
+                            src={mainGameImg}
+                            alt={`main game`}
+                          />
+                          Blackjack
+                        </Link>
+                      </li>
+                    </details>
                   </li>
                 </details>
               </li>
+
               <li>
                 <details>
                   <summary>Collections</summary>

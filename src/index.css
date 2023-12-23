@@ -43,6 +43,18 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+.card {
+  display: inline-block;
+  background-color: white;
+  color: black;
+  border-radius: 1em;
+  padding: 2em;
+  text-align: center;
+  min-width: 2em;
+  height: 6em;
+}
+
+
 @tailwind base;
 
 @tailwind components;
