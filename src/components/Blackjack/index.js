@@ -330,10 +330,10 @@ export default function Blackjack({ accountAddress }) {
               <strong className="mr-2">Balances:</strong>
             </p>
             <p className="mt-2 mb-2">
-              <span>ALGO: {(accountData?.amount / 1e6).toFixed(6)}</span>
+              <span>ALGO: {((accountData?.amount || 0) / 1e6).toFixed(6)}</span>
             </p>
             <p className="mb-4">
-              <span>PHNTM: {(phntmTokenBalance / 1e8).toFixed(8)}</span>
+              <span>PHNTM: {((phntmTokenBalance || 0) / 1e8).toFixed(8)}</span>
             </p>
             <p className="mb-4 font-bold shadow-lg text-white text-lg border border-gray-600 p-4">
               <span>
