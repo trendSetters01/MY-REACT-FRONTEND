@@ -18,14 +18,17 @@ export default function MainGame({ accountAddress }) {
 
       {accountAddress && (
         <div className="flex items-center justify-center">
-          {!isDepositConfirmed ? (
+          {/* {!isDepositConfirmed ? (
             <DepositComponent
               accountAddress={accountAddress}
               onDepositSuccess={() => setIsDepositConfirmed(true)}
             />
           ) : (
             <Cardsrpg accountAddress={accountAddress} />
-          )}
+          )} */}
+          <h1 className="animate-pulse text-white">
+            Under Construction
+          </h1>
         </div>
       )}
     </div>
