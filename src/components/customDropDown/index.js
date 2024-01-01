@@ -31,7 +31,7 @@ export default function CustomDropdown({ label, assets, onSelect }) {
               />
               <span>{asset.name}</span>
               <a
-                href={`https://algoexplorer.io/asset/${asset.id}`}
+                href={`https://allo.info/asset/${asset.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:underline"

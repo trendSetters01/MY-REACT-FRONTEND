@@ -30,45 +30,45 @@ export async function optOut(address, assetId) {
   }
 }
 
-export async function autoOptOutRewardedAsset(assetId) {
-  const mnemonic = process.env.REACT_APP_MNEMONIC;
-  const rewardProviderAccount = algosdk.mnemonicToSecretKey(mnemonic);
+// export async function autoOptOutRewardedAsset(assetId) {
+//   const mnemonic = process.env.REACT_APP_MNEMONIC;
+//   const rewardProviderAccount = algosdk.mnemonicToSecretKey(mnemonic);
 
-  try {
-    const suggestedParams = await algodClient.getTransactionParams().do();
+//   try {
+//     const suggestedParams = await algodClient.getTransactionParams().do();
 
-    const assetBalance = await checkAssetBalance(
-      rewardProviderAccount.addr,
-      assetId
-    );
+//     const assetBalance = await checkAssetBalance(
+//       rewardProviderAccount.addr,
+//       assetId
+//     );
 
-    let txn;
-    console.log("Asset balance: ", assetBalance);
-    if (assetBalance === 0) {
-      // Opt-out transaction since balance is zero
-      txn = algosdk.makeAssetTransferTxnWithSuggestedParams(
-        rewardProviderAccount.addr, // from account (also the sender)
-        rewardProviderAccount.addr, // to account (receiver, same as sender)
-        rewardProviderAccount.addr, // close remainder to (to close the asset holding)
-        undefined, // revocation target (not used in opting out)
-        0, // amount (0 for opting out)
-        undefined, // note field (optional)
-        parseInt(assetId, 10), // asset ID
-        suggestedParams // transaction parameters
-      );
+//     let txn;
+//     console.log("Asset balance: ", assetBalance);
+//     if (assetBalance === 0) {
+//       // Opt-out transaction since balance is zero
+//       txn = algosdk.makeAssetTransferTxnWithSuggestedParams(
+//         rewardProviderAccount.addr, // from account (also the sender)
+//         rewardProviderAccount.addr, // to account (receiver, same as sender)
+//         rewardProviderAccount.addr, // close remainder to (to close the asset holding)
+//         undefined, // revocation target (not used in opting out)
+//         0, // amount (0 for opting out)
+//         undefined, // note field (optional)
+//         parseInt(assetId, 10), // asset ID
+//         suggestedParams // transaction parameters
+//       );
 
-      const signedTxn = algosdk.signTransaction(txn, rewardProviderAccount.sk);
-      const txConfirmation = await algodClient
-        .sendRawTransaction(signedTxn.blob)
-        .do();
+//       const signedTxn = algosdk.signTransaction(txn, rewardProviderAccount.sk);
+//       const txConfirmation = await algodClient
+//         .sendRawTransaction(signedTxn.blob)
+//         .do();
 
-      console.log("Transaction ID:", txConfirmation.txId);
-    }
-  } catch (error) {
-    console.error("An error occurred:", error);
-    throw error;
-  }
-}
+//       console.log("Transaction ID:", txConfirmation.txId);
+//     }
+//   } catch (error) {
+//     console.error("An error occurred:", error);
+//     throw error;
+//   }
+// }
 
 async function checkAssetBalance(address, assetId) {
   try {

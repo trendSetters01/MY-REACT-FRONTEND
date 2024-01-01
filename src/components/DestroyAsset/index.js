@@ -80,7 +80,7 @@ export default function DestroyAsset({ accountAddress }) {
               <p className="text-lg font-semibold text-gray-300">{status}</p>
             )}
             <a
-              href={`https://algoexplorer.io/tx/${transactionId}`}
+              href={`https://allo.info/tx/${transactionId}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline"

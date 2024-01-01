@@ -132,7 +132,7 @@ function Home({ accountAddress }) {
             </p>
             <p className="mt-2 mb-4">
               <a
-                href="https://algoexplorer.io/asset/1279721720"
+                href="https://allo.info/asset/1279721720"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:underline dark:text-blue-400"

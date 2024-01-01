@@ -55,7 +55,7 @@ function DisplayPhantomv2({ accountAddress }) {
           Address:
           <a
             className="text-white underline dark:text-white"
-            href={`https://algoexplorer.io/address/${accountData.address}`}
+            href={`https://allo.info/address/${accountData.address}`}
             target="_blank"
             rel="noreferrer"
           >

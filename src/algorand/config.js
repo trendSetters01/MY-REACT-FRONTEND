@@ -1,12 +1,9 @@
 import algosdk from "algosdk";
 
-const ALGOD_API_ADDR = "https://mainnet-algorand.api.purestake.io/ps2";
-const ALGOD_INDEXER_ADDR = "https://mainnet-algorand.api.purestake.io/idx2";
-const ALGOD_PORT = "";
-const REACT_APP_PURESTAKE_API_KEY = process.env.REACT_APP_PURESTAKE_API_KEY;
-const ALGOD_API_TOKEN = {
-  "X-API-Key": REACT_APP_PURESTAKE_API_KEY,
-};
+const ALGOD_API_ADDR = "https://mainnet-api.algonode.network";
+const ALGOD_INDEXER_ADDR = "https://mainnet-idx.algonode.network";
+const ALGOD_PORT = "443";
+const ALGOD_API_TOKEN = "";
 
 const algodClient = new algosdk.Algodv2(
   ALGOD_API_TOKEN,

@@ -1,7 +1,7 @@
 import algosdk from "algosdk";
 
 import { algodClient } from "../config.js";
-import { autoOptOutRewardedAsset } from "../opt-out.js";
+// import { autoOptOutRewardedAsset } from "../opt-out.js";
 export async function send(from, to, amount, assetId, note) {
   try {
     // Input validation
@@ -46,7 +46,7 @@ export async function send(from, to, amount, assetId, note) {
       .sendRawTransaction(signedTxn.blob)
       .do();
 
-    await autoOptOutRewardedAsset(assetId);
+    // await autoOptOutRewardedAsset(assetId);
 
     console.log("Transaction ID:", txConfirmation.txId);
     return txConfirmation;

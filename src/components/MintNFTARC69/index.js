@@ -315,7 +315,7 @@ function MintingSuccessMessage({ status, congratsImg }) {
       </h3>
       {status && (
         <a
-          href={`https://algoexplorer.io/tx/${status}`}
+          href={`https://allo.info/tx/${status}`}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 text-blue-500 hover:underline"

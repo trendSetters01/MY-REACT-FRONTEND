@@ -121,7 +121,7 @@ export default function DisplayAccountInformation({
               {activeTab === "assets" && (
                 <div>
                   <ul className="list-disc pl-8 text-gray-400 overflow-auto max-h-80">
-                    {accountData?.assets.map((asset, index) => (
+                    {accountData?.assets?.map((asset, index) => (
                       <li key={index}>
                         <a
                           href={`https://www.randgallery.com/algo-collection/?address=${asset["asset-id"]}`}
@@ -146,10 +146,10 @@ export default function DisplayAccountInformation({
               {activeTab === "nfts" && (
                 <div>
                   <ul className="list-disc pl-8 text-gray-400 overflow-auto  max-h-80">
-                    {accountData["created-assets"].map((asset, index) => (
+                    {accountData["created-assets"]?.map((asset, index) => (
                       <li key={index}>
                         <a
-                          href={`https://algoexplorer.io/asset/${asset?.index}`}
+                          href={`https://allo.info/asset/${asset?.index}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-blue-500 hover:underline"

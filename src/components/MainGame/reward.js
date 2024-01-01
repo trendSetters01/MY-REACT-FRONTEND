@@ -126,7 +126,7 @@ export default function RewardComponent({ accountAddress }) {
       </div>
       {transactionId && (
         <a
-          href={`https://algoexplorer.io/tx/${transactionId}`}
+          href={`https://allo.info/tx/${transactionId}`}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 text-blue-500 hover:underline"

@@ -30,7 +30,7 @@ export default function OptInComponent() {
         <p className="text-center mt-4 text-lg font-semibold">
           Scan to Opt-In to Asset{" "}
           <a
-            href={`https://algoexplorer.io/asset/${assetId}`}
+            href={`https://allo.info/asset/${assetId}`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-600 hover:text-blue-800"
