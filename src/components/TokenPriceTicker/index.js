@@ -31,14 +31,9 @@ const TokenPriceTicker = () => {
 
   return (
     <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "4",
-        gap: "44em",
-      }}
       className="overflow-hidden relative bg-gradient-to-r from-teal-600 to-cyan-300"
     >
-      {Array(4)
+      {Array(1)
         .fill(null)
         .map((_, index) => (
           <React.Fragment key={index}>{renderTickerText()}</React.Fragment>
