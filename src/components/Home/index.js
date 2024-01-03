@@ -200,43 +200,45 @@ function Home({ accountAddress }) {
               </p>
               <br />
               <p className="text-xl font-semibold mb-4">
-                <strong>Distribution for 7 Million Token Supply:</strong>
+                <strong>Distribution for 6 Million Token Supply:</strong>
               </p>
               <ul className="grid grid-cols-3 gap-4">
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
-                    Community Fund: 2,800,000 tokens (40%)
+                    Community Fund: 2,100,000 tokens (Approx. 35%) - Including
+                    200,000 distributed and 100,000 for upcoming giveaways
                   </li>
                 </div>
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
-                    Staking Rewards: 1,400,000 tokens (20%)
+                    Staking Rewards: 1,200,000 tokens (20%)
                   </li>
                 </div>
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
-                    Team & Advisors: 1,050,000 tokens (15%)
+                    Team & Advisors: 900,000 tokens (15%)
                   </li>
                 </div>
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
-                    Initial Distribution: 700,000 tokens (10%)
+                    Initial Distribution/Liquidity: 700,000 tokens (Approx.
+                    11.7%)
                   </li>
                 </div>
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
-                    Reserve: 700,000 tokens (10%)
+                    Reserve: 600,000 tokens (10%)
                   </li>
                 </div>
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
-                    Partnerships: 350,000 tokens (5%)
+                    Partnerships: 300,000 tokens (5%)
                   </li>
                 </div>
               </ul>
