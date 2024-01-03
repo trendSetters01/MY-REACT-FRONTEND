@@ -16,6 +16,7 @@ import MintNFTARC3 from "../MintNFTARC3";
 import MintNFTARC69 from "../MintNFTARC69";
 import MainGame from "../MainGame";
 import Blackjack from "../Blackjack";
+import TokenPriceTicker from "../TokenPriceTicker";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("arc3");
@@ -27,6 +28,7 @@ export default function Navbar() {
     "YI7APPJQ6P2CLKW5E7YZ5NFMC4KBGES2EXN72ADUNX2BNQPKOOMIBVHWJU";
   return (
     <div>
+      <TokenPriceTicker />
       <Router>
         <Menu setConnectedAccountAddress={setConnectedAccountAddress} />
         <Routes>
