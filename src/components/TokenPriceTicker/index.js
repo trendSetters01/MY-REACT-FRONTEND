@@ -7,7 +7,7 @@ const TokenPriceTicker = () => {
     const fetchTokenPrice = async () => {
       try {
         const response = await fetch(
-          "https://free-api.vestige.fi/asset/1279721720/price?currency=usdc"
+          "https://free-api.vestige.fi/asset/1279721720/price?currency=usd"
         );
         const data = await response.json();
         setTokenPrice(data.price);
