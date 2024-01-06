@@ -4,68 +4,68 @@ const Roadmap = () => {
   const milestones = [
     {
       title: "Phantom Pals Nft Launch",
-      date: "Q2 2023",
+      date: "TBA",
       description: "Launch of Phantom Pals, introduction of basic features.",
       status: "completed", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "NFT Web Platform Launch Phase",
-      date: "Q3 2023",
+      date: "TBA",
       description: "Alpha launch of the platform",
       status: "completed", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "Phantom V2 Nft Introduction",
-      date: "Q4 2023",
+      date: "TBA",
       description: "Release part 1 - Phantom V2 NFT's.",
       status: "completed", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "NFT Catalogue",
-      date: "Q4 2023 - Q1 2024",
+      date: "TBA",
       description: "Catalogue of Phantom NFT's for sale.",
       status: "Aplha - in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "View Account Information",
-      date: "Q4 2023 - Q1 2024",
+      date: "TBA",
       description: "Introduction to Web3 Wallets and Account Information.",
       status: "in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "Register Your Address",
-      date: "Q4 2023 - Q1 2024",
+      date: "TBA",
       description:
         "Register your address to participate in Phantom activities.",
       status: "in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "NFT Staking",
-      date: "Q4 2023 - Q1 2024",
+      date: "TBA",
       description: "NFT Staking to be introduced.",
       status: "in-progress",
     },
     {
       title: "Introduction of Phantom Council System",
-      date: "Q1 2024 - Q2 2024",
+      date: "TBA",
       description: "Phantom Council System to be introduced.",
       status: "in-future",
     },
     {
       title: "Introduction of Phantom Economy",
-      date: "Q1 2024 - Q2 2024",
+      date: "TBA",
       description: "First Phantom token utility to be introduced.",
       status: "in-future",
     },
     {
       title: "Introduction of Phantom Role System",
-      date: "Q1 2024 - Q2 2024",
+      date: "TBA",
       description: "Phantom role tokens utility to be introduced.",
       status: "in-future",
     },
     {
       title: "Phantom V2 Nft Introduction",
-      date: "Q1 2024 - Q2 2024",
+      date: "TBA",
       description: "Release part 2 - Phantom V2 NFT's.",
       status: "in-future", // other statuses could be "in-progress", "upcoming"
     },
