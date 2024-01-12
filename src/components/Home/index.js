@@ -219,14 +219,14 @@ function Home({ accountAddress }) {
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
-                    Team & Advisors: 900,000 tokens (15%)
+                    Team & Advisors: 400,000 tokens (Approx. 7%)
                   </li>
                 </div>
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
                     Initial Distribution/Liquidity: 700,000 tokens (Approx.
-                    11.7%)
+                    12%)
                   </li>
                 </div>
                 <div>
@@ -238,7 +238,7 @@ function Home({ accountAddress }) {
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
-                    Partnerships: 300,000 tokens (5%)
+                    Partnerships: 800,000 tokens (Approx. 13%)
                   </li>
                 </div>
               </ul>
