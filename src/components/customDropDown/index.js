@@ -23,7 +23,9 @@ export default function CustomDropdown({ label, assets, onSelect }) {
             >
               <img
                 src={`${
-                  asset.id !== 1279721720
+                  asset.id === 1392374998
+                    ? "https://algorand-wallet-mainnet.b-cdn.net/media/asset_verification_requests_logo_png/2024/01/11/aa7df2cb7eb14eba8bb2f5f28c6159d4.png"
+                    : asset.id !== 1279721720
                     ? `https://asa-list.tinyman.org/assets/${asset.id}/icon.png`
                     : "https://ipfs.algonft.tools/ipfs/bafkreifx6d4xnb57sid73ujcfu22tzgvwem2yrujn3shizfwayho5gfuuy#i"
                 }`}

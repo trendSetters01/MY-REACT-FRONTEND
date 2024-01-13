@@ -53,6 +53,7 @@ function Swap({ accountAddress }) {
     { id: 1065092715, name: "Cosmic Gold" },
     { id: 230946361, name: "AlgoGems" },
     { id: 400593267, name: "DeFi-nite" },
+    { id: 1392374998, name: "Voi" },
   ];
   const assetsList = [
     { id: 0, name: "ALGO" },
