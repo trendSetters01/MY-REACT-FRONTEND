@@ -2,16 +2,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import { algodClient } from "../../algorand/config.js";
 import countPhntmNfts from "../../algorand/countPHNTMNFTs.js";
-import { send } from "../../algorand/transactionHelpers/sendReward.js";
 import { optIn } from "../../algorand/opt-in.js";
 import { getRandomNFTAssetId } from "../../algorand/transactionHelpers/getRandomNFTAssetId.js";
-
+import axios from "axios";
 import { PeraWalletContext } from "../PeraWalletContext";
 
 export default function RewardComponent({ accountAddress }) {
   const [status, setStatus] = useState("");
   const [showLoader, setShowLoader] = useState(false);
-  const [assetID, setAssetID] = useState("");
   const [transactionId, setTransactionId] = useState(null);
   const [showMsg, setShowMsg] = useState(false);
   const [rewardAmount, setRewardAmount] = useState(0);
@@ -21,8 +19,7 @@ export default function RewardComponent({ accountAddress }) {
   const BASE_PHNTM_REWARD = 0;
 
   const peraWallet = useContext(PeraWalletContext);
-  const phantomsHoldingAddress =
-    "XGJS5VTFTVB3MJDQGXH4Y4M6NYDYEK4OZFF6NIVUTIBS52OTLW2N5CYM2Y";
+  const API_BASE_URL = "https://phantoms-api.onrender.com/api/v1"; // Replace with your backend URL
 
   function calculateRewards(baseReward, nftCount) {
     let multiplier = 1;
@@ -48,12 +45,9 @@ export default function RewardComponent({ accountAddress }) {
       setNftCount(nftCount);
       setRewardAmount(rewardAmount);
 
-      const assetID = await getRandomNFTAssetId(phantomsHoldingAddress);
-      setAssetID(assetID);
-
       const optInTxn = await optIn(
         accountAddress, //"1276228104"
-        assetID
+        "1279721720"
       );
       // reward distribution logic
       setStatus("Initiating opt-in request..., please watch for wallet popup.");
@@ -65,24 +59,27 @@ export default function RewardComponent({ accountAddress }) {
           .do();
 
         console.log(`txns signed successfully! - txID: ${txId}`);
-        setStatus("IOpt in transaction sent successfully!");
+        setStatus("Opt in transaction sent successfully!");
         setTransactionId(txId);
       }
 
-
       setTimeout(async () => {
-        setStatus("Initiating reward distribution..., please watch for wallet popup.");
-       const txConfirmation = await send(
-          phantomsHoldingAddress,
-          accountAddress,
-          totalPhantomTokenConversion,
-          assetID,
-          "Thank you for playing the game! check us out https://phantoms-ashy.vercel.app/"
+        setStatus(
+          "Initiating reward distribution..., please watch for wallet popup."
         );
-
-        setShowLoader(false);
-        txConfirmation && setTransactionId(txConfirmation.txId);
-        setStatus(`Reward distribution completed`);
+        try {
+          const response = await axios.post(`${API_BASE_URL}/send-rewards`, {
+            to: accountAddress,
+          });
+          const txId = response?.data?.txn?.txId;
+          console.log("Reward distribution txn:", txId);
+          setTransactionId(txId);
+          setShowLoader(false);
+          txId && setTransactionId(txId);
+          setStatus(`Reward distribution completed`);
+        } catch (error) {
+          console.error("Error recording participant:", error);
+        }
 
         if (rewardAmount > 0) {
           setShowMsg(true);

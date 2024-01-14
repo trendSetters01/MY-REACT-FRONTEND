@@ -3,6 +3,7 @@ import algosdk from "algosdk";
 import { algodClient } from "../../algorand/config.js";
 import noImg from "../../images/e23cb9ab-f01a-43af-a148-14bc98bd5ed2.webp";
 import beaverImg from "../../images/2NNzKEh4_400x400.jpg";
+import phantomsImg from "../../images/Phantoms.png";
 
 // Function to fetch asset details including metadata
 const getAssetDetails = async (assetId) => {
@@ -12,6 +13,8 @@ const getAssetDetails = async (assetId) => {
 
 // This function now uses the provided extractIPFSHash function to get the image URL
 const getAssetImageURL = async (assetId) => {
+  if (assetId === 1279721720) return phantomsImg;
+
   try {
     const assetDetails = await getAssetDetails(assetId);
     // Assume that the IPFS URL is stored in the url field of the asset's params
@@ -29,7 +32,7 @@ const getAssetImageURL = async (assetId) => {
 // Extracts the IPFS hash from a given IPFS URL
 function extractIPFSHash(url) {
   // Check if the URL is an HTTP(s) IPFS gateway URL
-  
+
   if (url.includes("beaver.algo")) {
     return beaverImg;
   }
@@ -40,11 +43,13 @@ function extractIPFSHash(url) {
   if (url.includes("QmdS1VN4KHam5qFdZco1xoC2yJ8QGX3DEpgRTV9NYNWAjP#arc3")) {
     return "https://ipfs.algonft.tools/ipfs/QmNymJwwuv7dC4LJ7mPVBni4bYKgDpPvdXMrjEV4uEtCFj";
   }
-  
-  if (url.includes("bafybeif6uo5bcvdv6mat64kjahkeevrhoeknceydwgnaktn5cthafw2tn4")) {
+
+  if (
+    url.includes("bafybeif6uo5bcvdv6mat64kjahkeevrhoeknceydwgnaktn5cthafw2tn4")
+  ) {
     return "https://ipfs.algonft.tools/ipfs/QmNymJwwuv7dC4LJ7mPVBni4bYKgDpPvdXMrjEV4uEtCFj#i";
   }
-  
+
   if (url.includes("template-ipfs://{ipfscid:1:raw:reserve:sha2-256}")) {
     return "https://ipfs.algonft.tools/ipfs/bafkreieah2q2dwmddpshgu6scqmnxcsq7pvdqycvix2hepdnwos44qswjy#arc3";
   }
@@ -86,7 +91,7 @@ export default function AssetScrolling({ accountAddress, onImagesLoaded }) {
   const [assetImages, setAssetImages] = useState({});
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const phantomsHoldingAddress =
-    "XGJS5VTFTVB3MJDQGXH4Y4M6NYDYEK4OZFF6NIVUTIBS52OTLW2N5CYM2Y";
+    "JQONXCP7LYP2O2XQLOPBM6I67LBGCZGEZGHBRRBJBAJEWEIWIRIFZIPXIQ";
 
   useEffect(() => {
     const fetchAssets = async () => {
@@ -113,13 +118,16 @@ export default function AssetScrolling({ accountAddress, onImagesLoaded }) {
     <div className="flex flex-col items-center justify-center text-white">
       <div
         className="flex overflow-x-auto whitespace-nowrap"
-        style={{ width: "60vw" }}
+        style={{ maxWidth: "32vw" }}
       >
         {assetIDs.map((asset) => {
           // Use the asset ID to get the image URL from the assetImages map
           const imageUrl = assetImages[asset.id];
 
           // If imageUrl is not available, you might want to provide a fallback or skip rendering
+          if(asset?.id === 1285510787) {
+            return null; // or return a placeholder image or some other fallback
+          }
           if (!imageUrl) {
             return null; // or return a placeholder image or some other fallback
           }
@@ -136,6 +144,8 @@ export default function AssetScrolling({ accountAddress, onImagesLoaded }) {
                   height: "100%",
                   border: "2px solid white",
                   borderRadius: "10px",
+                  maxHeight: "12em",
+                  maxWidth: "24em",
                 }}
                 src={imageUrl || noImg}
                 alt={`${asset.id}`}
