@@ -3,7 +3,6 @@ import { algodClient } from "./config.js";
 export default async function checkTransactionStatus(txId, resolve) {
   try {
     const response = await algodClient.pendingTransactionInformation(txId).do();
-    console.log("Transaction status:", response);
     if (
       response["confirmed-round"] !== null &&
       response["confirmed-round"] > 0
