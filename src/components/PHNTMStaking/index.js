@@ -29,35 +29,32 @@ function PHNTMStaking({ accountAddress }) {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 text-white bg-gradient-to-r from-blue-500 to-purple-600">
-      <main>
-
+    // <div className="container mx-auto px-4 py-8 text-white bg-gradient-to-r from-blue-500 to-purple-600">
+    <div>
       {activeTab === "PHNTM Staking" && (
-          <section className="phntm-staking bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
-             <h1 className="animate-pulse text-red-500 p-4">
-              Cometa Hub's wallet connect is a diiferent session then the one on this
-              website. Please connect your wallet to Cometa Hub's wallet connect to
-              interact with their transcations.
-            </h1>
-            <iframe
-              className="w-full h-screen"
-              src="https://app.cometa.farm/stake"
-              title="Phantoms Staking"
-            ></iframe>
-            <a
-              href="https://app.cometa.farm"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline dark:text-blue-400"
-            >
-              Powered by Cometa Hub
-            </a>
-          </section>
-        )}
-      </main>
+        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
+          <h1 className="animate-pulse text-red-500 p-4">
+            Cometa Hub's wallet connect is a diiferent session then the one on
+            this website. Please connect your wallet to Cometa Hub's wallet
+            connect to interact with their transcations.
+          </h1>
+          <iframe
+            className="w-full h-screen"
+            src="https://app.cometa.farm/stake"
+            title="Phantoms Staking"
+          ></iframe>
+          <a
+            href="https://app.cometa.farm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline dark:text-blue-400"
+          >
+            Powered by Cometa Hub
+          </a>
+        </section>
+      )}
     </div>
   );
 }
-
 
 export default PHNTMStaking;

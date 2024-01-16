@@ -29,10 +29,9 @@ function TinymanLPDeposits({ accountAddress }) {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 text-white bg-gradient-to-r from-blue-500 to-purple-600">
-      <main>
+    <div >
         {activeTab === "Tinyman LP Deposits" && (
-          <section className="tinyman-lp-deposits bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
+          <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
             <h1 className="animate-pulse text-red-500 p-4">
               Tinyman wallet connect is a diiferent session then the one on this
               website. Please connect your wallet to Tinyman wallet connect to
@@ -53,7 +52,6 @@ function TinymanLPDeposits({ accountAddress }) {
             </a>
           </section>
         )}
-      </main>
     </div>
   );
 }

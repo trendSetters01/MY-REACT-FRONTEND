@@ -29,10 +29,9 @@ function TokenInfo({ accountAddress }) {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 text-white bg-gradient-to-r from-blue-500 to-purple-600">
-      <main>
+    <div >
       {activeTab === "Token Info" && (
-          <section className="token-info bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
+          <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">Token Information</h2>
             <iframe
               className="w-full h-screen"
@@ -49,7 +48,6 @@ function TokenInfo({ accountAddress }) {
             </a>
           </section>
         )}
-      </main>
     </div>
   );
 }
