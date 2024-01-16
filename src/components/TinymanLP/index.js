@@ -29,29 +29,29 @@ function TinymanLPDeposits({ accountAddress }) {
   };
 
   return (
-    <div >
-        {activeTab === "Tinyman LP Deposits" && (
-          <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
-            <h1 className="animate-pulse text-red-500 p-4">
-              Tinyman wallet connect is a diiferent session then the one on this
-              website. Please connect your wallet to Tinyman. Click the Connect button, to
-              interact with their swaps.
-            </h1>
-            <iframe
-              className="w-full h-screen"
-              src="https://app.tinyman.org/#/pool/all-pools?search=phntm&onlyVerified=true"
-              title="Phantoms Tinyman LP"
-            ></iframe>
-            <a
-              href="https://app.tinyman.org"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline dark:text-blue-400"
-            >
-              Powered by Tinyman
-            </a>
-          </section>
-        )}
+    <div>
+      {activeTab === "Tinyman LP Deposits" && (
+        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
+          <h1 className="animate-pulse text-red-500 p-4">
+            Tinyman wallet connect is a diiferent session then the one on this
+            website. Please connect your wallet to Tinyman. Click the Connect
+            button, to interact with their swaps.
+          </h1>
+          <iframe
+            className="w-full h-screen"
+            src="https://app.tinyman.org/#/pool/all-pools?search=phntm&onlyVerified=true"
+            title="Phantoms Tinyman LP"
+          ></iframe>
+          <a
+            href="https://app.tinyman.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline dark:text-blue-400"
+          >
+            Powered by Tinyman
+          </a>
+        </section>
+      )}
     </div>
   );
 }

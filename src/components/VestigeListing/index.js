@@ -30,28 +30,28 @@ function VestigeListing({ accountAddress }) {
 
   return (
     <div>
-        {activeTab === "Vestige Listing" && (
-          <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
-            <h1 className="animate-pulse text-red-500 p-4">
-              Vestige wallet connect is a diiferent session then the one on this
-              website. Please connect your wallet to Vestige. Click the Connect button, to
-              interact with their swaps.
-            </h1>
-            <iframe
-              className="w-full h-screen"
-              src="https://vestige.fi/asset/1279721720"
-              title="Phantoms Vestige Listing"
-            ></iframe>
-            <a
-              href="https://vestige.fi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline dark:text-blue-400"
-            >
-              Powered by Vestige
-            </a>
-          </section>
-        )}
+      {activeTab === "Vestige Listing" && (
+        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
+          <h1 className="animate-pulse text-red-500 p-4">
+            Vestige wallet connect is a diiferent session then the one on this
+            website. Please connect your wallet to Vestige. Click the Connect
+            button, to interact with their swaps.
+          </h1>
+          <iframe
+            className="w-full h-screen"
+            src="https://vestige.fi/asset/1279721720"
+            title="Phantoms Vestige Listing"
+          ></iframe>
+          <a
+            href="https://vestige.fi"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline dark:text-blue-400"
+          >
+            Powered by Vestige
+          </a>
+        </section>
+      )}
     </div>
   );
 }
