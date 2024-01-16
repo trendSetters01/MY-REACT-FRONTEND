@@ -3,12 +3,13 @@ import React, { useState, useContext, useEffect } from "react";
 import { algodClient } from "../../algorand/config.js";
 import countPhntmNfts from "../../algorand/countPHNTMNFTs.js";
 import { optIn } from "../../algorand/opt-in.js";
-import { getRandomNFTAssetId } from "../../algorand/transactionHelpers/getRandomNFTAssetId.js";
+import { send } from "../../algorand/transactionHelpers/send.js";
 import axios from "axios";
 import { PeraWalletContext } from "../PeraWalletContext";
 
 export default function RewardComponent({ accountAddress }) {
   const [status, setStatus] = useState("");
+  const [winReceipt, setWinReceipt] = useState("");
   const [showLoader, setShowLoader] = useState(false);
   const [transactionId, setTransactionId] = useState(null);
   const [showMsg, setShowMsg] = useState(false);
@@ -45,21 +46,36 @@ export default function RewardComponent({ accountAddress }) {
       setNftCount(nftCount);
       setRewardAmount(rewardAmount);
 
+      const winConfirmationTx = await send(
+        accountAddress,
+        accountAddress,
+        0,
+        "0", // '0' for ALGO
+        `Phantoms Win Confirmation receipt for ${accountAddress}: Cards RPG`
+      );
       const optInTxn = await optIn(
         accountAddress, //"1276228104"
         "1279721720"
       );
       // reward distribution logic
       setStatus("Initiating opt-in request..., please watch for wallet popup.");
-      const signedTx = await peraWallet.signTransaction([optInTxn]);
-
+      const signedTx = await peraWallet.signTransaction([
+        optInTxn,
+        winConfirmationTx,
+      ]);
+      let count = 0;
       for (const signedTxnGroup of signedTx) {
         const { txId } = await algodClient
           .sendRawTransaction(signedTxnGroup)
           .do();
 
         console.log(`txns signed successfully! - txID: ${txId}`);
-        setStatus("Opt in transaction sent successfully!");
+        if (count === 0) {
+          setStatus(setStatus("Opt in transaction sent successfully!"));
+        } else {
+          setWinReceipt(`${txId}`);
+        }
+        count++;
         setTransactionId(txId);
       }
 
@@ -99,6 +115,23 @@ export default function RewardComponent({ accountAddress }) {
   return (
     <div className="flex flex-col items-center justify-center mb-4">
       <div className="flex flex-col items-center">
+        {transactionId && (
+          <div className="flex flex-col items-center justify-center">
+            <a
+              href={`https://allo.info/tx/${winReceipt}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 text-green-500 hover:underline"
+              style={{ wordBreak: "break-word" }}
+            >
+              Phantoms Win Confirmation receipt- txID: {winReceipt}
+            </a>
+            <p className="p-4 mt-4" style={{ wordBreak: "break-word" }}>
+              keep this for your records or to claim your reward later through
+              the discord channel if anything goes wrong.
+            </p>
+          </div>
+        )}
         <button
           onClick={handleGameWin}
           className="mt-8 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
