@@ -36,7 +36,7 @@ function PHNTMStaking({ accountAddress }) {
           <h1 className="animate-pulse text-red-500 p-4">
             Cometa Hub's wallet connect is a diiferent session then the one on
             this website. Please connect your wallet to Cometa Hub. Click the
-            Connect wWllet button, to interact with their transactions.
+            Connect Wallet button, to interact with their transactions.
           </h1>
           <iframe
             className="w-full h-screen"
