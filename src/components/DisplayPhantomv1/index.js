@@ -63,13 +63,13 @@ function DisplayPhantomv1({ accountAddress }) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(8, 1fr)",
-          gap: "2px",
+          gridTemplateColumns: "repeat(5, 1fr)",
+          gap: "10px",
         }}
       >
         {accountData &&
           accountData["created-assets"].map((asset, index) => (
-            <div style={{ margin: "1px", maxWidth: "12em" }}>
+            <div style={{ margin: "1px" }}>
               <div>
                 <a
                   className="text-white dark:text-white"
