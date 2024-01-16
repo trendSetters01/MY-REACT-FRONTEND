@@ -7,7 +7,7 @@ function Home({ accountAddress }) {
   const [accountData, setAccountData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("introduction");
+  const [activeTab, setActiveTab] = useState("Introduction");
 
   useEffect(() => {
     if (accountAddress) {
@@ -40,25 +40,28 @@ function Home({ accountAddress }) {
       </header>
       <main>
         <div className="tabs flex justify-center mb-4">
-          {["introduction", "roadmap", "nftBenefits", "tokenomics"].map(
-            (tab) => (
-              <button
-                style={{ marginBottom: "2em" }}
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 mx-2 text-sm font-semibold rounded-lg ${
-                  activeTab === tab
-                    ? "bg-gradient-to-r from-black to-gray-500 hover:from-blue-400 hover:to-pink-500 text-white"
-                    : "text-gray-300"
-                }`}
-              >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            )
-          )}
+          {[
+            "Introduction",
+            "Roadmap",
+            "NFT Benefits",
+            "Tokenomics",
+          ].map((tab) => (
+            <button
+              style={{ marginBottom: "2em" }}
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-2 mx-2 text-sm font-semibold rounded-lg ${
+                activeTab === tab
+                  ? "bg-gradient-to-r from-black to-gray-500 hover:from-blue-400 hover:to-pink-500 text-white"
+                  : "text-gray-300"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
 
-        {activeTab === "introduction" && (
+        {activeTab === "Introduction" && (
           <section
             style={{ height: "40vh" }}
             className="bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg"
@@ -75,9 +78,9 @@ function Home({ accountAddress }) {
           </section>
         )}
 
-        {activeTab === "roadmap" && <Roadmap />}
+        {activeTab === "Roadmap" && <Roadmap />}
 
-        {activeTab === "nftBenefits" && (
+        {activeTab === "NFT Benefits" && (
           <section
             style={{ minHeight: "50vh" }}
             className="nft-benefits bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg"
@@ -119,28 +122,9 @@ function Home({ accountAddress }) {
           </section>
         )}
 
-        {activeTab === "tokenomics" && (
+        {activeTab === "Tokenomics" && (
           <section className="tokenomics bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
             {/* Tokenomics content */}
-            <h2 className="text-2xl font-semibold mb-4">
-              Explore Phantoms Token
-            </h2>
-            <p className="dark:text-gray-300">
-              Transparency is key to our community. We invite you to view the
-              live statistics and transactions of Phantom tokens on
-              AlgoExplorer.
-            </p>
-            <p className="mt-2 mb-4">
-              <a
-                href="https://allo.info/asset/1279721720"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-500 hover:underline dark:text-blue-400"
-              >
-                View Phantoms Token on AlgoExplorer
-              </a>
-            </p>
-
             <h2 className="text-2xl font-semibold mb-4">
               Initial Tokenomics Overview
             </h2>
@@ -152,9 +136,10 @@ function Home({ accountAddress }) {
               </p>
               <p className="mt-2 mb-4">
                 Our approach to tokenomics is rooted in principles of scarcity,
-                precision, and community engagement. The initial supply of 1
-                million tokens introduces a sense of exclusivity while requiring
-                careful distribution and sensitivity to market dynamics.
+                precision, and community engagement. The initial supply of
+                around 1 million tokens introduces a sense of exclusivity while
+                requiring careful distribution and sensitivity to market
+                dynamics.
               </p>
               <p className="mt-2 mb-4">
                 <strong>1. Scarcity and Exclusivity:</strong> The limited supply
@@ -225,8 +210,7 @@ function Home({ accountAddress }) {
                 <div>
                   <li className="mt-2 mb-4">
                     <StarIcon />
-                    Initial Distribution/Liquidity: 700,000 tokens (Approx.
-                    12%)
+                    Initial Distribution/Liquidity: 700,000 tokens (Approx. 12%)
                   </li>
                 </div>
                 <div>
@@ -245,6 +229,7 @@ function Home({ accountAddress }) {
             </div>
           </section>
         )}
+
       </main>
     </div>
   );

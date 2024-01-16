@@ -17,6 +17,10 @@ import MintNFTARC69 from "../MintNFTARC69";
 import MainGame from "../MainGame";
 import Blackjack from "../Blackjack";
 import TokenPriceTicker from "../TokenPriceTicker";
+import VestigeListing from "../VestigeListing";
+import TokenInfo from "../TokenInfo";
+import TinymanLPDeposits from "../TinymanLP";
+import PHNTMStaking from "../PHNTMStaking";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("arc3");
@@ -33,6 +37,10 @@ export default function Navbar() {
         <Menu setConnectedAccountAddress={setConnectedAccountAddress} />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/trade-phntm" element={<VestigeListing />} />
+          <Route path="/token-info" element={<TokenInfo />} />
+          <Route path="/tinyman-lp-deposits" element={<TinymanLPDeposits />} />
+          <Route path="/phntm-staking" element={<PHNTMStaking />} />
           <Route
             path="/onramp-swap"
             element={<Swap accountAddress={connectedAccountAddress} />}
