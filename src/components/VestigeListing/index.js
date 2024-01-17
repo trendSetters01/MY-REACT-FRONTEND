@@ -1,31 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
-
-import Roadmap from "../RoadMap/index.js";
+import React, { useState } from "react";
 
 function VestigeListing({ accountAddress }) {
-  const [accountData, setAccountData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("Vestige Listing");
+  const [iframeLoading, setIframeLoading] = useState(true); // State to track iframe loading
 
-  useEffect(() => {
-    if (accountAddress) {
-      fetchAccountData();
-    }
-  }, [accountAddress]);
-
-  const fetchAccountData = async () => {
-    setLoading(true);
-    try {
-      const response = await getUserTokenHolding(accountAddress);
-      setAccountData(response.account ? response.account : null);
-      setError(response.message ? response.message : null);
-      setLoading(false);
-    } catch (err) {
-      setError("Error fetching account data. Please try again.");
-      setLoading(false);
-    }
+  const handleIframeLoad = () => {
+    setIframeLoading(false); // Set loading to false when iframe is loaded
   };
 
   return (
@@ -33,14 +13,27 @@ function VestigeListing({ accountAddress }) {
       {activeTab === "Vestige Listing" && (
         <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
           <h1 className="animate-pulse text-red-500 p-4">
-            Vestige wallet connect is a diiferent session then the one on this
+            Vestige wallet connect is a different session than the one on this
             website. Please connect your wallet to Vestige. Click the Connect
             button, to interact with their swaps.
           </h1>
+          {iframeLoading && (
+            <span className="loading loading-spinner loading-lg text-white">
+              <div className="flex justify-center">
+                <svg
+                  className="animate-spin h-5 w-5 mr-3 ..."
+                  style={{ border: "5px solid white" }}
+                  viewBox="0 0 24 24"
+                ></svg>
+                Loading ...
+              </div>
+            </span>
+          )}
           <iframe
-            className="w-full h-screen"
+            className={`w-full ${iframeLoading ? "h-0" : "h-screen"}`} // Hide iframe while loading
             src="https://vestige.fi/asset/1279721720"
             title="Phantoms Vestige Listing"
+            onLoad={handleIframeLoad}
           ></iframe>
           <a
             href="https://vestige.fi"
@@ -55,24 +48,5 @@ function VestigeListing({ accountAddress }) {
     </div>
   );
 }
-
-const StarIcon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className="feather feather-star"
-    >
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21 12 17.77 5.82 21 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-    </svg>
-  );
-};
 
 export default VestigeListing;

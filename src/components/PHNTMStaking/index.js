@@ -1,31 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
-
-import Roadmap from "../RoadMap/index.js";
-
+import React, { useState } from "react";
 function PHNTMStaking({ accountAddress }) {
-  const [accountData, setAccountData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("PHNTM Staking");
+  const [iframeLoading, setIframeLoading] = useState(true); // State to track iframe loading
 
-  useEffect(() => {
-    if (accountAddress) {
-      fetchAccountData();
-    }
-  }, [accountAddress]);
-
-  const fetchAccountData = async () => {
-    setLoading(true);
-    try {
-      const response = await getUserTokenHolding(accountAddress);
-      setAccountData(response.account ? response.account : null);
-      setError(response.message ? response.message : null);
-      setLoading(false);
-    } catch (err) {
-      setError("Error fetching account data. Please try again.");
-      setLoading(false);
-    }
+  const handleIframeLoad = () => {
+    setIframeLoading(false); // Set loading to false when iframe is loaded
   };
 
   return (
@@ -38,10 +17,23 @@ function PHNTMStaking({ accountAddress }) {
             this website. Please connect your wallet to Cometa Hub. Click the
             Connect Wallet button, to interact with their transactions.
           </h1>
+          {iframeLoading && (
+            <span className="loading loading-spinner loading-lg text-white">
+              <div className="flex justify-center">
+                <svg
+                  className="animate-spin h-5 w-5 mr-3 ..."
+                  style={{ border: "5px solid white" }}
+                  viewBox="0 0 24 24"
+                ></svg>
+                Loading ...
+              </div>
+            </span>
+          )}
           <iframe
-            className="w-full h-screen"
+            className={`w-full ${iframeLoading ? "h-0" : "h-screen"}`}
             src="https://app.cometa.farm/stake"
             title="Phantoms Staking"
+            onLoad={handleIframeLoad}
           ></iframe>
           <a
             href="https://app.cometa.farm"
