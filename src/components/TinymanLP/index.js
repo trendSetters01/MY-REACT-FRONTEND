@@ -11,12 +11,14 @@ function TinymanLPDeposits({ accountAddress }) {
   return (
     <div>
       {activeTab === "Tinyman LP Deposits" && (
-        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
-          <h1 className="animate-pulse text-red-500 p-4">
-            Tinyman wallet connect is a diiferent session then the one on this
-            website. Please connect your wallet to Tinyman. Click the wallet tab
-            below and choose the wallet you want to connect to.
-          </h1>
+        <section className="flex flex-col items-center justify-center bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
+          {!iframeLoading && (
+            <h1 className="animate-pulse text-red-500 p-4">
+              Tinyman wallet connect is a diiferent session then the one on this
+              website. Please connect your wallet to Tinyman. Click the wallet
+              tab below and choose the wallet you want to connect to.
+            </h1>
+          )}
           {iframeLoading && (
             <span className="loading loading-spinner loading-lg text-white">
               <div className="flex flex-col items-center justify-center h-screen">

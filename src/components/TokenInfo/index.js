@@ -11,8 +11,10 @@ function TokenInfo({ accountAddress }) {
   return (
     <div>
       {activeTab === "Token Info" && (
-        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
-          <h2 className="text-2xl font-semibold mb-4">Token Information</h2>
+        <section className="flex flex-col items-center justify-center bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
+          {!iframeLoading && (
+            <h2 className="text-2xl font-semibold">Token Information</h2>
+          )}
           {iframeLoading && (
             <span className="loading loading-spinner loading-lg text-white">
               <div className="flex flex-col items-center justify-center h-screen">

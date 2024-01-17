@@ -11,12 +11,14 @@ function VestigeListing({ accountAddress }) {
   return (
     <div>
       {activeTab === "Vestige Listing" && (
-        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
-          <h1 className="animate-pulse text-red-500 p-4">
-            Vestige wallet connect is a different session than the one on this
-            website. Please connect your wallet to Vestige. Click the Connect
-            button, to interact with their swaps.
-          </h1>
+        <section className="flex flex-col items-center justify-center bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
+          {!iframeLoading && (
+            <h1 className="animate-pulse text-red-500 p-4">
+              Vestige wallet connect is a different session than the one on this
+              website. Please connect your wallet to Vestige. Click the Connect
+              button, to interact with their swaps.
+            </h1>
+          )}
           {iframeLoading && (
             <span className="loading loading-spinner loading-lg text-white">
               <div className="flex flex-col items-center justify-center h-screen">
