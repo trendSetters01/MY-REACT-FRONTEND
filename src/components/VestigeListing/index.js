@@ -11,7 +11,7 @@ function VestigeListing({ accountAddress }) {
   return (
     <div>
       {activeTab === "Vestige Listing" && (
-        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
+        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
           <h1 className="animate-pulse text-red-500 p-4">
             Vestige wallet connect is a different session than the one on this
             website. Please connect your wallet to Vestige. Click the Connect

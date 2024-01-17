@@ -11,7 +11,7 @@ function TinymanLPDeposits({ accountAddress }) {
   return (
     <div>
       {activeTab === "Tinyman LP Deposits" && (
-        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
+        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
           <h1 className="animate-pulse text-red-500 p-4">
             Tinyman wallet connect is a diiferent session then the one on this
             website. Please connect your wallet to Tinyman. Click the wallet tab

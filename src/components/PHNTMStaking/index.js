@@ -11,7 +11,7 @@ function PHNTMStaking({ accountAddress }) {
     // <div className="container mx-auto px-4 py-8 text-white bg-gradient-to-r from-blue-500 to-purple-600">
     <div>
       {activeTab === "PHNTM Staking" && (
-        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg rounded-lg">
+        <section className="bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
           <h1 className="animate-pulse text-red-500 p-4">
             Cometa Hub's wallet connect is a diiferent session then the one on
             this website. Please connect your wallet to Cometa Hub. Click the
