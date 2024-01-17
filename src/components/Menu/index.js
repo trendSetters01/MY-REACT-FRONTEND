@@ -338,7 +338,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         src={stakingimg}
                         alt={`token`}
                       />
-                      PHNTM Staking
+                      Stake PHNTM on Cometa Hub
                     </Link>
                   </li>
                 </details>
