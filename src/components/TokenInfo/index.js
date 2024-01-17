@@ -15,7 +15,7 @@ function TokenInfo({ accountAddress }) {
           <h2 className="text-2xl font-semibold mb-4">Token Information</h2>
           {iframeLoading && (
             <span className="loading loading-spinner loading-lg text-white">
-              <div className="flex justify-center">
+              <div className="flex flex-col items-center justify-center h-screen">
                 <svg
                   className="animate-spin h-5 w-5 mr-3 ..."
                   style={{ border: "5px solid white" }}
