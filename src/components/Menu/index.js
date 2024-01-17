@@ -223,42 +223,42 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li>
               <li>
                 <details>
-                  <summary>Token Activities</summary>
+                  <summary>Play to Win</summary>
                   <li>
-                    <details>
-                      <summary>Play to Win</summary>
-                      <li>
-                        <Link to="/cards-rpg" className="dropdown-item">
-                          <img
-                            style={{
-                              width: "25%",
-                              height: "25%",
-                              border: "2px solid white",
-                              borderRadius: "10px",
-                            }}
-                            src={mainGameImg}
-                            alt={`main game`}
-                          />
-                          Cards RPG
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/blackjack" className="dropdown-item">
-                          <img
-                            style={{
-                              width: "25%",
-                              height: "25%",
-                              border: "2px solid white",
-                              borderRadius: "10px",
-                            }}
-                            src={mainGameImg}
-                            alt={`main game`}
-                          />
-                          Blackjack
-                        </Link>
-                      </li>
-                    </details>
+                    <Link to="/cards-rpg" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={mainGameImg}
+                        alt={`main game`}
+                      />
+                      Cards RPG
+                    </Link>
                   </li>
+                  <li>
+                    <Link to="/blackjack" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={mainGameImg}
+                        alt={`main game`}
+                      />
+                      Blackjack
+                    </Link>
+                  </li>
+                </details>
+              </li>
+              <li>
+                <details>
+                  <summary>Token Activities</summary>
                   <li>
                     <Link to="/trade-phntm" className="dropdown-item">
                       <img
