@@ -260,21 +260,6 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                 <details>
                   <summary>Token Activities</summary>
                   <li>
-                    <Link to="/trade-phntm" className="dropdown-item">
-                      <img
-                        style={{
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={vestigeImg}
-                        alt={`vestige`}
-                      />
-                      Trade on Vestige
-                    </Link>
-                  </li>
-                  <li>
                     <Link to="/token-info" className="dropdown-item">
                       <img
                         style={{
@@ -287,6 +272,21 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         alt={`token`}
                       />
                       Token Information
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="/trade-phntm" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={vestigeImg}
+                        alt={`vestige`}
+                      />
+                      Trade on Vestige
                     </Link>
                   </li>
                   <li>
