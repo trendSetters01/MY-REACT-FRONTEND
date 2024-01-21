@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { algodClient } from "../../algorand/config.js";
 import checkTransactionStatus from "../../algorand/checkTransactionStatus.js";
 import { PeraWalletContext } from "../PeraWalletContext";
+import axios from "axios";
 import AssetScrolling from "../AssetScrolling/index.js";
 import { send } from "../../algorand/transactionHelpers/send.js";
 
@@ -11,12 +12,7 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
   const [showComponent, setShowComponent] = useState(false);
 
   const peraWallet = useContext(PeraWalletContext);
-
-  const waitForConfirmation = (txId) => {
-    return new Promise((resolve) => {
-      checkTransactionStatus(txId, resolve);
-    });
-  };
+  const API_BASE_URL = "https://phantoms-api.onrender.com/api/v1"; // Replace with your backend URL
 
   const handleDeposit = async () => {
     try {
@@ -40,8 +36,14 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
       setStatus("Deposit pending...");
 
       // Wait for transaction confirmation
-      const isConfirmed = await waitForConfirmation(txConfirmation.txId);
-      if (isConfirmed) {
+      const response = await axios.post(`${API_BASE_URL}/check-deposit-tx`, {
+        asset: "ALGO",
+        txId: txConfirmation.txId,
+      });
+
+      const { isConfirmed, correct } = response.data;
+
+      if (isConfirmed && correct) {
         setStatus("Deposit confirmed.");
         console.log("Deposit confirmed.");
         onDepositSuccess();
