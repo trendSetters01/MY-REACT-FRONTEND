@@ -240,7 +240,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/blackjack" className="dropdown-item">
+                    <Link to="/phantoms-21" className="dropdown-item">
                       <img
                         style={{
                           width: "25%",
@@ -251,7 +251,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         src={mainGameImg}
                         alt={`main game`}
                       />
-                      Blackjack
+                      Phantoms 21
                     </Link>
                   </li>
                 </details>

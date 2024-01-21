@@ -46,7 +46,7 @@ export default function Navbar() {
             element={<Swap accountAddress={connectedAccountAddress} />}
           />
           <Route
-            path="/blackjack"
+            path="/phantoms-21"
             element={<Blackjack accountAddress={connectedAccountAddress} />}
           />
           <Route

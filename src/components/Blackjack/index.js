@@ -38,7 +38,7 @@ export default function Blackjack({ accountAddress }) {
         "JQONXCP7LYP2O2XQLOPBM6I67LBGCZGEZGHBRRBJBAJEWEIWIRIFZIPXIQ",
         betWith === "ALGO" ? bet * 1000000 : bet * 100000000, // ( / 1e8).toFixed(8)
         betWith === "ALGO" ? "0" : "1279721720", // '0' for ALGO
-        `Phantoms Deposit: Blackjack`
+        `Phantoms Deposit: phantoms-21`
       );
       const signedTx = await peraWallet.signTransaction([txn]);
       const txConfirmation = await algodClient
@@ -297,7 +297,7 @@ export default function Blackjack({ accountAddress }) {
         accountAddress,
         0,
         "0", // '0' for ALGO
-        `Phantoms Win Confirmation receipt for ${accountAddress}: Blackjack`
+        `Phantoms Win Confirmation receipt for ${accountAddress}: Phantoms 21`
       );
       const optInTxn = await optIn(
         accountAddress, //"1276228104"
@@ -333,7 +333,7 @@ export default function Blackjack({ accountAddress }) {
         );
         try {
           const response = await axios.post(
-            `${API_BASE_URL}/send-blackjack-rewards`,
+            `${API_BASE_URL}/send-phantoms-21-rewards`,
             {
               to: accountAddress,
             }
@@ -385,7 +385,7 @@ export default function Blackjack({ accountAddress }) {
               style={{ maxWidth: "10em" }}
               className="text-3xl text-center mt-2 mb-2 px-4 py-2"
             >
-              Blackjack Game with Phantoms (Beta)
+              Phantoms 21 (Beta)
             </h1>
             {/* Wallet and Bet */}
             {!currentBet && !gameOver && (
