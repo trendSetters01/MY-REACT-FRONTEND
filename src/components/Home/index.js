@@ -45,6 +45,7 @@ function Home({ accountAddress }) {
             "Roadmap",
             "NFT Benefits",
             "Tokenomics",
+            "Phantom Wallets",
           ].map((tab) => (
             <button
               style={{ marginBottom: "2em" }}
@@ -229,7 +230,85 @@ function Home({ accountAddress }) {
             </div>
           </section>
         )}
-
+        {activeTab === "Phantom Wallets" && (
+          <section className="wallets bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
+            <h2 className="text-2xl font-semibold mb-4">
+              Phantom Wallets Overview
+            </h2>
+            <div className="dark:text-gray-300">
+              <p>
+                <strong>Direct Links to Phantom Wallet Addresses</strong>
+              </p>
+              <p className="mt-2 mb-4">
+                We're dedicated to transparency and accountability. Below are
+                the links to our Phantom Wallet addresses, showcasing real-time
+                transactions and holdings:
+              </p>
+              <ul className="list-disc pl-5 dark:text-gray-300">
+                <li className="mt-2 mb-4">
+                  <strong>Reserve Wallet:</strong>{" "}
+                  <a
+                    href="https://allo.info/account/YI7APPJQ6P2CLKW5E7YZ5NFMC4KBGES2EXN72ADUNX2BNQPKOOMIBVHWJU"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-400"
+                  >
+                    View Wallet
+                  </a>
+                </li>
+                <li className="mt-2 mb-4">
+                  <strong>Community Funds Wallet:</strong>{" "}
+                  <a
+                    href="https://allo.info/account/DBF3CRXDC36CARJREL3X6C7N3C373WPBPKRYFFHA7XBTTEB2ZIM4ZN64U4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-400"
+                  >
+                    View Wallet
+                  </a>
+                </li>
+                <li className="mt-2 mb-4">
+                  <strong>Staking Rewards Reserve Wallet:</strong>{" "}
+                  <a
+                    href="https://allo.info/account/2FKEVDZE2VVFWV65CGUS3EIR3OAZZQTA6EENRJIOSRKPVULH5M43QULK54"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-400"
+                  >
+                    View Wallet
+                  </a>
+                </li>
+                <li className="mt-2 mb-4">
+                  <strong>Team and Advisors Wallet:</strong>{" "}
+                  <a
+                    href="https://allo.info/account/ILGNJUCJ3U5UCJFK5AFT4FKCRFSZLAN45W4HZRZWTXSOM3GCQPLJJG2BD4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-400"
+                  >
+                    View Wallet
+                  </a>
+                </li>
+                <li className="mt-2 mb-4">
+                  <strong>Partnerships Wallet:</strong>{" "}
+                  <a
+                    href="https://allo.info/account/ER3NVYQQGRYHQSDRTL4ICMPWOTZMRXVJO44FCDLSEXNPGD3ERFP26DAB6Y"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-400"
+                  >
+                    View Wallet
+                  </a>
+                </li>
+              </ul>
+              <p>
+                Your support and trust in our project are invaluable. We remain
+                committed to transparency and fostering a strong, engaged
+                community around PHNTM.
+              </p>
+            </div>
+          </section>
+        )}
       </main>
     </div>
   );
