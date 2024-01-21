@@ -265,6 +265,17 @@ function Home({ accountAddress }) {
                   </a>
                 </li>
                 <li className="mt-2 mb-4">
+                  <strong>V1 NFT Staking Rewards Wallet:</strong>{" "}
+                  <a
+                    href="https://allo.info/account/JWT3AWBTG2MRUCJQYY2L3QIZHQOO7XYICUTYWPLZ3WCB5YGQS65ITQAE5Y"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-400"
+                  >
+                    View Wallet
+                  </a>
+                </li>
+                <li className="mt-2 mb-4">
                   <strong>Staking Rewards Reserve Wallet:</strong>{" "}
                   <a
                     href="https://allo.info/account/2FKEVDZE2VVFWV65CGUS3EIR3OAZZQTA6EENRJIOSRKPVULH5M43QULK54"
