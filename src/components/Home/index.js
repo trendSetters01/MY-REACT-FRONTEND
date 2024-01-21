@@ -236,9 +236,6 @@ function Home({ accountAddress }) {
               Phantom Wallets Overview
             </h2>
             <div className="dark:text-gray-300">
-              <p>
-                <strong>Direct Links to Phantom Wallet Addresses</strong>
-              </p>
               <p className="mt-2 mb-4">
                 We're dedicated to transparency and accountability. Below are
                 the links to our Phantom Wallet addresses, showcasing real-time
