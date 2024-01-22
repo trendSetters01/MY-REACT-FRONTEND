@@ -45,7 +45,7 @@ function Home({ accountAddress }) {
             "Roadmap",
             "NFT Benefits",
             "Tokenomics",
-            "Phantom Wallets",
+            "Phantoms Wallets",
           ].map((tab) => (
             <button
               style={{ marginBottom: "2em" }}
@@ -230,15 +230,15 @@ function Home({ accountAddress }) {
             </div>
           </section>
         )}
-        {activeTab === "Phantom Wallets" && (
+        {activeTab === "Phantoms Wallets" && (
           <section className="wallets bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">
-              Phantom Wallets Overview
+              Phantoms Wallets Overview
             </h2>
             <div className="dark:text-gray-300">
               <p className="mt-2 mb-4">
                 We're dedicated to transparency and accountability. Below are
-                the links to our Phantom Wallet addresses, showcasing real-time
+                the links to our Wallet addresses, showcasing real-time
                 transactions and holdings:
               </p>
               <ul className="list-disc pl-5 dark:text-gray-300">
