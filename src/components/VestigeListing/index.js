@@ -14,7 +14,11 @@ function VestigeListing({ accountAddress }) {
         <section className="flex flex-col items-center justify-center bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
           {!iframeLoading && (
             <div
-              style={{ padding: "0.125rem", maxHeight: "24vh" }}
+              style={{
+                padding: "0.125rem",
+                maxHeight: "24vh",
+                borderRadius: "0",
+              }}
               role="alert"
               className="alert alert-warning flex flex-col items-center justify-center"
             >
