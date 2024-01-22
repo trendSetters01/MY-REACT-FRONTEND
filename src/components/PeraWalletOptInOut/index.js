@@ -53,7 +53,14 @@ export default function PeraWalletOptInOut({ accountAddress }) {
   }
 
   return (
-    <div className="flex justify-center items-center h-screen ">
+    <div
+      style={{
+        minHeight: "64vh",
+        minWidth: "100vw",
+        maxWidth: "100vw",
+      }}
+      className="flex flex-col items-center justify-center"
+    >
       {!accountAddress && (
         <h1 className="animate-pulse text-white mt-4">
           Connect your wallet to manage assets.
@@ -86,24 +93,24 @@ export default function PeraWalletOptInOut({ accountAddress }) {
               value={assetId}
               onChange={(e) => setAssetId(e.target.value)}
               placeholder="Asset ID"
-              className="input input-bordered w-full max-w-xs input-lg"
+              className="input input-bordered w-full max-w-xs input-md"
             />
           </label>
           <div className="tab-content text-white">
             {activeTab === "optIn" && (
               <button
                 onClick={handleOptIn}
-                className="input-lg bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mt-4 mb-4 w-full max-w-xs"
+                className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mt-4 mb-4 w-full max-w-xs"
               >
-                <h1 className="text-2xl font-bold text-white">Opt-In</h1>
+                <h1 className="text-xl font-bold text-white">Opt-In</h1>
               </button>
             )}
             {activeTab === "optOut" && (
               <button
                 onClick={handleOptOut}
-                className="input-lg bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mt-4 mb-4 w-full max-w-xs"
+                className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mt-4 mb-4 w-full max-w-xs"
               >
-                <h1 className="text-2xl font-bold text-white">Opt-Out</h1>
+                <h1 className="text-xl font-bold text-white">Opt-Out</h1>
               </button>
             )}
           </div>

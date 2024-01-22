@@ -51,7 +51,14 @@ export default function SendTransaction({ accountAddress }) {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div
+      style={{
+        minHeight: "64vh",
+        minWidth: "100vw",
+        maxWidth: "100vw",
+      }}
+      className="flex flex-col items-center justify-center"
+    >
       <form onSubmit={handleSubmit}>
         {!accountAddress && (
           <h1 className="animate-pulse text-white mt-4">
@@ -60,7 +67,7 @@ export default function SendTransaction({ accountAddress }) {
         )}
         {accountAddress && (
           <div>
-            <h1 className="text-2xl font-bold text-white mt-4">
+            <h1 className="text-2xl font-bold text-white">
               {transactionStatus && <p>{transactionStatus}</p>}
             </h1>
             <label className="form-control w-full max-w-xs">

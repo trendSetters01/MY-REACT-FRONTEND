@@ -42,19 +42,23 @@ export default function DestroyAsset({ accountAddress }) {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center">
-      <div
-        className="w-full max-w-md bg-light rounded-lg p-4"
-        style={{ height: "inherit" }}
-      >
+    <div
+      style={{
+        minHeight: "64vh",
+        minWidth: "100vw",
+        maxWidth: "100vw",
+      }}
+      className="flex flex-col items-center justify-center"
+    >
+      <div className="bg-light rounded-lg p-4">
         {!accountAddress && (
-          <h1 className="ml-4 mt-80 animate-pulse text-white text-center mb-4">
+          <h1 className="ml-4 animate-pulse text-white text-center mb-4">
             Connect your wallet to Destroy Assets
           </h1>
         )}
 
         {accountAddress && !transactionId && (
-          <div className="ml-4 mt-32 flex flex-col items-center justify-center">
+          <div className="ml-4 flex flex-col items-center justify-center">
             <input
               type="text"
               value={assetId || ""}

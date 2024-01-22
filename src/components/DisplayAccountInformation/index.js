@@ -49,15 +49,18 @@ export default function DisplayAccountInformation({
   }
 
   return (
-    <div className="pt-16 container mx-auto fade-in text-white h-screen">
+    <div className="pt-16 container mx-auto fade-in text-white">
       {loading && <p className="text-center">Loading account data...</p>}
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
       {!connectedAccountAddress && (
-        <h1 className="ml-4 mt-72 flex justify-center animate-pulse">
+        <h1
+          style={{ minHeight: "48vh" }}
+          className="flex flex-col items-center justify-center animate-pulse"
+        >
           Connect your wallet to see your account information.
         </h1>
       )}
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center pb-16">
         {accountData && connectedAccountAddress && (
           <div
             style={{ wordWrap: "break-word" }}
