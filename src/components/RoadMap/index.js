@@ -4,46 +4,39 @@ const Roadmap = () => {
   const milestones = [
     {
       title: "Phantom Pals Nft Launch",
-      date: "TBA",
+      date: "N/A",
       description: "Launch of Phantom Pals, introduction of basic features.",
       status: "completed", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "NFT Web Platform Launch Phase",
-      date: "TBA",
+      date: "N/A",
       description: "Alpha launch of the platform",
       status: "completed", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "Phantom V2 Nft Introduction",
-      date: "TBA",
+      date: "N/A",
       description: "Release part 1 - Phantom V2 NFT's.",
       status: "completed", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "NFT Catalogue",
-      date: "TBA",
+      date: "N/A",
       description: "Catalogue of Phantom NFT's for sale.",
-      status: "Aplha - in-progress", // other statuses could be "in-progress", "upcoming"
+      status: "in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
       title: "View Account Information",
-      date: "TBA",
+      date: "N/A",
       description: "Introduction to Web3 Wallets and Account Information.",
       status: "in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
-      title: "Register Your Address",
-      date: "TBA",
-      description:
-        "Register your address to participate in Phantom activities.",
-      status: "in-progress", // other statuses could be "in-progress", "upcoming"
-    },
-    {
-      title: "NFT Staking",
-      date: "TBA",
-      description: "NFT Staking to be introduced.",
-      status: "in-progress",
+      title: "V1 NFT Staking",
+      date: "N/A",
+      description: "V1 NFT Staking to be introduced.",
+      status: "completed",
     },
     {
       title: "Introduction of Phantom Council System",
@@ -53,9 +46,9 @@ const Roadmap = () => {
     },
     {
       title: "Introduction of Phantom Economy",
-      date: "TBA",
+      date: "N/A",
       description: "First Phantom token utility to be introduced.",
-      status: "in-future",
+      status: "completed",
     },
     {
       title: "Introduction of Phantom Role System",
@@ -75,6 +68,7 @@ const Roadmap = () => {
     completed: "from-green-500 to-green-800",
     "in-progress": "from-yellow-500 to-yellow-800",
     "in-future": "from-red-500 to-red-800",
+    "completed": "from-green-500 to-green-800",
   };
 
   return (
