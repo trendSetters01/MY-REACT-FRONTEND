@@ -146,14 +146,16 @@ export default function MintNFTARC69({ accountAddress }) {
 
   return (
     <div
-      style={{ height: "80vh" }}
+      style={{ wordWrap: "break-word", maxHeight: "96vh", maxWidth: "100vw" }}
       className="flex flex-col items-center justify-center"
     >
       {showConfetti && <Confetti width={window.width} height={window.height} />}
       {!accountAddress && (
-        <h1 className="animate-pulse text-white">
-          Connect your wallet to mint NFTs.
-        </h1>
+        <div style={{ minHeight: "24vh" }}>
+          <h1 className="animate-pulse text-white pt-20">
+            Connect your wallet to mint NFTs.
+          </h1>
+        </div>
       )}
 
       {accountAddress && !showConfetti && (
