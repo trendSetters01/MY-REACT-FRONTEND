@@ -189,8 +189,8 @@ export default function MintNFTARC3({ accountAddress }) {
     >
       {showConfetti && <Confetti width={window.width} height={window.height} />}
       {!accountAddress && (
-        <div style={{ minHeight: "24vh" }}>
-          <h1 className="animate-pulse text-white pt-20">
+        <div style={{ minHeight: "64vh" }}>
+          <h1 className="animate-pulse text-white pt-48">
             Connect your wallet to mint NFTs.
           </h1>
         </div>
