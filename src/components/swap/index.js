@@ -173,18 +173,22 @@ function Swap({ accountAddress }) {
 
   return (
     <div
-      style={{ height: "100vh" }}
+      style={{ wordWrap: "break-word", maxHeight: "100vh", maxWidth: "100vw" }}
       className="m-2 flex flex-col items-center justify-center"
     >
       {!accountAddress && (
-        <h1 className="animate-pulse text-white">
-          Connect your wallet to swap assets.
-        </h1>
+        <div style={{ minHeight: "64vh" }}>
+          <h1 className="animate-pulse text-white pt-60">
+            Connect your wallet to swap assets.
+          </h1>
+        </div>
       )}
 
       {accountAddress && (
         <div>
-          <h1 className="mb-4 text-white text-2xl flex flex-col items-center justify-center">Swap Assets</h1>
+          <h1 className="mb-4 text-white text-2xl flex flex-col items-center justify-center">
+            Swap Assets
+          </h1>
           <div className="flex flex-col items-center justify-center mb-4 text-white">
             No Crypto ? get some using the on ramp button below.
             <PeraOnRampComponent accountAddress={accountAddress} />

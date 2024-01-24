@@ -7,10 +7,8 @@ function App() {
   return (
     <PeraWalletProvider>
       <div
-        className={`bg-cover bg-center`}
+        className={`bg-cover bg-center bg-gradient-to-r from-blue-500 to-purple-600`}
         style={{
-          backgroundImage:
-            "url('./codioful-formerly-gradienta-G084bO4wGDA-unsplash.jpg')",
           overflow: "auto",
         }}
       >
