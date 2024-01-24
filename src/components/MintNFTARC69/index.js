@@ -146,7 +146,12 @@ export default function MintNFTARC69({ accountAddress }) {
 
   return (
     <div
-      style={{ wordWrap: "break-word", maxHeight: "96vh", maxWidth: "100vw", minHeight: "64vh" }}
+      style={{
+        wordWrap: "break-word",
+        maxHeight: "96vh",
+        maxWidth: "100vw",
+        minHeight: "64vh",
+      }}
       className="flex flex-col items-center justify-center text-white"
     >
       {showConfetti && <Confetti width={window.width} height={window.height} />}
@@ -169,12 +174,12 @@ export default function MintNFTARC69({ accountAddress }) {
           <MetadataFields
             metadataFields={metadataFields}
             handleMetadataChange={handleMetadataChange}
-            addMetadataField={addMetadataField}
             removeMetadataField={removeMetadataField}
           />
           <ActionButtons
             handleMintArc69={handleMintArc69}
             resetForm={resetForm}
+            addMetadataField={addMetadataField}
           />
         </div>
       )}
@@ -241,7 +246,6 @@ function FileUploadButton({
 function MetadataFields({
   metadataFields,
   handleMetadataChange,
-  addMetadataField,
   removeMetadataField,
 }) {
   return (
@@ -249,25 +253,43 @@ function MetadataFields({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {metadataFields.map((field, index) => (
           <div key={index} className="flex flex-col">
-            <input
-              type="text"
-              value={field.key}
-              onChange={(e) =>
-                handleMetadataChange(index, e.target.value, field.value, true)
+            <div
+              className="tooltip tooltip-info"
+              data-tip={
+                index < 3
+                  ? "Required"
+                  : "Trait will be the key in the metadata JSON."
               }
-              placeholder="Key"
-              className="mb-2 input-md"
-              disabled={field.required}
-            />
-            <input
-              type="text"
-              value={field.value}
-              onChange={(e) =>
-                handleMetadataChange(index, field.key, e.target.value, false)
+            >
+              <input
+                type="text"
+                value={field.key}
+                onChange={(e) =>
+                  handleMetadataChange(index, e.target.value, field.value, true)
+                }
+                placeholder="Trait"
+                className="text-gray-700 mb-2 input-md"
+                disabled={field.required}
+              />
+            </div>
+            <div
+              className="tooltip tooltip-info"
+              data-tip={
+                index < 3
+                  ? "Required"
+                  : "Type will be the value in the metadata JSON."
               }
-              placeholder="Value"
-              className="mb-2 input-md"
-            />
+            >
+              <input
+                type="text"
+                value={field.value}
+                onChange={(e) =>
+                  handleMetadataChange(index, field.key, e.target.value, false)
+                }
+                placeholder="Type"
+                className="text-gray-700 mb-2 input-md"
+              />
+            </div>
             {!field.required && (
               <button
                 onClick={() => removeMetadataField(index)}
@@ -279,19 +301,19 @@ function MetadataFields({
           </div>
         ))}
       </div>
-      <button
-        onClick={addMetadataField}
-        className="mt-4 input-md bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 rounded-md"
-      >
-        Add Metadata Field
-      </button>
     </div>
   );
 }
 
-function ActionButtons({ handleMintArc69, resetForm }) {
+function ActionButtons({ handleMintArc69, resetForm, addMetadataField }) {
   return (
-    <div className="flex flex-col md:flex-row justify-center gap-4 mt-4">
+    <div className="flex flex-col md:flex-row justify-center gap-4 mt-8">
+      <button
+        onClick={addMetadataField}
+        className="input-md bg-gradient-to-r from-green-500 to-yellow-400 hover:from-yellow-400 hover:to-green-500 rounded-md"
+      >
+        Add More Traits
+      </button>
       <button
         onClick={resetForm}
         className="input-md bg-gradient-to-r from-yellow-500 to-red-400 hover:from-red-400 hover:to-yellow-500 rounded-md"
