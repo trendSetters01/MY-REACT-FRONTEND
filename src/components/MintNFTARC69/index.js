@@ -146,7 +146,7 @@ export default function MintNFTARC69({ accountAddress }) {
 
   return (
     <div
-      style={{ wordWrap: "break-word", maxHeight: "96vh", maxWidth: "100vw" }}
+      style={{ wordWrap: "break-word", maxHeight: "96vh", maxWidth: "100vw", minHeight: "64vh" }}
       className="flex flex-col items-center justify-center"
     >
       {showConfetti && <Confetti width={window.width} height={window.height} />}
