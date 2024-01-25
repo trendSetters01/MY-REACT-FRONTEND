@@ -334,11 +334,12 @@ function Home({ accountAddress }) {
                 Vision and Progress
               </h3>
               <p>
-                embarks on a pioneering journey within the Algorand blockchain
-                ecosystem, dedicated to unlocking the potential of blockchain
-                for tangible, real-world applications. Our ambition is to
-                cultivate a space where innovation meets community, fostering an
-                environment of growth, learning, and engagement.
+                <strong>Phantoms</strong> embarks on a pioneering journey within
+                the Algorand blockchain ecosystem, dedicated to unlocking the
+                potential of blockchain for tangible, real-world applications.
+                Our ambition is to cultivate a space where innovation meets
+                community, fostering an environment of growth, learning, and
+                engagement.
               </p>
               <ul className="list-disc pl-5">
                 <li>
