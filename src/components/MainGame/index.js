@@ -7,7 +7,7 @@ export default function MainGame({ accountAddress }) {
 
   return (
     <div
-      style={{ height: "80vh" }}
+      style={{ height: "96vh" }}
       className="flex flex-col items-center justify-center text-white"
     >
       {!accountAddress && (

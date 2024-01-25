@@ -11,7 +11,7 @@ function TinymanLPDeposits({ accountAddress }) {
   return (
     <div>
       {activeTab === "Tinyman LP Deposits" && (
-        <section className="flex flex-col items-center justify-center bg-gradient-to-r from-black to-gray-500 text-white shadow-lg">
+        <section className="flex flex-col items-center justify-center bg-gradient-to-r from-black to-purple-600 text-white shadow-lg">
           {!iframeLoading && (
             <div
               style={{

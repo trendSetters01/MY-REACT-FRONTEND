@@ -190,7 +190,6 @@ export default function Cardsrpg({ accountAddress }) {
   return (
     // Add a closing parenthesis and semicolon here
     <div
-      style={{ height: "80vh" }}
       className="flex flex-col items-center justify-center"
     >
       {!accountAddress && (
