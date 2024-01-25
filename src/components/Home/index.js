@@ -7,6 +7,7 @@ function Home({ accountAddress }) {
   const [accountData, setAccountData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [activeTab, setActiveTab] = useState("Introduction");
 
   useEffect(() => {
@@ -51,6 +52,7 @@ function Home({ accountAddress }) {
             "NFT Benefits",
             "Tokenomics",
             "Phantoms Wallets",
+            "Disclaimers",
           ].map((tab) => (
             <button
               style={{ marginBottom: "2em" }}
@@ -319,6 +321,109 @@ function Home({ accountAddress }) {
                 committed to transparency and fostering a strong, engaged
                 community around PHNTM.
               </p>
+            </div>
+          </section>
+        )}
+        {activeTab === "Disclaimers" && (
+          <section className="disclaimers bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
+            <h2 className="text-2xl font-semibold mb-4">
+              Phantoms Disclaimers
+            </h2>
+            <div className="dark:text-gray-300 space-y-4">
+              <p>
+                Phantoms is an innovative initiative on the Algorand blockchain,
+                aimed at harnessing blockchain technology for real-world
+                applications. Our mission is to create a platform for growth,
+                learning, and community engagement.
+              </p>
+              <ul className="list-disc pl-5">
+                <li>
+                  <strong>Financial Considerations:</strong> All interactions
+                  within Phantoms, including purchases, are at your discretion.
+                  We urge caution and inform you about the experimental nature
+                  of our project.
+                </li>
+                <li>
+                  <strong>Security Commitment:</strong> Security is our top
+                  priority. We continuously strive to protect our community,
+                  though no system can guarantee absolute security.
+                </li>
+                <li>
+                  <strong>Transparency and Evolution:</strong> Phantoms commits
+                  to transparency and adaptability. We will keep the community
+                  informed and evolve our practices to enhance the project's
+                  value.
+                </li>
+              </ul>
+              <p>
+                By participating in Phantoms, you recognize the innovative yet
+                experimental aspect of the project. We are dedicated to
+                improvement and encourage you to join us with an open mind.
+              </p>
+              <button
+                className="mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 rounded text-white"
+                onClick={() => setShowModal(!showModal)}
+              >
+                Read More
+              </button>
+              {showModal && (
+                <div className="dark:text-gray-300">
+                  <p className="mt-2 mb-4">
+                    Primary intent behind Phantoms is not to generate financial
+                    gains for its participants but to foster a space for
+                    experimentation, learning, and growth within the realms of
+                    digital collectibles and blockchain utility.
+                  </p>
+                  <p className="mt-2 mb-4">
+                    All interactions, including purchases and transactions
+                    within the Phantoms ecosystem, are conducted at the
+                    participant's discretion. Users should be aware that, like
+                    any innovative venture exploring new frontiers, Phantoms
+                    carries inherent risks. The project is in continuous
+                    development, reflecting an exploratory approach to
+                    blockchain application. As such, all participants are
+                    advised to proceed with caution, understanding the
+                    experimental nature of their involvement.
+                  </p>
+                  <p className="mt-2 mb-4">
+                    The Phantoms team places a paramount emphasis on security
+                    and the integrity of the platform. We are dedicated to
+                    implementing the highest standards of security measures and
+                    best practices to safeguard the community and its assets.
+                    However, in the digital domain, absolute security cannot be
+                    unequivocally guaranteed. We pledge to be responsive and
+                    proactive in addressing, mitigating, and informing our
+                    community of any security concerns that may arise.
+                  </p>
+                  <p className="mt-2 mb-4">
+                    We are committed to transparency, open communication, and
+                    adaptability. We believe in keeping our community
+                    well-informed about our processes, ongoing developments, and
+                    any challenges we face along the way. As Phantoms evolves,
+                    so too will our strategies, technologies, and practices.
+                    Which, in turn, will aid with our goal of enhancing the
+                    project's security, usability, and value to our community.
+                  </p>
+                  <p className="mt-2 mb-4">
+                    By engaging with Phantoms, participants acknowledge the
+                    experimental nature of the project and the potential for
+                    unforeseen issues. Our team is dedicated to continuous
+                    improvement, learning from experiences, and adapting to meet
+                    the future head-on. We invite you to join us on this journey
+                    with an open mind and a spirit of exploration.
+                  </p>
+                  <p className="mt-2 mb-4">
+                    Please let us know if you have any questions or concerns.
+                    Reach out to us at{" "}
+                    <a
+                      href="mailto: support@phantomshub.com"
+                      className="mt-4 text-blue-500 hover:underline"
+                    >
+                      support@phantomshub.com
+                    </a>
+                  </p>
+                </div>
+              )}
             </div>
           </section>
         )}
