@@ -237,8 +237,8 @@ export default function Blackjack({ accountAddress }) {
       setMessage("Insufficient PHNTM balance.");
       return;
     } else if (betAmount <= 0 || isNaN(betAmount)) {
-      setError("Invalid bet amount.");
-      setMessage("Invalid bet amount.");
+      setError("Invalid deposit amount.");
+      setMessage("Invalid deposit amount.");
       return;
     }
 
