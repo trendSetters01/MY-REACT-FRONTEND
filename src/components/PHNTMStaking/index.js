@@ -11,7 +11,7 @@ function PHNTMStaking({ accountAddress }) {
     // <div className="container mx-auto px-4 py-8 text-white bg-gradient-to-r from-blue-500 to-purple-600">
     <div>
       {activeTab === "PHNTM Staking" && (
-        <section className="flex flex-col items-center justify-center bg-gradient-to-r from-black to-purple-600 text-white shadow-lg">
+        <section className="flex flex-col items-center justify-center bg-gradient-to-r from-teal-600 to-purple-600 text-white shadow-lg">
           {!iframeLoading && (
             <div
               style={{

@@ -34,7 +34,7 @@ function Home({ accountAddress }) {
       style={{
         maxWidth: "100vw",
       }}
-      className="container mx-auto px-4 py-8 text-white bg-gradient-to-r from-black to-purple-600"
+      className="container mx-auto px-4 py-8 text-white bg-gradient-to-r from-teal-600 to-purple-600"
     >
       <header className="mb-12 text-center">
         <h1 className="text-6xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-blue-500">
