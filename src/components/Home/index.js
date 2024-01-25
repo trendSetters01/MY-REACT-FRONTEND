@@ -427,13 +427,6 @@ function Home({ accountAddress }) {
                     usability, and value.
                   </p>
                   <p className="mt-2 mb-4">
-                    By engaging with Phantoms, participants recognize and
-                    embrace the project's experimental and evolving nature. Our
-                    team is committed to continuous improvement and adaptation.
-                    We welcome you to join us on this journey, with a spirit of
-                    curiosity and exploration.
-                  </p>
-                  <p className="mt-2 mb-4">
                     For any questions or concerns, please reach out to us at{" "}
                     <a
                       href="mailto:support@phantomshub.com"
