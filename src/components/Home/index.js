@@ -397,55 +397,47 @@ function Home({ accountAddress }) {
               {showModal && (
                 <div className="dark:text-gray-300">
                   <p className="mt-2 mb-4">
-                    Primary intent behind Phantoms is not to generate financial
-                    gains for its participants but to foster a space for
-                    experimentation, learning, and growth within the realms of
-                    digital collectibles and blockchain utility.
+                    The primary intent behind Phantoms is to foster a space for
+                    innovation and community growth within digital collectibles
+                    and blockchain technology, rather than financial gain.
                   </p>
                   <p className="mt-2 mb-4">
-                    All interactions, including purchases and transactions
-                    within the Phantoms ecosystem, are conducted at the
-                    participant's discretion. Users should be aware that, like
-                    any innovative venture exploring new frontiers, Phantoms
-                    carries inherent risks. The project is in continuous
-                    development, reflecting an exploratory approach to
-                    blockchain application. As such, all participants are
-                    advised to proceed with caution, understanding the
-                    experimental nature of their involvement.
+                    All interactions within Phantoms, including purchases and
+                    transactions, are at the discretion of participants. As with
+                    any pioneering venture, Phantoms involves inherent risks.
+                    We're continually developing, embracing an exploratory
+                    approach to blockchain application, and we advise all
+                    participants to engage with an understanding of this
+                    experimental nature.
                   </p>
                   <p className="mt-2 mb-4">
-                    The Phantoms team places a paramount emphasis on security
-                    and the integrity of the platform. We are dedicated to
-                    implementing the highest standards of security measures and
-                    best practices to safeguard the community and its assets.
-                    However, in the digital domain, absolute security cannot be
-                    unequivocally guaranteed. We pledge to be responsive and
-                    proactive in addressing, mitigating, and informing our
-                    community of any security concerns that may arise.
+                    Security and platform integrity are paramount to the
+                    Phantoms team. We commit to the highest security standards
+                    and best practices, yet acknowledge that absolute security
+                    in the digital domain cannot be fully guaranteed. Our pledge
+                    is to be vigilant, responsive, and proactive in maintaining
+                    and enhancing security measures.
                   </p>
                   <p className="mt-2 mb-4">
-                    We are committed to transparency, open communication, and
-                    adaptability. We believe in keeping our community
-                    well-informed about our processes, ongoing developments, and
-                    any challenges we face along the way. As Phantoms evolves,
-                    so too will our strategies, technologies, and practices.
-                    Which, in turn, will aid with our goal of enhancing the
-                    project's security, usability, and value to our community.
+                    Phantoms is dedicated to transparency, open communication,
+                    and adaptability. We keep our community informed about our
+                    processes, developments, and any challenges we encounter. As
+                    the project evolves, so too will our strategies and
+                    practices, enhancing the project's overall security,
+                    usability, and value.
                   </p>
                   <p className="mt-2 mb-4">
-                    By engaging with Phantoms, participants acknowledge the
-                    experimental nature of the project and the potential for
-                    unforeseen issues. Our team is dedicated to continuous
-                    improvement, learning from experiences, and adapting to meet
-                    the future head-on. We invite you to join us on this journey
-                    with an open mind and a spirit of exploration.
+                    By engaging with Phantoms, participants recognize and
+                    embrace the project's experimental and evolving nature. Our
+                    team is committed to continuous improvement and adaptation.
+                    We welcome you to join us on this journey, with a spirit of
+                    curiosity and exploration.
                   </p>
                   <p className="mt-2 mb-4">
-                    Please let us know if you have any questions or concerns.
-                    Reach out to us at{" "}
+                    For any questions or concerns, please reach out to us at{" "}
                     <a
-                      href="mailto: support@phantomshub.com"
-                      className="mt-4 text-blue-500 hover:underline"
+                      href="mailto:support@phantomshub.com"
+                      className="text-blue-500 hover:underline"
                     >
                       support@phantomshub.com
                     </a>
