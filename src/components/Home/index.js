@@ -330,35 +330,62 @@ function Home({ accountAddress }) {
               Phantoms Disclaimers
             </h2>
             <div className="dark:text-gray-300 space-y-4">
+              <h3 className="text-xl font-semibold mb-4">
+                Vision and Progress
+              </h3>
               <p>
-                Phantoms is an initiative on the Algorand blockchain,
-                aimed at harnessing blockchain technology for real-world
-                applications. Our mission is to create a platform for growth,
-                learning, and community engagement.
+                embarks on a pioneering journey within the Algorand blockchain
+                ecosystem, dedicated to unlocking the potential of blockchain
+                for tangible, real-world applications. Our ambition is to
+                cultivate a space where innovation meets community, fostering an
+                environment of growth, learning, and engagement.
               </p>
               <ul className="list-disc pl-5">
                 <li>
+                  <strong>Dynamic Evolution:</strong> Phantoms is not static; it
+                  is a voyage of discovery and adaptation. While our initial
+                  phase might be experimental, our eyes are set on a clear
+                  horizon. Feedback from our community is our compass, guiding
+                  our project's evolution from experimental to established,
+                  ensuring our path aligns with both our vision and the needs of
+                  our participants.
+                </li>
+                <li>
                   <strong>Financial Considerations:</strong> All interactions
                   within Phantoms, including purchases, are at your discretion.
-                  We urge caution and inform you about the experimental nature
-                  of our project.
+                  We urge caution but in saying that every transaction, every
+                  interaction is a vote of confidence in what we can achieve
+                  together. With the pioneering spirit comes a degree of
+                  uncertainty, and we encourage every member of our community to
+                  navigate this journey with awareness and thoughtfulness.
                 </li>
                 <li>
-                  <strong>Security Commitment:</strong> Security is our top
-                  priority. We continuously strive to protect our community,
-                  though no system can guarantee absolute security.
+                  <strong>Security Commitment:</strong> Our pledge to security
+                  is foundational, permeating every layer of the Phantoms
+                  ecosystem. We recognize the challenges inherent in
+                  safeguarding a digital community and commit to relentless
+                  vigilance and best practices in security measures. Our journey
+                  from experimental to foundational includes a continuous
+                  enhancement of our security posture.
                 </li>
                 <li>
-                  <strong>Transparency and Evolution:</strong> Phantoms commits
-                  to transparency and adaptability. We will keep the community
-                  informed and evolve our practices to enhance the project's
-                  value.
+                  <strong>Transparent Evolution:</strong> Transparency is the
+                  cornerstone of trust. As Phantoms evolves, so too will our
+                  methods, strategies, and technologies. We commit to keeping
+                  our community informed and engaged, viewing this journey as a
+                  collaborative endeavor that shapes the project's trajectory
+                  and ultimate success.
                 </li>
               </ul>
               <p>
-                By participating in Phantoms, you recognize the innovative yet
-                experimental aspect of the project. We are dedicated to
-                improvement and encourage you to join us with an open mind.
+                By participating in Phantoms, you're not just witnessing
+                innovation; you're part of a collective pushing the boundaries
+                of blockchain's potential. This project, while beginning with
+                exploration, is on a path to defining its course, solidifying
+                its impact, and achieving lasting significance. We invite you to
+                join us with an open mind and a pioneering spirit, ready to
+                contribute to a future where Phantoms stands as a testament to
+                the power of community-driven blockchain endeavors.
               </p>
               <button
                 className="mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 rounded text-white"
