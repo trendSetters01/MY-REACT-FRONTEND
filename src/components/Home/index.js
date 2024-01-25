@@ -331,7 +331,7 @@ function Home({ accountAddress }) {
             </h2>
             <div className="dark:text-gray-300 space-y-4">
               <p>
-                Phantoms is an innovative initiative on the Algorand blockchain,
+                Phantoms is an initiative on the Algorand blockchain,
                 aimed at harnessing blockchain technology for real-world
                 applications. Our mission is to create a platform for growth,
                 learning, and community engagement.
