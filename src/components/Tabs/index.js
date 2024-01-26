@@ -2,14 +2,14 @@ import React from "react";
 
 export default function Tabs({ activeTab, setActiveTab }) {
   return (
-    <div className="mt-2" style={{zIndex: "1000", position: "relative"}}>
+    <div className="mt-2" style={{ zIndex: "1000", position: "relative" }}>
       <div role="tablist" className="tabs">
         <a
           role="tab"
           className={`tab
                         ${
                           activeTab === "arc3"
-                            ? "tab-active bg-gradient-to-r from-red-500 to-purple-500 hover:from-purple-500 hover:to-red-500"
+                            ? "tab-active bg-gradient-to-r from-black to-gray-600 hover:from-gray-600 hover:to-black"
                             : ""
                         }
                         text-white hover:bg-gray-700 transition duration-300 ease-in-out
@@ -23,7 +23,7 @@ export default function Tabs({ activeTab, setActiveTab }) {
           className={`tab
                         ${
                           activeTab === "arc69"
-                            ? "tab-active bg-gradient-to-r from-red-500 to-purple-500 hover:from-purple-500 hover:to-red-500"
+                            ? "tab-active bg-gradient-to-r from-black to-gray-600 hover:from-gray-600 hover:to-black"
                             : ""
                         }
                         text-white hover:bg-gray-700 transition duration-300 ease-in-out

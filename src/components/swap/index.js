@@ -174,7 +174,7 @@ function Swap({ accountAddress }) {
   return (
     <div
       style={{ wordWrap: "break-word", maxHeight: "100vh", maxWidth: "100vw" }}
-      className="m-2 flex flex-col items-center justify-center"
+      className="mt-8 mb-8 flex flex-col items-center justify-center"
     >
       {!accountAddress && (
         <div style={{ minHeight: "64vh" }}>
@@ -185,7 +185,7 @@ function Swap({ accountAddress }) {
       )}
 
       {accountAddress && (
-        <div>
+        <div className="mt-4 mb-4">
           <h1 className="mb-4 text-white text-2xl flex flex-col items-center justify-center">
             Swap Assets
           </h1>

@@ -66,7 +66,10 @@ export default function SendTransaction({ accountAddress }) {
           </h1>
         )}
         {accountAddress && (
-          <div>
+          <div
+            style={{ wordWrap: "break-word", width: "20em" }}
+            className="border border-gray-600 rounded shadow-lg p-4 mb-4 bg-gradient-to-r from-black to-gray-600 text-black"
+          >
             <h1 className="text-2xl font-bold text-white">
               {transactionStatus && <p>{transactionStatus}</p>}
             </h1>
@@ -79,7 +82,7 @@ export default function SendTransaction({ accountAddress }) {
                 value={recipient}
                 onChange={(e) => setRecipient(e.target.value)}
                 placeholder="Enter recipient address"
-                className="input input-bordered w-full max-w-xs"
+                className="text-lg input input-bordered w-full max-w-xs"
                 required
               />
             </label>
@@ -93,7 +96,7 @@ export default function SendTransaction({ accountAddress }) {
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 placeholder="Enter amount"
-                className="input input-bordered w-full max-w-xs"
+                className="text-lg input input-bordered w-full max-w-xs"
                 required
               />
             </label>
@@ -107,7 +110,7 @@ export default function SendTransaction({ accountAddress }) {
                 value={assetId}
                 onChange={(e) => setAssetId(e.target.value)}
                 placeholder="Asset ID (Ignore for ALGO)"
-                className="input input-bordered w-full max-w-xs"
+                className="text-lg input input-bordered w-full max-w-xs"
               />
             </label>
 
@@ -120,7 +123,7 @@ export default function SendTransaction({ accountAddress }) {
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 placeholder="Add a note (optional)"
-                className="input input-bordered w-full max-w-xs"
+                className="text-lg input input-bordered w-full max-w-xs"
               />
             </label>
             <button

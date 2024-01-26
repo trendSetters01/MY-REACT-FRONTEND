@@ -58,13 +58,16 @@ export default function DestroyAsset({ accountAddress }) {
         )}
 
         {accountAddress && !transactionId && (
-          <div className="ml-4 flex flex-col items-center justify-center">
+          <div
+            style={{ wordWrap: "break-word", width: "20em" }}
+            className="border border-gray-600 rounded shadow-lg p-4 mb-4 bg-gradient-to-r from-black to-gray-600 text-black flex flex-col items-center justify-center"
+          >
             <input
               type="text"
               value={assetId || ""}
               onChange={(e) => setAssetId(e.target.value)}
               placeholder="Enter Asset ID"
-              className="input-md mb-4"
+              className="input-md mt-4 mb-4"
             />
             <button
               onClick={handleDestroyAsset}

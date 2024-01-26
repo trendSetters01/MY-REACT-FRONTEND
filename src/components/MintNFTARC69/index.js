@@ -164,7 +164,7 @@ export default function MintNFTARC69({ accountAddress }) {
       )}
 
       {accountAddress && !showConfetti && (
-        <div className="w-full max-w-4xl bg-light rounded-lg p-4 text-gray">
+        <div className="w-full max-w-4xl bg-light rounded-lg p-4 text-gray flex flex-col items-center justify-center">
           <FileUploadButton
             inputFile={inputFile}
             handleFileChange={handleFileChange}
@@ -197,11 +197,11 @@ function FileUploadButton({
   imageUrl,
 }) {
   return (
-    <div className="mb-4 mt-4 flex flex-col items-center justify-center rounded-lg bg-light p-2 text-center text-secondary">
+    <div className="mb-4 mt-8 flex flex-col items-center justify-center rounded-lg bg-light p-2 text-center text-secondary">
       <button
         disabled={uploading}
         onClick={() => inputFile.current.click()}
-        className="mt-2 sm: mt-8 md: mt-8 align-center flex flex-row items-center justify-center rounded-3xl bg-secondary px-8 py-1 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
+        className="mt-2 sm: mt-8 md: mt-8 align-center flex flex-row items-center justify-center rounded-3xl bg-blue-600 px-8 py-1 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
       >
         <div>
           <p className="text-lg font-light">
@@ -254,12 +254,12 @@ function MetadataFields({
         {metadataFields.map((field, index) => (
           <div key={index} className="flex flex-col">
             <div
-              // className="tooltip tooltip-info"
-              // data-tip={
-              //   index < 3
-              //     ? "Required"
-              //     : "Trait will be the key in the metadata JSON."
-              // }
+            // className="tooltip tooltip-info"
+            // data-tip={
+            //   index < 3
+            //     ? "Required"
+            //     : "Trait will be the key in the metadata JSON."
+            // }
             >
               <input
                 type="text"
@@ -273,12 +273,12 @@ function MetadataFields({
               />
             </div>
             <div
-              // className="tooltip tooltip-info"
-              // data-tip={
-              //   index < 3
-              //     ? "Required"
-              //     : "Type will be the value in the metadata JSON."
-              // }
+            // className="tooltip tooltip-info"
+            // data-tip={
+            //   index < 3
+            //     ? "Required"
+            //     : "Type will be the value in the metadata JSON."
+            // }
             >
               <input
                 type="text"

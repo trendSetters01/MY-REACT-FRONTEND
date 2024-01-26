@@ -67,8 +67,11 @@ export default function PeraWalletOptInOut({ accountAddress }) {
         </h1>
       )}
       {accountAddress && (
-        <div>
-          <div role="tablist" className="tabs tabs-boxed text-white">
+        <div
+          style={{ wordWrap: "break-word", width: "20em" }}
+          className="border border-gray-600 rounded shadow-lg p-4 mb-4 bg-gradient-to-r from-black to-gray-600 text-black flex flex-col items-center justify-center"
+        >
+          <div role="tablist" className="tabs tabs-boxed text-white mt-4">
             <a
               role="tab"
               className={`tab ${activeTab === "optIn" ? "tab-active" : ""}`}
@@ -93,7 +96,7 @@ export default function PeraWalletOptInOut({ accountAddress }) {
               value={assetId}
               onChange={(e) => setAssetId(e.target.value)}
               placeholder="Asset ID"
-              className="input input-bordered w-full max-w-xs input-md"
+              className="input input-bordered w-full max-w-xs input-md text-lg"
             />
           </label>
           <div className="tab-content text-white">
