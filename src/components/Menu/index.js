@@ -351,8 +351,6 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                 width: "100%",
                 height: "100%",
                 justifyContent: "center",
-                border: "2px solid white",
-                borderRadius: "10px",
               }}
               src={phantom}
               alt={`Pahntom`}
