@@ -186,6 +186,21 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Phantoms 21
                     </Link>
                   </li>
+                  <li>
+                    <Link to="/spin-the-wheel" className="dropdown-item">
+                      <img
+                        style={{
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={mainGameImg}
+                        alt={`main game`}
+                      />
+                      Spin the Wheel
+                    </Link>
+                  </li>
                 </details>
               </li>
               <li>

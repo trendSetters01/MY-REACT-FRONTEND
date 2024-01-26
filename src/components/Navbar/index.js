@@ -21,6 +21,7 @@ import VestigeListing from "../VestigeListing";
 import TokenInfo from "../TokenInfo";
 import TinymanLPDeposits from "../TinymanLP";
 import PHNTMStaking from "../PHNTMStaking";
+import SpinTheWheel from "../SpinTheWheel";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("arc3");
@@ -44,6 +45,10 @@ export default function Navbar() {
           <Route
             path="/onramp-swap"
             element={<Swap accountAddress={connectedAccountAddress} />}
+          />
+          <Route
+            path="/spin-the-wheel"
+            element={<SpinTheWheel accountAddress={connectedAccountAddress} />}
           />
           <Route
             path="/phantoms-21"
