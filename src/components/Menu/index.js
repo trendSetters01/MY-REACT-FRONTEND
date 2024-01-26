@@ -30,7 +30,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
   return (
     <>
       <div
-        className="navbar bg-base-100 gap-12"
+        className="navbar bg-black gap-12 text-white shadow-lg"
         style={{ position: "relative", zIndex: "10000" }}
       >
         <div className="navbar-start">
@@ -49,7 +49,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52"
             >
               <li>
                 <details>
@@ -59,6 +59,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       <Link to="/account-info" className="dropdown-item">
                         <img
                           style={{
+                            backgroundColor: "white",
                             width: "25%",
                             height: "25%",
                             border: "2px solid white",
@@ -74,6 +75,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       <Link to="/send-asset" className="dropdown-item">
                         <img
                           style={{
+                            backgroundColor: "white",
                             width: "25%",
                             height: "25%",
                             border: "2px solid white",
@@ -89,6 +91,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       <Link to="/opt-in-out" className="dropdown-item">
                         <img
                           style={{
+                            backgroundColor: "white",
                             width: "25%",
                             height: "25%",
                             border: "2px solid white",
@@ -104,6 +107,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       <Link to="/destroy-asset" className="dropdown-item">
                         <img
                           style={{
+                            backgroundColor: "white",
                             width: "25%",
                             height: "25%",
                             border: "2px solid white",
@@ -125,6 +129,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     <Link to="/mint-nft" className="dropdown-item">
                       <img
                         style={{
+                          backgroundColor: "white",
                           width: "25%",
                           height: "25%",
                           border: "2px solid white",
@@ -140,6 +145,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     <Link to="/onramp-swap" className="dropdown-item">
                       <img
                         style={{
+                          backgroundColor: "white",
                           width: "25%",
                           height: "25%",
                           border: "2px solid white",
@@ -160,6 +166,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     <Link to="/cards-rpg" className="dropdown-item">
                       <img
                         style={{
+                          backgroundColor: "white",
                           width: "25%",
                           height: "25%",
                           border: "2px solid white",
@@ -175,6 +182,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     <Link to="/phantoms-21" className="dropdown-item">
                       <img
                         style={{
+                          backgroundColor: "white",
                           width: "25%",
                           height: "25%",
                           border: "2px solid white",
@@ -190,6 +198,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     <Link to="/spin-the-wheel" className="dropdown-item">
                       <img
                         style={{
+                          backgroundColor: "white",
                           width: "25%",
                           height: "25%",
                           border: "2px solid white",
@@ -210,6 +219,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     <Link to="/token-info" className="dropdown-item">
                       <img
                         style={{
+                          backgroundColor: "white",
                           width: "25%",
                           height: "25%",
                           border: "2px solid white",
@@ -225,6 +235,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     <Link to="/trade-phntm" className="dropdown-item">
                       <img
                         style={{
+                          backgroundColor: "white",
                           width: "25%",
                           height: "25%",
                           border: "2px solid white",
@@ -277,6 +288,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     <Link to="/phntm-staking" className="dropdown-item">
                       <img
                         style={{
+                          backgroundColor: "white",
                           width: "25%",
                           height: "25%",
                           border: "2px solid white",
@@ -298,6 +310,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       <Link to="/phantom-v1" className="dropdown-item">
                         <img
                           style={{
+                            backgroundColor: "white",
                             width: "25%",
                             height: "25%",
                             border: "2px solid white",
@@ -313,6 +326,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       <Link to="/phantom-v2" className="dropdown-item">
                         <img
                           style={{
+                            backgroundColor: "white",
                             width: "25%",
                             height: "25%",
                             border: "2px solid white",
