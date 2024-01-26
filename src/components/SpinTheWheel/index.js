@@ -178,15 +178,13 @@ export default function SpinTheWheel({ accountAddress }) {
             className="pt-4"
             style={{ maxHeight: "100vh", maxWidth: "100vw" }}
           >
-           {/* { showConfetti ?  */}
-           <SpinAndWin
+            <SpinAndWin
               ref={ref}
               hideButton={true}
               result={result}
               data={freeSpinGifts}
               minTime={5000}
             />
-            // :<></>}
           </div>
           <div className="flex flex-col items-center justify-center pb-4">
             {/* Game Messages */}
