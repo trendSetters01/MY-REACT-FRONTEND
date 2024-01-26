@@ -47,7 +47,7 @@ export default function PeraWalletButton({ onConnect }) {
 
   return (
     <button
-      className={`cursor-pointer bg-gradient-to-r from-pink-500 to-blue-500 hover:from-green-400 hover:to-yellow-500 px-4 py-1 rounded-full text-md text-white`}
+      className={`cursor-pointer bg-gradient-to-r from-pink-500 to-blue-500 hover:from-green-400 hover:to-yellow-500 px-6 py-2 rounded-full text-md text-white`}
       onClick={
         isConnectedToPeraWallet
           ? handleDisconnectWalletClick

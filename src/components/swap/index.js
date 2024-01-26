@@ -189,11 +189,11 @@ function Swap({ accountAddress }) {
           <h1 className="mb-4 text-white text-2xl flex flex-col items-center justify-center">
             Swap Assets
           </h1>
-          <div className="flex flex-col items-center justify-center mb-4 text-white">
+          <div className="flex flex-col items-center justify-center ml-4 mb-4 text-white">
             No Crypto ? get some using the on ramp button below.
             <PeraOnRampComponent accountAddress={accountAddress} />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2">
             {/* First Column for First Asset */}
             <div>
               <CustomDropdown
@@ -216,7 +216,7 @@ function Swap({ accountAddress }) {
                 ref={iframeRef}
                 title={"tinyman swap widget"}
                 className={"swap-widget-test-page__content__iframe"}
-                style={{ width: 370, height: 440, border: "none" }}
+                style={{ width: 373, height: 440, border: "none" }}
                 src={iframeUrl}
                 sandbox={
                   "allow-same-origin allow-scripts allow-popups allow-forms"
