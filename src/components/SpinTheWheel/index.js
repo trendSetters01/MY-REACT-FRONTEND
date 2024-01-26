@@ -52,7 +52,7 @@ export default function SpinTheWheel({ accountAddress }) {
         accountAddress,
         0,
         "0", // '0' for ALGO
-        `Phantoms Win Confirmation receipt for ${accountAddress}: Phantoms 21`
+        `Phantoms Win Confirmation receipt for ${accountAddress}: Spin the Wheel Game won ${result}`
       );
       const optInTxn = await optIn(
         accountAddress, //"1276228104"
