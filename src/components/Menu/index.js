@@ -30,7 +30,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
   return (
     <>
       <div
-        className="navbar bg-base-100 gap-16"
+        className="navbar bg-base-100 gap-12"
         style={{ position: "relative", zIndex: "10000" }}
       >
         <div className="navbar-start">
