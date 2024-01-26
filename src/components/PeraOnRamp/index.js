@@ -19,7 +19,7 @@ export default function PeraOnRampComponent({ accountAddress }) {
   return accountAddress ? (
     <button
       onClick={handleOnramp}
-      className="mt-4 bg-gradient-to-r from-gray-500 to-pink-400 hover:from-pink-400 hover:to-gray-500 rounded-md p-2 flex items-center justify-center"
+      className="mt-4 mr-4 bg-gradient-to-r from-gray-500 to-pink-400 hover:from-pink-400 hover:to-gray-500 rounded-md p-2 flex items-center justify-center"
     >
       <svg
         width="16"
