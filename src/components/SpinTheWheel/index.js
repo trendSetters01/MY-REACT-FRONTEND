@@ -32,6 +32,7 @@ export default function SpinTheWheel({ accountAddress }) {
   const [winReceipt, setWinReceipt] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [showLoader, setShowLoader] = useState(false);
+  const [rewardAccountBalance, setRewardAccountBalance] = useState(false);
   const [transactionId, setTransactionId] = useState(null);
   const [message, setMessage] = useState(null);
   const ref = useRef(null);
@@ -127,6 +128,7 @@ export default function SpinTheWheel({ accountAddress }) {
   useEffect(() => {
     if (accountAddress) {
       checkEligibility();
+      checkRewardAccountBalance();
     }
   }, [accountAddress]);
 
@@ -145,11 +147,32 @@ export default function SpinTheWheel({ accountAddress }) {
       }
       setShowLoader(false);
     } catch (err) {
+      console.log("Error checking eligibility:", err);
       setMessage(
         `Sorry sonething went wrong, please try again later or contact us on discord or email us at support@phantomshub.com.`
       );
       setGameOver(true);
       setShowLoader(false);
+    }
+  };
+
+  const checkRewardAccountBalance = async () => {
+    setShowLoader(true);
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/check-reward-account-balance`
+      );
+      if (response?.data?.statusCode === 200) {
+        setRewardAccountBalance(true);
+      }
+      if (response?.data?.statusCode === 400) {
+        setGameOver(true);
+        setRewardAccountBalance(false);
+      }
+    } catch (err) {
+      console.log("Error checking reward account balance:", err);
+      setRewardAccountBalance(false);
+      setGameOver(true);
     }
   };
 
@@ -189,6 +212,13 @@ export default function SpinTheWheel({ accountAddress }) {
           <div className="flex flex-col items-center justify-center pb-4">
             {/* Game Messages */}
             {message && <p className="mt-4 mb-4 px-12 py-2">{message}</p>}
+            {!rewardAccountBalance && (
+              <p className="mt-2 mb-4 px-12 py-2">
+                We apologize for the incovinience but currently our reward
+                account wallet is running low in balance. We will refill it
+                soon. Thanks for your patience.
+              </p>
+            )}
             {transactionId && (
               <div className="flex flex-col items-center justify-center">
                 <a
