@@ -55,7 +55,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                 <details>
                   <summary>Manage Account</summary>
                   <ul>
-                    <li>
+                    <li className="m-1">
                       <Link to="/account-info" className="dropdown-item">
                         <img
                           style={{
@@ -71,7 +71,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         Account Information
                       </Link>
                     </li>
-                    <li>
+                    <li className="m-1">
                       <Link to="/send-asset" className="dropdown-item">
                         <img
                           style={{
@@ -87,7 +87,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         Send Asset
                       </Link>
                     </li>
-                    <li>
+                    <li className="m-1">
                       <Link to="/opt-in-out" className="dropdown-item">
                         <img
                           style={{
@@ -103,7 +103,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         Opt-In/Out
                       </Link>
                     </li>
-                    <li>
+                    <li className="m-1">
                       <Link to="/destroy-asset" className="dropdown-item">
                         <img
                           style={{
@@ -125,7 +125,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               <li>
                 <details>
                   <summary>Phantoms Services</summary>
-                  <li>
+                  <li
+                    className="m-1"
+                  >
                     <Link to="/mint-nft" className="dropdown-item">
                       <img
                         style={{
@@ -141,7 +143,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Mint NFT
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    className="m-1"
+                  >
                     <Link to="/onramp-swap" className="dropdown-item">
                       <img
                         style={{
@@ -162,7 +166,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               <li>
                 <details>
                   <summary>Play to Win</summary>
-                  <li>
+                  <li
+                    className="m-1"
+                  >
                     <Link to="/cards-rpg" className="dropdown-item">
                       <img
                         style={{
@@ -178,7 +184,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Cards RPG
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    className="m-1"
+                  >
                     <Link to="/phantoms-21" className="dropdown-item">
                       <img
                         style={{
@@ -194,7 +202,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Phantoms 21
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    className="m-1"
+                  >
                     <Link to="/spin-the-wheel" className="dropdown-item">
                       <img
                         style={{
@@ -215,7 +225,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               <li>
                 <details>
                   <summary>Token Activities</summary>
-                  <li>
+                  <li
+                    className="m-1"
+                  >
                     <Link to="/token-info" className="dropdown-item">
                       <img
                         style={{
@@ -231,7 +243,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Token Information
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    className="m-1"
+                  >
                     <Link to="/trade-phntm" className="dropdown-item">
                       <img
                         style={{
@@ -247,7 +261,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Trade on Vestige
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    className="m-1"
+                  >
                     <Link to="/tinyman-lp-deposits" className="dropdown-item">
                       <svg
                         class="tinyman-header-icon"
@@ -284,7 +300,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Tinyman LP Deposits
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    className="m-1"
+                  >
                     <Link to="/phntm-staking" className="dropdown-item">
                       <img
                         style={{
@@ -306,7 +324,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                 <details>
                   <summary>Collections</summary>
                   <ul>
-                    <li>
+                    <li className="m-1">
                       <Link to="/phantom-v1" className="dropdown-item">
                         <img
                           style={{
@@ -322,7 +340,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         Phantom Pals
                       </Link>
                     </li>
-                    <li>
+                    <li className="m-1">
                       <Link to="/phantom-v2" className="dropdown-item">
                         <img
                           style={{
