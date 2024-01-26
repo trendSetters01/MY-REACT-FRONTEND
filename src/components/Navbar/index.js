@@ -57,7 +57,11 @@ export default function Navbar() {
             path="/mint-nft"
             element={
               <div>
-                <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+                {connectedAccountAddress ? (
+                  <Tabs activeTab={activeTab} setActiveTab={setActiveTab} />
+                ) : (
+                  <></>
+                )}
                 {activeTab === "arc3" && (
                   <MintNFTARC3 accountAddress={connectedAccountAddress} />
                 )}
