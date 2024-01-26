@@ -316,11 +316,6 @@ function Home({ accountAddress }) {
                   </a>
                 </li>
               </ul>
-              <p>
-                Your support and trust in our project are invaluable. We remain
-                committed to transparency and fostering a strong, engaged
-                community around PHNTM.
-              </p>
             </div>
           </section>
         )}
@@ -372,10 +367,7 @@ function Home({ accountAddress }) {
                 <li>
                   <strong>Transparent Evolution:</strong> Transparency is the
                   cornerstone of trust. As Phantoms evolves, so too will our
-                  methods, strategies, and technologies. We commit to keeping
-                  our community informed and engaged, viewing this journey as a
-                  collaborative endeavor that shapes the project's trajectory
-                  and ultimate success.
+                  methods, strategies, and technologies.
                 </li>
               </ul>
               <p>
@@ -392,7 +384,7 @@ function Home({ accountAddress }) {
                 className="mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 rounded text-white"
                 onClick={() => setShowModal(!showModal)}
               >
-                Read More
+                {showModal ? "Read Less" : "Read More"}
               </button>
               {showModal && (
                 <div className="dark:text-gray-300">

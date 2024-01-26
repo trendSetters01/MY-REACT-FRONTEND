@@ -359,7 +359,12 @@ export default function Blackjack({ accountAddress }) {
 
   return (
     <div
-      style={{ wordWrap: "break-word", maxHeight: "96vh", maxWidth: "100vw" }}
+      style={{
+        wordWrap: "break-word",
+        maxHeight: "100vh",
+        minHeight: "64vh",
+        maxWidth: "100vw",
+      }}
       className="flex flex-col items-center justify-center text-white"
     >
       {!accountAddress && (
@@ -374,12 +379,12 @@ export default function Blackjack({ accountAddress }) {
       )}
       {accountAddress && (
         <div
-          style={{ wordWrap: "break-word", width: "84em" }}
-          className="flex flex-col items-center justify-center text-white bg-gradient-to-r from-green-700 to-teal-700 shadow-lg p-4"
+          // style={{ wordWrap: "break-word", width: "84em" }}
+          className="flex flex-col items-center justify-center text-white mb-2"
         >
           <div
             style={{ wordWrap: "break-word", width: "24em" }}
-            className="flex flex-col items-center justify-center text-white bg-gradient-to-r from-black to-teal-600 shadow-lg p-4"
+            className="flex flex-col items-center justify-center text-white"
           >
             <h1
               style={{ maxWidth: "10em" }}

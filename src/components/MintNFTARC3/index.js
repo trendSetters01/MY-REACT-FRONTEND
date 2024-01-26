@@ -295,12 +295,12 @@ function MetadataFields({
       {metadataFields.map((field, index) => (
         <div key={index} className="flex flex-col">
           <div
-            className="tooltip tooltip-info"
-            data-tip={
-              index < 3
-                ? "Required"
-                : "Trait will be the key in the metadata JSON."
-            }
+          // className="tooltip tooltip-info"
+          // data-tip={
+          //   index < 3
+          //     ? "Required"
+          //     : "Trait will be the key in the metadata JSON."
+          // }
           >
             <input
               type="text"
@@ -314,12 +314,12 @@ function MetadataFields({
             />
           </div>
           <div
-            className="tooltip tooltip-info"
-            data-tip={
-              index < 3
-                ? "Required"
-                : "Type will be the value in the metadata JSON."
-            }
+          // className="tooltip tooltip-info"
+          // data-tip={
+          //   index < 3
+          //     ? "Required"
+          //     : "Type will be the value in the metadata JSON."
+          // }
           >
             <input
               type="text"
