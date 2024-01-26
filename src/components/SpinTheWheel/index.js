@@ -139,7 +139,7 @@ export default function SpinTheWheel({ accountAddress }) {
       const statucCode = response?.data?.statusCode;
       if (statucCode === 429) {
         setMessage(
-          `Only one reward per wallet address, per day. Please Try again tomorrow!`
+          `Only one spin per wallet address, per day. Please Try again tomorrow!`
         );
         setGameOver(true);
       }
@@ -178,13 +178,13 @@ export default function SpinTheWheel({ accountAddress }) {
             className="pt-4"
             style={{ maxHeight: "100vh", maxWidth: "100vw" }}
           >
-            <SpinAndWin
+           { showConfetti ? <SpinAndWin
               ref={ref}
               hideButton={true}
               result={result}
               data={freeSpinGifts}
               minTime={5000}
-            />
+            />:<></>}
           </div>
           <div className="flex flex-col items-center justify-center pb-4">
             {/* Game Messages */}
@@ -243,7 +243,7 @@ export default function SpinTheWheel({ accountAddress }) {
                 }, 3000);
                 setTimeout(() => {
                   setShowConfetti(false);
-                }, 10000);
+                }, 13000);
               }}
             >
               Spin
