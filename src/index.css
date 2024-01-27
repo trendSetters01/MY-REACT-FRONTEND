@@ -68,6 +68,10 @@ input[type="number"] {
   animation: scroll-left 15s linear infinite;
 }
 
+h1 h2 h3 {
+  font-family: 'Tw Cen MT';
+}
+
 @keyframes scroll-left {
   from {
     transform: translateX(100%);

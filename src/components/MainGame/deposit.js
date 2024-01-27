@@ -69,15 +69,15 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
       />
       {showComponent && (
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-4xl mt-2 mb-4">Deposit Algo to Play</h1>
-          <p className="mb-4 w-80">
+          <h1 className="text-4xl mt-2 mb-4 font-bold">Deposit Algo to Play</h1>
+          <p className="mb-4 w-80 font-bold">
             Get ready to join the fun and have a chance to win phntm tokens!
             (Min 400 phntm rewarded on win)
           </p>
           <button
             onClick={handleDeposit}
             disabled={disabled}
-            className="mt-4 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
+            className="mt-4 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md font-bold"
           >
             Deposit 2 ALGO to Play
           </button>

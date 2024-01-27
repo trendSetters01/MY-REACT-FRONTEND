@@ -134,7 +134,7 @@ export default function RewardComponent({ accountAddress }) {
         )}
         <button
           onClick={handleGameWin}
-          className="mt-8 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
+          className="mt-8 input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md font-bold text-lg"
           disabled={!showRewardButton}
         >
           Claim Reward

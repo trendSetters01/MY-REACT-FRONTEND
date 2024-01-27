@@ -189,9 +189,7 @@ export default function Cardsrpg({ accountAddress }) {
 
   return (
     // Add a closing parenthesis and semicolon here
-    <div
-      className="flex flex-col items-center justify-center"
-    >
+    <div className="flex flex-col items-center justify-center m-2">
       {!accountAddress && (
         <div className="flex flex-col items-center justify-center w-full max-w-4xl bg-light rounded-lg p-4 text-white">
           <div>
@@ -205,7 +203,9 @@ export default function Cardsrpg({ accountAddress }) {
         {showConfetti && winner === "You" && (
           <Confetti width={window.width} height={window.height} />
         )}
-        <h1 className="text-xl mb-4">Defend the shield of the Phantoms!</h1>
+        <h1 className="text-xl mb-4 font-bold px-2">
+          Defend the shield of the Phantoms!
+        </h1>
         <h1 className="mb-2">( Best of 24 rounds )</h1>
         <div>
           {gameOver &&
@@ -311,13 +311,13 @@ export default function Cardsrpg({ accountAddress }) {
                   <div className="flex flex-row items-center justify-center">
                     {player.hand.map((card, cardIndex) => (
                       <button
-                      style={{maxWidth: "40vw"}}
+                        style={{ maxWidth: "40vw" }}
                         onClick={() => handleCardClick(playerIndex, cardIndex)}
                         className={`transform transition-all duration-300 border m-2 p-2 ${
                           currentTurn === playerIndex
                             ? "bg-green-500"
                             : "bg-red-500"
-                        } active:scale-90`}
+                        } active:scale-90 font-bold`}
                         disabled={player.name === "Annihilus" || gameOver}
                       >
                         {card?.name} (Attack: {card?.attack}, Defense:
@@ -340,11 +340,15 @@ export default function Cardsrpg({ accountAddress }) {
           <div className="flex flex-col items-center text-white">
             {winner !== "You" && <div className="mb-2">Game Over !</div>}
             {winner === "You" ? (
-              <div className={winner === "You" ? "mt-4" : "mb-2"}>
+              <div
+                className={`font-bold text-lg ${winner === "You" ? "mt-4" : "mb-2"}`}
+              >
                 Congratulations You Won!
               </div>
             ) : (
-              <div className={winner === "You" ? "mt-4" : "mb-2"}>
+              <div
+                className={`font-bold text-lg ${winner === "You" ? "mt-4" : "mb-2"}`}
+              >
                 Try Again Next Time! Annihilus Won!
               </div>
             )}

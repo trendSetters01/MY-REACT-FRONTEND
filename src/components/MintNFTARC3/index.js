@@ -246,7 +246,7 @@ function FileUploadButton({
         className="mt-2 sm: mt-8 md: mt-8 align-center flex flex-row items-center justify-center rounded-3xl bg-blue-600 px-8 py-1 text-white transition-all duration-300 ease-in-out hover:bg-accent hover:text-light"
       >
         <div>
-          <p className="text-lg font-light">
+          <p className="text-lg font-bold">
             {uploading ? "Uploading..." : "Select File"}
           </p>
           <svg

@@ -31,7 +31,11 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
     <>
       <div
         className="navbar bg-black gap-12 text-white shadow-lg"
-        style={{ position: "relative", zIndex: "10000" }}
+        style={{
+          position: "relative",
+          zIndex: "10000",
+          fontFamily: "Tw Cen MT",
+        }}
       >
         <div className="navbar-start">
           <div className="dropdown">
@@ -53,7 +57,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
             >
               <li>
                 <details>
-                  <summary>Manage Account</summary>
+                  <summary style={{ fontWeight: "bold" }}>
+                    Manage Account
+                  </summary>
                   <ul>
                     <li className="m-1">
                       <Link to="/account-info" className="dropdown-item">
@@ -124,10 +130,10 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li>
               <li>
                 <details>
-                  <summary>Phantoms Services</summary>
-                  <li
-                    className="m-1"
-                  >
+                  <summary style={{ fontWeight: "bold" }}>
+                    Phantoms Services
+                  </summary>
+                  <li className="m-1">
                     <Link to="/mint-nft" className="dropdown-item">
                       <img
                         style={{
@@ -143,9 +149,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Mint NFT
                     </Link>
                   </li>
-                  <li
-                    className="m-1"
-                  >
+                  <li className="m-1">
                     <Link to="/onramp-swap" className="dropdown-item">
                       <img
                         style={{
@@ -165,10 +169,8 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li>
               <li>
                 <details>
-                  <summary>Play to Win</summary>
-                  <li
-                    className="m-1"
-                  >
+                  <summary style={{ fontWeight: "bold" }}>Play to Win</summary>
+                  <li className="m-1">
                     <Link to="/cards-rpg" className="dropdown-item">
                       <img
                         style={{
@@ -184,9 +186,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Cards RPG
                     </Link>
                   </li>
-                  <li
-                    className="m-1"
-                  >
+                  <li className="m-1">
                     <Link to="/phantoms-21" className="dropdown-item">
                       <img
                         style={{
@@ -202,9 +202,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Phantoms 21
                     </Link>
                   </li>
-                  <li
-                    className="m-1"
-                  >
+                  <li className="m-1">
                     <Link to="/spin-the-wheel" className="dropdown-item">
                       <img
                         style={{
@@ -224,10 +222,10 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li>
               <li>
                 <details>
-                  <summary>Token Activities</summary>
-                  <li
-                    className="m-1"
-                  >
+                  <summary style={{ fontWeight: "bold" }}>
+                    Token Activities
+                  </summary>
+                  <li className="m-1">
                     <Link to="/token-info" className="dropdown-item">
                       <img
                         style={{
@@ -243,9 +241,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Token Information
                     </Link>
                   </li>
-                  <li
-                    className="m-1"
-                  >
+                  <li className="m-1">
                     <Link to="/trade-phntm" className="dropdown-item">
                       <img
                         style={{
@@ -261,9 +257,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Trade on Vestige
                     </Link>
                   </li>
-                  <li
-                    className="m-1"
-                  >
+                  <li className="m-1">
                     <Link to="/tinyman-lp-deposits" className="dropdown-item">
                       <svg
                         class="tinyman-header-icon"
@@ -300,9 +294,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Tinyman LP Deposits
                     </Link>
                   </li>
-                  <li
-                    className="m-1"
-                  >
+                  <li className="m-1">
                     <Link to="/phntm-staking" className="dropdown-item">
                       <img
                         style={{
@@ -322,7 +314,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li>
               <li>
                 <details>
-                  <summary>Collections</summary>
+                  <summary style={{ fontWeight: "bold" }}>Collections</summary>
                   <ul>
                     <li className="m-1">
                       <Link to="/phantom-v1" className="dropdown-item">

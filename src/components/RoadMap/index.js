@@ -68,7 +68,7 @@ const Roadmap = () => {
     completed: "from-green-500 to-green-800",
     "in-progress": "from-yellow-500 to-yellow-800",
     "in-future": "from-red-500 to-red-800",
-    "completed": "from-green-500 to-green-800",
+    completed: "from-green-500 to-green-800",
   };
 
   return (
@@ -82,7 +82,10 @@ const Roadmap = () => {
               statusColors[milestone.status]
             }`}
           >
-            <div className="p-6">
+            <div
+              className="p-6"
+              style={{ fontFamily: "Bahnschrift", fontWeight: "bold", fontSize: "large"}}
+            >
               <h3 className="font-semibold text-xl mb-2">{milestone.title}</h3>
               <p className="text-sm mb-4">{milestone.date}</p>
               <p className="mb-4">{milestone.description}</p>

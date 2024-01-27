@@ -40,7 +40,14 @@ function Home({ accountAddress }) {
         <h1 className="text-6xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-blue-500">
           Phantoms
         </h1>
-        <p className="text-xl font-light text-gray-100">
+        <p
+          className="text-xl font-light text-gray-100"
+          style={{
+            fontFamily: "Bahnschrift",
+            fontWeight: "bold",
+            fontSize: "large",
+          }}
+        >
           Join us on an exciting journey!
         </p>
       </header>
@@ -55,7 +62,7 @@ function Home({ accountAddress }) {
             "Disclaimers",
           ].map((tab) => (
             <button
-              style={{ marginBottom: "2em" }}
+              style={{ marginBottom: "2em", fontFamily: 'Tw Cen MT', fontWeight: 'bold', fontSize: 'large'}}
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-4 py-2 mx-2 text-sm font-semibold rounded-lg ${
@@ -78,7 +85,14 @@ function Home({ accountAddress }) {
             <h2 className="text-2xl font-semibold mb-4 dark:text-white">
               Welcome to Phantoms!
             </h2>
-            <p className="dark:text-gray-300">
+            <p
+              className="dark:text-gray-300"
+              style={{
+                fontFamily: "Bahnschrift",
+                fontWeight: "bold",
+                fontSize: "large",
+              }}
+            >
               We're crafting a vibrant, user-driven platform. While we're still
               laying the groundwork, we invite you to stay connected as our
               project evolves!
@@ -97,36 +111,44 @@ function Home({ accountAddress }) {
             <h2 className="text-2xl font-semibold mb-4">
               Exclusive Benefits with Phantom NFTs
             </h2>
-            <p className="dark:text-gray-300">
-              As a holder of Phantom NFTs, you're not just owning digital art;
-              you're part of the Phantoms inner circle. These NFTs will unlock
-              exclusive benefits and privileges within the Phantoms ecosystem as
-              we grow. Here's a sneak peek of what to expect:
-            </p>
-            <ul className="list-disc pl-5 dark:text-gray-300">
-              <li>
-                <strong>Early Access:</strong> Be the first to know and engage
-                with new developments, updates, and features within the
-                platform.
-              </li>
-              <li>
-                <strong>Special Privileges:</strong> Enjoy unique opportunities
-                and offers exclusive to Phantom NFT holders.
-              </li>
-              <li>
-                <strong>Community Influence:</strong> Have a say in the
-                direction of future expansions and improvements. Your feedback
-                will be prioritized.
-              </li>
-              <li>
-                <strong>Exclusive Events:</strong> Get invitations to
-                holder-only events, AMAs with the leadership team, and more.
-              </li>
-            </ul>
-            <p className="dark:text-gray-300">
-              We're just getting started, and these NFTs are your gateway to
-              grow along with us. Stay tuned for more exciting benefits!
-            </p>
+            <div
+              style={{
+                fontFamily: "Bahnschrift",
+                fontWeight: "bold",
+                fontSize: "large",
+              }}
+            >
+              <p className="dark:text-gray-300">
+                As a holder of Phantom NFTs, you're not just owning digital art;
+                you're part of the Phantoms inner circle. These NFTs will unlock
+                exclusive benefits and privileges within the Phantoms ecosystem
+                as we grow. Here's a sneak peek of what to expect:
+              </p>
+              <ul className="list-disc pl-5 dark:text-gray-300">
+                <li>
+                  <strong>Early Access:</strong> Be the first to know and engage
+                  with new developments, updates, and features within the
+                  platform.
+                </li>
+                <li>
+                  <strong>Special Privileges:</strong> Enjoy unique
+                  opportunities and offers exclusive to Phantom NFT holders.
+                </li>
+                <li>
+                  <strong>Community Influence:</strong> Have a say in the
+                  direction of future expansions and improvements. Your feedback
+                  will be prioritized.
+                </li>
+                <li>
+                  <strong>Exclusive Events:</strong> Get invitations to
+                  holder-only events, AMAs with the leadership team, and more.
+                </li>
+              </ul>
+              <p className="dark:text-gray-300">
+                We're just getting started, and these NFTs are your gateway to
+                grow along with us. Stay tuned for more exciting benefits!
+              </p>
+            </div>
           </section>
         )}
 
@@ -136,7 +158,14 @@ function Home({ accountAddress }) {
             <h2 className="text-2xl font-semibold mb-4">
               Initial Tokenomics Overview
             </h2>
-            <div className="dark:text-gray-300">
+            <div
+              className="dark:text-gray-300"
+              style={{
+                fontFamily: "Bahnschrift",
+                fontWeight: "bold",
+                fontSize: "large",
+              }}
+            >
               <p>
                 <strong>
                   Tokenomics Evaluation for 7 Million Token Supply
@@ -242,7 +271,14 @@ function Home({ accountAddress }) {
             <h2 className="text-2xl font-semibold mb-4">
               Phantoms Wallets Overview
             </h2>
-            <div className="dark:text-gray-300">
+            <div
+              className="dark:text-gray-300"
+              style={{
+                fontFamily: "Bahnschrift",
+                fontWeight: "bold",
+                fontSize: "large",
+              }}
+            >
               <p className="mt-2 mb-4">
                 We're dedicated to transparency and accountability. Below are
                 the links to our Wallet addresses, showcasing real-time
@@ -324,7 +360,14 @@ function Home({ accountAddress }) {
             <h2 className="text-2xl font-semibold mb-4">
               Phantoms Disclaimers
             </h2>
-            <div className="dark:text-gray-300 space-y-4">
+            <div
+              className="dark:text-gray-300 space-y-4"
+              style={{
+                fontFamily: "Bahnschrift",
+                fontWeight: "bold",
+                fontSize: "large",
+              }}
+            >
               <h3 className="text-xl font-semibold mb-4">
                 Vision and Progress
               </h3>

@@ -388,7 +388,7 @@ export default function Blackjack({ accountAddress }) {
           >
             <h1
               style={{ maxWidth: "10em" }}
-              className="text-3xl text-center mt-2 mb-2 px-4 py-2"
+              className="text-3xl text-center mt-2 mb-2 px-4 py-2 font-bold"
             >
               Phantoms 21 (Beta)
             </h1>
@@ -486,7 +486,7 @@ export default function Blackjack({ accountAddress }) {
                   placeholder={`Enter ${betWith} amount`}
                 />
                 <button
-                  className="bg-gradient-to-r from-green-500 to-white px-4 py-2 rounded text-black"
+                  className="bg-gradient-to-r from-yellow-500 to-orange-500 px-4 py-2 rounded text-black"
                   onClick={placeBet}
                 >
                   Deposit to play!
