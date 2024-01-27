@@ -45,7 +45,7 @@ function DisplayPhantomv2({ accountAddress }) {
   }
 
   return (
-    <div className="fade-in text-center text-white dark:text-white">
+    <div className="fade-in text-center text-white dark:text-white mb-4">
       {loading && <p>Loading account data...</p>}
       {error && <p>Error: {error}</p>}
       {accountData && (
@@ -64,16 +64,13 @@ function DisplayPhantomv2({ accountAddress }) {
           <br />
         </div>
       )}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: "5px",
-        }}
-      >
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-10">
         {accountData &&
           accountData["created-assets"].map((asset, index) => (
-            <div style={{ margin: "1px" }}>
+            <div
+              style={{ margin: "1px" }}
+              className="p-4 bg-gradient-to-r from-black to-gray-800"
+            >
               <div>
                 <a
                   className="text-white dark:text-white"

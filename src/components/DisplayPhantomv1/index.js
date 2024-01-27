@@ -41,7 +41,7 @@ function DisplayPhantomv1({ accountAddress }) {
   }
 
   return (
-    <div className="fade-in text-center text-white dark:text-white">
+    <div className="fade-in text-center text-white dark:text-white mb-4">
       {loading && <p>Loading account data...</p>}
       {error && <p>Error: {error}</p>}
       {accountData && (
@@ -60,16 +60,13 @@ function DisplayPhantomv1({ accountAddress }) {
           <br />
         </div>
       )}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap: "10px",
-        }}
-      >
+      <div className="grid grid-cols-3 md:grid-cols-5 gap-10">
         {accountData &&
           accountData["created-assets"].map((asset, index) => (
-            <div style={{ margin: "1px" }}>
+            <div
+              style={{ margin: "1px" }}
+              className="p-4 bg-gradient-to-r from-black to-gray-800"
+            >
               <div>
                 <a
                   className="text-white dark:text-white"
@@ -77,6 +74,7 @@ function DisplayPhantomv1({ accountAddress }) {
                   target="_blank"
                   rel="noreferrer"
                 >
+                  {/* <div> */}
                   <img
                     key={index}
                     style={{
@@ -90,6 +88,7 @@ function DisplayPhantomv1({ accountAddress }) {
                     )}`}
                     alt={`Asset ${index}`}
                   />
+                  {/* </div> */}
                 </a>
               </div>
               <a
@@ -98,7 +97,7 @@ function DisplayPhantomv1({ accountAddress }) {
                 target="_blank"
                 rel="noreferrer"
               >
-                {accountData && asset.params.name}
+                <p className="mt-4">{accountData && asset.params.name}</p>
               </a>
             </div>
           ))}
