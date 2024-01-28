@@ -60,12 +60,12 @@ export default function SendTransaction({ accountAddress }) {
       className="flex flex-col items-center justify-center"
     >
       <form onSubmit={handleSubmit}>
-        {!accountAddress && (
+        {/* {!accountAddress && (
           <h1 className="animate-pulse text-white mt-4">
             Connect your wallet to send assets.
           </h1>
-        )}
-        {accountAddress && (
+        )} */}
+        {
           <div
             style={{ wordWrap: "break-word", width: "20em" }}
             className="border border-gray-600 rounded shadow-lg p-4 mb-4 bg-gradient-to-r from-black to-gray-600 text-black"
@@ -127,13 +127,21 @@ export default function SendTransaction({ accountAddress }) {
               />
             </label>
             <button
+              disabled={!accountAddress}
               type="submit"
-              className="bg-gradient-to-r from-gray-500 to-blue-500 hover:from-gray-200 hover:to-blue-700 rounded-md mt-4 mb-4 w-full max-w-xs"
+              data-tip={
+                !accountAddress
+                  ? "Please connect your wallet to the app to interact."
+                  : ""
+              }
+              className={`bg-gradient-to-r from-gray-500 to-blue-500 hover:from-gray-200 hover:to-blue-700 rounded-md mt-4 mb-4 w-full max-w-xs ${
+                !accountAddress ? "tooltip tooltip-info" : ""
+              }`}
             >
               <h1 className="text-2xl font-bold text-white">Send</h1>
             </button>
           </div>
-        )}
+        }
       </form>
     </div>
   );

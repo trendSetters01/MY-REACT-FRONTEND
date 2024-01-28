@@ -51,13 +51,7 @@ export default function DestroyAsset({ accountAddress }) {
       className="flex flex-col items-center justify-center"
     >
       <div className="bg-light rounded-lg p-4">
-        {!accountAddress && (
-          <h1 className="ml-4 animate-pulse text-white text-center mb-4">
-            Connect your wallet to Destroy Assets
-          </h1>
-        )}
-
-        {accountAddress && !transactionId && (
+        {!transactionId && (
           <div
             style={{ wordWrap: "break-word", width: "20em" }}
             className="border border-gray-600 rounded shadow-lg p-4 mb-4 bg-gradient-to-r from-black to-gray-600 text-black flex flex-col items-center justify-center"
@@ -70,8 +64,16 @@ export default function DestroyAsset({ accountAddress }) {
               className="input-md mt-4 mb-4"
             />
             <button
+              disabled={!accountAddress}
               onClick={handleDestroyAsset}
-              className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mb-4"
+              data-tip={
+                !accountAddress
+                  ? "Please connect your wallet to the app to interact."
+                  : ""
+              }
+              className={`input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mb-4  ${
+                !accountAddress ? "tooltip tooltip-info" : ""
+              }`}
             >
               Destroy Asset
             </button>

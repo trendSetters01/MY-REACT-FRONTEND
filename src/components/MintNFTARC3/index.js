@@ -193,15 +193,15 @@ export default function MintNFTARC3({ accountAddress }) {
       className="flex flex-col items-center justify-center text-white"
     >
       {showConfetti && <Confetti width={window.width} height={window.height} />}
-      {!accountAddress && (
+      {/* {!accountAddress && (
         <div style={{ minHeight: "64vh" }}>
           <h1 className="animate-pulse text-white pt-60">
             Connect your wallet to mint NFTs.
           </h1>
         </div>
-      )}
+      )} */}
 
-      {accountAddress && !showConfetti && (
+      {!showConfetti && (
         <div className="w-full max-w-4xl bg-light rounded-lg p-4 text-gray flex flex-col items-center justify-center">
           <FileUploadButton
             inputFile={inputFile}
@@ -215,6 +215,7 @@ export default function MintNFTARC3({ accountAddress }) {
             removeMetadataField={removeMetadataField}
           />
           <ActionButtons
+            accountAddress={accountAddress}
             handleMintArc3={handleMintArc3}
             resetForm={resetForm}
             addMetadataField={addMetadataField}
@@ -345,7 +346,12 @@ function MetadataFields({
   );
 }
 
-function ActionButtons({ handleMintArc3, resetForm, addMetadataField }) {
+function ActionButtons({
+  handleMintArc3,
+  resetForm,
+  addMetadataField,
+  accountAddress,
+}) {
   return (
     <div className="flex flex-col md:flex-row justify-center gap-4 mt-8">
       <button
@@ -361,8 +367,12 @@ function ActionButtons({ handleMintArc3, resetForm, addMetadataField }) {
         Reset Form
       </button>
       <button
+        disabled={!accountAddress}
         onClick={handleMintArc3}
-        className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md"
+        data-tip={!accountAddress ? "Connect your wallet to mint NFTs." : ""}
+        className={`input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md ${
+          !accountAddress ? "tooltip tooltip-info" : ""
+        }`}
       >
         Mint ARC-3 NFT
       </button>

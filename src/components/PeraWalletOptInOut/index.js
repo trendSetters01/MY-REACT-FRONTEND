@@ -61,12 +61,7 @@ export default function PeraWalletOptInOut({ accountAddress }) {
       }}
       className="flex flex-col items-center justify-center"
     >
-      {!accountAddress && (
-        <h1 className="animate-pulse text-white mt-4">
-          Connect your wallet to manage assets.
-        </h1>
-      )}
-      {accountAddress && (
+      {
         <div
           style={{ wordWrap: "break-word", width: "20em" }}
           className="border border-gray-600 rounded shadow-lg p-4 mb-4 bg-gradient-to-r from-black to-gray-600 text-black flex flex-col items-center justify-center"
@@ -102,23 +97,39 @@ export default function PeraWalletOptInOut({ accountAddress }) {
           <div className="tab-content text-white">
             {activeTab === "optIn" && (
               <button
+                disabled={!accountAddress}
                 onClick={handleOptIn}
-                className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mt-4 mb-4 w-full max-w-xs"
+                data-tip={
+                  !accountAddress
+                    ? "Please connect your wallet to the app to interact."
+                    : ""
+                }
+                className={`input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mt-4 mb-4 w-full max-w-xs ${
+                  !accountAddress ? "tooltip tooltip-info" : ""
+                }`}
               >
                 <h1 className="text-xl font-bold text-white">Opt-In</h1>
               </button>
             )}
             {activeTab === "optOut" && (
               <button
+                disabled={!accountAddress}
                 onClick={handleOptOut}
-                className="input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mt-4 mb-4 w-full max-w-xs"
+                data-tip={
+                  !accountAddress
+                    ? "Please connect your wallet to the app to interact."
+                    : ""
+                }
+                className={`input-md bg-gradient-to-r from-purple-500 to-blue-400 hover:from-blue-400 hover:to-purple-500 rounded-md mt-4 mb-4 w-full max-w-xs ${
+                  !accountAddress ? "tooltip tooltip-info" : ""
+                }`}
               >
                 <h1 className="text-xl font-bold text-white">Opt-Out</h1>
               </button>
             )}
           </div>
         </div>
-      )}
+      }
     </div>
   );
 }

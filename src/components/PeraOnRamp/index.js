@@ -16,10 +16,18 @@ export default function PeraOnRampComponent({ accountAddress }) {
         console.log("Funds add error: ", error);
       });
   }
-  return accountAddress ? (
+  return (
     <button
+      disabled={!accountAddress}
       onClick={handleOnramp}
-      className="mt-4 mr-4 bg-gradient-to-r from-gray-500 to-pink-400 hover:from-pink-400 hover:to-gray-500 rounded-md p-2 flex items-center justify-center"
+      data-tip={
+        !accountAddress
+          ? "Please connect your wallet to the parent app."
+          : ""
+      }
+      className={`mt-4 mr-4 bg-gradient-to-r from-gray-500 to-pink-400 hover:from-pink-400 hover:to-gray-500 rounded-md p-2 flex items-center justify-center ${
+        !accountAddress ? "tooltip tooltip-info" : ""
+      }`}
     >
       <svg
         width="16"
@@ -38,7 +46,5 @@ export default function PeraOnRampComponent({ accountAddress }) {
       </svg>
       Add funds via Pera Onramp (Minimum 50 USD)
     </button>
-  ) : (
-    <></>
   );
 }

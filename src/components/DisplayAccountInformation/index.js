@@ -52,16 +52,16 @@ export default function DisplayAccountInformation({
     <div className="pt-16 container mx-auto fade-in text-white">
       {loading && <p className="text-center">Loading account data...</p>}
       {error && <p className="text-red-500 text-center">Error: {error}</p>}
-      {!connectedAccountAddress && (
+      {/* {!connectedAccountAddress && (
         <h1
           style={{ minHeight: "48vh" }}
           className="flex flex-col items-center justify-center animate-pulse"
         >
           Connect your wallet to see your account information.
         </h1>
-      )}
+      )} */}
       <div className="flex flex-col items-center pb-16">
-        {accountData && connectedAccountAddress && (
+        {
           <div
             style={{ wordWrap: "break-word" }}
             className="w-full max-w-2xl bg-gray-800 border border-gray-600 rounded shadow-lg p-4"
@@ -91,9 +91,11 @@ export default function DisplayAccountInformation({
             </p>
             <p>
               <strong className="text-gray-300">Balance:</strong>{" "}
-              <span className="text-gray-400">
-                {(accountData?.amount / 1e6).toFixed(6)} ALGO
-              </span>
+              {accountAddress && (
+                <span className="text-gray-400">
+                  {(accountData?.amount / 1e6).toFixed(6)} ALGO
+                </span>
+              )}
             </p>
             <br />
             {/* Tab buttons */}
@@ -146,18 +148,21 @@ export default function DisplayAccountInformation({
                   </ul>
                 </div>
               )}
-              {activeTab === "nfts" && (
-                <div>
-                  <ul className="list-disc pl-8 text-gray-400 overflow-auto  max-h-80">
-                    {accountData["created-assets"]?.map((asset, index) => (
-                      <li key={index}>
-                        <a
-                          href={`https://allo.info/asset/${asset?.index}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-500 hover:underline"
-                        >
-                          {/* <img
+              {activeTab === "nfts" &&
+                accountData &&
+                connectedAccountAddress && (
+                  <div>
+                    <ul className="list-disc pl-8 text-gray-400 overflow-auto  max-h-80">
+                      {accountData["created-assets"] &&
+                        accountData["created-assets"]?.map((asset, index) => (
+                          <li key={index}>
+                            <a
+                              href={`https://allo.info/asset/${asset?.index}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-blue-500 hover:underline"
+                            >
+                              {/* <img
                             key={index}
                             style={{
                               width: "35%",
@@ -168,20 +173,20 @@ export default function DisplayAccountInformation({
                             src={`https://asa-list.tinyman.org/assets/${asset?.index}/icon.png`}
                             alt={`Asset ${index}`}
                           /> */}
-                          Asset ID: {asset?.index}
-                          <br />
-                          Name: {asset?.params?.name}
-                          <br />
-                        </a>
-                        <br />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+                              Asset ID: {asset?.index}
+                              <br />
+                              Name: {asset?.params?.name}
+                              <br />
+                            </a>
+                            <br />
+                          </li>
+                        ))}
+                    </ul>
+                  </div>
+                )}
             </div>
           </div>
-        )}
+        }
       </div>
     </div>
   );
