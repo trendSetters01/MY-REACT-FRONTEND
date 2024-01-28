@@ -73,14 +73,23 @@ function DisplayNFTs({ accountAddress }) {
                         border: "2px solid white",
                         borderRadius: "10px",
                       }}
+                      className="bg-base-100 shadow-xl"
                     />
                   </figure>
-                  <div className="card-body" style={{ overflow: "auto" }}>
+                  <div
+                    className="card-body"
+                    style={{
+                      overflow: "auto",
+                      paddingTop: "0.25em",
+                      paddingBottom: "0.25em",
+                    }}
+                  >
                     <h2 className="card-title">{nft?.title}</h2>
                     {nft?.metadata &&
                       nft?.metadata?.attributes.map((attribute, attrIndex) => (
-                        <p key={attrIndex}>
-                          {attribute?.trait_type}: {attribute?.value}
+                        <p key={attrIndex} className="bg-base-100 shadow-xl">
+                          {attrIndex + 1}: {attribute?.trait_type}:{" "}
+                          {attribute?.value}
                         </p>
                       ))}
                   </div>
