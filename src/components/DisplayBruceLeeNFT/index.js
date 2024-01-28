@@ -49,7 +49,6 @@ function DisplayNFTs({ accountAddress }) {
       <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
         {nfts &&
           nfts.map((nft, index) => {
-            console.log(nft);
             return (
               <a
                 href={nft?.metadata.dynamic_attributes}
@@ -58,15 +57,16 @@ function DisplayNFTs({ accountAddress }) {
               >
                 <div
                   style={{
-                    minHeight: "30em",
+                    minHeight: "26em",
                     flexDirection: "column",
                   }}
                   key={index}
                   className="p-2 card lg:card-side bg-base-100 shadow-xl"
                 >
                   <figure>
-                    <img
-                      src={nft?.media[0]?.thumbnail}
+                    <video
+                      controls
+                      src={nft?.metadata?.animation_url}
                       alt={`NFT ${nft?.title}`}
                       style={{
                         width: "100%",
@@ -83,6 +83,8 @@ function DisplayNFTs({ accountAddress }) {
                       overflow: "auto",
                       paddingTop: "0.25em",
                       paddingBottom: "0.25em",
+                      paddingLeft: "0.0em",
+                      paddingRight: "0.25em",
                       maxHeight: "16em",
                     }}
                   >
