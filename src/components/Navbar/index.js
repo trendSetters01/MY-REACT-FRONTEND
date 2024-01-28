@@ -22,6 +22,7 @@ import TokenInfo from "../TokenInfo";
 import TinymanLPDeposits from "../TinymanLP";
 import PHNTMStaking from "../PHNTMStaking";
 import SpinTheWheel from "../SpinTheWheel";
+import DisplayNFTs from "../DisplayBruceLeeNFT";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("arc3");
@@ -39,6 +40,10 @@ export default function Navbar() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/trade-phntm" element={<VestigeListing />} />
+          <Route
+            path="/bruce-lee-nft-polygon"
+            element={<DisplayNFTs accountAddress={connectedAccountAddress} />}
+          />
           <Route path="/token-info" element={<TokenInfo />} />
           <Route path="/tinyman-lp-deposits" element={<TinymanLPDeposits />} />
           <Route path="/phntm-staking" element={<PHNTMStaking />} />
