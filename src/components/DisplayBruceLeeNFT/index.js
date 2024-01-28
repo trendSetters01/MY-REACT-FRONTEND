@@ -31,8 +31,20 @@ function DisplayNFTs({ accountAddress }) {
       {error && <p>Error: {error}</p>}
       <header className="mt-4 mb-4 text-center">
         <h1 className="text-3xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-blue-500 animate-pulse">
-          Coming soon! Byte City's Polygon NFT available for purchase with your PHNTM Tokens
+          Coming soon! Byte City's Polygon NFT available for purchase with your
+          PHNTM Tokens
         </h1>
+        <a
+          href="https://twitter.com/playBYTECITY"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline"
+        >
+          <strong>Check out Byte City's X (Twitter) for more details</strong>
+        </a>
+        <p className="mt-2">
+          Not affiliated with Bruce Lee or the Bruce Lee Foundation or Byte City
+        </p>
       </header>
       <div className="grid grid-cols-3 md:grid-cols-5 gap-10">
         {nfts &&
