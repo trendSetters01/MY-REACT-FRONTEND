@@ -58,7 +58,8 @@ function DisplayNFTs({ accountAddress }) {
               >
                 <div
                   style={{
-                    minHeight: "10em",
+                    minHeight: "30em",
+                    flexDirection: "column",
                   }}
                   key={index}
                   className="p-2 card lg:card-side bg-base-100 shadow-xl"
@@ -82,6 +83,7 @@ function DisplayNFTs({ accountAddress }) {
                       overflow: "auto",
                       paddingTop: "0.25em",
                       paddingBottom: "0.25em",
+                      maxHeight: "16em",
                     }}
                   >
                     <h2 className="card-title">{nft?.title}</h2>
