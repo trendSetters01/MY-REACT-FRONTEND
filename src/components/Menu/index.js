@@ -351,6 +351,32 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                   </ul>
                 </details>
               </li>
+              <li>
+                <details>
+                  <summary style={{ fontWeight: "bold" }}>Coming Soon</summary>
+                  <ul>
+                    <li className="m-1">
+                      <Link
+                        to="/bruce-lee-nft-polygon"
+                        className="dropdown-item"
+                      >
+                        <img
+                          style={{
+                            backgroundColor: "white",
+                            width: "25%",
+                            height: "25%",
+                            border: "2px solid white",
+                            borderRadius: "10px",
+                          }}
+                          src={"https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/matic-mainnet/09a9f8ffeacf6c1b33c49ef39d7ec601"}
+                          alt={`Coming Soon`}
+                        />
+                        Byte City NFTs
+                      </Link>
+                    </li>
+                  </ul>
+                </details>
+              </li>
             </ul>
           </div>
         </div>

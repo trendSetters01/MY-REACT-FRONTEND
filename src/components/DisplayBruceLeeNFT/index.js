@@ -31,7 +31,7 @@ function DisplayNFTs({ accountAddress }) {
       {error && <p>Error: {error}</p>}
       <header className="mt-4 mb-4 text-center">
         <h1 className="text-3xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-blue-500 animate-pulse">
-          Coming soon! Byte City's Polygon NFT available for purchase with your
+          Byte City's Polygon NFT will be soon available for purchase with your
           PHNTM Tokens
         </h1>
         <a
@@ -51,39 +51,41 @@ function DisplayNFTs({ accountAddress }) {
           nfts.map((nft, index) => {
             console.log(nft);
             return (
-              <div
-                key={index}
-                className="p-2 bg-gradient-to-r from-black to-gray-800 mt-4"
+              <a
+                href={nft?.metadata.dynamic_attributes}
+                target="_blank"
+                rel="noreferrer"
               >
-                <a
-                  href={nft?.tokenUri.gateway}
-                  target="_blank"
-                  rel="noreferrer"
+                <div
+                  style={{
+                    minHeight: "10em",
+                  }}
+                  key={index}
+                  className="p-2 card lg:card-side bg-base-100 shadow-xl"
                 >
-                  <video
-                    controls
-                    autoplay
-                    src={nft?.metadata.animation_url}
-                    alt={`NFT ${nft?.title}`}
-                    style={{
-                      width: "100%",
-                      height: "auto",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                  />
-                </a>
-                <div className="mt-4">
-                  <p>{nft?.title}</p>
-                  {/* {nft?.metadata &&
-                nft?.metadata?.attributes.map((attribute, attrIndex) => (
-                  <p key={attrIndex}>
-                    {attribute.trait_type}: {attribute.value}
-                  </p>
-                ))} */}
-                  {/* Add more details you want to display here */}
+                  <figure>
+                    <img
+                      src={nft?.media[0]?.thumbnail}
+                      alt={`NFT ${nft?.title}`}
+                      style={{
+                        width: "100%",
+                        height: "auto",
+                        border: "2px solid white",
+                        borderRadius: "10px",
+                      }}
+                    />
+                  </figure>
+                  <div className="card-body" style={{ overflow: "auto" }}>
+                    <h2 className="card-title">{nft?.title}</h2>
+                    {nft?.metadata &&
+                      nft?.metadata?.attributes.map((attribute, attrIndex) => (
+                        <p key={attrIndex}>
+                          {attribute?.trait_type}: {attribute?.value}
+                        </p>
+                      ))}
+                  </div>
                 </div>
-              </div>
+              </a>
             );
           })}
       </div>
