@@ -46,7 +46,7 @@ function DisplayNFTs({ accountAddress }) {
           Not affiliated with Bruce Lee or the Bruce Lee Foundation or Byte City
         </p>
       </header>
-      <div className="grid grid-cols-3 md:grid-cols-5 gap-10">
+      <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
         {nfts &&
           nfts.map((nft, index) => {
             console.log(nft);
