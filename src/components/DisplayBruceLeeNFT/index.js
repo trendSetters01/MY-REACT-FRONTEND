@@ -43,7 +43,7 @@ function DisplayNFTs({ accountAddress }) {
           <strong>Check out Byte City's X (Twitter) for more details</strong>
         </a>
         <p className="mt-2">
-          Not affiliated with Bruce Lee or the Bruce Lee Foundation or Byte City
+          Part of  Phantoms secondary sales beta, Not affiliated with Bruce Lee or the Bruce Lee Foundation or Byte City
         </p>
       </header>
       <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
