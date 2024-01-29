@@ -32,14 +32,14 @@ export default function CustomDropdown({ label, assets, onSelect }) {
                 className="h-6 w-6 mr-2"
               />
               <span>{asset.name}</span>
-              <a
+              {/* <a
                 href={`https://allo.info/asset/${asset.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 hover:underline"
-              >
+              > */}
                 Asset ID: {asset.id}
-              </a>
+              {/* </a> */}
             </li>
           ))}
         </ul>
