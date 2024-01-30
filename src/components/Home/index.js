@@ -62,7 +62,12 @@ function Home({ accountAddress }) {
             "Disclaimers",
           ].map((tab) => (
             <button
-              style={{ marginBottom: "2em", fontFamily: 'Tw Cen MT', fontWeight: 'bold', fontSize: 'large'}}
+              style={{
+                marginBottom: "2em",
+                fontFamily: "Tw Cen MT",
+                fontWeight: "bold",
+                fontSize: "large",
+              }}
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`px-4 py-2 mx-2 text-sm font-semibold rounded-lg ${
@@ -300,6 +305,17 @@ function Home({ accountAddress }) {
                   <strong>Community Funds Wallet:</strong>{" "}
                   <a
                     href="https://allo.info/account/DBF3CRXDC36CARJREL3X6C7N3C373WPBPKRYFFHA7XBTTEB2ZIM4ZN64U4"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline text-blue-400"
+                  >
+                    View Wallet
+                  </a>
+                </li>
+                <li className="mt-2 mb-4">
+                  <strong>Play to Win Rewards Wallet:</strong>{" "}
+                  <a
+                    href="https://allo.info/account/JQONXCP7LYP2O2XQLOPBM6I67LBGCZGEZGHBRRBJBAJEWEIWIRIFZIPXIQ"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline text-blue-400"
