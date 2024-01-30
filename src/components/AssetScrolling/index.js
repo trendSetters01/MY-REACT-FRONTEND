@@ -95,7 +95,8 @@ export default function AssetScrolling({ accountAddress, onImagesLoaded }) {
 
   useEffect(() => {
     const fetchAssets = async () => {
-      const assetsList = await getAssetsForAccount(phantomsHoldingAddress);
+      let assetsList = await getAssetsForAccount(phantomsHoldingAddress);
+      assetsList = assetsList.filter((asset) => asset?.id !== 1433744464);
       setAssetIDs(assetsList);
 
       // Prepare to fetch images for all assets
@@ -125,7 +126,7 @@ export default function AssetScrolling({ accountAddress, onImagesLoaded }) {
           const imageUrl = assetImages[asset.id];
 
           // If imageUrl is not available, you might want to provide a fallback or skip rendering
-          if(asset?.id === 1285510787) {
+          if (asset?.id === 1285510787) {
             return null; // or return a placeholder image or some other fallback
           }
           if (!imageUrl) {
