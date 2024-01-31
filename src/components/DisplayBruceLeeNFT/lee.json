@@ -7284,18 +7284,6 @@
           }
         ],
         "brand": "Polygon"
-      },
-      "timeLastUpdated": "2023-08-13T00:31:34.551Z",
-      "contractMetadata": {
-        "name": "Bruce Lee 50th Tribute: Polygon Edition",
-        "symbol": "bruce_lee_50th_tribute_matic",
-        "totalSupply": "10000",
-        "tokenType": "ERC721",
-        "contractDeployer": "0x09b5b1c874074165d7130c3c6f94785140a7cdf3",
-        "deployedBlockNumber": 45555393,
-        "openSea": {
-          "lastIngestedAt": "2024-01-24T20:21:55.000Z"
-        }
       }
     }
   ]
