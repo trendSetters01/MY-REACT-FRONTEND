@@ -133,7 +133,7 @@ function DisplayNFTs({ accountAddress }) {
             >
               {isPurchasing
                 ? "Purchasing..."
-                : "Purchase Random NFT for 150 PHNTM"}
+                : "Purchase Random NFT for ??? PHNTM"}
             </button>
           </div>
         </div>
