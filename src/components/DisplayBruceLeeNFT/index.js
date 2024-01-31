@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import leeNfts from "./lee.json";
+import { PeraWalletContext } from "../PeraWalletContext";
+import axios from "axios";
 
 function DisplayNFTs({ accountAddress }) {
   const [nfts, setNfts] = useState(null);
@@ -7,6 +9,42 @@ function DisplayNFTs({ accountAddress }) {
   const [error, setError] = useState(null);
   const [userAddress, setUserAddress] = useState("");
   const [isPurchasing, setIsPurchasing] = useState(false);
+
+  const peraWallet = useContext(PeraWalletContext);
+  const API_BASE_URL = "http://localhost:5000/api/v1"; // Replace with your backend URL
+
+  const handleDeposit = async () => {
+    try {
+      //   const txn = await send(
+      //     accountAddress,
+      //     "JQONXCP7LYP2O2XQLOPBM6I67LBGCZGEZGHBRRBJBAJEWEIWIRIFZIPXIQ",
+      //     2 * 1000000,
+      //     "0", // '0' for ALGO
+      //     `Phantoms Deposit: Cards RPG`
+      //   );
+
+      //   const signedTx = await peraWallet.signTransaction([txn]);
+      //   const txConfirmation = await algodClient
+      //     .sendRawTransaction(signedTx)
+      //     .do();
+
+      // console.log("Transaction ID:", txConfirmation.txId);
+
+      //   setStatus("Deposit pending...");
+      // have to add check deposit check on the backend
+      const response = await axios.post(`${API_BASE_URL}/transfer-bruce-lee`, {
+        to: "0xe38678c915f002245ED3Ed24370d745e362cb94e",
+      });
+
+      const txhash = response?.data?.txhash;
+      console.log("txhash", txhash);
+      if (txhash) {
+      } else {
+      }
+    } catch (error) {
+      console.error("Deposit error:", error);
+    }
+  };
 
   const handlePurchase = () => {
     if (!userAddress) {
@@ -58,11 +96,17 @@ function DisplayNFTs({ accountAddress }) {
         </a>
         <div className="my-4 text-center">
           <p className="text-xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-br from-black to-black">
-            Ready to own a piece of Byte City's Bruce Lee Collection? For ???
-            PHNTM, you can own a <strong>randomly selected NFT </strong>
-            from our exclusive collection.
+            Are you ready to become a part of Byte City's exclusive Bruce Lee
+            Collection on the Polygon blockchain?
+          </p>
+          <p className="text-xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-br from-black to-black">
+            For ??? PHNTM tokens, you have the chance to acquire a unique NFT,
+            chosen at random from our collection. This collection isn't
+            just for show;
+          </p>
+          <p className="text-xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-br from-black to-black">
             <ul className="pl-5 text-white" style={{ listStyleType: "none" }}>
-              <strong>Utilities include</strong>:
+              <strong>Owning one comes with benefits:</strong>
               <li style={{ paddingLeft: "1em", textIndent: "-1em" }}>
                 💎 Playable Avatar
               </li>
