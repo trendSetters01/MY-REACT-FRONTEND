@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { algodClient } from "../../algorand/config.js";
-import checkTransactionStatus from "../../algorand/checkTransactionStatus.js";
 import { PeraWalletContext } from "../PeraWalletContext";
 import axios from "axios";
 import AssetScrolling from "../AssetScrolling/index.js";
@@ -18,30 +17,27 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
     try {
       setDisabled(true);
       setStatus("Processing your deposit. Please wait...");
-      const txn = await send(
-        accountAddress,
-        "JQONXCP7LYP2O2XQLOPBM6I67LBGCZGEZGHBRRBJBAJEWEIWIRIFZIPXIQ",
-        2 * 1000000,
-        "0", // '0' for ALGO
-        `Phantoms Deposit: Cards RPG`
-      );
 
-      const signedTx = await peraWallet.signTransaction([txn]);
-      const txConfirmation = await algodClient
-        .sendRawTransaction(signedTx)
+      const cardsRPGSendParams = await axios.get(`${API_BASE_URL}/cards-rpg-deposit`);
+      const { receiver, amount, assetId, note } = cardsRPGSendParams?.data?.sendParams;
+      const cardsRPGTxn = await send(accountAddress, receiver, amount, assetId, note);
+
+      const cardsRPGSignedTx = await peraWallet.signTransaction([cardsRPGTxn]);
+      const cardsRPGTxConfirmation = await algodClient
+        .sendRawTransaction(cardsRPGSignedTx)
         .do();
 
-      // console.log("Transaction ID:", txConfirmation.txId);
+      console.log("Transaction ID:", cardsRPGTxConfirmation.txId);
 
       setStatus("Deposit pending...");
 
       // Wait for transaction confirmation
       const response = await axios.post(`${API_BASE_URL}/check-deposit-tx`, {
         asset: "ALGO",
-        txId: txConfirmation.txId,
+        txId: cardsRPGTxConfirmation.txId,
       });
 
-      const { isConfirmed, correct } = response.data;
+      const { isConfirmed, correct } = response?.data;
 
       if (isConfirmed && correct) {
         setStatus("Deposit confirmed.");
