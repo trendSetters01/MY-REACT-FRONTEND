@@ -32,15 +32,15 @@ function DisplayNFTs({ accountAddress }) {
 
       //   setStatus("Deposit pending...");
       // have to add check deposit check on the backend
-      const response = await axios.post(`${API_BASE_URL}/transfer-bruce-lee`, {
-        to: "0xe38678c915f002245ED3Ed24370d745e362cb94e",
-      });
+      // const response = await axios.post(`${API_BASE_URL}/transfer-bruce-lee`, {
+      //   to: "",
+      // });
 
-      const txhash = response?.data?.txhash;
-      console.log("txhash", txhash);
-      if (txhash) {
-      } else {
-      }
+      // const txhash = response?.data?.txhash;
+      // console.log("txhash", txhash);
+      // if (txhash) {
+      // } else {
+      // }
     } catch (error) {
       console.error("Deposit error:", error);
     }
