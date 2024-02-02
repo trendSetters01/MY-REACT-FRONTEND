@@ -448,28 +448,6 @@ function Home({ accountAddress }) {
               {showModal && (
                 <div className="dark:text-gray-300">
                   <p className="mt-2 mb-4">
-                    The primary intent behind Phantoms is to foster a space for
-                    innovation and community growth within digital collectibles
-                    and blockchain technology, rather than financial gain.
-                  </p>
-                  <p className="mt-2 mb-4">
-                    All interactions within Phantoms, including purchases and
-                    transactions, are at the discretion of participants. As with
-                    any pioneering venture, Phantoms involves inherent risks.
-                    We're continually developing, embracing an exploratory
-                    approach to blockchain application, and we advise all
-                    participants to engage with an understanding of this
-                    experimental nature.
-                  </p>
-                  <p className="mt-2 mb-4">
-                    Security and platform integrity are paramount to the
-                    Phantoms team. We commit to the highest security standards
-                    and best practices, yet acknowledge that absolute security
-                    in the digital domain cannot be fully guaranteed. Our pledge
-                    is to be vigilant, responsive, and proactive in maintaining
-                    and enhancing security measures.
-                  </p>
-                  <p className="mt-2 mb-4">
                     Phantoms is dedicated to transparency, open communication,
                     and adaptability. We keep our community informed about our
                     processes, developments, and any challenges we encounter. As
