@@ -193,6 +193,11 @@ export default function MintNFTARC3({ accountAddress }) {
       className="flex flex-col items-center justify-center text-white"
     >
       {showConfetti && <Confetti width={window.width} height={window.height} />}
+      <div style={{ minHeight: "64vh" }}>
+        <h1 className="animate-pulse text-white pt-60">
+          Under Maintenance, please check back later. Thank you.
+        </h1>
+      </div>
       {/* {!accountAddress && (
         <div style={{ minHeight: "64vh" }}>
           <h1 className="animate-pulse text-white pt-60">
@@ -201,7 +206,7 @@ export default function MintNFTARC3({ accountAddress }) {
         </div>
       )} */}
 
-      {!showConfetti && (
+      {/* {!showConfetti && (
         <div className="w-full max-w-4xl bg-light rounded-lg p-4 text-gray flex flex-col items-center justify-center">
           <FileUploadButton
             inputFile={inputFile}
@@ -224,7 +229,7 @@ export default function MintNFTARC3({ accountAddress }) {
       )}
       {showConfetti && (
         <MintingSuccessMessage status={status} congratsImg={congratsImg} />
-      )}
+      )} */}
     </div>
   );
 }
