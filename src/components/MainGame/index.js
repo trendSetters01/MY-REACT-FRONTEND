@@ -7,7 +7,13 @@ export default function MainGame({ accountAddress }) {
 
   return (
     <div
-      style={{ wordWrap: "break-word", maxHeight: "100vh",  minHeight: "64vh", maxWidth: "100vw" }}
+      style={{
+        wordWrap: "break-word",
+        maxHeight: "100vh",
+        minHeight: "71vh",
+        maxWidth: "100vw",
+        minWidth: "80vw",
+      }}
       className="flex flex-col items-center justify-center text-white"
     >
       {!accountAddress && (

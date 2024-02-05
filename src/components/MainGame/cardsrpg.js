@@ -3,6 +3,7 @@ import RewardComponent from "./reward.js";
 import Confetti from "react-confetti";
 import AIUrl from "../../images/c7d87778-7d09-4f27-98df-683065f9d9ef.webp";
 import PlayerUrl from "../../images/405c177eb8e44ce2c32cf891b78f7125.webp";
+import vd from "../../images/CardsRPG.mp4";
 
 export default function Cardsrpg({ accountAddress }) {
   // Example full deck
@@ -125,7 +126,7 @@ export default function Cardsrpg({ accountAddress }) {
       setShowConfetti(true);
       setTimeout(() => {
         setShowConfetti(false);
-      }, 5000);
+      }, 8000);
       setGameButton("Thanks for playing the Game");
       // Determine the winner based on who has the most shields
       const winnerPlayer = players.reduce((prev, current) =>
@@ -201,7 +202,23 @@ export default function Cardsrpg({ accountAddress }) {
       )}
       <div className="flex flex-col items-center text-white bg-gray-900">
         {showConfetti && winner === "You" && (
-          <Confetti width={window.width} height={window.height} />
+          <>
+            <Confetti width={window.width} height={window.height} />
+            <video
+              autoPlay
+              autoFocus
+              src={`${vd}`}
+              alt={`NFT`}
+              style={{
+                // width: "0%",
+                // height: "auto",
+                // border: "2px solid white",
+                // borderRadius: "10px",
+                display:"none"
+              }}
+              className="bg-base-100 shadow-xl m-2"
+            />
+          </>
         )}
         <h1 className="text-xl mb-4 font-bold px-2">
           Defend the shield of the Phantoms!
@@ -341,13 +358,17 @@ export default function Cardsrpg({ accountAddress }) {
             {winner !== "You" && <div className="mb-2">Game Over !</div>}
             {winner === "You" ? (
               <div
-                className={`font-bold text-lg ${winner === "You" ? "mt-4" : "mb-2"}`}
+                className={`font-bold text-lg ${
+                  winner === "You" ? "mt-4" : "mb-2"
+                }`}
               >
                 Congratulations You Won!
               </div>
             ) : (
               <div
-                className={`font-bold text-lg ${winner === "You" ? "mt-4" : "mb-2"}`}
+                className={`font-bold text-lg ${
+                  winner === "You" ? "mt-4" : "mb-2"
+                }`}
               >
                 Try Again Next Time! Annihilus Won!
               </div>
