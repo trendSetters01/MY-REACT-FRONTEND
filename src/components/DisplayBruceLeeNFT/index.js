@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import leeNfts from "./lee.json";
 import { PeraWalletContext } from "../PeraWalletContext";
 import axios from "axios";
+import { algodClient } from "../../algorand/config.js";
+import { send } from "../../algorand/transactionHelpers/send.js";
 
 function DisplayNFTs({ accountAddress }) {
   const [nfts, setNfts] = useState(null);
@@ -14,52 +16,51 @@ function DisplayNFTs({ accountAddress }) {
   const API_BASE_URL = "http://localhost:5000/api/v1"; // Replace with your backend URL
 
   const handleDeposit = async () => {
-    try {
-      //   const txn = await send(
-      //     accountAddress,
-      //     "JQONXCP7LYP2O2XQLOPBM6I67LBGCZGEZGHBRRBJBAJEWEIWIRIFZIPXIQ",
-      //     2 * 1000000,
-      //     "0", // '0' for ALGO
-      //     `Phantoms Deposit: Cards RPG`
-      //   );
+    // try {
+    //   const response = await axios.get(`${API_BASE_URL}/polygon-lee-depoait`);
+    //   const { receiver, amount, assetId, note } = response?.data.sendParams;
+    //   const txn = await send(accountAddress, receiver, amount, assetId, note);
 
-      //   const signedTx = await peraWallet.signTransaction([txn]);
-      //   const txConfirmation = await algodClient
-      //     .sendRawTransaction(signedTx)
-      //     .do();
+    //   const signedTx = await peraWallet.signTransaction([txn]);
+    //   const txConfirmation = await algodClient
+    //     .sendRawTransaction(signedTx)
+    //     .do();
 
-      // console.log("Transaction ID:", txConfirmation.txId);
+    //   console.log("Transaction ID:", txConfirmation.txId);
 
-      //   setStatus("Deposit pending...");
-      // have to add check deposit check on the backend
-      // const response = await axios.post(`${API_BASE_URL}/transfer-bruce-lee`, {
-      //   to: "",
-      // });
+    //   // // have to add check deposit check on the backend
+    //   const responsePolygonTransfer = await axios.post(
+    //     `${API_BASE_URL}/transfer-bruce-lee`,
+    //     {
+    //       txId: txConfirmation.txId,
+    //       to: `${userAddress}`,
+    //     }
+    //   );
 
-      // const txhash = response?.data?.txhash;
-      // console.log("txhash", txhash);
-      // if (txhash) {
-      // } else {
-      // }
-    } catch (error) {
-      console.error("Deposit error:", error);
-    }
+    //   const txhash = responsePolygonTransfer?.data?.txhash;
+    //   console.log("txhash", txhash);
+    //   if (txhash) {
+    //   } else {
+    //   }
+    // } catch (error) {
+    //   console.error("Deposit error:", error);
+    // }
   };
 
   const handlePurchase = () => {
-    if (!userAddress) {
-      alert("Please enter a valid Polygon address.");
-      return;
-    }
-    // Implement your logic to initiate the NFT purchase here
-    setIsPurchasing(true);
-    console.log("Purchasing NFT for address: ", userAddress);
-    // After purchase logic
-    setIsPurchasing(false);
+    // if (!userAddress) {
+    //   alert("Please enter a valid Polygon address.");
+    //   return;
+    // }
+    // // Implement your logic to initiate the NFT purchase here
+    // setIsPurchasing(true);
+    // handleDeposit();
+    // console.log("Purchasing NFT for address: ", userAddress);
+    // // After purchase logic
+    // setIsPurchasing(false);
   };
 
   useEffect(() => {
-    console.log(leeNfts);
     if (!accountAddress) {
       fetchNFTData();
     }
@@ -78,7 +79,7 @@ function DisplayNFTs({ accountAddress }) {
   };
 
   return (
-    <div className="fade-in text-center text-white dark:text-white mb-4">
+    <div className="fade-in flex flex-col items-center justify-center text-center text-white dark:text-white mb-4">
       {loading && <p>Loading NFT data...</p>}
       {error && <p>Error: {error}</p>}
       <header className="mt-4 mb-4 text-center">
@@ -94,15 +95,27 @@ function DisplayNFTs({ accountAddress }) {
         >
           <strong>Check out Byte City's X (Twitter) for more details</strong>
         </a>
-        <div className="my-4 text-center">
+        <div className="flex flex-col items-center justify-center my-4 text-center">
+          <iframe
+            src="https://www.youtube.com/embed/K363XLQ4MkU"
+            title="BYTE CITY Presents:  Bruce Lee&#39;s 50th Tribute Event"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            style={{
+              width: "auto%",
+              height: "auto",
+              border: "2px solid white",
+              borderRadius: "10px",
+            }}
+          ></iframe>
           <p className="text-xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-br from-black to-black">
             Are you ready to become a part of Byte City's exclusive Bruce Lee
             Collection on the Polygon blockchain?
           </p>
           <p className="text-xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-br from-black to-black">
             For ??? PHNTM tokens, you have the chance to acquire a unique NFT,
-            chosen at random from our collection. This collection isn't
-            just for show;
+            chosen at random from our collection. This collection isn't just for
+            show;
           </p>
           <p className="text-xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-br from-black to-black">
             <ul className="pl-5 text-white" style={{ listStyleType: "none" }}>
@@ -111,7 +124,7 @@ function DisplayNFTs({ accountAddress }) {
                 💎 Playable Avatar
               </li>
               <li style={{ paddingLeft: "1em", textIndent: "-1em" }}>
-                💎 Access & Drops.
+                💎 Access & Drops
               </li>
             </ul>
             Dive in and see which piece of Byte City you'll discover!
@@ -126,10 +139,10 @@ function DisplayNFTs({ accountAddress }) {
               disabled={true}
             />
             <button
-              onClick={handlePurchase}
+              // onClick={handlePurchase}
               className="btn bg-gradient-to-br from-blue-600 to-blue-500"
               // disabled={isPurchasing}
-              disabled={true}
+              // disabled={true}
             >
               {isPurchasing
                 ? "Purchasing..."
