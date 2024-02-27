@@ -95,6 +95,9 @@ export default function Navbar() {
             element={<DestroyAsset accountAddress={connectedAccountAddress} />}
           />
           <Route path="/opt-in/:assetId" element={<OptInComponent />} />
+          <Route path="/dinner/pay" element={<SpecialDinnerPayment  />} />
+          <Route path="/merchandise/pay" element={<SpecialDinnerPayment  />} />
+          {/* <Route path="/merchandise/pay" element={<MerchandisePayment  />} /> */}
           <Route
             path="/account-info"
             element={
