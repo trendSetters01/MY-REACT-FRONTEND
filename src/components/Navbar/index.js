@@ -23,6 +23,7 @@ import TinymanLPDeposits from "../TinymanLP";
 import PHNTMStaking from "../PHNTMStaking";
 import SpinTheWheel from "../SpinTheWheel";
 import DisplayNFTs from "../DisplayBruceLeeNFT";
+import SpecialDinnerPayment from "../Payments";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("arc3");
