@@ -390,7 +390,7 @@ export default function Blackjack({ accountAddress }) {
               style={{ maxWidth: "10em" }}
               className="text-3xl text-center mt-2 mb-2 px-4 py-2 font-bold"
             >
-              Phantoms 21 (Beta)
+              Phantoms 21
             </h1>
             {/* Wallet and Bet */}
             {!currentBet && !gameOver && (
