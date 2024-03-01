@@ -227,8 +227,8 @@ export default function Blackjack({ accountAddress }) {
     if (betWith === "ALGO" && betAmount < 2) {
       setMessage("Min deposit is 2 ALGO.");
       return;
-    } else if (betWith === "PHNTM" && betAmount < 150) {
-      setMessage("Min deposit is 150 PHNTM.");
+    } else if (betWith === "PHNTM" && betAmount < 80) {
+      setMessage("Min deposit is 80 PHNTM.");
       return;
     } else if (betWith === "ALGO" && betAmount > algoBalance) {
       setMessage("Insufficient ALGO balance.");
@@ -475,7 +475,7 @@ export default function Blackjack({ accountAddress }) {
                     }`}
                     onClick={() => setBetWith("PHNTM")}
                   >
-                    Deposit 150 PHNTM
+                    Deposit 80 PHNTM
                   </button>
                 </div>
                 <input
