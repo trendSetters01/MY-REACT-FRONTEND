@@ -68,7 +68,7 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
           <h1 className="text-4xl mt-2 mb-4 font-bold">Deposit Algo to Play</h1>
           <p className="mb-4 w-80 font-bold">
             Get ready to join the fun and have a chance to win phntm tokens!
-            (Min 400 phntm rewarded on win)
+            (Min 40 phntm rewarded on win)
           </p>
           <button
             onClick={handleDeposit}
