@@ -437,7 +437,7 @@ export default function Blackjack({ accountAddress }) {
                   </span>
                 </p>
                 <p className="mb-4 font-bold shadow-lg text-white text-lg border border-gray-600 p-4">
-                  <span>Win gets you 30 or more PHNTM Tokens</span>
+                  <span>Win gets you 120 or more PHNTM Tokens</span>
                 </p>
               </div>
             )}
