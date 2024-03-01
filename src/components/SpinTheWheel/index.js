@@ -11,18 +11,22 @@ import { send } from "../../algorand/transactionHelpers/send.js";
 const freeSpinGifts = [
   ["PHNTM", "red"],
   ["ALGO", "black"],
+  ["TACOS", "orange"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
+  ["TACOS", "orange"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
+  ["TACOS", "orange"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
+  ["TACOS", "orange"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
+  ["TACOS", "orange"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
-  ["PHNTM", "red"],
-  ["ALGO", "black"],
+  ["TACOS", "orange"],
 ];
 let count = 0;
 
@@ -55,10 +59,10 @@ export default function SpinTheWheel({ accountAddress }) {
         "0", // '0' for ALGO
         `Phantoms Win Confirmation receipt for ${accountAddress}: Spin the Wheel Game won ${result}`
       );
-      const optInTxn = await optIn(
-        accountAddress, //"1276228104"
-        "1279721720"
-      );
+      let optInTxn = await optIn(accountAddress, "1279721720");
+      if (result === "TACOS") {
+        optInTxn = await optIn(accountAddress, "329110405");
+      }
       // reward distribution logic
       setMessage(
         "Initiating opt-in request..., please watch for wallet popup."
