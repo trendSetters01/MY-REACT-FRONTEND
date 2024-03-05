@@ -12,21 +12,27 @@ const freeSpinGifts = [
   ["PHNTM", "red"],
   ["ALGO", "black"],
   ["TACOS", "orange"],
+  ["VOI", "purple"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
   ["TACOS", "orange"],
+  ["VOI", "purple"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
   ["TACOS", "orange"],
+  ["VOI", "purple"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
   ["TACOS", "orange"],
+  ["VOI", "purple"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
   ["TACOS", "orange"],
+  ["VOI", "purple"],
   ["PHNTM", "red"],
   ["ALGO", "black"],
   ["TACOS", "orange"],
+  ["VOI", "purple"],
 ];
 let count = 0;
 
@@ -62,6 +68,9 @@ export default function SpinTheWheel({ accountAddress }) {
       let optInTxn = await optIn(accountAddress, "1279721720");
       if (result === "TACOS") {
         optInTxn = await optIn(accountAddress, "329110405");
+      }
+      if (result === "VOI") {
+        optInTxn = await optIn(accountAddress, "1392374998");
       }
       // reward distribution logic
       setMessage(
