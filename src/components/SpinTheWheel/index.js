@@ -91,41 +91,42 @@ export default function SpinTheWheel({ accountAddress }) {
           setMessage(setMessage("Opt in transaction sent successfully!"));
         } else {
           setWinReceipt(`${txId}`);
+          const checkTx = txId;
+          setTimeout(async () => {
+            setMessage(
+              "Initiating reward distribution..., please watch for wallet popup."
+            );
+            try {
+              const response = await axios.post(
+                `${API_BASE_URL}/send-spin-the-wheel-rewards`,
+                {
+                  asset: result,
+                  to: accountAddress,
+                  winReceipt: checkTx,
+                }
+              );
+              const txId = response?.data?.txn?.txId;
+              const statucCode = response?.data?.statusCode;
+              if (statucCode === 429) {
+                setTransactionId(txId);
+                setShowLoader(false);
+                txId && setTransactionId(txId);
+                setMessage(`Only one reward per wallet address.`);
+              } else if (statucCode === 200) {
+                console.log("Reward distribution txn:", txId);
+                setTransactionId(txId);
+                setShowLoader(false);
+                txId && setTransactionId(txId);
+                setMessage(`Reward distribution completed`);
+              }
+            } catch (error) {
+              console.error("Error recording participant:", error);
+            }
+          }, 5000);
         }
         count++;
         setTransactionId(`${txId}}`);
       }
-
-      setTimeout(async () => {
-        setMessage(
-          "Initiating reward distribution..., please watch for wallet popup."
-        );
-        try {
-          const response = await axios.post(
-            `${API_BASE_URL}/send-spin-the-wheel-rewards`,
-            {
-              asset: result,
-              to: accountAddress,
-            }
-          );
-          const txId = response?.data?.txn?.txId;
-          const statucCode = response?.data?.statusCode;
-          if (statucCode === 429) {
-            setTransactionId(txId);
-            setShowLoader(false);
-            txId && setTransactionId(txId);
-            setMessage(`Only one reward per wallet address.`);
-          } else if (statucCode === 200) {
-            console.log("Reward distribution txn:", txId);
-            setTransactionId(txId);
-            setShowLoader(false);
-            txId && setTransactionId(txId);
-            setMessage(`Reward distribution completed`);
-          }
-        } catch (error) {
-          console.error("Error recording participant:", error);
-        }
-      }, 5000);
     } catch (error) {
       console.error("Error handling game win:", error);
     }
