@@ -63,7 +63,7 @@ export default function SpinTheWheel({ accountAddress }) {
         accountAddress,
         0,
         "0", // '0' for ALGO
-        `Phantoms Win Confirmation receipt for ${accountAddress}: Spin the Wheel Game won ${result}`
+        `Phantom Pals Win Confirmation receipt for ${accountAddress}: Spin the Wheel Game won ${result}`
       );
       let optInTxn = await optIn(accountAddress, "1279721720");
       if (result === "TACOS") {
@@ -241,7 +241,7 @@ export default function SpinTheWheel({ accountAddress }) {
                   className="p-2 mt-4 text-white hover:underline"
                   style={{ wordBreak: "break-word" }}
                 >
-                  Phantoms Win Confirmation receipt- txID: {winReceipt}
+                  Phantom Pals Win Confirmation receipt- txID: {winReceipt}
                 </a>
                 <p className="p-2" style={{ wordBreak: "break-word" }}>
                   keep this for your records or to claim your reward later

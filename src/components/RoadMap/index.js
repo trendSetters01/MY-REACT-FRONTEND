@@ -15,15 +15,9 @@ const Roadmap = () => {
       status: "completed", // other statuses could be "in-progress", "upcoming"
     },
     {
-      title: "Phantom V2 Nft Introduction",
-      date: "N/A",
-      description: "Release part 1 - Phantom V2 NFT's.",
-      status: "completed", // other statuses could be "in-progress", "upcoming"
-    },
-    {
       title: "NFT Catalogue",
       date: "N/A",
-      description: "Catalogue of Phantom NFT's for sale.",
+      description: "Catalogue of Phantom Pals NFT's for sale.",
       status: "in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
@@ -33,34 +27,22 @@ const Roadmap = () => {
       status: "in-progress", // other statuses could be "in-progress", "upcoming"
     },
     {
-      title: "V1 NFT Staking",
+      title: "Phantom Pals NFT Staking",
       date: "N/A",
-      description: "V1 NFT Staking to be introduced.",
+      description: "Phantom Pals NFT Staking to be introduced.",
       status: "completed",
     },
     {
-      title: "Introduction of Phantom Council System",
+      title: "Introduction of Phantom Pals Council System",
       date: "TBA",
-      description: "Phantom Council System to be introduced.",
+      description: "Phantom Pals Council System to be introduced.",
       status: "in-future",
     },
     {
-      title: "Introduction of Phantom Economy",
+      title: "Introduction of Phantom Pals Economy",
       date: "N/A",
       description: "First Phantom token utility to be introduced.",
       status: "completed",
-    },
-    {
-      title: "Introduction of Phantom Role System",
-      date: "TBA",
-      description: "Phantom role tokens utility to be introduced.",
-      status: "in-future",
-    },
-    {
-      title: "Phantom V2 Nft Introduction",
-      date: "TBA",
-      description: "Release part 2 - Phantom V2 NFT's.",
-      status: "in-future", // other statuses could be "in-progress", "upcoming"
     },
     // Add more milestones as needed
   ];
@@ -84,7 +66,11 @@ const Roadmap = () => {
           >
             <div
               className="p-6"
-              style={{ fontFamily: "Bahnschrift", fontWeight: "bold", fontSize: "large"}}
+              style={{
+                fontFamily: "Bahnschrift",
+                fontWeight: "bold",
+                fontSize: "large",
+              }}
             >
               <h3 className="font-semibold text-xl mb-2">{milestone.title}</h3>
               <p className="text-sm mb-4">{milestone.date}</p>

@@ -126,7 +126,7 @@ function Swap({ accountAddress }) {
 
     // Update iframeUrl when asset IDs change
     const newIframeUrl = WidgetController.generateWidgetIframeUrl({
-      platformName: "Phantom swap",
+      platformName: "Phantom Pals swap",
       useParentSigner: true,
       assetIds: [firstAssetId, secondAssetId],
       network: "mainnet",
@@ -140,7 +140,7 @@ function Swap({ accountAddress }) {
         containerButtonText: "#ffffff",
         iframeBg: "#F8F8F8",
         borderRadiusSize: "none",
-        title: "Phantoms Swap",
+        title: "Phantom Pals Swap",
         shouldDisplayTinymanLogo: false,
       },
       accountAddress,

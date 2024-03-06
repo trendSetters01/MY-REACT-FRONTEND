@@ -38,7 +38,7 @@ function Home({ accountAddress }) {
     >
       <header className="mb-12 text-center">
         <h1 className="text-6xl font-extrabold mb-3 text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-blue-500">
-          Phantoms
+          Phantom Pals
         </h1>
         <p
           className="text-xl font-light text-gray-100"
@@ -58,7 +58,7 @@ function Home({ accountAddress }) {
             "Roadmap",
             "NFT Benefits",
             "Tokenomics",
-            "Phantoms Wallets",
+            "Phantom Pals Wallets",
             "Disclaimers",
           ].map((tab) => (
             <button
@@ -88,7 +88,7 @@ function Home({ accountAddress }) {
           >
             {/* Introduction content */}
             <h2 className="text-2xl font-semibold mb-4 dark:text-white">
-              Welcome to Phantoms!
+              Welcome to Phantom Pals!
             </h2>
             <p
               className="dark:text-gray-300"
@@ -114,7 +114,7 @@ function Home({ accountAddress }) {
           >
             {/* NFT Benefits content */}
             <h2 className="text-2xl font-semibold mb-4">
-              Exclusive Benefits with Phantom NFTs
+              Exclusive Benefits with Phantom Pals NFTs
             </h2>
             <div
               style={{
@@ -124,10 +124,11 @@ function Home({ accountAddress }) {
               }}
             >
               <p className="dark:text-gray-300">
-                As a holder of Phantom NFTs, you're not just owning digital art;
-                you're part of the Phantoms inner circle. These NFTs will unlock
-                exclusive benefits and privileges within the Phantoms ecosystem
-                as we grow. Here's a sneak peek of what to expect:
+                As a holder of Phantom Pals NFTs, you're not just owning digital
+                art; you're part of the Phantom Pals Pals inner circle. These
+                NFTs will unlock exclusive benefits and privileges within the
+                Phantom Pals Pals ecosystem as we grow. Here's a sneak peek of
+                what to expect:
               </p>
               <ul className="list-disc pl-5 dark:text-gray-300">
                 <li>
@@ -137,7 +138,8 @@ function Home({ accountAddress }) {
                 </li>
                 <li>
                   <strong>Special Privileges:</strong> Enjoy unique
-                  opportunities and offers exclusive to Phantom NFT holders.
+                  opportunities and offers exclusive to Phantom Pals NFT
+                  holders.
                 </li>
                 <li>
                   <strong>Community Influence:</strong> Have a say in the
@@ -271,10 +273,10 @@ function Home({ accountAddress }) {
             </div>
           </section>
         )}
-        {activeTab === "Phantoms Wallets" && (
+        {activeTab === "Phantom Pals Wallets" && (
           <section className="wallets bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">
-              Phantoms Wallets Overview
+              Phantoms (Phantom Pals) Wallets Overview
             </h2>
             <div
               className="dark:text-gray-300"
@@ -374,7 +376,7 @@ function Home({ accountAddress }) {
         {activeTab === "Disclaimers" && (
           <section className="disclaimers bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">
-              Phantoms Disclaimers
+              Phantoms (Phantom Pals) Disclaimers
             </h2>
             <div
               className="dark:text-gray-300 space-y-4"
@@ -388,35 +390,36 @@ function Home({ accountAddress }) {
                 Vision and Progress
               </h3>
               <p>
-                <strong>Phantoms</strong> embarks on a pioneering journey within
-                the Algorand blockchain ecosystem, dedicated to unlocking the
-                potential of blockchain for tangible, real-world applications.
-                Our ambition is to cultivate a space where innovation meets
-                community, fostering an environment of growth, learning, and
-                engagement.
+                <strong>Phantom Pals</strong> embarks on a pioneering journey
+                within the Algorand blockchain ecosystem, dedicated to unlocking
+                the potential of blockchain for tangible, real-world
+                applications. Our ambition is to cultivate a space where
+                innovation meets community, fostering an environment of growth,
+                learning, and engagement.
               </p>
               <ul className="list-disc pl-5">
                 <li>
-                  <strong>Dynamic Evolution:</strong> Phantoms is not static; it
-                  is a voyage of discovery and adaptation. While our initial
-                  phase might be experimental, our eyes are set on a clear
-                  horizon. Feedback from our community is our compass, guiding
-                  our project's evolution from experimental to established,
-                  ensuring our path aligns with both our vision and the needs of
-                  our participants.
+                  <strong>Dynamic Evolution:</strong> Phantom Pals is not
+                  static; it is a voyage of discovery and adaptation. While our
+                  initial phase might be experimental, our eyes are set on a
+                  clear horizon. Feedback from our community is our compass,
+                  guiding our project's evolution from experimental to
+                  established, ensuring our path aligns with both our vision and
+                  the needs of our participants.
                 </li>
                 <li>
                   <strong>Financial Considerations:</strong> All interactions
-                  within Phantoms, including purchases, are at your discretion.
-                  We urge caution but in saying that every transaction, every
-                  interaction is a vote of confidence in what we can achieve
-                  together. With the pioneering spirit comes a degree of
-                  uncertainty, and we encourage every member of our community to
-                  navigate this journey with awareness and thoughtfulness.
+                  within Phantom Pals, including purchases, are at your
+                  discretion. We urge caution but in saying that every
+                  transaction, every interaction is a vote of confidence in what
+                  we can achieve together. With the pioneering spirit comes a
+                  degree of uncertainty, and we encourage every member of our
+                  community to navigate this journey with awareness and
+                  thoughtfulness.
                 </li>
                 <li>
                   <strong>Security Commitment:</strong> Our pledge to security
-                  is foundational, permeating every layer of the Phantoms
+                  is foundational, permeating every layer of the Phantom Pals
                   ecosystem. We recognize the challenges inherent in
                   safeguarding a digital community and commit to relentless
                   vigilance and best practices in security measures. Our journey
@@ -425,19 +428,19 @@ function Home({ accountAddress }) {
                 </li>
                 <li>
                   <strong>Transparent Evolution:</strong> Transparency is the
-                  cornerstone of trust. As Phantoms evolves, so too will our
+                  cornerstone of trust. As Phantom Pals evolves, so too will our
                   methods, strategies, and technologies.
                 </li>
               </ul>
               <p>
-                By participating in Phantoms, you're not just witnessing
+                By participating in Phantom Pals, you're not just witnessing
                 innovation; you're part of a collective pushing the boundaries
                 of blockchain's potential. This project, while beginning with
                 exploration, is on a path to defining its course, solidifying
                 its impact, and achieving lasting significance. We invite you to
                 join us with an open mind and a pioneering spirit, ready to
-                contribute to a future where Phantoms stands as a testament to
-                the power of community-driven blockchain endeavors.
+                contribute to a future where Phantom Pals stands as a testament
+                to the power of community-driven blockchain endeavors.
               </p>
               <button
                 className="mt-2 px-4 py-2 bg-blue-500 hover:bg-blue-700 rounded text-white"
@@ -448,12 +451,12 @@ function Home({ accountAddress }) {
               {showModal && (
                 <div className="dark:text-gray-300">
                   <p className="mt-2 mb-4">
-                    Phantoms is dedicated to transparency, open communication,
-                    and adaptability. We keep our community informed about our
-                    processes, developments, and any challenges we encounter. As
-                    the project evolves, so too will our strategies and
-                    practices, enhancing the project's overall security,
-                    usability, and value.
+                    Phantom Pals is dedicated to transparency, open
+                    communication, and adaptability. We keep our community
+                    informed about our processes, developments, and any
+                    challenges we encounter. As the project evolves, so too will
+                    our strategies and practices, enhancing the project's
+                    overall security, usability, and value.
                   </p>
                   <p className="mt-2 mb-4">
                     For any questions or concerns, please reach out to us at{" "}

@@ -51,7 +51,7 @@ export default function RewardComponent({ accountAddress }) {
         accountAddress,
         0,
         "0", // '0' for ALGO
-        `Phantoms Win Confirmation receipt for ${accountAddress}: Cards RPG`
+        `Phantom Pals Win Confirmation receipt for ${accountAddress}: Cards RPG`
       );
       const optInTxn = await optIn(
         accountAddress, //"1276228104"
@@ -124,7 +124,7 @@ export default function RewardComponent({ accountAddress }) {
               className="mt-4 text-green-500 hover:underline"
               style={{ wordBreak: "break-word" }}
             >
-              Phantoms Win Confirmation receipt- txID: {winReceipt}
+              Phantom Pals Win Confirmation receipt- txID: {winReceipt}
             </a>
             <p className="p-4 mt-4" style={{ wordBreak: "break-word" }}>
               keep this for your records or to claim your reward later through

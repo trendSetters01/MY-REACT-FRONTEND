@@ -50,7 +50,7 @@ function DisplayPhantomv2({ accountAddress }) {
       {error && <p>Error: {error}</p>}
       {accountData && (
         <div className="text-white dark:text-white">
-          <h1>Phantom V2</h1>
+          <h1>Phantom Pals V2</h1>
           <h3>Account Information</h3>
           Address:
           <a

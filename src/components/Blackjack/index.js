@@ -38,7 +38,7 @@ export default function Blackjack({ accountAddress }) {
         "JQONXCP7LYP2O2XQLOPBM6I67LBGCZGEZGHBRRBJBAJEWEIWIRIFZIPXIQ",
         betWith === "ALGO" ? bet * 1000000 : bet * 100000000, // ( / 1e8).toFixed(8)
         betWith === "ALGO" ? "0" : "1279721720", // '0' for ALGO
-        `Phantoms Deposit: phantoms-21`
+        `Phantom Pals Deposit: phantom=pals-21`
       );
       const signedTx = await peraWallet.signTransaction([txn]);
       const txConfirmation = await algodClient
@@ -297,7 +297,7 @@ export default function Blackjack({ accountAddress }) {
         accountAddress,
         0,
         "0", // '0' for ALGO
-        `Phantoms Win Confirmation receipt for ${accountAddress}: Phantoms 21`
+        `Phantom Pals Win Confirmation receipt for ${accountAddress}: Phantom Pals 21`
       );
       const optInTxn = await optIn(
         accountAddress, //"1276228104"
@@ -390,7 +390,7 @@ export default function Blackjack({ accountAddress }) {
               style={{ maxWidth: "10em" }}
               className="text-3xl text-center mt-2 mb-2 px-4 py-2 font-bold"
             >
-              Phantoms 21
+              Phantom Pals 21
             </h1>
             {/* Wallet and Bet */}
             {!currentBet && !gameOver && (
@@ -514,7 +514,7 @@ export default function Blackjack({ accountAddress }) {
                     className="p-2 mt-4 text-white hover:underline"
                     style={{ wordBreak: "break-word" }}
                   >
-                    Phantoms Win Confirmation receipt- txID: {winReceipt}
+                    Phantom Pals Win Confirmation receipt- txID: {winReceipt}
                   </a>
                   <p className="p-2" style={{ wordBreak: "break-word" }}>
                     keep this for your records or to claim your reward later

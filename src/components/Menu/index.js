@@ -345,7 +345,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                           src={`https://ipfs.io/ipfs/bafkreif7xwh37wbwpyzv5id7ijchvs56hdmah25v32hhtu3igyhp257b4e`}
                           alt={`Pahntom V2`}
                         />
-                        Phantom V2
+                        Phantom Pals V2
                       </Link>
                     </li>
                   </ul>
@@ -368,7 +368,9 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                             border: "2px solid white",
                             borderRadius: "10px",
                           }}
-                          src={"https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/matic-mainnet/09a9f8ffeacf6c1b33c49ef39d7ec601"}
+                          src={
+                            "https://res.cloudinary.com/alchemyapi/image/upload/thumbnailv2/matic-mainnet/09a9f8ffeacf6c1b33c49ef39d7ec601"
+                          }
                           alt={`Coming Soon`}
                         />
                         Byte City NFTs
