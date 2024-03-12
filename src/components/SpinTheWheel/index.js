@@ -9,30 +9,16 @@ import { optIn } from "../../algorand/opt-in.js";
 import { send } from "../../algorand/transactionHelpers/send.js";
 
 const freeSpinGifts = [
-  ["PHNTM", "red"],
+  ["PHNTM", "#391379"],
   ["ALGO", "black"],
   ["TACOS", "orange"],
-  ["VOI", "purple"],
-  ["PHNTM", "red"],
+  ["VOI", "#e83be8"],
+  // ["AKITA INU", "#64e9b1"],
+  ["PHNTM", "#391379"],
   ["ALGO", "black"],
   ["TACOS", "orange"],
-  ["VOI", "purple"],
-  ["PHNTM", "red"],
-  ["ALGO", "black"],
-  ["TACOS", "orange"],
-  ["VOI", "purple"],
-  ["PHNTM", "red"],
-  ["ALGO", "black"],
-  ["TACOS", "orange"],
-  ["VOI", "purple"],
-  ["PHNTM", "red"],
-  ["ALGO", "black"],
-  ["TACOS", "orange"],
-  ["VOI", "purple"],
-  ["PHNTM", "red"],
-  ["ALGO", "black"],
-  ["TACOS", "orange"],
-  ["VOI", "purple"],
+  ["VOI", "#e83be8"],
+  // ["AKITA INU", "#64e9b1"],
 ];
 let count = 0;
 
