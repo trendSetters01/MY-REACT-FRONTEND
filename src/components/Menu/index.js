@@ -458,9 +458,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </svg>
             </label>
           </button> */}
-          <button>
-            <PeraWalletButton onConnect={setConnectedAccountAddress} />
-          </button>
+          <PeraWalletButton onConnect={setConnectedAccountAddress} />
         </div>
       </div>
     </>
