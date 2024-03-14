@@ -13,12 +13,12 @@ const freeSpinGifts = [
   ["ALGO", "black"],
   ["TACOS", "orange"],
   ["VOI", "#e83be8"],
-  // ["AKITA INU", "#64e9b1"],
+  ["AKITA", "#64e9b1"],
   ["PHNTM", "#391379"],
   ["ALGO", "black"],
   ["TACOS", "orange"],
   ["VOI", "#e83be8"],
-  // ["AKITA INU", "#64e9b1"],
+  ["AKITA", "#64e9b1"],
 ];
 let count = 0;
 
@@ -52,6 +52,9 @@ export default function SpinTheWheel({ accountAddress }) {
         `Phantom Pals Win Confirmation receipt for ${accountAddress}: Spin the Wheel Game won ${result}`
       );
       let optInTxn = await optIn(accountAddress, "1279721720");
+      if (result === "AKITA") {
+        optInTxn = await optIn(accountAddress, "523683256");
+      }
       if (result === "TACOS") {
         optInTxn = await optIn(accountAddress, "329110405");
       }
@@ -181,7 +184,7 @@ export default function SpinTheWheel({ accountAddress }) {
       style={{
         wordWrap: "break-word",
         maxHeight: "100vh",
-        minHeight: "64vh",
+        minHeight: "70vh",
         maxWidth: "100vw",
         minWidth: "100vw",
       }}
