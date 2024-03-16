@@ -98,6 +98,8 @@ export default function AssetScrolling({ accountAddress, onImagesLoaded }) {
       let assetsList = await getAssetsForAccount(phantomsHoldingAddress);
       assetsList = assetsList.filter((asset) => asset?.id !== 1433744464);
       assetsList = assetsList.filter((asset) => asset?.id !== 329110405);
+      assetsList = assetsList.filter((asset) => asset?.id !== 523683256);
+      assetsList = assetsList.filter((asset) => asset?.id !== 329110405);
       setAssetIDs(assetsList);
 
       // Prepare to fetch images for all assets
