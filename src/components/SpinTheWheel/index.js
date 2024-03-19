@@ -10,12 +10,10 @@ import { send } from "../../algorand/transactionHelpers/send.js";
 
 const freeSpinGifts = [
   ["PHNTM", "#391379"],
-  ["ALGO", "black"],
   ["TACOS", "orange"],
   ["VOI", "#e83be8"],
   ["AKITA", "#64e9b1"],
   ["PHNTM", "#391379"],
-  ["ALGO", "black"],
   ["TACOS", "orange"],
   ["VOI", "#e83be8"],
   ["AKITA", "#64e9b1"],
