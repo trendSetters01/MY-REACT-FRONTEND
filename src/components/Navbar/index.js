@@ -41,10 +41,10 @@ export default function Navbar() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/trade-phntm" element={<VestigeListing />} />
-          <Route
+          {/* <Route
             path="/bruce-lee-nft-polygon"
             element={<DisplayNFTs accountAddress={connectedAccountAddress} />}
-          />
+          /> */}
           <Route path="/token-info" element={<TokenInfo />} />
           <Route path="/tinyman-lp-deposits" element={<TinymanLPDeposits />} />
           <Route path="/phntm-staking" element={<PHNTMStaking />} />

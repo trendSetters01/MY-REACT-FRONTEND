@@ -351,7 +351,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                   </ul>
                 </details>
               </li>
-              <li>
+              {/* <li>
                 <details>
                   <summary style={{ fontWeight: "bold" }}>Coming Soon</summary>
                   <ul>
@@ -378,7 +378,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     </li>
                   </ul>
                 </details>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
