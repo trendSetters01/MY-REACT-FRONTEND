@@ -11,11 +11,11 @@ import { send } from "../../algorand/transactionHelpers/send.js";
 const freeSpinGifts = [
   ["PHNTM", "#391379"],
   ["TACOS", "orange"],
-  // ["VOI", "#e83be8"],
+  ["A200", "black"],
   ["AKITA", "#64e9b1"],
   ["PHNTM", "#391379"],
   ["TACOS", "orange"],
-  // ["VOI", "#e83be8"],
+  ["A200", "black"],
   ["AKITA", "#64e9b1"],
 ];
 let count = 0;
@@ -50,14 +50,21 @@ export default function SpinTheWheel({ accountAddress }) {
         `Phantom Pals Win Confirmation receipt for ${accountAddress}: Spin the Wheel Game won ${result}`
       );
       let optInTxn = await optIn(accountAddress, "1279721720");
-      if (result === "AKITA") {
-        optInTxn = await optIn(accountAddress, "523683256");
-      }
-      if (result === "TACOS") {
-        optInTxn = await optIn(accountAddress, "329110405");
-      }
-      if (result === "VOI") {
-        optInTxn = await optIn(accountAddress, "1392374998");
+      switch (result) {
+        case "AKITA":
+          optInTxn = await optIn(accountAddress, "523683256");
+          break;
+        case "TACOS":
+          optInTxn = await optIn(accountAddress, "329110405");
+          break;
+        case "VOI":
+          optInTxn = await optIn(accountAddress, "1392374998");
+          break;
+        case "A200":
+          optInTxn = await optIn(accountAddress, "1682662165");
+          break;
+        default:
+          break;
       }
       // reward distribution logic
       setMessage(
