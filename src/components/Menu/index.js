@@ -62,6 +62,22 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                   </summary>
                   <ul>
                     <li className="m-1">
+                      <Link to="/dashboard" className="dropdown-item">
+                        <img
+                          style={{
+                            backgroundColor: "white",
+                            width: "25%",
+                            height: "25%",
+                            border: "2px solid white",
+                            borderRadius: "10px",
+                          }}
+                          src={userAccount}
+                          alt={`Pahntom V2`}
+                        />
+                        Dashboard
+                      </Link>
+                    </li>
+                    {/* <li className="m-1">
                       <Link to="/account-info" className="dropdown-item">
                         <img
                           style={{
@@ -124,7 +140,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         />
                         Destroy Asset
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </details>
               </li>
@@ -133,7 +149,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                   <summary style={{ fontWeight: "bold" }}>
                     Phantoms Services
                   </summary>
-                  <li className="m-1">
+                  {/* <li className="m-1">
                     <Link to="/mint-nft" className="dropdown-item">
                       <img
                         style={{
@@ -148,7 +164,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       />
                       Mint NFT
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="m-1">
                     <Link to="/onramp-swap" className="dropdown-item">
                       <img
@@ -316,7 +332,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                 <details>
                   <summary style={{ fontWeight: "bold" }}>Collections</summary>
                   <ul>
-                    <li className="m-1">
+                    <li className="m-2">
                       <Link to="/phantom-v1" className="dropdown-item">
                         <img
                           style={{
@@ -332,7 +348,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         Phantom Pals
                       </Link>
                     </li>
-                    <li className="m-1">
+                    {/* <li className="m-1">
                       <Link to="/phantom-v2" className="dropdown-item">
                         <img
                           style={{
@@ -347,7 +363,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         />
                         Phantom Pals V2
                       </Link>
-                    </li>
+                    </li> */}
                   </ul>
                 </details>
               </li>

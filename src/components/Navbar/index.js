@@ -24,6 +24,8 @@ import PHNTMStaking from "../PHNTMStaking";
 import SpinTheWheel from "../SpinTheWheel";
 import DisplayNFTs from "../DisplayBruceLeeNFT";
 import SpecialDinnerPayment from "../Payments";
+// import Raffle from "../Raffle";
+import Dashboard from "../Dashboard";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("arc3");
@@ -46,6 +48,10 @@ export default function Navbar() {
             element={<DisplayNFTs accountAddress={connectedAccountAddress} />}
           /> */}
           <Route path="/token-info" element={<TokenInfo />} />
+          <Route
+            path="/dashboard"
+            element={<Dashboard accountAddress={connectedAccountAddress} />}
+          />
           <Route path="/tinyman-lp-deposits" element={<TinymanLPDeposits />} />
           <Route path="/phntm-staking" element={<PHNTMStaking />} />
           <Route
@@ -56,6 +62,10 @@ export default function Navbar() {
             path="/spin-the-wheel"
             element={<SpinTheWheel accountAddress={connectedAccountAddress} />}
           />
+          {/* <Route
+            path="/raffle"
+            element={<Raffle accountAddress={connectedAccountAddress} />}
+          /> */}
           <Route
             path="/phantoms-21"
             element={<Blackjack accountAddress={connectedAccountAddress} />}
@@ -64,7 +74,7 @@ export default function Navbar() {
             path="/cards-rpg"
             element={<MainGame accountAddress={connectedAccountAddress} />}
           />
-          <Route
+          {/* <Route
             path="/mint-nft"
             element={
               <div>
@@ -96,10 +106,10 @@ export default function Navbar() {
             element={<DestroyAsset accountAddress={connectedAccountAddress} />}
           />
           <Route path="/opt-in/:assetId" element={<OptInComponent />} />
-          <Route path="/dinner/pay" element={<SpecialDinnerPayment  />} />
-          <Route path="/merchandise/pay" element={<SpecialDinnerPayment  />} />
+          <Route path="/dinner/pay" element={<SpecialDinnerPayment />} />
+          <Route path="/merchandise/pay" element={<SpecialDinnerPayment />} /> */}
           {/* <Route path="/merchandise/pay" element={<MerchandisePayment  />} /> */}
-          <Route
+          {/* <Route
             path="/account-info"
             element={
               <DisplayAccountInformation
@@ -117,7 +127,7 @@ export default function Navbar() {
                 connectedAccountAddress={connectedAccountAddress}
               />
             }
-          />
+          /> */}
           <Route
             path="/phantom-v1"
             element={<DisplayPhantomv1 accountAddress={phantomV1Address} />}
