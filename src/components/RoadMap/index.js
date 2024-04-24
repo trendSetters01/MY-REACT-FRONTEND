@@ -1,4 +1,5 @@
 import React from "react";
+import rdmap from "../../images/roadmap.png";
 
 const Roadmap = () => {
   const milestones = [
@@ -54,9 +55,17 @@ const Roadmap = () => {
   };
 
   return (
-    <div className="my-10 px-4 py-8 text-white bg-gradient-to-r from-black to-gray-500">
+    <div
+      style={{
+        display: "flex",
+        "flex-direction": "column",
+        gap: "1em",
+        "align-items": "center",
+      }}
+      className="my-10 px-4 py-8 text-white bg-gradient-to-r from-black to-gray-500"
+    >
       <h2 className="text-3xl font-bold text-center mb-8">Roadmap</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {milestones.map((milestone, index) => (
           <div
             key={index}
@@ -83,7 +92,8 @@ const Roadmap = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
+      <img src={rdmap} alt="roadmap" />
     </div>
   );
 };
