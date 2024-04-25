@@ -17,6 +17,7 @@ function Swap({ accountAddress }) {
 
   // Example list of assets (Replace this with your actual assets list)
   const baseAssetList = [
+    { id: 1682662165, name: "A200" },
     { id: 312769, name: "Tether USDt" },
     { id: 672913181, name: "goUSD" },
     { id: 386192725, name: "goBTC" },
