@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Menu from "../Menu";
 import Home from "../Home";
@@ -30,51 +30,66 @@ import Dashboard from "../Dashboard";
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("arc3");
   const [connectedAccountAddress, setConnectedAccountAddress] = useState(null);
+  const [theme, setTheme] = useState("dark");
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   const phantomV1Address =
     "IWY24Q6GUUIMJITMTR3FDO4Q54UCBPPPIWJUQ57CWLASPRHFHXTXIQUQYA";
   const phantomV2Address =
     "YI7APPJQ6P2CLKW5E7YZ5NFMC4KBGES2EXN72ADUNX2BNQPKOOMIBVHWJU";
   return (
-    <div>
-      <TokenPriceTicker />
-      <Router>
-        <Menu setConnectedAccountAddress={setConnectedAccountAddress} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/trade-phntm" element={<VestigeListing />} />
-          {/* <Route
+    <Router>
+      <div className="drawer min-h-screen bg-base-200 lg:drawer-open">
+        <TokenPriceTicker />
+        <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+        <main className="drawer-content">
+          <Menu setConnectedAccountAddress={setConnectedAccountAddress} />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/trade-phntm" element={<VestigeListing />} />
+            {/* <Route
             path="/bruce-lee-nft-polygon"
             element={<DisplayNFTs accountAddress={connectedAccountAddress} />}
           /> */}
-          <Route path="/token-info" element={<TokenInfo />} />
-          <Route
-            path="/dashboard"
-            element={<Dashboard accountAddress={connectedAccountAddress} />}
-          />
-          <Route path="/tinyman-lp-deposits" element={<TinymanLPDeposits />} />
-          <Route path="/phntm-staking" element={<PHNTMStaking />} />
-          <Route
-            path="/onramp-swap"
-            element={<Swap accountAddress={connectedAccountAddress} />}
-          />
-          <Route
-            path="/spin-the-wheel"
-            element={<SpinTheWheel accountAddress={connectedAccountAddress} />}
-          />
-          {/* <Route
+            <Route path="/token-info" element={<TokenInfo />} />
+            <Route
+              path="/dashboard"
+              element={<Dashboard accountAddress={connectedAccountAddress} />}
+            />
+            <Route
+              path="/tinyman-lp-deposits"
+              element={<TinymanLPDeposits />}
+            />
+            <Route path="/phntm-staking" element={<PHNTMStaking />} />
+            <Route
+              path="/onramp-swap"
+              element={<Swap accountAddress={connectedAccountAddress} />}
+            />
+            <Route
+              path="/spin-the-wheel"
+              element={
+                <SpinTheWheel accountAddress={connectedAccountAddress} />
+              }
+            />
+            {/* <Route
             path="/raffle"
             element={<Raffle accountAddress={connectedAccountAddress} />}
           /> */}
-          <Route
-            path="/phantoms-21"
-            element={<Blackjack accountAddress={connectedAccountAddress} />}
-          />
-          <Route
-            path="/cards-rpg"
-            element={<MainGame accountAddress={connectedAccountAddress} />}
-          />
-          {/* <Route
+            <Route
+              path="/phantoms-21"
+              element={<Blackjack accountAddress={connectedAccountAddress} />}
+            />
+            <Route
+              path="/cards-rpg"
+              element={<MainGame accountAddress={connectedAccountAddress} />}
+            />
+            {/* <Route
             path="/mint-nft"
             element={
               <div>
@@ -108,8 +123,8 @@ export default function Navbar() {
           <Route path="/opt-in/:assetId" element={<OptInComponent />} />
           <Route path="/dinner/pay" element={<SpecialDinnerPayment />} />
           <Route path="/merchandise/pay" element={<SpecialDinnerPayment />} /> */}
-          {/* <Route path="/merchandise/pay" element={<MerchandisePayment  />} /> */}
-          {/* <Route
+            {/* <Route path="/merchandise/pay" element={<MerchandisePayment  />} /> */}
+            {/* <Route
             path="/account-info"
             element={
               <DisplayAccountInformation
@@ -128,16 +143,17 @@ export default function Navbar() {
               />
             }
           /> */}
-          <Route
-            path="/phantom-v1"
-            element={<DisplayPhantomv1 accountAddress={phantomV1Address} />}
-          />
-          <Route
-            path="/phantom-v2"
-            element={<DisplayPhantomv2 accountAddress={phantomV2Address} />}
-          />
-        </Routes>
-      </Router>
-    </div>
+            <Route
+              path="/phantom-v1"
+              element={<DisplayPhantomv1 accountAddress={phantomV1Address} />}
+            />
+            <Route
+              path="/phantom-v2"
+              element={<DisplayPhantomv2 accountAddress={phantomV2Address} />}
+            />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }

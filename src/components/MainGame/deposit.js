@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import { algodClient } from "../../algorand/config.js";
 import { PeraWalletContext } from "../PeraWalletContext";
 import axios from "axios";
-import AssetScrolling from "../AssetScrolling/index.js";
 import { send } from "../../algorand/transactionHelpers/send.js";
+import phantomsImg from "../../images/Phantoms.png";
 
 export default function DepositComponent({ onDepositSuccess, accountAddress }) {
   const [disabled, setDisabled] = useState(false);
@@ -18,9 +18,18 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
       setDisabled(true);
       setStatus("Processing your deposit. Please wait...");
 
-      const cardsRPGSendParams = await axios.get(`${API_BASE_URL}/cards-rpg-deposit`);
-      const { receiver, amount, assetId, note } = cardsRPGSendParams?.data?.sendParams;
-      const cardsRPGTxn = await send(accountAddress, receiver, amount, assetId, note);
+      const cardsRPGSendParams = await axios.get(
+        `${API_BASE_URL}/cards-rpg-deposit`
+      );
+      const { receiver, amount, assetId, note } =
+        cardsRPGSendParams?.data?.sendParams;
+      const cardsRPGTxn = await send(
+        accountAddress,
+        receiver,
+        amount,
+        assetId,
+        note
+      );
 
       const cardsRPGSignedTx = await peraWallet.signTransaction([cardsRPGTxn]);
       const cardsRPGTxConfirmation = await algodClient
@@ -58,12 +67,13 @@ export default function DepositComponent({ onDepositSuccess, accountAddress }) {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <AssetScrolling
-        accountAddress={accountAddress}
-        onImagesLoaded={() => setShowComponent(true)}
+    <div className="flex flex-col items-center justify-center text-white">
+      <img
+        style={{ maxWidth: "10em", maxHeight: "10em" }}
+        className="rounded-full"
+        src={phantomsImg}
       />
-      {showComponent && (
+      {(
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-4xl mt-2 mb-4 font-bold">Deposit Algo to Play</h1>
           <p className="mb-4 w-80 font-bold">
