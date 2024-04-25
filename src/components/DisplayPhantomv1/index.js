@@ -67,7 +67,7 @@ function DisplayPhantomv1({ accountAddress }) {
               style={{ margin: "1px" }}
               className="p-4 bg-gradient-to-r from-black to-gray-800"
             >
-              <div>
+              <div className="zoom-effect">
                 <a
                   className="text-white dark:text-white"
                   href={`https://www.randgallery.com/algo-collection/?address=${asset.index}`}

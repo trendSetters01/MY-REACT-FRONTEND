@@ -105,6 +105,24 @@ h1 h2 h3 {
   }
 }
 
+.zoom-effect {
+  overflow: hidden;
+  /* Ensures the image doesn't overflow its container */
+}
+
+.zoom-effect img {
+  transition: transform 8s ease-in-out;
+  /* Smooth transition */
+  transform-origin: center;
+  /* Ensures zoom effect is centered */
+}
+
+.zoom-effect img:hover {
+  transform: scale(1.5);
+  /* Adjust the scale value to control zoom level */
+}
+
+
 
 
 @tailwind base;

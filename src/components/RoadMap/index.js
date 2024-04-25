@@ -93,7 +93,9 @@ const Roadmap = () => {
           </div>
         ))}
       </div> */}
-      <img src={rdmap} alt="roadmap" />
+      <div className="zoom-effect">
+        <img src={rdmap} alt="roadmap"  />
+      </div>
     </div>
   );
 };
