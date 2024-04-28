@@ -24,7 +24,7 @@ import PHNTMStaking from "../PHNTMStaking";
 import SpinTheWheel from "../SpinTheWheel";
 import DisplayNFTs from "../DisplayBruceLeeNFT";
 import SpecialDinnerPayment from "../Payments";
-// import Raffle from "../Raffle";
+import Raffle from "../Raffle";
 import Dashboard from "../Dashboard";
 
 export default function Navbar() {
@@ -77,10 +77,10 @@ export default function Navbar() {
                 <SpinTheWheel accountAddress={connectedAccountAddress} />
               }
             />
-            {/* <Route
+            <Route
             path="/raffle"
             element={<Raffle accountAddress={connectedAccountAddress} />}
-          /> */}
+          />
             <Route
               path="/phantoms-21"
               element={<Blackjack accountAddress={connectedAccountAddress} />}
