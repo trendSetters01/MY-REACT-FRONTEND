@@ -18,7 +18,7 @@ const Raffle = ({ accountAddress }) => {
   const [disabled, setDisabled] = useState(false);
 
   const peraWallet = useContext(PeraWalletContext);
-  const API_BASE_URL = "https://phantoms-ashy.vercel.app/api/v1"; // Replace with your backend URL
+  const API_BASE_URL = "https://phantoms-api.onrender.com/api/v1"; // Replace with your backend URL
   const raffleDeposit = 1; // Pre-set to 35 ALGO
 
   const handleDeposit = async () => {
