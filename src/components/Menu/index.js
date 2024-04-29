@@ -58,7 +58,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               <li>
                 <details>
                   <summary style={{ fontWeight: "bold" }}>
-                    Manage Account
+                    Overview
                   </summary>
                   <ul>
                     <li className="m-1">
