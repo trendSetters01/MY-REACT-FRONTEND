@@ -195,7 +195,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         src={swapImg}
                         alt={`Swap`}
                       />
-                      Onramp / Swap
+                      Swap ASA
                     </Link>
                   </li>
                 </details>
