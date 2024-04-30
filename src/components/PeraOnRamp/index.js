@@ -25,7 +25,7 @@ export default function PeraOnRampComponent({ accountAddress }) {
           ? "Please connect your wallet to the parent app."
           : ""
       }
-      className={`mt-4 mr-4 bg-gradient-to-r from-gray-500 to-pink-400 hover:from-pink-400 hover:to-gray-500 rounded-md p-2 flex items-center justify-center ${
+      className={`mt-4 mr-4 bg-gradient-to-r from-gray-500 to-white hover:from-white text-black hover:to-gray-500 rounded-md p-2 flex items-center justify-center ${
         !accountAddress ? "tooltip tooltip-info" : ""
       }`}
     >

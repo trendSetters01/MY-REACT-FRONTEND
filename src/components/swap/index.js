@@ -82,35 +82,35 @@ function Swap({ accountAddress }) {
    * If the callbacks have dependencies to state variables (in this case `account`),
    * make sure to wrap them in useCallback to prevent infinite loops.
    */
-  const onTxnSignRequest = useCallback(
-    async ({ txGroups }) => {
-      try {
-        // Sign the txns with the project's wallet integration
-        const txn = [...txGroups];
-        const signedTxns = await peraWallet.signTransaction(txn);
+  // const onTxnSignRequest = useCallback(
+  //   async ({ txGroups }) => {
+  //     try {
+  //       // Sign the txns with the project's wallet integration
+  //       const txn = [...txGroups];
+  //       const signedTxns = await peraWallet.signTransaction(txn);
 
-        // Send the signed txns to the widget, so it can send them to the blockchain
-        WidgetController.sendMessageToWidget({
-          data: { message: { type: "TXN_SIGN_RESPONSE", signedTxns } },
-          targetWindow: iframeRef.current?.contentWindow,
-        });
-      } catch (error) {
-        // Let widget know that the txn signing failed
-        WidgetController.sendMessageToWidget({
-          data: { message: { type: "FAILED_TXN_SIGN", error } },
-          targetWindow: iframeRef.current?.contentWindow,
-        });
-      }
-    },
-    [accountAddress]
-  );
-  const onTxnSignRequestTimeout = useCallback(() => {
-    console.error("txn sign request timed out");
-  }, []);
+  //       // Send the signed txns to the widget, so it can send them to the blockchain
+  //       WidgetController.sendMessageToWidget({
+  //         data: { message: { type: "TXN_SIGN_RESPONSE", signedTxns } },
+  //         targetWindow: iframeRef.current?.contentWindow,
+  //       });
+  //     } catch (error) {
+  //       // Let widget know that the txn signing failed
+  //       WidgetController.sendMessageToWidget({
+  //         data: { message: { type: "FAILED_TXN_SIGN", error } },
+  //         targetWindow: iframeRef.current?.contentWindow,
+  //       });
+  //     }
+  //   },
+  //   [accountAddress]
+  // );
+  // const onTxnSignRequestTimeout = useCallback(() => {
+  //   console.error("txn sign request timed out");
+  // }, []);
 
-  const onSwapSuccess = useCallback(async (response) => {
-    console.log({ response });
-  }, []);
+  // const onSwapSuccess = useCallback(async (response) => {
+  //   console.log({ response });
+  // }, []);
 
   useEffect(() => {
     // Filter the second asset list to exclude the first selected asset
@@ -128,16 +128,16 @@ function Swap({ accountAddress }) {
     // Update iframeUrl when asset IDs change
     const newIframeUrl = WidgetController.generateWidgetIframeUrl({
       platformName: "Phantom Pals swap",
-      useParentSigner: true,
+      // useParentSigner: true,
       assetIds: [firstAssetId, secondAssetId],
       network: "mainnet",
       themeVariables: {
         theme: "dark",
         containerButtonBg: "#2cbca2",
-        widgetBg: "#a056ff",
+        widgetBg: "#F8F8F8",
         headerButtonBg: "#8346d1",
         headerButtonText: "#ffffff",
-        headerTitle: "#ffffff",
+        headerTitle: "#0a0a0a",
         containerButtonText: "#ffffff",
         iframeBg: "#F8F8F8",
         borderRadiusSize: "none",
@@ -152,25 +152,25 @@ function Swap({ accountAddress }) {
     setIframeUrl(newIframeUrl);
   }, [firstAssetId, secondAssetId, accountAddress]);
 
-  useEffect(() => {
-    // Setup widget controller and event listeners
-    const swapController = new WidgetController({
-      onTxnSignRequest,
-      onTxnSignRequestTimeout,
-      onSwapSuccess,
-    });
+  // useEffect(() => {
+  //   // Setup widget controller and event listeners
+  //   const swapController = new WidgetController({
+  //     onTxnSignRequest,
+  //     onTxnSignRequestTimeout,
+  //     onSwapSuccess,
+  //   });
 
-    swapController.addWidgetEventListeners();
+  //   swapController.addWidgetEventListeners();
 
-    return () => {
-      swapController.removeWidgetEventListeners();
-    };
-  }, [
-    onSwapSuccess,
-    onTxnSignRequest,
-    onTxnSignRequestTimeout,
-    accountAddress,
-  ]);
+  //   return () => {
+  //     swapController.removeWidgetEventListeners();
+  //   };
+  // }, [
+  //   onSwapSuccess,
+  //   onTxnSignRequest,
+  //   onTxnSignRequestTimeout,
+  //   accountAddress,
+  // ]);
 
   return (
     <div
@@ -181,7 +181,7 @@ function Swap({ accountAddress }) {
         <h1 className="mb-4 text-white text-2xl flex flex-col items-center justify-center">
           Swap Assets
         </h1>
-        <div className="flex flex-col items-center justify-center ml-4 mb-4 text-white">
+        <div className="flex flex-col items-center justify-center ml-2 mb-4 text-white">
           No Crypto ? get some using the on ramp button below.
           <PeraOnRampComponent accountAddress={accountAddress} />
         </div>
