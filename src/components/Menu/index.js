@@ -179,7 +179,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                         src={swapImg}
                         alt={`Swap`}
                       />
-                      Crypto On Ramp.
+                      Crypto On Ramp
                     </Link>
                   </li>
                   <li className="m-1">
