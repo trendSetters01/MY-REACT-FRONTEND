@@ -144,7 +144,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     </li> */}
                   </ul>
                 </details>
-              </li>
+              </li> 
               <li>
                 <details>
                   <summary style={{ fontWeight: "bold" }}>
@@ -167,7 +167,23 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     </Link>
                   </li> */}
                   <li className="m-1">
-                    <Link to="/onramp-swap" className="dropdown-item">
+                    <Link to="/onramp" className="dropdown-item">
+                      <img
+                        style={{
+                          backgroundColor: "white",
+                          width: "25%",
+                          height: "25%",
+                          border: "2px solid white",
+                          borderRadius: "10px",
+                        }}
+                        src={swapImg}
+                        alt={`Swap`}
+                      />
+                      Crypto On Ramp.
+                    </Link>
+                  </li>
+                  <li className="m-1">
+                    <Link to="/swap" className="dropdown-item">
                       <img
                         style={{
                           backgroundColor: "white",
@@ -475,7 +491,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </svg>
             </label>
           </button> */}
-          {location.pathname !== "/onramp-swap" ? (
+          {location.pathname !== "/swap" ? (
             <PeraWalletButton onConnect={setConnectedAccountAddress} />
           ) : (
             <></>

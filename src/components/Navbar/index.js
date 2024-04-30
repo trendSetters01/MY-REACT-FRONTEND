@@ -26,6 +26,7 @@ import DisplayNFTs from "../DisplayBruceLeeNFT";
 import SpecialDinnerPayment from "../Payments";
 import Raffle from "../Raffle";
 import Dashboard from "../Dashboard";
+import OnRamp from "../OnRamp";
 
 export default function Navbar() {
   const [activeTab, setActiveTab] = useState("arc3");
@@ -68,7 +69,11 @@ export default function Navbar() {
             />
             <Route path="/phntm-staking" element={<PHNTMStaking />} />
             <Route
-              path="/onramp-swap"
+              path="/onramp"
+              element={<OnRamp accountAddress={connectedAccountAddress} />}
+            />
+            <Route
+              path="/swap"
               element={<Swap accountAddress={connectedAccountAddress} />}
             />
             <Route
