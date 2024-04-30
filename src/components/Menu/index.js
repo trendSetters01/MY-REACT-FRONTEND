@@ -15,6 +15,7 @@ import tokenInfoImg from "../../images/icons8-token-64.png";
 import tinymanimg from "../../images/Tinyman_Logo_White.png";
 import stakingimg from "../../images/logo.6aa1220768f78fbc9ba5.png";
 import PeraWalletButton from "../PeraWalletButton";
+import { useLocation } from "react-router-dom";
 
 export default function Menu({ setConnectedAccountAddress, fixed }) {
   const [theme, setTheme] = useState("light");
@@ -22,6 +23,8 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
+
+  const location = useLocation();
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -57,9 +60,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
             >
               <li>
                 <details>
-                  <summary style={{ fontWeight: "bold" }}>
-                    Overview
-                  </summary>
+                  <summary style={{ fontWeight: "bold" }}>Overview</summary>
                   <ul>
                     <li className="m-1">
                       <Link to="/dashboard" className="dropdown-item">
@@ -474,7 +475,11 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </svg>
             </label>
           </button> */}
-          <PeraWalletButton onConnect={setConnectedAccountAddress} />
+          {location.pathname !== "/onramp-swap" ? (
+            <PeraWalletButton onConnect={setConnectedAccountAddress} />
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </>
