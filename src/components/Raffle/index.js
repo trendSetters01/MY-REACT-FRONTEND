@@ -4,7 +4,7 @@ import { PeraWalletContext } from "../PeraWalletContext";
 import axios from "axios";
 import { send } from "../../algorand/transactionHelpers/send";
 import { v4 as uuidv4 } from "uuid"; // Import the UUID generator
-import phantomsImg from "../../images/Phantoms.png";
+import phantomsImg from "../../images/raffle-phntm.png";
 
 const Raffle = ({ accountAddress }) => {
   const [status, setStatus] = useState("");
@@ -19,7 +19,7 @@ const Raffle = ({ accountAddress }) => {
 
   const peraWallet = useContext(PeraWalletContext);
   const API_BASE_URL = "https://phantoms-api.onrender.com/api/v1"; // Replace with your backend URL
-  const raffleDeposit = 1; // Pre-set to 35 ALGO
+  const raffleDeposit = 150; // Pre-set to 150 phntm
 
   const handleDeposit = async () => {
     setDisabled(true);
@@ -31,9 +31,6 @@ const Raffle = ({ accountAddress }) => {
       }
 
       setMessage("Processing your deposit. Please wait...");
-
-      const newEntryId = uuidv4(); // Generate a new UUID for this entry
-      setEntryId(newEntryId); // Save the UUID for potential future use
 
       // Construct and send the transaction
       const txn1 = await send(
@@ -66,7 +63,8 @@ const Raffle = ({ accountAddress }) => {
             "Deposit sent to the blockchain. Awaiting confirmation from Phantom Pals..."
           );
           setShowLoader(true);
-          console.log("transactionId", txId);
+          const newEntryId = `${uuidv4()}-${txId}`; // Generate a new UUID for this entry
+          setEntryId(newEntryId); // Save the UUID for potential future use
           // Verify the transaction on your backend
           const response = await axios.post(
             `${API_BASE_URL}/check-raffle-deposit-tx`,
@@ -85,6 +83,7 @@ const Raffle = ({ accountAddress }) => {
             setMessage(
               `Deposit confirmed. You are now registered for the raffle! Your Entry ID is: ${newEntryId}`
             );
+            fetchParticipants();
           } else {
             setMessage(
               "Deposit verification failed. Please contact support@phantomshub.com or reach out to us on Discord."
@@ -122,7 +121,6 @@ const Raffle = ({ accountAddress }) => {
         `${API_BASE_URL}/get-nft-raffle-one-participants`
       );
       setParticipants(response.data.participants || []);
-      console.log("Participants", response.data.participants);
     } catch (error) {
       console.error("Error fetching participants:", error);
     }
@@ -172,36 +170,52 @@ const Raffle = ({ accountAddress }) => {
       )}
       {accountAddress && (
         <>
-          <div className="mt-2">
-            <button
-              className="btn btn-primary m-2 p-2"
-              onClick={toggleDisplayParticipants}
-            >
-              Display Participants
-            </button>
-          </div>
           <div className="p-8 flex flex-col items-center justify-center">
             <div className="p-8 bg-white border-4 border-gray-600 rounded">
               <div className="items-center text-center">
                 <h1 className="m-2 p-2 text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-green-400 to-blue-500">
                   Raffle
                 </h1>
-                <img
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "2px solid white",
-                    borderRadius: "10px",
-                    maxHeight: "20em",
-                    maxWidth: "24em",
-                  }}
-                  src={phantomsImg}
-                  alt="roadmap"
-                />
+                <h2
+                  style={{ wordBreak: "break-word", maxWidth: "20em" }}
+                  className="p-2 text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-red-500"
+                >
+                  Draw Date: 11th May 2024
+                </h2>
+                <a
+                  href="https://t.co/aiJqcXi2Ae"
+                  className="text-blue-500 hover:underline dark:text-blue-400"
+                >
+                  Join our Discord for draw results and more information.
+                </a>
+                <a
+                  href="https://allo.info/asset/1238044254/nft"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline dark:text-blue-400"
+                >
+                  <h3 className="pt-2 text-xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-black to-black">
+                    Phantom #54
+                  </h3>
+                  <img
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      border: "2px solid white",
+                      borderRadius: "10px",
+                      maxHeight: "20em",
+                      maxWidth: "24em",
+                      paddingTop: "1em",
+                    }}
+                    src={phantomsImg}
+                    alt="roadmap"
+                  />
+                </a>
+
                 <br></br>
                 <div className="flex flex-col justify-end m-2 p-2">
                   <div className="bg-yellow-400 m-2 p-2 text-black font-extrabold">
-                    1 PHNTM
+                    150 PHNTM
                   </div>
                   <button
                     disabled={disabled}
@@ -225,10 +239,23 @@ const Raffle = ({ accountAddress }) => {
                     </span>
                   )}
                   <h1 className="m-2 p-2 text-black">{status}</h1>
-                  <h1 className="m-2 p-2 text-black">{message}</h1>
+                  <h1
+                    style={{ wordBreak: "break-word" }}
+                    className="m-2 p-2 text-black"
+                  >
+                    {message}
+                  </h1>
                 </div>
               </div>
             </div>
+          </div>
+          <div className="mb-2">
+            <button
+              className="btn btn-primary m-2 p-2"
+              onClick={toggleDisplayParticipants}
+            >
+              Display Participants
+            </button>
           </div>
           {displayParticipants && (
             <div className="m-8 p-8 flex flex-col items-center justify-center">
@@ -251,17 +278,23 @@ const Raffle = ({ accountAddress }) => {
                           <tr key={index}>
                             <th>{index + 1}</th>
                             <td>
-                              {`${participant.participantAddress}`.substring(
+                              {`${participant?.participantAddress}`.substring(
                                 0,
                                 4
                               )}
                               ...
-                              {`${participant.participantAddress}`.substring(
-                                `${participant.participantAddress}`.length - 4,
-                                `${participant.participantAddress}`.length
+                              {`${participant?.participantAddress}`.substring(
+                                `${participant?.participantAddress}`.length - 4,
+                                `${participant?.participantAddress}`.length
                               )}
                             </td>
-                            <td>{participant.entryId}</td>
+                            <td>
+                              {`${participant?.entryId}`.substring(0, 12)}...
+                              {`${participant?.entryId}`.substring(
+                                `${participant?.entryId}`.length - 12,
+                                `${participant?.entryId}`.length
+                              )}
+                            </td>
                           </tr>
                         ))}
                       </tbody>
