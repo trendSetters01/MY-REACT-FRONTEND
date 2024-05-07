@@ -17,7 +17,7 @@ export default function OnRamp({ accountAddress }) {
         No Crypto ? get some using the on ramp button below.
         {!accountAddress ? (
           <span className="text-red-400 animate-pulse">
-            Ensure your walletis connected
+            Ensure your wallet is connected
           </span>
         ) : (
           <></>

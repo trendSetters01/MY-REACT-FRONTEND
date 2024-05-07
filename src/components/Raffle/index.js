@@ -163,12 +163,7 @@ const Raffle = ({ accountAddress }) => {
           }
         `}
       </style>
-      {!accountAddress && (
-        <h1 className="connect-wallet animate-pulse text-white">
-          Connect your wallet to participate.
-        </h1>
-      )}
-      {accountAddress && (
+      {
         <>
           <div className="p-8 flex flex-col items-center justify-center">
             <div className="p-8 bg-white border-4 border-gray-600 rounded">
@@ -217,13 +212,19 @@ const Raffle = ({ accountAddress }) => {
                   <div className="bg-yellow-400 m-2 p-2 text-black font-extrabold">
                     150 PHNTM
                   </div>
-                  <button
-                    disabled={disabled}
-                    className="btn btn-primary m-2 p-2"
-                    onClick={handleDeposit}
-                  >
-                    Enter
-                  </button>
+                  {accountAddress ? (
+                    <button
+                      disabled={disabled}
+                      className="btn btn-primary m-2 p-2"
+                      onClick={handleDeposit}
+                    >
+                      Enter
+                    </button>
+                  ) : (
+                    <span className="pt-4 text-red-400 animate-pulse">
+                      To Enter, Ensure your wallet is connected
+                    </span>
+                  )}
                 </div>
                 <div
                   style={{
@@ -305,7 +306,7 @@ const Raffle = ({ accountAddress }) => {
             </div>
           )}
         </>
-      )}
+      }
     </div>
   );
 };
