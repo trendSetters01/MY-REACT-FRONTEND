@@ -147,6 +147,29 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li> 
               <li>
                 <details>
+                  <summary style={{ fontWeight: "bold" }}>NFT Raffles</summary>
+                  <ul>
+                    <li className="m-1">
+                      <Link to="/raffle" className="dropdown-item">
+                        <img
+                          style={{
+                            backgroundColor: "white",
+                            width: "25%",
+                            height: "25%",
+                            border: "2px solid white",
+                            borderRadius: "10px",
+                          }}
+                          src={userAccount}
+                          alt={`Pahntom V2`}
+                        />
+                        Phantom Pals Raffle
+                      </Link>
+                    </li>
+                  </ul>
+                </details>
+              </li> 
+              <li>
+                <details>
                   <summary style={{ fontWeight: "bold" }}>
                     Phantoms Services
                   </summary>
