@@ -145,7 +145,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                   </ul>
                 </details>
               </li> 
-              <li>
+              {/* <li>
                 <details>
                   <summary style={{ fontWeight: "bold" }}>NFT Raffles</summary>
                   <ul>
@@ -167,7 +167,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                     </li>
                   </ul>
                 </details>
-              </li> 
+              </li>  */}
               <li>
                 <details>
                   <summary style={{ fontWeight: "bold" }}>
