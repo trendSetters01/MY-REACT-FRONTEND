@@ -294,6 +294,25 @@ const Raffle = ({ accountAddress }) => {
               >
                 {message}
               </h1>
+              {status === "Registered" && (
+                <div className="tickets">
+                  <div className="ticket">
+                    <div className="top left"></div>
+                    <div className="top right"></div>
+                    <div className="bottom left"></div>
+                    <div className="bottom right"></div>
+                    <div className="ticket_border--dotted">
+                      <div className="ticket__text">
+                        Raffle Ticket:
+                        <div className="ticket__number">
+                          {entryId}
+                        </div>
+                        Good Luck!
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -321,7 +340,7 @@ const Raffle = ({ accountAddress }) => {
                     <tr>
                       <th>#</th>
                       <th>Address</th>
-                      <th>Entry ID</th>
+                      <th>Raffle Ticket</th>
                     </tr>
                   </thead>
                   <tbody>
