@@ -288,12 +288,12 @@ const Raffle = ({ accountAddress }) => {
                   </div>
                 </button>
               )}
-              <h1
+              {status !== "Registered" && (<h1
                 style={{ wordBreak: "break-word" }}
                 className="m-2 p-2 text-white"
               >
                 {message}
-              </h1>
+              </h1>)}
               {status === "Registered" && (
                 <div className="tickets">
                   <div className="ticket">
