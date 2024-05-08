@@ -5,6 +5,7 @@ import axios from "axios";
 import { send } from "../../algorand/transactionHelpers/send";
 import { v4 as uuidv4 } from "uuid"; // Import the UUID generator
 import phantomsImg from "../../images/raffle-phntm.png";
+import Confetti from "react-confetti";
 
 const Raffle = ({ accountAddress }) => {
   const [status, setStatus] = useState("");
@@ -268,6 +269,7 @@ const Raffle = ({ accountAddress }) => {
                   class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 border border-blue-900 rounded"
                   onClick={() => shareOnSocialMedia("twitter")}
                 >
+                  <Confetti width={window.width} height={window.height} />
                   <div className="flex items-center justify-center gap-2">
                     Share on Twitter
                     <svg
