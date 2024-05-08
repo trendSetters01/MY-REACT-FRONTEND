@@ -220,16 +220,9 @@ const Raffle = ({ accountAddress }) => {
                 Phantom #54
               </h3>
               <img
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  border: "2px solid white",
-                  borderRadius: "10px",
-                  maxHeight: "20em",
-                  maxWidth: "24em",
-                }}
+                className="raffle-image"
                 src={phantomsImg}
-                alt="roadmap"
+                alt="Raffle Item"
               />
             </a>
 
@@ -275,7 +268,22 @@ const Raffle = ({ accountAddress }) => {
                   class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 border border-blue-900 rounded"
                   onClick={() => shareOnSocialMedia("twitter")}
                 >
-                  Share on Twitter
+                  <div className="flex items-center justify-center gap-2">
+                    Share on Twitter
+                    <svg
+                      width="1.25em"
+                      height="1.25em"
+                      viewBox="0 0 1200 1227"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="bg-black rounded p-1"
+                    >
+                      <path
+                        d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"
+                        fill="white"
+                      />
+                    </svg>
+                  </div>
                 </button>
               )}
               <h1
