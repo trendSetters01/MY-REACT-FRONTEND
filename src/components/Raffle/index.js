@@ -97,12 +97,12 @@ const Raffle = ({ accountAddress }) => {
           if (isConfirmed && correct) {
             setShowLoader(false);
             setStatus("Registered");
-            showConfetti(true);
+            setShowConfetti(true);
             setMessage(
               `Deposit confirmed. You are now registered for the raffle! Your Entry ID is: ${newEntryId}`
             );
             setTimeout(() => {
-              showConfetti(false);
+              setShowConfetti(false);
             }, 3000);
             fetchParticipants();
           } else {
