@@ -18,6 +18,7 @@ const Raffle = ({ accountAddress }) => {
   const [showLoader, setShowLoader] = useState(false);
   const [disabled, setDisabled] = useState(false);
   const [raffleResults, setRaffleResults] = useState([]);
+  const [showConfetti, setShowConfetti] = useState(false);
 
   const peraWallet = useContext(PeraWalletContext);
   const API_BASE_URL = "https://phantoms-api.onrender.com/api/v1"; // Replace with your backend URL
@@ -96,9 +97,13 @@ const Raffle = ({ accountAddress }) => {
           if (isConfirmed && correct) {
             setShowLoader(false);
             setStatus("Registered");
+            showConfetti(true);
             setMessage(
               `Deposit confirmed. You are now registered for the raffle! Your Entry ID is: ${newEntryId}`
             );
+            setTimeout(() => {
+              showConfetti(false);
+            }, 3000);
             fetchParticipants();
           } else {
             setMessage(
@@ -269,7 +274,9 @@ const Raffle = ({ accountAddress }) => {
                   class="bg-blue-500 hover:bg-blue-900 text-white font-bold py-2 px-4 border border-blue-900 rounded"
                   onClick={() => shareOnSocialMedia("twitter")}
                 >
-                  <Confetti width={window.width} height={window.height} />
+                  {showConfetti && (
+                    <Confetti width={window.width} height={window.height} />
+                  )}
                   <div className="flex items-center justify-center gap-2">
                     Share on Twitter
                     <svg
@@ -288,13 +295,15 @@ const Raffle = ({ accountAddress }) => {
                   </div>
                 </button>
               )}
-              {status !== "Registered" && (<h1
+              {/* {status !== "Registered" && ( */}
+              <h1
                 style={{ wordBreak: "break-word" }}
                 className="m-2 p-2 text-white"
               >
                 {message}
-              </h1>)}
-              {status === "Registered" && (
+              </h1>
+              {/* )} */}
+              {/* {status === "Registered" && (
                 <div className="tickets">
                   <div className="ticket">
                     <div className="top left"></div>
@@ -312,7 +321,7 @@ const Raffle = ({ accountAddress }) => {
                     </div>
                   </div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         </div>
