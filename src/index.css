@@ -129,13 +129,72 @@ h1 h2 h3 {
   border-radius: 10px;
   max-height: 20em;
   max-width: 24em;
-  box-shadow: 5px 5px 15px rgba(0,0,0,0.3), -5px -5px 15px rgba(255,255,255,0.5);
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.5);
   transition: transform 0.3s ease-in-out;
 }
 
 .raffle-image:hover {
   transform: translateY(-5px);
-  box-shadow: 10px 10px 30px rgba(0,0,0,0.5);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ticket {
+  background-color: #f08989;
+  display: inline-block;
+  margin: 10px;
+  overflow: hidden;
+  position: relative;
+
+  .ticket_border--dotted {
+    border: dotted 1px black;
+    margin: 14px;
+  }
+
+  .ticket__number {
+    font-size: 16px;
+    font-weight: bold;
+    word-wrap: break-word;
+    overflow: scroll;
+  }
+
+  .ticket__position--bottom {
+    bottom: -10px
+  }
+
+  .ticket__position--left {
+    left: -10px
+  }
+
+  .ticket__position--right {
+    right: -10px
+  }
+
+  .ticket__position--top {
+    top: -10px
+  }
+
+  .ticket__position--top,
+  .ticket__position--bottom,
+  .ticket__position--left,
+  .ticket__position--right {
+    background-color: #FFF;
+    border-radius: 100%;
+    height: 20px;
+    position: absolute;
+    width: 20px;
+  }
+
+  .ticket__text {
+    font-size: 20px;
+    font-weight: bold;
+    height: 120px;
+    line-height: 36px;
+    padding-top: 5px;
+    text-align: center;
+    width: 200px;
+    color: black;
+    overflow: scroll;
+  }
 }
 
 
