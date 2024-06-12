@@ -64,7 +64,17 @@ const Roadmap = () => {
       }}
       className="my-10 px-4 py-8 text-white bg-gradient-to-r from-black to-gray-500"
     >
-      <h2 className="text-3xl font-bold text-center mb-8">Roadmap</h2>
+      <h2
+        className="pt-8 text-3xl font-bold text-center mb-8"
+        style={{
+          display: "flex",
+          "flex-direction": "row",
+          gap: "1em",
+          "align-items": "center",
+        }}
+      >
+        <StarIcon /> Coming Soon!
+      </h2>
       {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {milestones.map((milestone, index) => (
           <div
@@ -94,9 +104,28 @@ const Roadmap = () => {
         ))}
       </div> */}
       <div className="zoom-effect">
-        <img src={rdmap} alt="roadmap"  />
+        {/* <img src={rdmap} alt="roadmap"  /> */}
       </div>
     </div>
+  );
+};
+
+const StarIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="feather feather-star"
+    >
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21 12 17.77 5.82 21 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+    </svg>
   );
 };
 
