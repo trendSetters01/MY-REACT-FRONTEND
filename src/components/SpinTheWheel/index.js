@@ -149,7 +149,7 @@ export default function SpinTheWheel({ accountAddress }) {
       const statucCode = response?.data?.statusCode;
       if (statucCode === 417) {
         setMessage(
-          `You need a Phantom Pals NFT or 1000 $PHNTM tokens to participate. See you soon!`
+          `You need a Phantom Pals NFT to participate. See you soon!`
         );
         setGameOver(true);
       }
