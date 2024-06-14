@@ -242,7 +242,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       Cards RPG
                     </Link>
                   </li>
-                  <li className="m-1">
+                  {/* <li className="m-1">
                     <Link to="/phantoms-21" className="dropdown-item">
                       <img
                         style={{
@@ -257,7 +257,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       />
                       Phantoms 21
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="m-1">
                     <Link to="/spin-the-wheel" className="dropdown-item">
                       <img
