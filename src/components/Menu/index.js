@@ -226,7 +226,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               <li>
                 <details>
                   <summary style={{ fontWeight: "bold" }}>Play to Win</summary>
-                  <li className="m-1">
+                  {/* <li className="m-1">
                     <Link to="/cards-rpg" className="dropdown-item">
                       <img
                         style={{
@@ -241,7 +241,7 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                       />
                       Cards RPG
                     </Link>
-                  </li>
+                  </li> */}
                   {/* <li className="m-1">
                     <Link to="/phantoms-21" className="dropdown-item">
                       <img

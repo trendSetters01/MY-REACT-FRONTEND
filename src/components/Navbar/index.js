@@ -105,10 +105,10 @@ export default function Navbar() {
               path="/phantoms-21"
               element={<Blackjack accountAddress={connectedAccountAddress} />}
             /> */}
-            <Route
+            {/* <Route
               path="/cards-rpg"
               element={<MainGame accountAddress={connectedAccountAddress} />}
-            />
+            /> */}
             {/* <Route
             path="/mint-nft"
             element={
