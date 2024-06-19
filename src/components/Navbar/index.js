@@ -55,7 +55,7 @@ export default function Navbar() {
           <Menu setConnectedAccountAddress={setConnectedAccountAddress} />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/trade-phntm" element={<VestigeListing />} />
+            {/* <Route path="/trade-phntm" element={<VestigeListing />} /> */}
             {/* <Route
             path="/bruce-lee-nft-polygon"
             element={<DisplayNFTs accountAddress={connectedAccountAddress} />}
@@ -65,11 +65,11 @@ export default function Navbar() {
               path="/dashboard"
               element={<Dashboard accountAddress={connectedAccountAddress} />}
             />
-            <Route
+            {/* <Route
               path="/tinyman-lp-deposits"
               element={<TinymanLPDeposits />}
             />
-            <Route path="/phntm-staking" element={<PHNTMStaking />} />
+            <Route path="/phntm-staking" element={<PHNTMStaking />} /> */}
             <Route
               path="/onramp"
               element={<OnRamp accountAddress={connectedAccountAddress} />}
@@ -166,10 +166,6 @@ export default function Navbar() {
             <Route
               path="/phantom-v1"
               element={<DisplayPhantomv1 accountAddress={phantomV1Address} />}
-            />
-            <Route
-              path="/phantom-v2"
-              element={<DisplayPhantomv2 accountAddress={phantomV2Address} />}
             />
           </Routes>
         </main>
