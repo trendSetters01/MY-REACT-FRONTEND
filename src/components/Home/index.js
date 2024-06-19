@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUserTokenHolding } from "../../algorand/getUserTokenHolding.js";
 
-import Roadmap from "./../RoadMap/index.js";
-
 function Home({ accountAddress }) {
   const [accountData, setAccountData] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -53,30 +51,27 @@ function Home({ accountAddress }) {
       </header>
       <main>
         <div className="tabs flex justify-center mb-4">
-          {[
-            "Introduction",
-            "Roadmap",
-            "Phantom Pals Wallets",
-            "Disclaimers",
-          ].map((tab) => (
-            <button
-              style={{
-                marginBottom: "2em",
-                fontFamily: "Tw Cen MT",
-                fontWeight: "bold",
-                fontSize: "large",
-              }}
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 mx-2 text-sm font-semibold rounded-lg ${
-                activeTab === tab
-                  ? "bg-gradient-to-r from-black to-gray-500 hover:from-blue-400 hover:to-pink-500 text-white"
-                  : "text-gray-300"
-              }`}
-            >
-              {tab}
-            </button>
-          ))}
+          {["Introduction", "Phantom Pals Wallets", "Disclaimers"].map(
+            (tab) => (
+              <button
+                style={{
+                  marginBottom: "2em",
+                  fontFamily: "Tw Cen MT",
+                  fontWeight: "bold",
+                  fontSize: "large",
+                }}
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-2 mx-2 text-sm font-semibold rounded-lg ${
+                  activeTab === tab
+                    ? "bg-gradient-to-r from-black to-gray-500 hover:from-blue-400 hover:to-pink-500 text-white"
+                    : "text-gray-300"
+                }`}
+              >
+                {tab}
+              </button>
+            )
+          )}
         </div>
 
         {activeTab === "Introduction" && (
@@ -102,8 +97,6 @@ function Home({ accountAddress }) {
             </p>
           </section>
         )}
-
-        {activeTab === "Roadmap" && <Roadmap />}
 
         {activeTab === "Phantom Pals Wallets" && (
           <section className="wallets bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
