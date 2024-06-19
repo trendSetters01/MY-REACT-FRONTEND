@@ -56,7 +56,6 @@ function Home({ accountAddress }) {
           {[
             "Introduction",
             "Roadmap",
-            "Tokenomics",
             "Phantom Pals Wallets",
             "Disclaimers",
           ].map((tab) => (
@@ -106,120 +105,6 @@ function Home({ accountAddress }) {
 
         {activeTab === "Roadmap" && <Roadmap />}
 
-        {activeTab === "Tokenomics" && (
-          <section className="tokenomics bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
-            {/* Tokenomics content */}
-            <h2 className="text-2xl font-semibold mb-4">
-              Initial Tokenomics Overview
-            </h2>
-            <div
-              className="dark:text-gray-300"
-              style={{
-                fontFamily: "Bahnschrift",
-                fontWeight: "bold",
-                fontSize: "large",
-              }}
-            >
-              <p>
-                <strong>
-                  Tokenomics Evaluation for 7 Million Token Supply
-                </strong>
-              </p>
-              <p className="mt-2 mb-4">
-                Our approach to tokenomics is rooted in principles of scarcity,
-                precision, and community engagement. The initial supply of
-                around 1 million tokens introduces a sense of exclusivity while
-                requiring careful distribution and sensitivity to market
-                dynamics.
-              </p>
-              <p className="mt-2 mb-4">
-                <strong>1. Scarcity and Exclusivity:</strong> The limited supply
-                is designed to drive demand and value, leveraging psychological
-                principles of scarcity.
-              </p>
-              <p className="mt-2 mb-4">
-                <strong>2. Precision in Distribution:</strong> Every token is
-                valuable, and distribution must be handled with fairness and
-                transparency to avoid centralization or undue influence.
-              </p>
-              <p className="mt-2 mb-4">
-                <strong>3. Price Sensitivity:</strong> A smaller supply may lead
-                to higher price volatility, attracting attention from traders
-                but also necessitating safeguards against market manipulation.
-              </p>
-              <p className="mt-2 mb-4">
-                <strong>4. Liquidity Concerns:</strong> Strategies to ensure
-                ample liquidity will be crucial for market stability, especially
-                in the early stages after launch.
-              </p>
-              <p className="mt-2 mb-4">
-                <strong>5. Engagement & Governance:</strong> Allocating a
-                significant portion for community initiatives underscores our
-                commitment to decentralized governance and active community
-                involvement.
-              </p>
-              <p className="mt-2 mb-4">
-                <strong>6. Staking Dynamics:</strong> Balanced staking
-                incentives are intended to encourage holding, contributing to
-                price stability.
-              </p>
-              <p className="mt-2 mb-4">
-                <strong>7. Long-Term Vision & Adjustability:</strong> We
-                anticipate the need for adaptability in our tokenomics to
-                respond to evolving market conditions and community feedback.
-              </p>
-              <p className="mt-2 mb-4">
-                <strong>Conclusion:</strong> Our token supply cap is a
-                foundational aspect of our project's identity. The outlined
-                tokenomics are initial and subject to refinement in
-                collaboration with our community.
-              </p>
-              <br />
-              <p className="text-xl font-semibold mb-4">
-                <strong>Distribution for 6 Million Token Supply:</strong>
-              </p>
-              <ul className="grid grid-cols-3 gap-4">
-                <div>
-                  <li className="mt-2 mb-4">
-                    <StarIcon />
-                    Community Fund: 2,100,000 tokens (Approx. 35%) - Including
-                    200,000 distributed and 100,000 for upcoming giveaways
-                  </li>
-                </div>
-                <div>
-                  <li className="mt-2 mb-4">
-                    <StarIcon />
-                    Staking Rewards: 1,200,000 tokens (20%)
-                  </li>
-                </div>
-                <div>
-                  <li className="mt-2 mb-4">
-                    <StarIcon />
-                    Team & Advisors: 400,000 tokens (Approx. 7%)
-                  </li>
-                </div>
-                <div>
-                  <li className="mt-2 mb-4">
-                    <StarIcon />
-                    Initial Distribution/Liquidity: 700,000 tokens (Approx. 12%)
-                  </li>
-                </div>
-                <div>
-                  <li className="mt-2 mb-4">
-                    <StarIcon />
-                    Reserve: 600,000 tokens (10%)
-                  </li>
-                </div>
-                <div>
-                  <li className="mt-2 mb-4">
-                    <StarIcon />
-                    Partnerships: 800,000 tokens (Approx. 13%)
-                  </li>
-                </div>
-              </ul>
-            </div>
-          </section>
-        )}
         {activeTab === "Phantom Pals Wallets" && (
           <section className="wallets bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">
