@@ -56,7 +56,6 @@ function Home({ accountAddress }) {
           {[
             "Introduction",
             "Roadmap",
-            "NFT Benefits",
             "Tokenomics",
             "Phantom Pals Wallets",
             "Disclaimers",
@@ -106,58 +105,6 @@ function Home({ accountAddress }) {
         )}
 
         {activeTab === "Roadmap" && <Roadmap />}
-
-        {activeTab === "NFT Benefits" && (
-          <section
-            style={{ minHeight: "50vh" }}
-            className="nft-benefits bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg"
-          >
-            {/* NFT Benefits content */}
-            <h2 className="text-2xl font-semibold mb-4">
-              Exclusive Benefits with Phantom Pals NFTs
-            </h2>
-            <div
-              style={{
-                fontFamily: "Bahnschrift",
-                fontWeight: "bold",
-                fontSize: "large",
-              }}
-            >
-              <p className="dark:text-gray-300">
-                As a holder of Phantom Pals NFTs, you're not just owning digital
-                art; you're part of the Phantom Pals Pals inner circle. These
-                NFTs will unlock exclusive benefits and privileges within the
-                Phantom Pals Pals ecosystem as we grow. Here's a sneak peek of
-                what to expect:
-              </p>
-              <ul className="list-disc pl-5 dark:text-gray-300">
-                <li>
-                  <strong>Early Access:</strong> Be the first to know and engage
-                  with new developments, updates, and features within the
-                  platform.
-                </li>
-                <li>
-                  <strong>Special Privileges:</strong> Enjoy unique
-                  opportunities and offers exclusive to Phantom Pals NFT
-                  holders.
-                </li>
-                <li>
-                  <strong>Community Influence:</strong> Have a say in the
-                  direction of future expansions and improvements. Your feedback
-                  will be prioritized.
-                </li>
-                <li>
-                  <strong>Exclusive Events:</strong> Get invitations to
-                  holder-only events, AMAs with the leadership team, and more.
-                </li>
-              </ul>
-              <p className="dark:text-gray-300">
-                We're just getting started, and these NFTs are your gateway to
-                grow along with us. Stay tuned for more exciting benefits!
-              </p>
-            </div>
-          </section>
-        )}
 
         {activeTab === "Tokenomics" && (
           <section className="tokenomics bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
