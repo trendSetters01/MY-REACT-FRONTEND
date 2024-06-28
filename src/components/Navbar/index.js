@@ -47,9 +47,7 @@ export default function Navbar() {
   return (
     <Router>
       <TokenPriceTicker />
-      <div
-        className="drawer min-h-screen bg-base-200 lg:drawer-open"
-      >
+      <div className="drawer min-h-screen bg-base-200 lg:drawer-open">
         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
         <main className="drawer-content">
           <Menu setConnectedAccountAddress={setConnectedAccountAddress} />
@@ -77,13 +75,13 @@ export default function Navbar() {
             <Route
               path="/swap"
               element={<Swap accountAddress={connectedAccountAddress} />}
-            />
+            />*/}
             <Route
               path="/spin-the-wheel"
               element={
                 <SpinTheWheel accountAddress={connectedAccountAddress} />
               }
-            /> */}
+            />
             {/* <Route
               path="/raffle"
               element={<Raffle accountAddress={connectedAccountAddress} />}
