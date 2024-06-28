@@ -170,114 +170,6 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </li>  */}
               <li>
                 <details>
-                  <summary style={{ fontWeight: "bold" }}>
-                    Phantoms Services
-                  </summary>
-                  {/* <li className="m-1">
-                    <Link to="/mint-nft" className="dropdown-item">
-                      <img
-                        style={{
-                          backgroundColor: "white",
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={mintNFTARC3Img}
-                        alt={`mint nft`}
-                      />
-                      Mint NFT
-                    </Link>
-                  </li> */}
-                  <li className="m-1">
-                    <Link to="/onramp" className="dropdown-item">
-                      <img
-                        style={{
-                          backgroundColor: "white",
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={swapImg}
-                        alt={`Swap`}
-                      />
-                      Crypto On Ramp
-                    </Link>
-                  </li>
-                  <li className="m-1">
-                    <Link to="/swap" className="dropdown-item">
-                      <img
-                        style={{
-                          backgroundColor: "white",
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={swapImg}
-                        alt={`Swap`}
-                      />
-                      Swap ASA
-                    </Link>
-                  </li>
-                </details>
-              </li>
-              <li>
-                <details>
-                  <summary style={{ fontWeight: "bold" }}>Play to Win</summary>
-                  {/* <li className="m-1">
-                    <Link to="/cards-rpg" className="dropdown-item">
-                      <img
-                        style={{
-                          backgroundColor: "white",
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={mainGameImg}
-                        alt={`main game`}
-                      />
-                      Cards RPG
-                    </Link>
-                  </li> */}
-                  {/* <li className="m-1">
-                    <Link to="/phantoms-21" className="dropdown-item">
-                      <img
-                        style={{
-                          backgroundColor: "white",
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={mainGameImg}
-                        alt={`main game`}
-                      />
-                      Phantoms 21
-                    </Link>
-                  </li> */}
-                  <li className="m-1">
-                    <Link to="/spin-the-wheel" className="dropdown-item">
-                      <img
-                        style={{
-                          backgroundColor: "white",
-                          width: "25%",
-                          height: "25%",
-                          border: "2px solid white",
-                          borderRadius: "10px",
-                        }}
-                        src={mainGameImg}
-                        alt={`main game`}
-                      />
-                      Spin the Wheel
-                    </Link>
-                  </li>
-                </details>
-              </li>
-              <li>
-                <details>
                   <summary style={{ fontWeight: "bold" }}>Collections</summary>
                   <ul>
                     <li className="m-2">
@@ -422,11 +314,6 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
               </svg>
             </label>
           </button> */}
-          {location.pathname !== "/swap" ? (
-            <PeraWalletButton onConnect={setConnectedAccountAddress} />
-          ) : (
-            <></>
-          )}
         </div>
       </div>
     </>

@@ -70,7 +70,7 @@ export default function Navbar() {
               element={<TinymanLPDeposits />}
             />
             <Route path="/phntm-staking" element={<PHNTMStaking />} /> */}
-            <Route
+            {/* <Route
               path="/onramp"
               element={<OnRamp accountAddress={connectedAccountAddress} />}
             />
@@ -83,7 +83,7 @@ export default function Navbar() {
               element={
                 <SpinTheWheel accountAddress={connectedAccountAddress} />
               }
-            />
+            /> */}
             {/* <Route
               path="/raffle"
               element={<Raffle accountAddress={connectedAccountAddress} />}
