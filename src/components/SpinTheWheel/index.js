@@ -7,6 +7,7 @@ import { PeraWalletContext } from "../PeraWalletContext";
 import axios from "axios";
 import { optIn } from "../../algorand/opt-in.js";
 import { send } from "../../algorand/transactionHelpers/send.js";
+import PeraWalletButton from "../PeraWalletButton";
 
 const freeSpinGifts = [
   ["PHNTM", "#391379"],
@@ -148,9 +149,7 @@ export default function SpinTheWheel({ accountAddress }) {
       });
       const statucCode = response?.data?.statusCode;
       if (statucCode === 417) {
-        setMessage(
-          `You need a Phantom Pals NFT to participate. See you soon!`
-        );
+        setMessage(`You need a Phantom Pals NFT to participate. See you soon!`);
         setGameOver(true);
       }
       if (statucCode === 429) {
@@ -201,9 +200,11 @@ export default function SpinTheWheel({ accountAddress }) {
       className="flex flex-col items-center gap-4 justify-center text-white"
     >
       {!accountAddress && (
-        <h1 className="animate-pulse text-white">
-          Connect your wallet to participate.
-        </h1>
+        <>
+          <div className="p-4">
+            <PeraWalletButton />
+          </div>
+        </>
       )}
       {accountAddress && (
         <>
