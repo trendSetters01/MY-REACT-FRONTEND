@@ -145,22 +145,6 @@ export default function Menu({ setConnectedAccountAddress, fixed }) {
                   </ul>
                 </details>
               </li>
-              <li className="m-1">
-                <Link to="/spin-the-wheel" className="dropdown-item">
-                  <img
-                    style={{
-                      backgroundColor: "white",
-                      width: "25%",
-                      height: "25%",
-                      border: "2px solid white",
-                      borderRadius: "10px",
-                    }}
-                    src={userAccount}
-                    alt={`Pahntom V2`}
-                  />
-                  Free Spin
-                </Link>
-              </li>
               {/* <li>
                 <details>
                   <summary style={{ fontWeight: "bold" }}>NFT Raffles</summary>
