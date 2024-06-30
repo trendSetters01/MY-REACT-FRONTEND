@@ -51,27 +51,25 @@ function Home({ accountAddress }) {
       </header>
       <main>
         <div className="tabs flex justify-center mb-4">
-          {["Introduction", "Phantom Pals Wallets", "Disclaimers"].map(
-            (tab) => (
-              <button
-                style={{
-                  marginBottom: "2em",
-                  fontFamily: "Tw Cen MT",
-                  fontWeight: "bold",
-                  fontSize: "large",
-                }}
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 mx-2 text-sm font-semibold rounded-lg ${
-                  activeTab === tab
-                    ? "bg-gradient-to-r from-black to-gray-500 hover:from-blue-400 hover:to-pink-500 text-white"
-                    : "text-gray-300"
-                }`}
-              >
-                {tab}
-              </button>
-            )
-          )}
+          {["Introduction", "Disclaimers"].map((tab) => (
+            <button
+              style={{
+                marginBottom: "2em",
+                fontFamily: "Tw Cen MT",
+                fontWeight: "bold",
+                fontSize: "large",
+              }}
+              key={tab}
+              onClick={() => setActiveTab(tab)}
+              className={`px-4 py-2 mx-2 text-sm font-semibold rounded-lg ${
+                activeTab === tab
+                  ? "bg-gradient-to-r from-black to-gray-500 hover:from-blue-400 hover:to-pink-500 text-white"
+                  : "text-gray-300"
+              }`}
+            >
+              {tab}
+            </button>
+          ))}
         </div>
 
         {activeTab === "Introduction" && (
@@ -98,106 +96,6 @@ function Home({ accountAddress }) {
           </section>
         )}
 
-        {activeTab === "Phantom Pals Wallets" && (
-          <section className="wallets bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
-            <h2 className="text-2xl font-semibold mb-4">
-              Phantoms (Phantom Pals) Wallets Overview
-            </h2>
-            <div
-              className="dark:text-gray-300"
-              style={{
-                fontFamily: "Bahnschrift",
-                fontWeight: "bold",
-                fontSize: "large",
-              }}
-            >
-              <p className="mt-2 mb-4">
-                We're dedicated to transparency and accountability. Below are
-                the links to our Wallet addresses, showcasing real-time
-                transactions and holdings:
-              </p>
-              <ul className="list-disc pl-5 dark:text-gray-300">
-                <li className="mt-2 mb-4">
-                  <strong>Reserve Wallet:</strong>{" "}
-                  <a
-                    href="https://allo.info/account/YI7APPJQ6P2CLKW5E7YZ5NFMC4KBGES2EXN72ADUNX2BNQPKOOMIBVHWJU"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-400"
-                  >
-                    View Wallet
-                  </a>
-                </li>
-                <li className="mt-2 mb-4">
-                  <strong>Community Funds Wallet:</strong>{" "}
-                  <a
-                    href="https://allo.info/account/DBF3CRXDC36CARJREL3X6C7N3C373WPBPKRYFFHA7XBTTEB2ZIM4ZN64U4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-400"
-                  >
-                    View Wallet
-                  </a>
-                </li>
-                <li className="mt-2 mb-4">
-                  <strong>Play to Win Rewards Wallet:</strong>{" "}
-                  <a
-                    href="https://allo.info/account/JQONXCP7LYP2O2XQLOPBM6I67LBGCZGEZGHBRRBJBAJEWEIWIRIFZIPXIQ"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-400"
-                  >
-                    View Wallet
-                  </a>
-                </li>
-                <li className="mt-2 mb-4">
-                  <strong>V1 NFT Staking Rewards Wallet:</strong>{" "}
-                  <a
-                    href="https://allo.info/account/JWT3AWBTG2MRUCJQYY2L3QIZHQOO7XYICUTYWPLZ3WCB5YGQS65ITQAE5Y"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-400"
-                  >
-                    View Wallet
-                  </a>
-                </li>
-                <li className="mt-2 mb-4">
-                  <strong>Staking Rewards Reserve Wallet:</strong>{" "}
-                  <a
-                    href="https://allo.info/account/2FKEVDZE2VVFWV65CGUS3EIR3OAZZQTA6EENRJIOSRKPVULH5M43QULK54"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-400"
-                  >
-                    View Wallet
-                  </a>
-                </li>
-                <li className="mt-2 mb-4">
-                  <strong>Team and Advisors Wallet:</strong>{" "}
-                  <a
-                    href="https://allo.info/account/ILGNJUCJ3U5UCJFK5AFT4FKCRFSZLAN45W4HZRZWTXSOM3GCQPLJJG2BD4"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-400"
-                  >
-                    View Wallet
-                  </a>
-                </li>
-                <li className="mt-2 mb-4">
-                  <strong>Partnerships Wallet:</strong>{" "}
-                  <a
-                    href="https://allo.info/account/ER3NVYQQGRYHQSDRTL4ICMPWOTZMRXVJO44FCDLSEXNPGD3ERFP26DAB6Y"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-blue-400"
-                  >
-                    View Wallet
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </section>
-        )}
         {activeTab === "Disclaimers" && (
           <section className="disclaimers bg-gradient-to-r from-black to-gray-500 text-white p-6 shadow-lg rounded-lg">
             <h2 className="text-2xl font-semibold mb-4">
